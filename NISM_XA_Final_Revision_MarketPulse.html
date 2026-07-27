@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NISM X-A — Final Revision Ledger | Market Pulse</title>
+<style>
+:root{
+  --ink:#152238; --ink2:#3A4A63; --mut:#6B7A90;
+  --paper:#EEF1F5; --card:#FFFFFF; --rule:#D6DCE6; --rule2:#E8ECF2;
+  --m1:#9A6A1F; --m2:#4A6E8A; --m3:#0B6B62; --m4:#6B4B8A; --m5:#2F5D8C; --m6:#7A2E5E;
+  --trap:#9E1B45; --fx:#0B6B62; --hook:#3F3A8C;
+  --font-display:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --font-body:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font-mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,"Courier New",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:150px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
+  font-size:15px;line-height:1.6;-webkit-text-size-adjust:100%}
+
+/* ---------- masthead ---------- */
+.mast{background:var(--ink);color:#fff;padding:22px 20px 0}
+.mast-in{max-width:1120px;margin:0 auto}
+.eyebrow{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:#8FA3BE;margin:0 0 6px}
+.mast h1{font-family:var(--font-display);font-weight:600;font-size:clamp(26px,4.4vw,40px);
+  line-height:1.1;margin:0 0 4px;letter-spacing:-.01em}
+.mast h1 em{font-style:italic;color:#D9B36C}
+.mast .sub{color:#A9BBD2;font-size:13.5px;margin:0 0 16px;max-width:62ch}
+.facts{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid #2B3A55;border-bottom:1px solid #2B3A55;margin-bottom:18px}
+.fact{padding:9px 18px 9px 0;margin-right:18px;border-right:1px solid #2B3A55;font-size:12.5px;color:#A9BBD2}
+.fact:last-child{border-right:0}
+.fact b{display:block;font-family:var(--font-mono);font-size:15px;color:#fff;letter-spacing:-.01em}
+
+/* ---------- signature: the mark ledger ---------- */
+.ledger-lab{display:flex;justify-content:space-between;align-items:baseline;
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8FA3BE;margin-bottom:6px}
+.ledger{display:flex;height:46px;border-radius:3px;overflow:hidden;margin-bottom:0}
+.seg{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-decoration:none;color:#fff;transition:filter .15s;border-right:1px solid rgba(255,255,255,.28);
+  padding:2px;min-width:0}
+.seg:last-child{border-right:0}
+.seg:hover,.seg:focus-visible{filter:brightness(1.25);outline:none}
+.seg .sm{font-family:var(--font-mono);font-size:15px;font-weight:700;line-height:1}
+.seg .sl{font-size:9px;letter-spacing:.08em;text-transform:uppercase;opacity:.85;line-height:1;margin-top:3px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.s1{background:var(--m1)}.s2{background:var(--m2)}.s3{background:var(--m3)}
+.s4{background:var(--m4)}.s5{background:var(--m5)}.s6{background:var(--m6)}
+.ledger-foot{font-size:11.5px;color:#8FA3BE;padding:8px 0 16px;font-style:italic}
+
+/* ---------- sticky toolbar ---------- */
+.bar{position:sticky;top:0;z-index:50;background:rgba(238,241,245,.96);
+  backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--rule);padding:9px 20px}
+.bar-in{max-width:1120px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 240px;min-width:0;padding:8px 12px;border:1px solid var(--rule);border-radius:3px;
+  background:#fff;font-family:var(--font-body);font-size:14px;color:var(--ink)}
+#q:focus{outline:2px solid var(--m5);outline-offset:-1px}
+.btn{padding:8px 12px;border:1px solid var(--rule);background:#fff;border-radius:3px;cursor:pointer;
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.count{font-family:var(--font-mono);font-size:11px;color:var(--mut);white-space:nowrap}
+.count b{color:var(--ink)}
+
+/* ---------- layout ---------- */
+main{max-width:1120px;margin:0 auto;padding:26px 20px 80px}
+.module{background:transparent;margin:0 0 30px}
+.mod-head{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  padding:12px 0 10px;border-bottom:3px solid var(--ink);position:relative}
+.mod-head::-webkit-details-marker{display:none}
+.mod-head::after{content:"▾";margin-left:auto;font-size:14px;color:var(--mut);transition:transform .2s}
+details[open] > .mod-head::after{transform:rotate(180deg)}
+.mod-n{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:3px 8px;border-radius:2px;color:#fff}
+#m1 .mod-n{background:var(--m1)}#m2 .mod-n{background:var(--m2)}#m3 .mod-n{background:var(--m3)}
+#m4 .mod-n{background:var(--m4)}#m5 .mod-n{background:var(--m5)}#m6 .mod-n{background:var(--m6)}
+#m1 .mod-head{border-bottom-color:var(--m1)}#m2 .mod-head{border-bottom-color:var(--m2)}
+#m3 .mod-head{border-bottom-color:var(--m3)}#m4 .mod-head{border-bottom-color:var(--m4)}
+#m5 .mod-head{border-bottom-color:var(--m5)}#m6 .mod-head{border-bottom-color:var(--m6)}
+.mod-t{font-family:var(--font-display);font-size:clamp(19px,3vw,25px);font-weight:600;letter-spacing:-.01em}
+.mod-w{font-family:var(--font-mono);font-size:12px;color:var(--mut)}
+.mod-w b{color:var(--ink);font-size:14px}
+.mod-body{padding-top:18px}
+
+.topic{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--rule);
+  border-radius:3px;padding:15px 17px;margin-bottom:13px}
+#m1 .topic{border-left-color:var(--m1)}#m2 .topic{border-left-color:var(--m2)}
+#m3 .topic{border-left-color:var(--m3)}#m4 .topic{border-left-color:var(--m4)}
+#m5 .topic{border-left-color:var(--m5)}#m6 .topic{border-left-color:var(--m6)}
+.topic h3{font-family:var(--font-display);font-size:17.5px;font-weight:600;margin:0 0 3px;letter-spacing:-.005em}
+.topic .ch{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mut);margin:0 0 10px}
+.topic p{margin:0 0 9px}
+.topic ul{margin:0 0 9px;padding-left:19px}
+.topic li{margin-bottom:4px}
+.topic > *:last-child{margin-bottom:0}
+.k{font-weight:600}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;
+  text-transform:uppercase;padding:2px 6px;border-radius:2px;vertical-align:2px;margin-left:7px;
+  background:#EAEEF4;color:var(--ink2);border:1px solid var(--rule)}
+.tag.prev{background:#F1EEF9;color:var(--hook);border-color:#DCD5F0}
+
+/* content devices */
+.fx{font-family:var(--font-mono);font-size:13px;background:#F2F7F6;border:1px solid #CFE2DF;
+  border-left:3px solid var(--fx);border-radius:2px;padding:9px 12px;margin:0 0 9px;
+  overflow-x:auto;white-space:pre-wrap;color:#0A3F3A;line-height:1.55}
+.fx b{color:var(--fx)}
+.trap{background:#FCF2F5;border:1px solid #EFD3DD;border-left:3px solid var(--trap);
+  border-radius:2px;padding:9px 12px;margin:0 0 9px;font-size:14px}
+.trap::before{content:"Exam trap";display:block;font-family:var(--font-mono);font-size:9.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--trap);margin-bottom:3px;font-weight:700}
+.hook{background:#F4F2FB;border:1px solid #DCD5F0;border-left:3px solid var(--hook);
+  border-radius:2px;padding:9px 12px;margin:0 0 9px;font-size:14px}
+.hook::before{content:"Memory hook";display:block;font-family:var(--font-mono);font-size:9.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--hook);margin-bottom:3px;font-weight:700}
+.wrap{overflow-x:auto;margin:0 0 10px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:400px}
+th,td{border:1px solid var(--rule2);padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#F0F3F7;font-weight:600;font-size:12px;letter-spacing:.02em}
+tbody tr:nth-child(even){background:#FAFBFC}
+.num{font-family:var(--font-mono);font-size:13px}
+
+/* revised checkbox */
+.rev{float:right;margin:-2px 0 0 10px;display:flex;align-items:center;gap:5px;
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);cursor:pointer}
+.rev input{accent-color:var(--m3);cursor:pointer;width:14px;height:14px}
+.topic.done{opacity:.5}
+.topic.done h3{text-decoration:line-through;text-decoration-thickness:1px}
+
+/* closing panels */
+.panel{background:var(--ink);color:#E4EBF4;border-radius:4px;padding:22px 22px 18px;margin:34px 0 0}
+.panel h2{font-family:var(--font-display);font-size:23px;margin:0 0 4px;color:#fff;font-weight:600}
+.panel .lead{color:#A9BBD2;font-size:13px;margin:0 0 16px}
+.panel h4{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:#D9B36C;margin:16px 0 7px;padding-bottom:4px;border-bottom:1px solid #2B3A55}
+.panel ul{padding-left:18px;margin:0}
+.panel li{margin-bottom:5px;font-size:13.5px}
+.panel code{font-family:var(--font-mono);background:#22314B;padding:1px 5px;border-radius:2px;color:#F0D9A8;font-size:12.5px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.foot{text-align:center;color:var(--mut);font-size:12px;padding:26px 0 0;line-height:1.7}
+.foot b{color:var(--ink)}
+.nores{display:none;text-align:center;padding:40px;color:var(--mut);font-style:italic}
+
+@media (max-width:820px){ .grid2{grid-template-columns:1fr} }
+@media (max-width:640px){
+  body{font-size:14.5px}
+  .seg .sl{display:none}
+  .ledger{height:38px}
+  .fact{padding-right:12px;margin-right:12px}
+  main{padding:20px 14px 60px}
+  .topic{padding:13px 13px}
+  .mast{padding:18px 14px 0}
+  .bar{padding:8px 14px}
+}
+@media (max-width:400px){ table{font-size:12.5px} th,td{padding:5px 6px} }
+
+@media print{
+  .bar,.rev,.ledger-foot{display:none!important}
+  body{background:#fff;font-size:10.5pt}
+  .mast{background:#fff;color:#000;border-bottom:2px solid #000}
+  .mast h1,.mast .sub,.eyebrow,.fact{color:#000}
+  .panel{background:#fff;color:#000;border:1px solid #000}
+  .panel h2,.panel h4,.panel .lead{color:#000}
+  .topic{break-inside:avoid;page-break-inside:avoid;border:1px solid #999}
+  details{display:block!important}
+  .mod-body{display:block!important}
+}
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important} }
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="mast-in">
+    <p class="eyebrow">Market Pulse &nbsp;·&nbsp; Learn Like Day One</p>
+    <h1>NISM Series X-A — the <em>final</em> ledger</h1>
+    <p class="sub">Every mark on this exam has an address. This sheet is arranged by where the marks actually live, not by chapter order — so if you only get through half of it, you get through the right half.</p>
+
+    <div class="facts">
+      <div class="fact">Total<b>150 marks</b></div>
+      <div class="fact">Questions<b>90 MCQ + 9 caselets</b></div>
+      <div class="fact">Time<b>180 min</b></div>
+      <div class="fact">Pass<b>90 / 150 &nbsp;(60%)</b></div>
+      <div class="fact">Wrong answer<b>−25% of that mark</b></div>
+    </div>
+
+    <div class="ledger-lab"><span>Mark ledger — segment width = weightage</span><span>tap to jump</span></div>
+    <div class="ledger">
+      <a class="seg s1" href="#m1" style="flex:37" title="Module 1 — 37 marks"><span class="sm">37</span><span class="sl">Personal FP</span></a>
+      <a class="seg s2" href="#m2" style="flex:10" title="Module 2 — 10 marks"><span class="sm">10</span><span class="sl">Markets</span></a>
+      <a class="seg s3" href="#m3" style="flex:30" title="Module 3 — 30 marks"><span class="sm">30</span><span class="sl">Products</span></a>
+      <a class="seg s4" href="#m4" style="flex:23" title="Module 4 — 23 marks"><span class="sm">23</span><span class="sl">Managed</span></a>
+      <a class="seg s5" href="#m5" style="flex:20" title="Module 5 — 20 marks"><span class="sm">20</span><span class="sl">Portfolio</span></a>
+      <a class="seg s6" href="#m6" style="flex:30" title="Module 6 — 30 marks"><span class="sm">30</span><span class="sl">Regulation</span></a>
+    </div>
+    <p class="ledger-foot">Modules 1, 3 and 6 alone carry 97 of 150. Clear those and you are 7 marks from a pass before touching anything else.</p>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="bar-in">
+    <input id="q" type="search" placeholder="Filter topics — try &quot;duration&quot;, &quot;Sharpe&quot;, &quot;22A&quot;, &quot;AIF&quot;  (press /)" autocomplete="off">
+    <button class="btn" id="openAll">Expand all</button>
+    <button class="btn" id="closeAll">Collapse</button>
+    <button class="btn" id="pr">Print</button>
+    <span class="count"><b id="c1">0</b>/<span id="c2">0</span> revised</span>
+  </div>
+</div>
+
+<main>
+<p class="nores" id="nores">Nothing matches that. Clear the filter and try a shorter word.</p>
+
+<!-- ================= MODULE 1 ================= -->
+<details class="module" id="m1" open>
+  <summary class="mod-head">
+    <span class="mod-n">Module 1</span>
+    <span class="mod-t">Personal Financial Planning</span>
+    <span class="mod-w"><b>37</b> marks · Ch 1–4 · highest weightage</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Financial planning — concept, need, scope</h3>
+    <p class="ch">Chapter 1</p>
+    <p><span class="k">Definition:</span> the process of meeting life goals through the proper management of finances. Goals — not products — are the starting point.</p>
+    <p><span class="k">Six-step process</span> (this sequence is asked directly):</p>
+    <ol style="padding-left:19px;margin:0 0 9px">
+      <li>Establish and define the client relationship (scope, terms, fees)</li>
+      <li>Gather client data and determine goals</li>
+      <li>Analyse and evaluate the client's financial status</li>
+      <li>Develop and present the plan / recommendations</li>
+      <li>Implement the recommendations</li>
+      <li>Monitor and review</li>
+    </ol>
+    <p><span class="k">Scope:</span> cash flow &amp; budgeting, risk management &amp; insurance, investment planning, tax planning, retirement planning, estate planning.</p>
+    <div class="hook">Sequence hook — <b>R.G.A.D.I.M.</b>: Relationship → Gather → Analyse → Develop → Implement → Monitor. Note that <b>implementation comes after presentation</b>, and <b>monitoring is a step, not an afterthought</b>.</div>
+    <div class="trap">"Financial advisory" vs "execution" — advice is the recommendation; execution is placing the transaction. SEBI treats these as separable roles. A financial plan is <b>not</b> a product recommendation list.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Assets, liabilities and net worth</h3>
+    <p class="ch">Chapter 1.4 &amp; 3.6</p>
+    <div class="fx">Net worth = Total assets − Total liabilities</div>
+    <div class="wrap"><table>
+      <thead><tr><th>Class</th><th>Examples</th><th>Test</th></tr></thead>
+      <tbody>
+        <tr><td><b>Liquid assets</b></td><td>Cash, savings balance, liquid funds, sweep-in FD</td><td>Convertible to cash in days, without loss of value</td></tr>
+        <tr><td><b>Financial / investment assets</b></td><td>Equity, MF, bonds, EPF, PPF, NPS, Gold ETF, SGB</td><td>Held to grow wealth or generate income</td></tr>
+        <tr><td><b>Use / personal assets</b></td><td>Self-occupied house, car, gold jewellery, furniture</td><td>Held for use or consumption, not return</td></tr>
+        <tr><td><b>Liabilities</b></td><td>Home loan, car loan, credit card outstanding</td><td>Outstanding <b>principal</b>, not EMI</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">Gold <b>jewellery</b> = use asset. Gold <b>ETF / SGB</b> = financial asset. Same metal, different classification — the exam loves this one. Similarly: the self-occupied home is a use asset; a let-out second property is an investment asset.</div>
+    <div class="trap">Liabilities on the balance sheet are the <b>outstanding loan balance</b>. The EMI belongs in the cash flow statement, not the balance sheet.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Time value of money — the full formula set<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 2 · guaranteed caselet material</p>
+    <div class="fx"><b>FV</b> = PV × (1 + r)ⁿ          <b>PV</b> = FV ÷ (1 + r)ⁿ
+
+<b>Effective annual rate</b>   EAR = (1 + i/m)^m − 1
+<b>Real rate (Fisher)</b>      = [(1 + nominal) ÷ (1 + inflation)] − 1
+<b>Rule of 72</b>              years to double ≈ 72 ÷ rate(%)
+<b>CAGR</b>                    = (Ending ÷ Beginning)^(1/n) − 1</div>
+    <div class="fx"><b>FV of ordinary annuity</b>  = PMT × [((1+r)ⁿ − 1) ÷ r]
+<b>PV of ordinary annuity</b>  = PMT × [1 − (1+r)⁻ⁿ] ÷ r
+<b>Annuity due</b>             = ordinary annuity value × (1 + r)
+<b>Perpetuity</b>              PV = PMT ÷ r
+<b>Growing perpetuity</b>      PV = PMT ÷ (r − g)
+<b>EMI</b>                     = P × r × (1+r)ⁿ ÷ [(1+r)ⁿ − 1]</div>
+    <p><span class="k">Annuity types you should be able to name:</span> ordinary (end of period) · due (beginning of period) · deferred (starts later) · immediate (starts now) · certain (fixed term) · life / contingent (till death) · joint-life-last-survivor · with return of purchase price.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Excel</th><th>Use</th><th>Watch</th></tr></thead>
+      <tbody>
+        <tr><td class="num">FV / PV / PMT / RATE / NPER</td><td>Level cash flows</td><td>Sign convention — outflows negative</td></tr>
+        <tr><td class="num">NPV</td><td>PV of a stream, periods equal</td><td>Excel NPV excludes t=0 — add CF₀ separately</td></tr>
+        <tr><td class="num">XNPV / XIRR</td><td>Irregular dates</td><td>Needs actual dates; annualised by default</td></tr>
+        <tr><td class="num">IRR</td><td>Regular periods</td><td>Multiple IRRs if signs flip more than once</td></tr>
+        <tr><td class="num">MIRR</td><td>Reinvestment at a realistic rate</td><td>Finance rate = cost of funds; reinvest rate = opportunity cost</td></tr>
+        <tr><td class="num">IPMT / PPMT</td><td>Split an EMI into interest / principal</td><td>Interest is front-loaded</td></tr>
+        <tr><td class="num">EFFECT / NOMINAL</td><td>Convert between quoted and effective rates</td><td></td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">Annuity <b>due</b> is always worth more than an ordinary annuity of the same amount — money arrives one period earlier. If a question says "payments at the beginning of each year", multiply by (1+r).</div>
+    <div class="trap">Higher compounding frequency → higher effective rate. 12% compounded monthly gives EAR of 12.68%, not 12%.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>NPV, IRR, XIRR, MIRR, payback — choosing between them<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 2 applied</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Measure</th><th>Answers</th><th>Decision rule</th><th>Weakness</th></tr></thead>
+      <tbody>
+        <tr><td><b>NPV</b></td><td>Value added in ₹ today</td><td>Accept if NPV &gt; 0</td><td>Needs a discount rate; not comparable across sizes</td></tr>
+        <tr><td><b>IRR</b></td><td>Rate at which NPV = 0</td><td>Accept if IRR &gt; cost of capital</td><td>Assumes reinvestment at IRR; multiple IRRs possible</td></tr>
+        <tr><td><b>XIRR</b></td><td>IRR with real dates</td><td>Same as IRR</td><td>Use for SIPs, chit funds, insurance policies</td></tr>
+        <tr><td><b>MIRR</b></td><td>IRR with realistic reinvestment</td><td>Accept if MIRR &gt; cost of capital</td><td>Needs two extra rate inputs</td></tr>
+        <tr><td><b>Payback</b></td><td>Years to recover outlay</td><td>Shorter is better</td><td>Ignores TVM and all cash flows after payback</td></tr>
+        <tr><td><b>Discounted payback</b></td><td>Same, on discounted flows</td><td>Shorter is better</td><td>Still ignores post-payback flows</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">NPV and IRR agree on accept/reject for a standalone project. They can <b>disagree on ranking</b> between mutually exclusive projects — when they do, <b>NPV wins</b>, because it measures absolute value created.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Cash flow, budgeting and contingency</h3>
+    <p class="ch">Chapter 3.1–3.5, 3.8</p>
+    <ul>
+      <li><span class="k">Inflows:</span> salary, business income, rent, interest, dividends, capital gains, maturity proceeds.</li>
+      <li><span class="k">Outflows:</span> <b>fixed / mandatory</b> (EMIs, rent, premiums, school fees, taxes) vs <b>variable / discretionary</b> (travel, dining, shopping).</li>
+      <li><span class="k">Surplus</span> = inflows − outflows. Surplus is what funds goals. A plan with no surplus is not a plan.</li>
+      <li><span class="k">Contingency reserve:</span> 3–6 months of <b>expenses</b> (not income), parked in liquid assets. Higher for single-income households, business owners, unstable jobs.</li>
+    </ul>
+    <div class="trap">Contingency is sized against <b>essential monthly expenses including EMIs</b>, never against monthly income. And it is emergency money — it is not "short-term investment", so returns are secondary to instant access.</div>
+    <p><span class="k">Budgeting sequence:</span> record actual spends → categorise → set targets → monitor variance → revise. Pay-yourself-first: route savings out on salary day, budget the remainder.</p>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Personal finance ratios — the full set<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 3.9 · very high yield, appears in caselets</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Ratio</th><th>Formula</th><th>Healthy zone</th><th>Reads as</th></tr></thead>
+      <tbody>
+        <tr><td><b>Basic liquidity</b></td><td class="num">Liquid assets ÷ Monthly expenses</td><td>3–6 (months)</td><td>Survival runway</td></tr>
+        <tr><td><b>Liquid assets to net worth</b></td><td class="num">Liquid assets ÷ Net worth</td><td>≈ 15%</td><td>Too low = illiquid; too high = lazy money</td></tr>
+        <tr><td><b>Savings ratio</b></td><td class="num">Savings ÷ Income</td><td>&gt; 20%</td><td>Wealth-building speed</td></tr>
+        <tr><td><b>Debt-service / DTI</b></td><td class="num">Total EMIs ÷ Take-home income</td><td>&lt; 35–40%</td><td>Repayment stress</td></tr>
+        <tr><td><b>Leverage ratio</b></td><td class="num">Total liabilities ÷ Total assets</td><td>Lower is better</td><td>How much of you the bank owns</td></tr>
+        <tr><td><b>Solvency ratio</b></td><td class="num">Net worth ÷ Total assets</td><td>Higher is better</td><td>Cushion against asset value falls</td></tr>
+        <tr><td><b>Financial assets ratio</b></td><td class="num">Financial assets ÷ Total assets</td><td>Rising with age</td><td>Real-estate / gold over-concentration check</td></tr>
+        <tr><td><b>Investment assets to net worth</b></td><td class="num">Investment assets ÷ Net worth</td><td>&gt; 50% nearing retirement</td><td>Is the net worth income-producing?</td></tr>
+        <tr><td><b>Liquid assets to income</b></td><td class="num">Liquid assets ÷ Annual income</td><td>Context</td><td>Buffer relative to earning power</td></tr>
+      </tbody>
+    </table></div>
+    <div class="fx">Leverage + Solvency = 1     (they are mirror images of the same balance sheet)</div>
+    <div class="trap">Savings ratio: the workbook uses <b>Savings ÷ Income</b>. In our discussion you correctly argued tax should not sit in the denominator, since it is never received by the household. <b>For the exam, answer with the workbook version</b> — flag the refinement only in your own writing.</div>
+    <div class="trap">Liquidity ratio denominator is <b>monthly</b> expenses, so the answer is in months. If a question gives annual expenses, divide by 12 first.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Debt: purpose, leverage and responsible borrowing</h3>
+    <p class="ch">Chapter 4.1–4.5</p>
+    <ul>
+      <li><span class="k">Good debt</span> funds an appreciating or income-producing asset (home, education, business). <span class="k">Bad debt</span> funds consumption (credit card revolve, personal loan for a holiday).</li>
+      <li><span class="k">Leverage</span> amplifies both directions. Borrowing at 9% to earn 12% adds value; the same borrowing when the asset returns 4% destroys it.</li>
+      <li><span class="k">Debt counselling</span> — restructure, consolidate, prioritise, negotiate, and change the behaviour that created the debt.</li>
+    </ul>
+    <div class="fx">Financial leverage  → effect of debt in the capital structure
+Operating leverage → effect of fixed costs on operating profit
+Combined leverage  → Operating × Financial</div>
+    <div class="hook">A leveraged household is a <b>see-saw with a longer arm</b> — the same push moves you further, up <i>or</i> down.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Loan terminology and types of borrowing</h3>
+    <p class="ch">Chapter 4.6–4.8</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Secured vs unsecured</td><td>Backed by collateral (home, auto, gold, LAS) vs not (personal loan, credit card) — unsecured carries higher rates</td></tr>
+        <tr><td>Tenor</td><td>Life of the loan</td></tr>
+        <tr><td>Moratorium</td><td>Repayment holiday — interest usually still accrues</td></tr>
+        <tr><td>Amortisation</td><td>Systematic repayment of principal + interest over the tenor</td></tr>
+        <tr><td>Balloon payment</td><td>Large lump sum at the end</td></tr>
+        <tr><td>Teaser rate</td><td>Low introductory rate that resets upward</td></tr>
+        <tr><td>LTV</td><td>Loan ÷ Asset value; the gap is the borrower's margin</td></tr>
+        <tr><td>Fixed vs floating</td><td>Floating linked to external benchmark (repo / EBLR / MCLR)</td></tr>
+        <tr><td>Reverse mortgage</td><td>Senior citizen (60+) pledges self-occupied home, receives periodic payments; loan settled from sale after death. Payments are <b>not</b> taxable income</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">RBI bars <b>foreclosure / prepayment charges on floating-rate loans to individual borrowers</b> for non-business purposes. Fixed-rate loans may still carry them.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>EMI vs tenure, prepay vs invest, faster payoff</h3>
+    <p class="ch">Chapter 4.11–4.15 · classic caselet</p>
+    <p><span class="k">When the floating rate rises</span> the lender offers two options:</p>
+    <div class="wrap"><table>
+      <thead><tr><th></th><th>Keep EMI, extend tenure</th><th>Keep tenure, raise EMI</th></tr></thead>
+      <tbody>
+        <tr><td>Monthly cash flow</td><td>Unchanged</td><td>Tightens</td></tr>
+        <tr><td>Total interest paid</td><td><b>Higher</b></td><td><b>Lower</b></td></tr>
+        <tr><td>Suits</td><td>Stretched budgets</td><td>Anyone with surplus</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Prepay or invest?</span> Compare like with like:</p>
+    <div class="fx">Prepay if:  post-tax cost of the loan  &gt;  post-tax expected return on the investment
+Invest if:  post-tax expected return       &gt;  post-tax cost of the loan</div>
+    <ul>
+      <li>Prepaying is a <b>risk-free, guaranteed</b> return equal to the loan rate — the investment side must beat it on a <b>risk-adjusted</b> basis, not just on paper.</li>
+      <li>Early prepayment saves far more interest than late prepayment, because interest is front-loaded.</li>
+      <li><b>Avalanche</b> = clear the highest-interest debt first → mathematically optimal. <b>Snowball</b> = clear the smallest balance first → behaviourally motivating.</li>
+    </ul>
+    <div class="trap">If the loan carries a tax deduction (e.g. housing loan interest), use the <b>effective post-tax rate</b>, not the headline rate, before deciding to prepay.</div>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= MODULE 2 ================= -->
+<details class="module" id="m2" open>
+  <summary class="mod-head">
+    <span class="mod-n">Module 2</span>
+    <span class="mod-t">Indian Financial Markets</span>
+    <span class="mod-w"><b>10</b> marks · Ch 5–6 · cheapest marks on the paper</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Who regulates what</h3>
+    <p class="ch">Chapter 5.3 · near-certain question</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Regulator</th><th>Domain</th><th>Statute</th></tr></thead>
+      <tbody>
+        <tr><td><b>RBI</b></td><td>Banks, NBFCs, money market, G-secs, forex, payment systems, monetary policy</td><td>RBI Act 1934, Banking Regulation Act 1949, FEMA 1999</td></tr>
+        <tr><td><b>SEBI</b></td><td>Securities markets, exchanges, intermediaries, mutual funds, PMS, AIF, investment advisers</td><td>SEBI Act 1992, SCRA 1956, Depositories Act 1996</td></tr>
+        <tr><td><b>IRDAI</b></td><td>Insurance companies, agents, brokers</td><td>Insurance Act 1938, IRDA Act 1999</td></tr>
+        <tr><td><b>PFRDA</b></td><td>NPS, Atal Pension Yojana, pension funds</td><td>PFRDA Act 2013</td></tr>
+        <tr><td><b>MCA / IBBI</b></td><td>Companies; insolvency and bankruptcy</td><td>Companies Act 2013; IBC 2016</td></tr>
+        <tr><td><b>FSDC</b></td><td>Apex inter-regulatory coordination body, chaired by the Union Finance Minister</td><td>Non-statutory</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">Corporate <b>fixed deposits</b> of manufacturing companies sit with MCA, not SEBI. NBFC deposits sit with RBI. ULIPs are insurance (IRDAI) even though they invest in markets. Commodity <b>derivatives</b> are SEBI; the physical commodity trade is not.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Market structure and intermediaries</h3>
+    <p class="ch">Chapter 5.4</p>
+    <ul>
+      <li><span class="k">Money market</span> — maturity up to 1 year, RBI-regulated. <span class="k">Capital market</span> — beyond 1 year, SEBI-regulated.</li>
+      <li><span class="k">Primary market</span> — issuer raises fresh capital, money goes to the company. <span class="k">Secondary market</span> — investors trade among themselves, the company receives nothing.</li>
+      <li><span class="k">Intermediaries:</span> merchant bankers, underwriters, stock brokers, depositories (NSDL, CDSL) and DPs, RTAs, custodians, clearing corporations, credit rating agencies, debenture trustees, investment advisers, research analysts.</li>
+    </ul>
+    <div class="hook">Depository holds securities; <b>clearing corporation</b> guarantees the trade (novation — it becomes counterparty to both sides); the exchange only matches orders.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Primary market — routes and mechanics<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 6.1</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Route</th><th>Who can subscribe</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>IPO / FPO</td><td>Public</td><td>Fresh issue and/or offer for sale</td></tr>
+        <tr><td>Rights issue</td><td>Existing shareholders</td><td>In proportion to holding; rights entitlements are tradable</td></tr>
+        <tr><td>Bonus issue</td><td>Existing shareholders</td><td>Free shares from reserves — <b>no fresh capital raised</b></td></tr>
+        <tr><td>Private placement</td><td>Select investors</td><td>Includes preferential allotment and QIP</td></tr>
+        <tr><td>QIP</td><td>Qualified Institutional Buyers</td><td>Listed companies, fast route, no SEBI pre-approval of the offer document</td></tr>
+        <tr><td>Offer for sale (OFS)</td><td>Public, via exchange window</td><td>Promoter sells; company gets nothing</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Why isn't every primary issue a public issue?</span> Because a company may want speed, lower cost, targeted investors or confidentiality — private placement and rights routes exist precisely to avoid the disclosure burden and timeline of a public offer.</p>
+    <ul>
+      <li><b>Book building:</b> price band with a floor and cap; retail may bid at <b>cut-off price</b>; anchor investors are allotted before the issue opens and are locked in.</li>
+      <li><b>ASBA</b> is mandatory — funds stay blocked in the applicant's own bank account until allotment. UPI is the retail mandate mechanism.</li>
+      <li><b>Green shoe option</b> lets the issuer stabilise the post-listing price through a stabilising agent.</li>
+      <li><b>Retail individual investor</b> = application value up to ₹2 lakh.</li>
+    </ul>
+    <div class="trap">A bonus issue does <b>not</b> change the shareholder's wealth or the company's net worth — only the number of shares and the price per share. Same for a stock split. A <b>rights</b> issue does bring in fresh money.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Secondary market and impact cost<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 6.2</p>
+    <ul>
+      <li><b>Rolling settlement</b> — India settles on a <b>T+1</b> basis; the ex-date now effectively falls on the record date itself under T+1.</li>
+      <li><b>Circuit filters / price bands</b> curb volatility at the scrip level; market-wide index circuit breakers halt trading at 10%, 15% and 20%.</li>
+      <li><b>Impact cost</b> — the cost of executing a trade relative to the ideal mid-price. It is a measure of <b>liquidity</b>, and it is the criterion used for index inclusion. Lower impact cost = more liquid.</li>
+      <li>Indices in India are <b>free-float market capitalisation weighted</b> — only shares available for public trading are counted.</li>
+    </ul>
+    <div class="trap">Impact cost is <b>not</b> brokerage, STT or any statutory charge. It is a liquidity measure derived from the order book depth.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Corporate actions</h3>
+    <p class="ch">Chapter 6.3</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Action</th><th>Effect on shares held</th><th>Effect on price</th><th>Fresh money in?</th></tr></thead>
+      <tbody>
+        <tr><td>Dividend</td><td>Unchanged</td><td>Falls by roughly the dividend on ex-date</td><td>No — cash goes out</td></tr>
+        <tr><td>Bonus 1:1</td><td>Doubles</td><td>Halves</td><td>No</td></tr>
+        <tr><td>Stock split ₹10→₹2</td><td>×5</td><td>÷5</td><td>No — face value changes</td></tr>
+        <tr><td>Rights</td><td>Increases if subscribed</td><td>Adjusts to ex-rights price</td><td>Yes</td></tr>
+        <tr><td>Buyback</td><td>Reduces outstanding shares</td><td>Usually supportive</td><td>No — cash goes out</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">Bonus changes the number of shares but <b>not</b> face value. Split changes the <b>face value</b>. That is the distinguishing test.</div>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= MODULE 3 ================= -->
+<details class="module" id="m3" open>
+  <summary class="mod-head">
+    <span class="mod-n">Module 3</span>
+    <span class="mod-t">Investment Products</span>
+    <span class="mod-w"><b>30</b> marks · Ch 7–10 · bonds and derivatives carry it</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Asset classes at a glance</h3>
+    <p class="ch">Chapter 7</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Class</th><th>Return driver</th><th>Main risk</th><th>Liquidity</th></tr></thead>
+      <tbody>
+        <tr><td>Equity</td><td>Earnings growth + re-rating</td><td>Market / business risk</td><td>High (listed)</td></tr>
+        <tr><td>Fixed income</td><td>Coupon + price change</td><td>Interest rate, credit</td><td>Moderate</td></tr>
+        <tr><td>Commodities</td><td>Demand–supply, inflation</td><td>Price volatility, storage</td><td>Via derivatives / ETFs</td></tr>
+        <tr><td>Real estate</td><td>Rent + capital appreciation</td><td>Illiquidity, concentration</td><td>Low (REITs are liquid)</td></tr>
+        <tr><td>Structured products</td><td>Engineered payoff from a bond + derivative</td><td>Issuer credit, complexity</td><td>Low</td></tr>
+        <tr><td>Distressed securities</td><td>Recovery above purchase price</td><td>Default, legal process</td><td>Very low</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Sustainable / ESG investing</span> — screening on Environmental, Social and Governance factors. Approaches: negative screening (exclude), positive/best-in-class, thematic, impact investing, and integration of ESG into ordinary financial analysis. SEBI mandates <b>BRSR</b> disclosures for the top listed companies.</p>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Equity valuation — DCF and relative<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 8.5–8.6</p>
+    <div class="fx"><b>Gordon / DDM</b>     P₀ = D₁ ÷ (k − g)
+<b>Sustainable growth</b> g = ROE × retention ratio
+<b>DuPont</b>          ROE = Net margin × Asset turnover × Equity multiplier
+<b>PEG</b>             = P/E ÷ earnings growth rate   (≈1 is "fairly priced")</div>
+    <div class="fx"><b>FCFF</b> = EBIT(1−t) + Depreciation − CapEx − Δ Working capital
+       → discount at <b>WACC</b> → gives <b>Enterprise value</b> (all capital providers)
+
+<b>FCFE</b> = FCFF − Interest(1−t) + Net borrowing
+       → discount at <b>cost of equity</b> → gives <b>Equity value</b> (shareholders only)</div>
+    <div class="hook"><b>FCFF feeds everybody</b> (lenders + owners) so it is discounted at the blended rate, WACC. <b>FCFE feeds equity only</b>, so it is discounted at the equity rate. Get the pairing wrong and the whole answer is wrong.</div>
+    <div class="wrap"><table>
+      <thead><tr><th>Multiple</th><th>Best for</th><th>Caution</th></tr></thead>
+      <tbody>
+        <tr><td>P/E</td><td>Profitable, stable companies</td><td>Meaningless if earnings are negative or erratic</td></tr>
+        <tr><td>P/B</td><td>Banks, NBFCs, asset-heavy firms</td><td>Poor for asset-light and IP-driven businesses</td></tr>
+        <tr><td>EV/EBITDA</td><td>Cross-company comparison across capital structures</td><td>Ignores capex intensity</td></tr>
+        <tr><td>Dividend yield</td><td>Income-focused portfolios</td><td>A high yield can signal a falling price</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Combining the two:</span> DCF gives intrinsic value but is highly sensitive to assumptions; relative valuation is quick and market-anchored but inherits any market-wide mispricing. Advisers use DCF for the anchor and multiples for the sanity check.</p>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Technical analysis — only what gets asked</h3>
+    <p class="ch">Chapter 8.7</p>
+    <ul>
+      <li><b>Dow theory:</b> the market discounts everything; three trends (primary, secondary, minor); trends must be confirmed by volume and by both averages.</li>
+      <li><b>Support</b> = price floor where buying emerges; <b>resistance</b> = ceiling where selling emerges. Once broken, roles reverse.</li>
+      <li><b>Moving averages:</b> a short MA crossing above a long MA is bullish (golden cross); below is bearish (death cross). MAs are <b>lagging</b> indicators.</li>
+      <li><b>RSI:</b> above 70 overbought, below 30 oversold. <b>MACD:</b> momentum via the difference of two EMAs. <b>Bollinger bands:</b> volatility envelope around an MA.</li>
+      <li><b>Patterns:</b> head and shoulders (reversal), double top/bottom (reversal), triangles and flags (continuation).</li>
+    </ul>
+    <div class="trap">Technical analysis studies <b>price and volume</b>. Fundamental analysis studies <b>the business</b>. If an option mentions earnings, management or balance sheets in a technical question, it is wrong.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Bond pricing and yield measures<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 9.4–9.6 · high yield</p>
+    <div class="fx"><b>Price</b> = Σ [ Coupon ÷ (1+y)ᵗ ] + [ Face value ÷ (1+y)ⁿ ]
+
+<b>Current yield</b> = Annual coupon ÷ Market price
+<b>YTM</b>           = discount rate that equates price to all future cash flows</div>
+    <div class="wrap"><table>
+      <thead><tr><th>If…</th><th>Then the bond trades at</th></tr></thead>
+      <tbody>
+        <tr><td>Coupon rate &gt; YTM</td><td><b>Premium</b> (above par)</td></tr>
+        <tr><td>Coupon rate = YTM</td><td><b>Par</b></td></tr>
+        <tr><td>Coupon rate &lt; YTM</td><td><b>Discount</b> (below par)</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Price and yield move in <b>opposite</b> directions — always.</li>
+      <li>YTM assumes the bond is <b>held to maturity</b> and every coupon is <b>reinvested at the YTM</b>. Both assumptions rarely hold — that is YTM's core weakness.</li>
+      <li><b>Yield curve shapes:</b> normal (upward), inverted (recession signal), flat, humped. Theories: <b>pure expectations</b>, <b>liquidity preference</b> (longer term demands a premium), <b>market segmentation / preferred habitat</b>.</li>
+    </ul>
+    <div class="trap">Current yield ignores capital gain or loss at maturity, so for a discount bond current yield <b>understates</b> the true return and for a premium bond it <b>overstates</b> it. Ranking for a discount bond: coupon rate &lt; current yield &lt; YTM.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Duration, modified duration and bond risks<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 9.3, 9.7 · numerical almost guaranteed</p>
+    <div class="fx"><b>Macaulay duration</b>  = weighted average time to receive the bond's cash flows (in years)
+<b>Modified duration</b>  = Macaulay ÷ (1 + y/m)
+<b>% price change</b>     ≈ − Modified duration × Δ yield
+<b>Convexity</b>          corrects the curvature that duration's straight line misses</div>
+    <div class="wrap"><table>
+      <thead><tr><th>When this rises…</th><th>Duration…</th><th>Because</th></tr></thead>
+      <tbody>
+        <tr><td>Maturity</td><td><b>Rises</b></td><td>Cash flows sit further out</td></tr>
+        <tr><td>Coupon rate</td><td><b>Falls</b></td><td>More value returned earlier</td></tr>
+        <tr><td>YTM</td><td><b>Falls</b></td><td>Distant cash flows discounted harder</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">A <b>zero-coupon bond's Macaulay duration equals its maturity</b> — there is only one cash flow, so the weighted average time is that date. This single fact answers a lot of questions.</div>
+    <div class="wrap"><table>
+      <thead><tr><th>Risk</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td>Interest rate / price risk</td><td>Yields rise → prices fall. Worse for long, low-coupon bonds</td></tr>
+        <tr><td>Reinvestment risk</td><td>Yields fall → coupons reinvest at lower rates. <b>Moves opposite to price risk</b></td></tr>
+        <tr><td>Credit / default risk</td><td>Issuer fails to pay; measured by rating (AAA → D)</td></tr>
+        <tr><td>Liquidity risk</td><td>Wide bid-ask, hard to exit at fair value</td></tr>
+        <tr><td>Call / prepayment risk</td><td>Issuer redeems early when rates fall — caps your upside</td></tr>
+        <tr><td>Inflation risk</td><td>Fixed coupons lose purchasing power</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">Price risk and reinvestment risk <b>offset</b> each other. Immunisation works by matching portfolio duration to the investment horizon so the two cancel out.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Money market, G-secs and corporate debt</h3>
+    <p class="ch">Chapter 9.8–9.10</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Instrument</th><th>Issuer</th><th>Tenor</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Treasury bills</td><td>Government of India</td><td>91 / 182 / 364 days</td><td>Zero coupon, issued at a discount, redeemed at face value</td></tr>
+        <tr><td>Commercial paper</td><td>Corporates, NBFCs</td><td>7 days – 1 year</td><td>Unsecured promissory note; min investment ₹5 lakh</td></tr>
+        <tr><td>Certificate of deposit</td><td>Banks</td><td>7 days – 1 year</td><td>Negotiable; FIs may issue 1–3 years</td></tr>
+        <tr><td>Call money</td><td>Banks</td><td>Overnight</td><td>Notice money 2–14 days; term money 15 days – 1 year</td></tr>
+        <tr><td>TREPS</td><td>Via CCIL</td><td>Very short</td><td>Replaced CBLO; collateralised borrowing</td></tr>
+        <tr><td>Dated G-secs</td><td>GoI</td><td>Up to 40 years</td><td>Traded on NDS-OM; retail access via RBI Retail Direct</td></tr>
+        <tr><td>SDLs</td><td>State governments</td><td>Long</td><td>Slightly higher yield than central G-secs</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Corporate debt:</span> NCDs, secured vs unsecured debentures, convertible vs non-convertible, perpetual / AT1 bonds, tax-free bonds, market-linked debentures. A <b>debenture trustee</b> protects holders' interests; <b>credit rating agencies</b> grade from AAA (highest safety) to D (default). Investment grade stops at <b>BBB−</b>.</p>
+    <div class="trap">T-bills pay no coupon — the return is the discount. So a 91-day T-bill bought at ₹98.50 and redeemed at ₹100 has earned ₹1.50, which must then be annualised.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Small savings schemes — the numbers<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 9.11</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Scheme</th><th>Tenor</th><th>Limits</th><th>Key rule</th></tr></thead>
+      <tbody>
+        <tr><td><b>PPF</b></td><td>15 years, extend in 5-year blocks</td><td>₹500 – ₹1.5 lakh p.a.</td><td>EEE. Loan from year 3–6; partial withdrawal from year 7</td></tr>
+        <tr><td><b>Sukanya Samriddhi</b></td><td>Matures at 21 years; deposits for 15 years</td><td>₹250 – ₹1.5 lakh p.a.</td><td>Girl child below 10; max 2 accounts per family</td></tr>
+        <tr><td><b>NSC</b></td><td>5 years</td><td>Min ₹1,000, no max</td><td>Interest reinvested — deemed reinvestment qualifies for 80C except the final year</td></tr>
+        <tr><td><b>KVP</b></td><td>Doubles in the notified period</td><td>Min ₹1,000, no max</td><td><b>No 80C benefit</b></td></tr>
+        <tr><td><b>SCSS</b></td><td>5 years + 3-year extension</td><td>Max ₹30 lakh</td><td>Age 60+ (55 on VRS, 50 for defence). Quarterly interest payout</td></tr>
+        <tr><td><b>POMIS</b></td><td>5 years</td><td>₹9 lakh single / ₹15 lakh joint</td><td>Monthly income payout; <b>no 80C</b></td></tr>
+        <tr><td><b>PO Time Deposit</b></td><td>1, 2, 3, 5 years</td><td>Min ₹1,000</td><td>Only the <b>5-year</b> TD qualifies for 80C</td></tr>
+        <tr><td><b>PO RD</b></td><td>5 years</td><td>Min ₹100/month</td><td>Extendable by 5 years</td></tr>
+        <tr><td><b>NPS</b></td><td>Till 60</td><td>—</td><td>80CCD(1) within 80C; <b>80CCD(1B) extra ₹50,000</b>; 80CCD(2) employer contribution</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">The two that people wrongly claim under 80C: <b>KVP and POMIS do not qualify</b>. Among time deposits, only the 5-year one does. Interest on SCSS, POMIS, NSC and TD is <b>taxable</b>; only PPF and SSY are fully exempt.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Derivatives — forwards, futures, options<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 10.1–10.4</p>
+    <div class="wrap"><table>
+      <thead><tr><th></th><th>Forward</th><th>Future</th></tr></thead>
+      <tbody>
+        <tr><td>Traded</td><td>OTC, bilateral</td><td>Exchange</td></tr>
+        <tr><td>Terms</td><td>Customised</td><td>Standardised</td></tr>
+        <tr><td>Counterparty risk</td><td>Present</td><td>Removed — clearing corporation guarantees</td></tr>
+        <tr><td>Settlement</td><td>At maturity</td><td>Daily mark-to-market</td></tr>
+        <tr><td>Margin</td><td>Usually none</td><td>Initial + exposure + MTM</td></tr>
+      </tbody>
+    </table></div>
+    <div class="fx"><b>Cost of carry</b>   Futures price = Spot × (1 + r − d)ᵗ
+<b>Basis</b>           = Spot price − Futures price
+<b>Contango</b>        futures &gt; spot   (normal for financial assets)
+<b>Backwardation</b>   futures &lt; spot   (often in commodities with scarcity)
+
+On expiry the basis converges to <b>zero</b>.</div>
+    <div class="wrap"><table>
+      <thead><tr><th>Position</th><th>Max profit</th><th>Max loss</th><th>Margin?</th><th>View</th></tr></thead>
+      <tbody>
+        <tr><td>Long call</td><td>Unlimited</td><td>Premium paid</td><td>No</td><td>Strongly bullish</td></tr>
+        <tr><td>Short call</td><td>Premium received</td><td><b>Unlimited</b></td><td>Yes</td><td>Bearish / neutral</td></tr>
+        <tr><td>Long put</td><td>Strike − premium</td><td>Premium paid</td><td>No</td><td>Bearish</td></tr>
+        <tr><td>Short put</td><td>Premium received</td><td>Large (to zero)</td><td>Yes</td><td>Bullish / neutral</td></tr>
+        <tr><td>Long future</td><td>Unlimited</td><td>Large</td><td>Yes</td><td>Bullish</td></tr>
+      </tbody>
+    </table></div>
+    <div class="fx"><b>Call intrinsic value</b> = max(Spot − Strike, 0)
+<b>Put intrinsic value</b>  = max(Strike − Spot, 0)
+<b>Premium</b> = Intrinsic value + Time value
+
+Time value decays to zero at expiry; decay accelerates near expiry.</div>
+    <div class="trap">Only the <b>option seller (writer) pays margin</b>. The buyer's risk is capped at the premium already paid, so no margin is collected from the buyer. This is the most repeated derivatives trap.</div>
+    <div class="trap"><b>Open interest</b> = number of contracts outstanding, <b>not</b> volume. Volume counts trades in a day; OI counts positions still open. Rising price with rising OI = fresh long build-up.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Purpose, participants and strategies</h3>
+    <p class="ch">Chapter 10.5–10.8</p>
+    <ul>
+      <li><b>Hedger</b> — reduces an existing exposure. <b>Speculator</b> — takes a view for profit, provides liquidity. <b>Arbitrageur</b> — exploits price differences, keeps spot and futures aligned.</li>
+      <li><b>Equity derivatives</b> — NSE/BSE. Index options are <b>cash settled</b>; single-stock derivatives are <b>physically settled</b> in India. Index and stock options are <b>European</b> style.</li>
+      <li><b>Currency derivatives</b> — USDINR, EURINR, GBPINR, JPYINR on NSE/BSE, regulated jointly with RBI. Standard lot USD 1,000.</li>
+      <li><b>Commodity derivatives</b> — MCX (bullion, metals, energy) and NCDEX (agri), regulated by SEBI since 2015.</li>
+    </ul>
+    <div class="wrap"><table>
+      <thead><tr><th>Strategy</th><th>Build</th><th>Used when</th></tr></thead>
+      <tbody>
+        <tr><td>Covered call</td><td>Long stock + short call</td><td>Mildly bullish; earn premium on a holding</td></tr>
+        <tr><td>Protective put</td><td>Long stock + long put</td><td>Insurance against a fall</td></tr>
+        <tr><td>Collar</td><td>Long stock + long put + short call</td><td>Cap both ends, cheaply</td></tr>
+        <tr><td>Long straddle</td><td>Long call + long put, same strike</td><td>Big move expected, direction unknown</td></tr>
+        <tr><td>Long strangle</td><td>Long OTM call + long OTM put</td><td>Same view, cheaper, needs a bigger move</td></tr>
+        <tr><td>Bull call spread</td><td>Buy lower strike call, sell higher</td><td>Moderately bullish, limited risk and reward</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">Derivatives are <b>zero-sum</b> before costs — one side's gain is the other's loss. They do not create returns; they transfer risk. Any option claiming derivatives "reduce overall market risk" is wrong; they <b>redistribute</b> it.</div>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= MODULE 4 ================= -->
+<details class="module" id="m4" open>
+  <summary class="mod-head">
+    <span class="mod-n">Module 4</span>
+    <span class="mod-t">Investment Through Managed Portfolio</span>
+    <span class="mod-w"><b>23</b> marks · Ch 11–13 · pure number recall</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Mutual fund fundamentals</h3>
+    <p class="ch">Chapter 11.1–11.3</p>
+    <div class="fx"><b>NAV</b> = (Total assets − Total liabilities) ÷ Number of units outstanding</div>
+    <ul>
+      <li><b>Three-tier structure:</b> Sponsor → Trustees (hold assets in trust for unitholders) → AMC (manages). Constituted as a <b>trust</b> under the Indian Trusts Act; SEBI-regulated.</li>
+      <li><b>Open-ended</b> — continuous buy/sell at NAV, variable corpus. <b>Close-ended</b> — fixed corpus, listed on exchange, may trade at a discount to NAV. <b>Interval</b> — open only in specified transaction periods. <b>ETF</b> — traded on exchange like a share, needs a demat account, price tracks NAV via arbitrage.</li>
+      <li><b>Direct plan</b> — no distributor commission, lower TER, higher NAV. <b>Regular plan</b> — includes distribution cost.</li>
+      <li><b>Documents:</b> SID (scheme details), SAI (statutory information), KIM (abridged, accompanies the form). <b>Riskometer</b> has six levels from Low to Very High. Debt schemes also carry a <b>Potential Risk Class</b> matrix.</li>
+      <li>Performance is benchmarked against <b>Total Return Index (TRI)</b>, not price index.</li>
+    </ul>
+    <div class="trap">A close-ended fund's market price can differ from its NAV — that is normal. An open-ended fund always transacts <b>at NAV</b> (adjusted for load), never at a market price.</div>
+    <div class="trap">"Dividend" was renamed <b>IDCW</b> — Income Distribution cum Capital Withdrawal. It is paid out of the scheme's own NAV, so the NAV falls by exactly that amount. It is <b>not</b> extra return.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Scheme categories, costs and transactions</h3>
+    <p class="ch">Chapter 11.5–11.10</p>
+    <ul>
+      <li><b>SEBI categorisation:</b> Equity (11 categories) · Debt (16) · Hybrid (6) · Solution-oriented (2 — retirement, children's, with a 5-year or goal lock-in) · Other (2 — index/ETF, FoF). An AMC may run <b>only one scheme per category</b>, with limited exceptions.</li>
+      <li><b>TER</b> covers management fee, RTA, trustee, audit, marketing — it is charged daily and reflected in NAV. It is <b>slab-based on AUM</b>, and lower for index funds/ETFs and for direct plans.</li>
+      <li><b>Exit load</b> is separate from TER and goes back into the scheme. <b>Stamp duty 0.005%</b> on every purchase / switch-in.</li>
+      <li><b>Cut-off timing:</b> 3:00 pm for most schemes; 1:30 pm for liquid and overnight purchases. NAV applicability depends on <b>realisation of funds</b>, whatever the amount.</li>
+      <li><b>Systematic transactions:</b> SIP (invest periodically, rupee-cost averaging) · STP (move between schemes) · SWP (withdraw periodically) · Triggers (act on a preset event).</li>
+      <li><b>Segregated portfolio / side-pocketing</b> — ring-fences a defaulted debt holding so fresh investors are not hit and existing holders keep the recovery claim.</li>
+    </ul>
+    <div class="trap">SIP is a <b>mode of investing</b>, not a product, and it does not guarantee profit — it averages cost, which helps in falling and volatile markets and mildly hurts in a straight-up market.</div>
+    <div class="hook">SIP puts money <b>in</b>. SWP takes money <b>out</b>. STP moves money <b>across</b>. In, out, across.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Portfolio Management Services (PMS)</h3>
+    <p class="ch">Chapter 12 · number-heavy</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Item</th><th>Requirement</th></tr></thead>
+      <tbody>
+        <tr><td>Minimum client investment</td><td class="num"><b>₹50 lakh</b></td></tr>
+        <tr><td>Portfolio manager net worth</td><td class="num"><b>₹5 crore</b></td></tr>
+        <tr><td>Types</td><td>Discretionary (manager decides) · Non-discretionary (client approves each trade) · Advisory (manager only advises, client executes)</td></tr>
+        <tr><td>Upfront fee</td><td><b>Not permitted</b></td></tr>
+        <tr><td>Exit load cap</td><td>Year 1 ≤ 3% · Year 2 ≤ 2% · Year 3 ≤ 1% · after 3 years nil</td></tr>
+        <tr><td>Performance fee</td><td>Only on a <b>high water mark</b> basis; hurdle rate minimum 10%</td></tr>
+        <tr><td>Performance disclosure</td><td>Mandatorily on a <b>TWRR</b> basis, net of fees and expenses</td></tr>
+        <tr><td>Direct on-boarding</td><td>Must be offered — client can approach directly with no distributor fee</td></tr>
+        <tr><td>Reporting</td><td>Disclosure document to client; periodic reports at least every 3 months</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">In PMS the securities are held in the <b>client's own name / demat account</b> — there is no pooling and no units. That is the structural difference from a mutual fund.</div>
+    <div class="trap">High water mark means performance fee is charged only on gains <b>above the previous peak</b> — a manager who loses 20% and then gains 20% cannot charge a performance fee.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Alternative Investment Funds (AIFs)</h3>
+    <p class="ch">Chapter 13</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Category</th><th>Contains</th><th>Leverage</th><th>Structure</th></tr></thead>
+      <tbody>
+        <tr><td><b>Category I</b></td><td>Venture capital, angel funds, SME funds, social impact, infrastructure — socially or economically desirable, government-encouraged</td><td>Not permitted (except day-to-day)</td><td>Close-ended, min 3 years</td></tr>
+        <tr><td><b>Category II</b></td><td>Private equity, debt funds, real estate funds — everything not in I or III</td><td>Not permitted (except day-to-day)</td><td>Close-ended, min 3 years</td></tr>
+        <tr><td><b>Category III</b></td><td>Hedge funds, PIPE funds — complex, diverse or short-term strategies</td><td><b>Permitted</b></td><td>Open or close-ended</td></tr>
+      </tbody>
+    </table></div>
+    <div class="wrap"><table>
+      <thead><tr><th>Threshold</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>Minimum corpus per scheme</td><td class="num"><b>₹20 crore</b> (angel funds: ₹5 crore)</td></tr>
+        <tr><td>Minimum investment per investor</td><td class="num"><b>₹1 crore</b>; ₹25 lakh for employees/directors of the manager</td></tr>
+        <tr><td>Maximum investors per scheme</td><td class="num"><b>1,000</b> (angel fund schemes have a much lower cap — use your workbook's figure)</td></tr>
+        <tr><td>Manager's continuing interest</td><td>Cat I &amp; II: 2.5% of corpus or ₹5 crore, whichever is <b>lower</b><br>Cat III: 5% of corpus or ₹10 crore, whichever is <b>lower</b></td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">AIF is a <b>privately pooled</b> vehicle. It does not include mutual funds, collective investment schemes, ESOP trusts, family trusts or securitisation trusts — those are carved out by definition.</div>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= MODULE 5 ================= -->
+<details class="module" id="m5" open>
+  <summary class="mod-head">
+    <span class="mod-n">Module 5</span>
+    <span class="mod-t">Portfolio Construction &amp; Performance Evaluation</span>
+    <span class="mod-w"><b>20</b> marks · Ch 14–16 · most formula-dense module</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Modern portfolio theory and investor types<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 14</p>
+    <p><span class="k">Assumptions:</span> investors are rational and risk-averse, decisions are made on <b>expected return and variance</b> over a single period, returns are normally distributed, and markets are frictionless with no taxes or transaction costs.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Investor</th><th>Risk premium demanded</th><th>Fair game (zero expected gain)</th><th>Behaviour</th></tr></thead>
+      <tbody>
+        <tr><td><b>Risk averse</b></td><td>Positive — must be paid to take risk</td><td><b>Rejects</b></td><td>Prefers certainty; the standard assumption</td></tr>
+        <tr><td><b>Risk neutral</b></td><td>Zero — indifferent to risk</td><td><b>Indifferent</b></td><td>Chooses purely on expected return</td></tr>
+        <tr><td><b>Risk seeking</b></td><td>Negative — will pay for the chance</td><td><b>Accepts</b></td><td>Gambler's preference for volatility</td></tr>
+      </tbody>
+    </table></div>
+    <div class="fx"><b>Expected return</b>   E(R) = Σ pᵢ × Rᵢ
+<b>Variance</b>          σ² = Σ pᵢ × [Rᵢ − E(R)]²
+<b>Portfolio return</b>  Rp = w₁R₁ + w₂R₂
+<b>Portfolio risk</b>    σp = √( w₁²σ₁² + w₂²σ₂² + 2·w₁·w₂·ρ₁₂·σ₁·σ₂ )
+<b>CAPM</b>              E(R) = Rf + β × (Rm − Rf)</div>
+    <ul>
+      <li>Correlation <b>ρ = +1</b> → no diversification benefit; portfolio risk is just the weighted average. <b>ρ = −1</b> → risk can be driven to zero at the right weights. Anything below +1 gives some benefit.</li>
+      <li><b>Efficient frontier</b> — the set of portfolios giving the highest return for each level of risk. Nothing exists above it; anything below it is inefficient.</li>
+      <li><b>Optimum portfolio</b> — the point where the investor's highest attainable indifference curve is <b>tangent</b> to the efficient frontier. It is investor-specific, not universal.</li>
+      <li><b>Estimation risk</b> — MPT inputs (expected returns, variances, correlations) are estimates. Optimisers are extremely sensitive to them and tend to <b>maximise the estimation errors</b>, concentrating into whatever asset had the most overstated return. Handled with constraints, resampling or Black–Litterman.</li>
+    </ul>
+    <div class="trap">Diversification eliminates <b>unsystematic (company-specific)</b> risk only. <b>Systematic / market risk cannot be diversified away</b> — which is exactly why CAPM prices beta and not total risk.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Portfolio construction, constraints and rebalancing<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 15</p>
+    <p><span class="k">Two objectives:</span> return and risk. <span class="k">Five constraints:</span> Liquidity · Time horizon · Taxes · Legal &amp; regulatory · Unique circumstances.</p>
+    <div class="hook">Constraints hook — <b>"L-T-T-L-U"</b>: Liquidity, Time, Tax, Legal, Unique. Objectives are only two; constraints are five. Questions asking "which of these is an objective?" want <b>return or risk</b>, nothing else.</div>
+    <p><span class="k">Psychographic profiling:</span></p>
+    <ul>
+      <li><b>Barnewall:</b> two types — <b>passive</b> investor (wealth acquired passively, e.g. inheritance or salaried career; security-focused) and <b>active</b> investor (earned wealth by risking own capital; wants control).</li>
+      <li><b>BB&amp;K (Bailard, Biehl &amp; Kaiser):</b> plotted on confident–anxious and careful–impetuous axes → <b>Adventurer</b> (confident, impetuous, concentrated bets) · <b>Celebrity</b> (anxious, impetuous, follows fashion) · <b>Individualist</b> (confident, careful, does own research) · <b>Guardian</b> (anxious, careful, preserves capital) · <b>Straight Arrow</b> (the balanced centre).</li>
+    </ul>
+    <p><span class="k">Life-cycle stages:</span> Accumulation (young, long horizon, high risk capacity) → Consolidation (mid-career, peak earnings) → Spending (retired, income need) → Gifting (estate transfer).</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Rebalancing style</th><th>Behaviour</th><th>Works best in</th></tr></thead>
+      <tbody>
+        <tr><td>Buy and hold</td><td>Do nothing; weights drift with the market</td><td>Sustained trending markets</td></tr>
+        <tr><td>Constant mix</td><td><b>Contrarian</b> — buy what fell, sell what rose</td><td>Oscillating, range-bound markets</td></tr>
+        <tr><td>CPPI</td><td><b>Momentum</b> — buy more equity as it rises</td><td>Strongly trending markets; protects a floor</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap"><b>Strategic</b> asset allocation is the long-term policy mix from the IPS. <b>Tactical</b> is a deliberate short-term deviation to exploit a perceived mispricing, and it must revert to strategic. Rebalancing back to target is <b>not</b> tactical allocation.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>The Investment Policy Statement (IPS)</h3>
+    <p class="ch">Chapter 15.3–15.6 · the governing document of the whole portfolio</p>
+    <p><span class="k">What it is:</span> a written agreement between adviser and client that sets out how the portfolio will be run — the objectives, the constraints, the permitted asset mix, the benchmark, and the responsibilities of each side. It is drawn up <b>before</b> any money is invested, and it is the reference point every later decision is measured against.</p>
+
+    <p><span class="k">Structure — what an IPS must contain:</span></p>
+    <div class="wrap"><table>
+      <thead><tr><th>Section</th><th>Contents</th></tr></thead>
+      <tbody>
+        <tr><td>1. Scope and purpose</td><td>Client identity, assets covered, the adviser's role, governing regulations, fee basis</td></tr>
+        <tr><td>2. Objectives</td><td><b>Return requirement</b> and <b>risk tolerance</b> — the only two objectives</td></tr>
+        <tr><td>3. Constraints</td><td><b>L</b>iquidity · <b>T</b>ime horizon · <b>T</b>ax · <b>L</b>egal &amp; regulatory · <b>U</b>nique circumstances</td></tr>
+        <tr><td>4. Asset allocation policy</td><td>Strategic weights plus a permitted <b>range</b> around each — the band is what makes tactical shifts legitimate</td></tr>
+        <tr><td>5. Permitted and prohibited investments</td><td>Eligible instruments, exposure caps by sector/entity/asset class, anything the client bars</td></tr>
+        <tr><td>6. Benchmark</td><td>Chosen in advance, appropriate to the mandate, investable and measurable</td></tr>
+        <tr><td>7. Rebalancing policy</td><td>Method (calendar or threshold), trigger levels, who authorises it</td></tr>
+        <tr><td>8. Monitoring and review</td><td>Reporting format and frequency; review at least annually or on a material life change</td></tr>
+        <tr><td>9. Duties and responsibilities</td><td>What the adviser owes; what the client must disclose and keep updated</td></tr>
+      </tbody>
+    </table></div>
+
+    <p><span class="k">Why it is important:</span></p>
+    <ul>
+      <li><b>It is the anchor in a falling market.</b> Decisions made calmly in advance protect the client from decisions made in panic. When the client wants to sell everything, the IPS is what you both agreed to in daylight.</li>
+      <li><b>It converts vague wishes into testable targets.</b> "I want good returns" cannot be managed; "8% real return over 15 years, maximum 12% drawdown tolerance" can.</li>
+      <li><b>It defines accountability.</b> Performance is judged against the stated benchmark and mandate, not against whatever index happened to do best.</li>
+      <li><b>It is the compliance record.</b> Under the SEBI IA Regulations, the client agreement, risk profile and suitability assessment must be documented, communicated, reviewed at least annually and retained for <b>5 years</b>. The IPS is where that evidence lives.</li>
+      <li><b>It gives continuity.</b> If the adviser, the relationship manager or the firm changes, the portfolio's logic survives in writing.</li>
+      <li><b>It is the reference in a dispute.</b> A grievance is settled by what was agreed, not by what either party now remembers.</li>
+    </ul>
+
+    <div class="trap"><b>Risk tolerance has two halves.</b> <b>Ability</b> to take risk is financial — income stability, net worth, time horizon, dependants. <b>Willingness</b> is psychological. When the two conflict, the IPS must be built on the <b>lower</b> of the two, and the adviser's job is to educate rather than override. A young client with huge capacity but a terror of volatility gets the conservative allocation.</div>
+    <div class="trap">Return objective must be stated <b>after</b> inflation, tax and fees, and it must be consistent with the risk tolerance. An IPS demanding a 15% return with a 2% risk tolerance is not a plan — it is a contradiction the adviser has to resolve at the outset.</div>
+    <div class="hook">Two <b>objectives</b>, five <b>constraints</b>. If a question asks you to identify an objective and the option says liquidity, tax or time horizon — that is a constraint, not an objective.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Unique needs and preferences — ESG and idiosyncratic constraints</h3>
+    <p class="ch">Chapter 15.7 · the fifth constraint</p>
+    <p><span class="k">"Unique circumstances"</span> is the catch-all constraint: any client-specific restriction that is neither legal nor tax-driven, but which the portfolio must respect anyway. These are recorded in the IPS and designed around — not argued away.</p>
+
+    <p><span class="k">Sustainable / ESG investing</span> — the most common expression of a values preference. Five approaches, in rising order of involvement:</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Approach</th><th>Method</th></tr></thead>
+      <tbody>
+        <tr><td><b>Negative / exclusionary screening</b></td><td>Rule out sectors outright — tobacco, alcohol, gambling, arms, fossil fuels</td></tr>
+        <tr><td><b>Positive / best-in-class</b></td><td>Keep every sector but hold only the highest ESG scorers within each</td></tr>
+        <tr><td><b>ESG integration</b></td><td>Fold ESG factors into ordinary financial analysis as risk factors, with no exclusions</td></tr>
+        <tr><td><b>Thematic</b></td><td>Target a theme — clean energy, water, financial inclusion</td></tr>
+        <tr><td><b>Impact investing</b></td><td>Seek a measurable social or environmental outcome alongside the financial return</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li>Backed in India by SEBI's <b>BRSR</b> (Business Responsibility and Sustainability Report) disclosures for the top listed companies, and a dedicated ESG sub-category within thematic equity mutual funds.</li>
+      <li><b>Active ownership / stewardship</b> — voting and engagement — is the sixth lever, used by institutions rather than retail clients.</li>
+    </ul>
+    <div class="trap">Any screen <b>narrows the investable universe</b>. That raises tracking error against a broad benchmark and can concentrate sector exposure. The adviser must disclose this cost and pick a <b>comparable ESG benchmark</b>, not judge the portfolio against the broad index it was never allowed to hold.</div>
+
+    <p><span class="k">Idiosyncratic constraints you should be able to name:</span></p>
+    <div class="wrap"><table>
+      <thead><tr><th>Constraint</th><th>Portfolio consequence</th></tr></thead>
+      <tbody>
+        <tr><td><b>Religious</b> — Shariah-compliant investing</td><td>No interest income, no conventional banking, alcohol, tobacco, gambling or pork-related businesses; debt instruments largely excluded</td></tr>
+        <tr><td><b>Employer restrictions</b></td><td>Trading windows, pre-clearance, blackout periods, restricted lists for employees of listed companies and intermediaries</td></tr>
+        <tr><td><b>Concentrated legacy holding</b></td><td>An inherited or founder holding the client refuses to sell — plan around it with hedges and by diversifying everything else</td></tr>
+        <tr><td><b>Promoter / director holdings</b></td><td>Lock-ins, insider trading rules, disclosure obligations</td></tr>
+        <tr><td><b>Sin-stock avoidance</b></td><td>Personal moral exclusions independent of any formal ESG framework</td></tr>
+        <tr><td><b>Special-needs dependant</b></td><td>Requires a perpetual income stream and an estate plan, which pushes the horizon beyond the client's own lifetime</td></tr>
+        <tr><td><b>Philanthropic commitments</b></td><td>Scheduled outflows that behave like a liquidity constraint</td></tr>
+        <tr><td><b>Asset preferences and biases</b></td><td>Insistence on physical gold or real estate; home-country bias; refusal to hold derivatives or unlisted assets</td></tr>
+        <tr><td><b>Illiquid or indivisible assets</b></td><td>Property, unlisted equity, ESOPs — cannot be rebalanced on demand</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">A unique preference is a <b>constraint the adviser accepts and documents</b>, not a mistake to be corrected. The fiduciary duty is to explain the return or risk cost of the preference and then build the best portfolio that honours it — overriding a client's stated values because you think the maths is better is a violation of the mandate.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Return measures — and which one to use<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 16.2 · very high yield</p>
+    <div class="fx"><b>HPR</b>  = (Ending value − Beginning value + Income) ÷ Beginning value
+<b>CAGR</b> = (Ending ÷ Beginning)^(1/n) − 1
+<b>Real return</b> = [(1 + nominal) ÷ (1 + inflation)] − 1
+<b>Post-tax return</b> = nominal × (1 − tax rate)</div>
+    <div class="wrap"><table>
+      <thead><tr><th></th><th>TWRR</th><th>MWRR</th></tr></thead>
+      <tbody>
+        <tr><td>Also called</td><td>Geometric / chain-linked return</td><td>IRR of the cash flows (XIRR in Excel)</td></tr>
+        <tr><td>Effect of cash flows</td><td><b>Neutralised</b> — breaks the period at each flow and links the sub-returns</td><td><b>Fully reflected</b> — timing and size of flows matter</td></tr>
+        <tr><td>Measures</td><td>The <b>manager's</b> skill</td><td>The <b>investor's</b> actual experience</td></tr>
+        <tr><td>Used for</td><td>Comparing funds and managers; mandatory for PMS disclosure</td><td>SIP returns, an individual client's portfolio return</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">If the person being judged <b>controls</b> the cash flows, use MWRR. If they <b>do not</b> control them, use TWRR — you cannot blame a fund manager for when the investor chose to add money.</div>
+    <div class="trap">Geometric mean is <b>always ≤ arithmetic mean</b> (equal only when every period's return is identical). For multi-period compounding, geometric is the correct one. Arithmetic mean overstates realised growth.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Risk and risk-adjusted measures<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 16.3–16.4 · formula sheet</p>
+    <div class="fx"><b>Sharpe</b>    = (Rp − Rf) ÷ σp                     total risk       higher better
+<b>Treynor</b>   = (Rp − Rf) ÷ βp                     systematic risk  higher better
+<b>Sortino</b>   = (Rp − Target) ÷ Downside deviation  downside only    higher better
+<b>Jensen α</b>  = Rp − [ Rf + β(Rm − Rf) ]            skill vs CAPM    higher better
+<b>Info ratio</b> = (Rp − Rb) ÷ Tracking error         consistency      higher better
+<b>M²</b>        = Sharpe × σ(market) + Rf             stated as a %    compare to Rm</div>
+    <p><span class="k">Our running example (Raj's fund):</span> return 18%, benchmark 12%, risk-free 6%, market SD 15%, beta 1.3.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Metric</th><th>Value</th><th>Reading</th></tr></thead>
+      <tbody>
+        <tr><td>Alpha</td><td class="num">+6%</td><td>Beat the benchmark by 6 points</td></tr>
+        <tr><td>Beta</td><td class="num">1.3</td><td>30% more market-sensitive than the index — neither good nor bad</td></tr>
+        <tr><td>Sharpe</td><td class="num">0.6</td><td>0.6 units of excess return per unit of total risk</td></tr>
+        <tr><td>Sortino</td><td class="num">1.5</td><td>Higher than Sharpe — the volatility was mostly upside</td></tr>
+        <tr><td>Information ratio</td><td class="num">1.5</td><td>Outperformance is consistent, not a one-off</td></tr>
+        <tr><td>M²</td><td class="num">15%</td><td>At market-level risk it would earn 15% vs the market's 12% — it wins</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>Sharpe uses σ (total risk)</b> → right when the portfolio is the investor's <b>entire</b> wealth, or when it is not well diversified.</li>
+      <li><b>Treynor uses β (systematic risk)</b> → right when the portfolio is one <b>component</b> of a larger diversified holding.</li>
+      <li><b>Sortino</b> only penalises returns below the target — fairer than Sharpe, which punishes upside volatility too.</li>
+      <li><b>Tracking error</b> = standard deviation of (portfolio return − benchmark return). Index funds want it near zero; active funds need it to earn their alpha.</li>
+      <li><b>VaR</b> — maximum expected loss over a period at a given confidence level. It says nothing about the size of losses <b>beyond</b> that threshold.</li>
+    </ul>
+    <div class="trap">Sharpe and Treynor rank portfolios <b>differently</b> when a portfolio is poorly diversified — Treynor will flatter it because it ignores the diversifiable risk the investor is actually carrying.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Benchmarking and performance attribution<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 16.5–16.6</p>
+    <p><span class="k">A valid benchmark</span> is specified in advance, unambiguous, measurable, investable, appropriate to the manager's style, and reflective of current investment opinion.</p>
+    <p><span class="k">Brinson attribution</span> breaks excess return into three parts:</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Effect</th><th>Answers</th></tr></thead>
+      <tbody>
+        <tr><td><b>Allocation</b></td><td>Did the manager overweight the sectors that did well? (top-down decision)</td></tr>
+        <tr><td><b>Selection</b></td><td>Within each sector, did the manager pick the better stocks? (bottom-up decision)</td></tr>
+        <tr><td><b>Interaction</b></td><td>The combined effect of overweighting a sector <i>and</i> picking well inside it</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">Allocation = <b>which bucket</b>. Selection = <b>what's in the bucket</b>. Interaction = doing both right at once. The three must sum to the total excess return over the benchmark.</div>
+    <div class="trap">Peer group comparison must be <b>like-for-like</b> — a mid-cap fund compared against a large-cap peer set produces a meaningless ranking. Survivorship bias also inflates peer averages, because closed and merged poor performers drop out of the data.</div>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= MODULE 6 ================= -->
+<details class="module" id="m6" open>
+  <summary class="mod-head">
+    <span class="mod-n">Module 6</span>
+    <span class="mod-t">Operations, Regulation, Compliance &amp; Ethics</span>
+    <span class="mod-w"><b>30</b> marks · Ch 17–20 · second-highest weightage</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>PAN, KYC and account opening</h3>
+    <p class="ch">Chapter 17.1–17.2</p>
+    <ul>
+      <li><b>PAN</b> is mandatory for securities market transactions (limited exemptions for certain small transactions and specified investors).</li>
+      <li><b>KYC chain:</b> submit KYC → <b>KRA</b> (KYC Registration Agency) stores and shares it across SEBI intermediaries → <b>CKYCR</b> (maintained by CERSAI) is the central registry across the financial sector.</li>
+      <li><b>IPV</b> — In-Person Verification is mandatory; can be done via <b>video IPV</b>. Aadhaar-based e-KYC (OTP mode) carries an annual investment ceiling per AMC.</li>
+      <li><b>FATCA / CRS</b> declaration is compulsory at on-boarding.</li>
+      <li>Do KYC <b>once</b> — it is then portable across all SEBI-registered intermediaries.</li>
+    </ul>
+    <div class="trap">KYC is <b>investor-level</b>, not folio-level or intermediary-level. A change of address updated with one intermediary propagates through the KRA to all of them.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Demat, PoA, nomination and transmission<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 17.3–17.7</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Process</th><th>What it is</th><th>Form / note</th></tr></thead>
+      <tbody>
+        <tr><td>Dematerialisation</td><td>Physical certificates → electronic</td><td>DRF, submitted through the DP</td></tr>
+        <tr><td>Rematerialisation</td><td>Electronic → physical</td><td>RRF</td></tr>
+        <tr><td><b>Transfer</b></td><td>Voluntary sale or gift between living persons</td><td>Consideration usually involved</td></tr>
+        <tr><td><b>Transmission</b></td><td>Involuntary — passing of securities on <b>death</b> of the holder</td><td>To nominee, joint holder or legal heir</td></tr>
+        <tr><td><b>Transposition</b></td><td>Changing the <b>order</b> of the same joint holders</td><td>Names identical, sequence different</td></tr>
+        <tr><td>Minor turning major</td><td>Account operations freeze until fresh KYC, signature and bank details are updated</td><td>Guardian's authority ends at 18</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Power of Attorney:</span></p>
+    <ul>
+      <li><b>General PoA</b> — broad authority across many matters. <b>Special / Limited PoA</b> — one defined act or a narrow set of acts.</li>
+      <li>An agent can never exceed the powers granted, and cannot delegate further unless expressly permitted.</li>
+      <li><b>Automatic termination</b> on: death or insolvency of the principal, insanity of either party, completion of the purpose, expiry of the term, or revocation.</li>
+      <li>Governed by the <b>Powers of Attorney Act 1882</b>, with registration and stamping under the Registration Act 1908 and the Indian Stamp Act.</li>
+      <li>In broking, the blanket PoA has been replaced by <b>DDPI</b> (Demat Debit and Pledge Instruction), which is narrower by design.</li>
+    </ul>
+    <div class="trap">A <b>nominee is a trustee, not an owner</b>. Nomination decides who the intermediary may pay; the legal heirs under succession law decide who ultimately keeps it. A will overrides a nomination for beneficial ownership.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Non-resident accounts and residency<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 17.5</p>
+    <div class="wrap"><table>
+      <thead><tr><th></th><th>NRE</th><th>NRO</th><th>FCNR(B)</th></tr></thead>
+      <tbody>
+        <tr><td>Currency</td><td>INR</td><td>INR</td><td>Foreign currency</td></tr>
+        <tr><td>Source of funds</td><td>Foreign earnings only</td><td>Indian income (rent, dividend, pension) + foreign</td><td>Foreign earnings</td></tr>
+        <tr><td>Repatriable</td><td>Fully</td><td>Up to USD 1 million per financial year</td><td>Fully</td></tr>
+        <tr><td>Interest taxable in India</td><td><b>No</b></td><td><b>Yes</b> (TDS ~30%)</td><td>No</td></tr>
+        <tr><td>Tenor</td><td>Savings / term</td><td>Savings / term</td><td>1 to 5 years</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Residency under the Income Tax Act 1961</span> — resident if either test is met:</p>
+    <div class="fx">Test 1:  in India for <b>182 days or more</b> in the previous year
+Test 2:  in India for <b>60 days or more</b> in the previous year
+         AND <b>365 days or more</b> across the <b>4 preceding</b> years</div>
+    <ul>
+      <li>Test 2 is a safety net for India-based people who travel a lot. It is <b>relaxed to 182 days</b> for Indian citizens leaving for employment abroad and for NRIs/PIOs visiting India.</li>
+      <li>The four years are always <b>backward-looking</b>.</li>
+      <li><b>FEMA residency is different</b> — it turns on <b>intention and purpose of stay</b>, not just day count. A person can be a resident under one law and non-resident under the other.</li>
+    </ul>
+    <div class="trap">NRIs <b>cannot</b> open fresh PPF, SSY, NSC or KVP accounts. An existing PPF may be continued to maturity but not extended.</div>
+    <div class="trap">India's exemptions do not travel. <b>NRE interest is tax-free in India but fully taxable in the US</b> for a US person — and because no Indian tax was paid, there is <b>no Foreign Tax Credit</b> to claim. Repatriation is irrelevant; the US taxes worldwide income on earning, not on remittance.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>SEBI (Investment Advisers) Regulations 2013 — the core of the module<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 18.6 · expect several questions</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Item</th><th>Position</th></tr></thead>
+      <tbody>
+        <tr><td>Certification</td><td>NISM Series <b>X-A and X-B</b>, valid 3 years, renewed through CPE before expiry. CFP no longer substitutes for it</td></tr>
+        <tr><td>Net worth</td><td>Individual: <b>₹5 lakh</b> tangible · Non-individual: <b>₹50 lakh</b></td></tr>
+        <tr><td>Fee — AUA mode</td><td>Max <b>2.5% of AUA per annum, per family of clients</b></td></tr>
+        <tr><td>Fee — fixed mode</td><td>Max <b>₹1,51,000 per annum, per family of clients</b>; reviewed periodically against the Cost Inflation Index</td></tr>
+        <tr><td>Switching modes</td><td><b>12-month</b> lock-in before changing a client's fee mode</td></tr>
+        <tr><td>Advance fees</td><td>Permitted for up to <b>one year</b> if the client agrees</td></tr>
+        <tr><td>Termination</td><td><b>30-day</b> notice by either side; refund for the unexpired period; adviser may retain a maximum of <b>one quarter's</b> fee as breakage</td></tr>
+        <tr><td>Fee rules apply to</td><td>Individual and HUF clients only — non-individual clients are governed by bilaterally negotiated contracts</td></tr>
+        <tr><td>Records</td><td>Maintained for <b>5 years</b>, including recordings of client interactions</td></tr>
+        <tr><td>Compliance audit</td><td><b>Annual</b>, within 6 months of the financial year end</td></tr>
+        <tr><td>Supervisory body</td><td><b>IAASB</b> — BSE Administration &amp; Supervision Ltd (BASL)</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Segregation — Regulations 22 and 22A</span> (this is where mock tests catch people):</p>
+    <ul>
+      <li>An RIA earns <b>only fees from the client</b>. No commissions, no trail, no product-linked consideration — from anyone, ever.</li>
+      <li>An individual adviser cannot be an adviser and a distributor <b>at the same time</b>. Non-individuals must segregate the two at the <b>client level</b>, through separate divisions and separate personnel.</li>
+      <li>Segregation applies at the level of the <b>family of the client</b>, not just the individual — you cannot advise the husband and distribute to the wife.</li>
+      <li>An IA may recommend <b>specific schemes and securities</b> — that is the job. What it cannot do is get involved in execution for consideration.</li>
+      <li>Reg 22A permits an execution facility only under strict simultaneous conditions: <b>direct schemes only, no consideration of any kind, optional for the client, and no bundling with the fee</b>.</li>
+    </ul>
+    <div class="trap">"The adviser made no personal gain" is <b>never</b> a defence — not under PFUTP and not under the IA Regulations. Absence of profit does not cure a violation.</div>
+    <div class="trap">Clients must <b>never</b> hand investment money to the adviser. An IA has no custody infrastructure; funds go directly from the client to the AMC or broker. Only the advisory fee is payable to the IA.</div>
+    <div class="trap"><b>Risk profiling and suitability</b> (Reg 16 &amp; 17) are compulsory, documented, communicated to the client, and reviewed at least annually. Advice given without a completed risk profile is a violation regardless of how good the advice was.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>The other key regulations</h3>
+    <p class="ch">Chapter 18.1–18.5, 18.7–18.8</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Law</th><th>What it does</th><th>Remember</th></tr></thead>
+      <tbody>
+        <tr><td><b>SCRA 1956</b></td><td>Defines "securities", regulates contracts and recognition of stock exchanges</td><td>The definitional statute</td></tr>
+        <tr><td><b>SEBI Act 1992</b></td><td>Creates SEBI; powers to investigate, search, penalise</td><td>Appeal to <b>SAT within 45 days</b>; further appeal to Supreme Court within 60 days, on a question of law</td></tr>
+        <tr><td><b>PFUTP 2003</b></td><td>Bans fraudulent and unfair trade practices</td><td>Intent to gain and actual profit are <b>irrelevant</b>; the act itself is the offence</td></tr>
+        <tr><td><b>Intermediaries Regs 2008</b></td><td>Common registration, "fit and proper" test, code of conduct, enforcement</td><td>Applies across intermediary types</td></tr>
+        <tr><td><b>PIT Regs 2015</b></td><td>Prohibits insider trading</td><td><b>UPSI</b>, connected persons, trading window closure, <b>contra-trade barred for 6 months</b>, structured digital database, trading plans</td></tr>
+        <tr><td><b>PMLA 2002</b></td><td>Anti-money-laundering</td><td><b>FIU-IND</b>; Principal Officer and Designated Director; CTR for cash above ₹10 lakh; STR regardless of amount; records <b>5 years</b>; <b>no tipping off</b></td></tr>
+        <tr><td><b>Negotiable Instruments Act 1881</b></td><td>Promissory notes, bills of exchange, cheques</td><td>Cheque valid <b>3 months</b>; <b>Section 138</b> covers dishonour for insufficiency of funds</td></tr>
+        <tr><td><b>Indian Succession Act 1925</b></td><td>Wills, executors, probate</td><td>A will can be changed any number of times; the <b>latest valid will</b> prevails</td></tr>
+        <tr><td><b>Guardians and Wards Act 1890</b></td><td>Guardianship of minors</td><td>A <b>ward is a minor</b> who has a guardian for person and/or property — the guardian need <b>not</b> be court-appointed; natural and testamentary guardians count</td></tr>
+        <tr><td><b>IBC 2016</b></td><td>Time-bound insolvency resolution</td><td>Administered by IBBI</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">Under PIT, an insider is not only a company officer — anyone in <b>possession of UPSI</b>, including by chance, is caught. "I did not receive it officially" is not a defence.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Ethics and fiduciary duty<span class="tag prev">covered before</span></h3>
+    <p class="ch">Chapter 19</p>
+    <ul>
+      <li><b>Fiduciary duty</b> — the adviser must act in the <b>client's best interest</b>, ahead of their own. This is a higher bar than "suitability" and far higher than "disclosure".</li>
+      <li><b>Conflicts of interest</b> must be avoided where possible, and fully disclosed where unavoidable. Disclosure alone does not sanitise a conflict that could have been avoided.</li>
+      <li><b>Ethical dilemma</b> — a situation where two defensible principles pull in opposite directions, so any choice sacrifices something. It is not simply "right vs wrong".</li>
+      <li><b>SEBI's investor guidance</b> — deal only with registered advisers, insist on a written agreement, never hand over investment funds, never rely on assured-return promises, and check credentials on the SEBI website.</li>
+    </ul>
+
+    <p><span class="k">Ethical right vs ethical restraint</span> — this pair is asked directly, so keep the two definitions clean:</p>
+    <div class="wrap"><table>
+      <thead><tr><th></th><th>Ethical right</th><th>Ethical restraint</th></tr></thead>
+      <tbody>
+        <tr><td>What it is</td><td>Something you are <b>entitled</b> to do — permitted by law, regulation or contract</td><td>Voluntarily choosing <b>not to exercise</b> a right you legally hold</td></tr>
+        <tr><td>Source</td><td>External — law, regulation, the client agreement</td><td>Internal — the adviser's own judgement and professional standards</td></tr>
+        <tr><td>Enforced by</td><td>The regulator; breach is punishable</td><td><b>Nobody</b>. It is self-imposed and unenforceable</td></tr>
+        <tr><td>Question it answers</td><td>"<b>Can</b> I do this?"</td><td>"<b>Should</b> I do this?"</td></tr>
+        <tr><td>Failure to observe it</td><td>A violation</td><td>Not a violation — but a failure of professionalism and trust</td></tr>
+      </tbody>
+    </table></div>
+
+    <p><span class="k">Where restraint actually operates</span> — the legal/ethical grid. Restraint lives entirely in the shaded box:</p>
+    <div class="wrap"><table>
+      <thead><tr><th></th><th>Ethical</th><th>Unethical</th></tr></thead>
+      <tbody>
+        <tr><td><b>Legal</b></td><td>The intended zone — do it</td><td><b>← ethical restraint belongs here.</b> Permitted, but you decline</td></tr>
+        <tr><td><b>Illegal</b></td><td>Rare and still not available to you</td><td>Never — this is a violation</td></tr>
+      </tbody>
+    </table></div>
+
+    <p><span class="k">What restraint looks like in advisory practice:</span></p>
+    <ul>
+      <li>You are <b>entitled</b> to charge up to the 2.5% AUA cap. You <b>restrain</b> to a fee that is proportionate to the work actually done.</li>
+      <li>You are <b>entitled</b> to recommend a product that clears the suitability test. You <b>restrain</b> when a cheaper, simpler product serves the client equally well.</li>
+      <li>You are <b>entitled</b> to churn a portfolio within the mandate. You <b>restrain</b> because activity that does not serve the client is not advice.</li>
+      <li>You are <b>entitled</b> to use a client's good outcome in your marketing. You <b>restrain</b> because a selected result misleads by omission.</li>
+      <li>You are <b>entitled</b> to trade personally in a security. You <b>restrain</b> ahead of recommending it to clients, to avoid front-running the advice.</li>
+      <li>You are <b>entitled</b> to stay silent about a shortcoming the client has not asked about. You <b>restrain</b> from silence, because a fiduciary discloses unprompted.</li>
+    </ul>
+
+    <p><span class="k">Why it matters:</span> regulation can only describe the minimum. Advisory work is full of situations no rule anticipated, and the client cannot verify the adviser's choices — the information gap is the whole reason the relationship needs trust. Restraint is what fills the space the rulebook leaves empty, and it is the practical content of the fiduciary standard.</p>
+
+    <div class="hook">Legality is the <b>floor</b>, not the target. Fiduciary duty tells you the client comes first; ethical restraint is the day-to-day mechanism by which you actually put them there.</div>
+    <div class="trap">"It was legal" and "the client agreed" are both weaker than the fiduciary standard. If a compliant action is still against the client's interest, the fiduciary answer is not to do it.</div>
+    <div class="hook">Ranking of duties when an option list forces a choice: <b>client's interest → integrity of the market → employer → self</b>. The self always comes last.</div>
+  </section>
+
+  <section class="topic">
+    <label class="rev"><input type="checkbox">revised</label>
+    <h3>Grievance redress — the escalation chains</h3>
+    <p class="ch">Chapter 20 · the sequence is the answer, not the forum</p>
+    <p><span class="k">The universal first step:</span> raise it with the <b>entity itself</b> and wait out the stipulated period. Only then does any external forum have jurisdiction.</p>
+
+    <div class="fx"><b>CAPITAL MARKETS</b>  — SCORES 2.0, live since 1 April 2024
+Market participant / intermediary / listed company
+   ↓ entity must file its Action Taken Report within <b>21 calendar days</b>
+<b>SCORES</b>  (SEBI Complaint Redress System)
+   ↓ dissatisfied — request within <b>15 days</b>
+<b>First level review</b>  by the <b>Designated Body</b>  (e.g. the exchange, AIBI)
+   ↓ still dissatisfied — request within <b>15 days</b>
+<b>Second level review</b>  by <b>SEBI</b>
+   ↓ or opt out at any point into
+<b>ODR portal</b>  (SMART ODR — conciliation, then arbitration)
+
+<b>SAT</b> sits outside this chain — it hears <b>appeals against SEBI orders</b>, within 45 days.</div>
+
+    <div class="fx"><b>BANKING</b>  — one scheme since 12 November 2021
+The bank / NBFC / payment system participant
+   ↓ no reply, or unsatisfactory reply, within <b>30 days</b>
+<b>RBI Integrated Ombudsman  (RB-IOS 2021)</b>
+   file within 1 year of the reply, or 1 year + 30 days if no reply
+   ↓ appeal against the Ombudsman's award
+<b>Appellate Authority</b>  (Deputy Governor, RBI)
+
+RB-IOS <b>repealed and merged</b> the three earlier schemes:
+  Banking Ombudsman Scheme 2006
+  Ombudsman Scheme for NBFCs 2018
+  Ombudsman Scheme for Digital Transactions 2019
+There is now <b>one</b> ombudsman — no split by type of complaint.</div>
+
+    <div class="fx"><b>INSURANCE</b>
+The insurer's Grievance Redressal Officer
+   ↓ no response in <b>15 days</b>, or response unsatisfactory
+<b>Bima Bharosa</b>  (IRDAI's portal — formerly called <b>IGMS</b>)
+   ↓ not attended within 15 days, or still unsatisfactory
+<b>Insurance Ombudsman</b>  (Insurance Ombudsman Rules 2017)
+   file within 1 year · award limit ₹30 lakh</div>
+
+    <div class="fx"><b>PENSION</b>  — route depends on <i>who runs the scheme</i>
+Pension scheme run by a <b>mutual fund</b>   → SEBI, via <b>SCORES</b>
+Pension scheme run by an <b>insurer</b>      → <b>IRDAI</b>
+<b>NPS</b>  (PFRDA Redressal of Subscriber Grievance Regulations 2015):
+   Level 1  <b>CRA / nodal office</b>, through <b>CGMS</b>
+              ↓ unresolved after <b>30 days</b>
+   Level 2  <b>NPS Trust</b>
+              ↓ unresolved after <b>21 days</b>, or unsatisfactory
+   Level 3  <b>Ombudsman</b> appointed by PFRDA</div>
+
+    <p><span class="k">Consumer disputes</span> — Consumer Protection Act 2019: District Commission up to ₹50 lakh · State Commission ₹50 lakh to ₹2 crore · National Commission above ₹2 crore.</p>
+
+    <div class="trap"><b>NPS order — get this right way round.</b> It is CRA → <b>NPS Trust</b> → <b>Ombudsman</b>. The Ombudsman is the <b>final</b> level, not the middle one. Reversing these two is the single most common error on this topic.</div>
+    <div class="trap"><b>Banking is now one ombudsman, not several.</b> The old split — Banking Ombudsman for bank services and credit cards, a separate scheme for ATM and digital transactions, another for NBFCs — was <b>repealed in November 2021</b>. If an option offers that split as the current position, it is describing a scheme that no longer exists.</div>
+    <div class="trap">Escalation is <b>sequential and time-gated</b>. Approach the entity first, wait the stipulated period — <b>21 days</b> for capital markets, <b>30 days</b> for banking and NPS level 1, <b>15 days</b> for insurance — and only then escalate. A complaint filed straight at the ombudsman is rejected on that ground alone.</div>
+    <div class="trap">Pension questions are decided by <b>who runs the scheme</b>, not by the word "pension". MF-managed pension scheme → SEBI/SCORES. Insurer-managed → IRDAI. Only actual NPS goes down the CRA → NPS Trust → Ombudsman chain.</div>
+    <div class="trap">SAT hears <b>appeals against orders</b> of SEBI, IRDAI and PFRDA. It is not a first-instance investor grievance forum, and it is not where you take a complaint about your broker.</div>
+    <div class="hook">Every chain has the same shape: <b>entity → sector platform → ombudsman or tribunal</b>. If an option skips the entity, it is wrong. If it skips the waiting period, it is wrong. If it puts the ombudsman anywhere but last, it is wrong.</div>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CLOSING PANELS ================= -->
+<div class="panel">
+  <h2>Numbers to walk in with</h2>
+  <p class="lead">If you remember nothing else, remember these. They are the ones that get asked as bare recall.</p>
+  <div class="grid2">
+    <div>
+      <h4>Adviser &amp; managed products</h4>
+      <ul>
+        <li>RIA net worth — <code>₹5 lakh</code> individual, <code>₹50 lakh</code> non-individual</li>
+        <li>RIA fee — <code>2.5% of AUA</code> p.a. per family, or <code>₹1,51,000</code> fixed</li>
+        <li>Fee mode switch lock-in — <code>12 months</code>; advance fee up to <code>1 year</code></li>
+        <li>Termination notice <code>30 days</code>; breakage max <code>1 quarter's fee</code></li>
+        <li>Records retained <code>5 years</code>; compliance audit annual, within <code>6 months</code></li>
+        <li>PMS minimum <code>₹50 lakh</code>; manager net worth <code>₹5 crore</code></li>
+        <li>PMS exit load <code>3% / 2% / 1%</code> then nil; disclosure on <code>TWRR</code></li>
+        <li>AIF corpus <code>₹20 crore</code>; investor minimum <code>₹1 crore</code>; <code>1,000</code> investors per scheme</li>
+      </ul>
+      <h4>Personal finance</h4>
+      <ul>
+        <li>Contingency reserve — <code>3–6 months</code> of expenses</li>
+        <li>Debt-service ratio ceiling — <code>35–40%</code> of take-home</li>
+        <li>Savings ratio target — above <code>20%</code></li>
+        <li>Rule of 72 — <code>72 ÷ rate</code> = years to double</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Products &amp; markets</h4>
+      <ul>
+        <li>T-bills — <code>91 / 182 / 364</code> days, zero coupon</li>
+        <li>CP and CD — <code>7 days to 1 year</code>; CP minimum <code>₹5 lakh</code></li>
+        <li>Investment grade floor — <code>BBB−</code></li>
+        <li>Retail applicant in an IPO — up to <code>₹2 lakh</code></li>
+        <li>Settlement cycle — <code>T+1</code>; market-wide circuits <code>10 / 15 / 20%</code></li>
+        <li>MF cut-off — <code>3:00 pm</code>; liquid &amp; overnight purchase <code>1:30 pm</code></li>
+        <li>Stamp duty on MF purchase — <code>0.005%</code></li>
+        <li>SCSS max <code>₹30 lakh</code>; POMIS <code>₹9L</code> single / <code>₹15L</code> joint</li>
+        <li>PPF <code>15 years</code>, <code>₹500–₹1.5 lakh</code>; SSY matures at <code>21 years</code></li>
+        <li>NPS extra deduction 80CCD(1B) — <code>₹50,000</code></li>
+      </ul>
+      <h4>Regulation</h4>
+      <ul>
+        <li>SAT appeal — <code>45 days</code>; Supreme Court — <code>60 days</code></li>
+        <li>PMLA cash transaction report — above <code>₹10 lakh</code></li>
+        <li>Contra-trade bar under PIT — <code>6 months</code></li>
+        <li>Consumer Commission — <code>₹50L</code> / <code>₹50L–₹2Cr</code> / <code>above ₹2Cr</code></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>The last thirty minutes</h2>
+  <p class="lead">Confusions that cost marks every single attempt. Read this in the car park.</p>
+  <div class="grid2">
+    <div>
+      <ul>
+        <li><b>Transfer vs transmission</b> — transmission is on death.</li>
+        <li><b>Nominee vs legal heir</b> — nominee holds in trust; the will decides ownership.</li>
+        <li><b>Bonus vs split</b> — split changes face value, bonus does not.</li>
+        <li><b>Volume vs open interest</b> — OI is positions still open.</li>
+        <li><b>Only the option writer pays margin.</b></li>
+        <li><b>Zero-coupon duration = maturity.</b></li>
+        <li><b>Price risk and reinvestment risk move in opposite directions.</b></li>
+        <li><b>Sharpe uses σ, Treynor uses β.</b> Sharpe for a whole portfolio, Treynor for a component.</li>
+        <li><b>TWRR for the manager, MWRR for the client.</b></li>
+        <li><b>Geometric mean ≤ arithmetic mean.</b></li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><b>Gold jewellery is a use asset; Gold ETF is a financial asset.</b></li>
+        <li><b>KVP and POMIS get no 80C.</b> Only the 5-year post office TD does.</li>
+        <li><b>NRE interest — tax-free in India, still taxable in the US, no FTC.</b></li>
+        <li><b>60-day residency rule looks back 4 years.</b></li>
+        <li><b>A ward is a minor</b> — the guardian need not be court-appointed.</li>
+        <li><b>"I made no gain" is never a defence.</b></li>
+        <li><b>Never take client money for investment.</b></li>
+        <li><b>Diversification kills unsystematic risk only.</b></li>
+        <li><b>Strategic is the policy; tactical is the deliberate deviation.</b></li>
+        <li><b>Constant mix is contrarian; CPPI is momentum.</b></li>
+        <li><b>Two objectives, five constraints</b> — liquidity and tax are constraints.</li>
+        <li><b>Grievance: entity first, wait the period, then escalate.</b> NPS is CRA → NPS Trust → Ombudsman, in that order.</li>
+        <li><b>Ethical restraint = legal but declined.</b> Nobody enforces it.</li>
+      </ul>
+    </div>
+  </div>
+  <h4>How to play the paper</h4>
+  <ul>
+    <li>Negative marking is <b>25% of the mark for that question</b>. A pure blind guess between four options is still marginally positive in expectation — but eliminate at least one option before you commit, and skip only where you can eliminate nothing.</li>
+    <li>Caselets carry <b>60 of the 150 marks</b> across 9 case-based sets. Do not leave them for the last twenty minutes — several are TVM and ratio arithmetic you already know cold.</li>
+    <li>Modules 1, 3 and 6 are <b>97 marks</b>. If time runs short in revision, that is the order.</li>
+    <li>Flag and return. Three hours for 135 questions is roughly <b>80 seconds each</b> — enough to be careful, not enough to stall.</li>
+  </ul>
+</div>
+
+<p class="foot">
+  <b>Market Pulse</b> — Learn Like Day One · Curated by Sreekar<br>
+  Built from six modules and four months of sessions. Figures follow the current NISM X-A workbook; where a rule has been amended recently, the workbook you studied is the one the exam marks against.<br>
+  Revision aid only — not investment advice.
+</p>
+</main>
+
+<script>
+(function(){
+  var q = document.getElementById('q'),
+      topics = Array.prototype.slice.call(document.querySelectorAll('.topic')),
+      modules = Array.prototype.slice.call(document.querySelectorAll('.module')),
+      nores = document.getElementById('nores'),
+      c1 = document.getElementById('c1'),
+      c2 = document.getElementById('c2');
+
+  /* cache searchable text once */
+  topics.forEach(function(t){ t._txt = t.textContent.toLowerCase(); });
+  c2.textContent = topics.length;
+
+  function filter(){
+    var v = q.value.trim().toLowerCase(), hits = 0;
+    modules.forEach(function(m){
+      var mine = Array.prototype.slice.call(m.querySelectorAll('.topic')), any = 0;
+      mine.forEach(function(t){
+        var show = !v || t._txt.indexOf(v) > -1;
+        t.style.display = show ? '' : 'none';
+        if (show){ any++; hits++; }
+      });
+      m.style.display = (v && !any) ? 'none' : '';
+      if (v && any) m.open = true;
+    });
+    nores.style.display = hits ? 'none' : 'block';
+  }
+  q.addEventListener('input', filter);
+
+  /* keyboard: / focuses search, Esc clears */
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== q){ e.preventDefault(); q.focus(); }
+    if (e.key === 'Escape' && document.activeElement === q){ q.value=''; filter(); q.blur(); }
+  });
+
+  document.getElementById('openAll').addEventListener('click', function(){
+    modules.forEach(function(m){ m.open = true; });
+  });
+  document.getElementById('closeAll').addEventListener('click', function(){
+    modules.forEach(function(m){ m.open = false; });
+  });
+  document.getElementById('pr').addEventListener('click', function(){
+    modules.forEach(function(m){ m.open = true; });
+    window.print();
+  });
+
+  /* revised counter — session only, nothing stored */
+  function tally(){
+    c1.textContent = document.querySelectorAll('.topic.done').length;
+  }
+  topics.forEach(function(t){
+    var box = t.querySelector('.rev input');
+    if (!box) return;
+    box.addEventListener('change', function(){
+      t.classList.toggle('done', box.checked);
+      tally();
+    });
+  });
+  tally();
+})();
+</script>
+</body>
+</html>
