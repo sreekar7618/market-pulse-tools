@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Small Savings Schemes — Revision Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & TOKENS ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#16261F;
+  --ink-soft:#4A5C54;
+  --paper:#E7EDE7;
+  --card:#FFFFFF;
+  --green:#16563F;
+  --green-lt:#2E7D5A;
+  --green-pale:#DCE8E1;
+  --red:#9E2B25;
+  --ochre:#8A6A12;
+  --ochre-pale:#F4EAC9;
+  --rule:#C3D2C8;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --serif:"IBM Plex Serif",Georgia,serif;
+  --rad:4px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:15px;line-height:1.58;
+  -webkit-text-size-adjust:100%;
+}
+
+/* ===== LAYOUT ===== */
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px 80px}
+
+/* ===== MASTHEAD ===== */
+header.mast{border-bottom:3px double var(--green);padding:34px 0 22px;margin-bottom:0}
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--green);margin-bottom:10px;
+}
+h1{
+  font-family:var(--serif);font-weight:700;
+  font-size:clamp(28px,4.5vw,42px);line-height:1.08;
+  margin-bottom:14px;letter-spacing:-.01em;
+}
+.standfirst{max-width:64ch;color:var(--ink-soft);margin-bottom:18px}
+.stamp{
+  display:inline-block;border:2px solid var(--red);color:var(--red);
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;padding:7px 13px;border-radius:3px;
+  transform:rotate(-1.2deg);
+}
+
+/* ===== STICKY NAV ===== */
+nav.jump{
+  position:sticky;top:0;z-index:20;background:var(--paper);
+  border-bottom:1px solid var(--rule);padding:10px 0;margin-bottom:28px;
+}
+.navrow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+nav.jump a{
+  font-family:var(--mono);font-size:11px;text-decoration:none;color:var(--green);
+  border:1px solid var(--rule);border-radius:3px;padding:4px 8px;background:var(--card);
+  white-space:nowrap;
+}
+nav.jump a:hover{background:var(--green);color:#fff;border-color:var(--green)}
+nav.jump a:focus-visible,#q:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+#q{
+  font-family:var(--mono);font-size:12px;padding:5px 10px;
+  border:1px solid var(--rule);border-radius:3px;
+  background:var(--card);color:var(--ink);min-width:180px;flex:1 1 180px;
+}
+
+/* ===== SECTION HEADINGS ===== */
+section{margin-bottom:44px}
+h2{
+  font-family:var(--serif);font-size:22px;font-weight:700;
+  padding-bottom:7px;border-bottom:1px solid var(--rule);margin-bottom:6px;
+}
+h3{font-family:var(--serif);font-size:18px;font-weight:600;margin:28px 0 10px}
+.lede{color:var(--ink-soft);font-size:14px;margin-bottom:18px}
+
+/* ===== TABLES ===== */
+.tw{overflow-x:auto;border:1px solid var(--rule);background:var(--card);border-radius:var(--rad);margin-bottom:4px}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:640px}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+thead th{
+  background:var(--green);color:#fff;font-family:var(--mono);
+  font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;font-weight:600;
+}
+tbody tr:nth-child(even){background:#F5F9F6}
+tbody tr:last-child td{border-bottom:0}
+.num{font-family:var(--mono);white-space:nowrap}
+
+/* ===== SCHEME CARD ===== */
+article.scheme{
+  background:var(--card);border:1px solid var(--rule);
+  border-left:5px solid var(--green);border-radius:var(--rad);
+  margin-bottom:22px;overflow:hidden;
+}
+article.scheme.dim{border-left-color:#9AA79F}
+
+/* card header */
+.card-head{
+  display:flex;flex-wrap:wrap;gap:14px;
+  align-items:flex-start;justify-content:space-between;
+  padding:16px 18px 13px;
+  border-bottom:1px solid var(--rule);background:#FAFCFA;
+}
+.card-head-text h3{margin:0 0 4px;font-size:20px;line-height:1.2}
+.rules-label{
+  font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);
+  display:block;margin-top:2px;
+}
+.rate-badge{
+  flex:0 0 auto;text-align:center;
+  border:1.5px solid var(--green);border-radius:50%;
+  width:90px;height:90px;
+  display:flex;flex-direction:column;justify-content:center;
+  color:var(--green);transform:rotate(-3deg);flex-shrink:0;
+}
+.rate-badge b{font-family:var(--mono);font-size:20px;font-weight:600;line-height:1;display:block}
+.rate-badge span{font-family:var(--mono);font-size:8px;letter-spacing:.1em;text-transform:uppercase;margin-top:4px;display:block}
+.rate-badge.off{border-color:#9AA79F;color:#6C7A72}
+
+/* ===== DEFINITION LIST (card body) ===== */
+/*
+  Grid: label col | value col.
+  Nested lists in the value column must NOT inherit the grid.
+  Fix: use display:contents on the row div so label+value are
+  direct children of the CSS grid on the dl, and wrap the dl
+  itself in a grid rather than each row.
+*/
+.card-body{padding:6px 18px 18px}
+
+.dl-grid{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  row-gap:0;
+  column-gap:16px;
+}
+.dl-grid .dl-label{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--green);
+  padding:10px 0 10px;
+  border-bottom:1px dotted var(--rule);
+  align-self:start;
+}
+.dl-grid .dl-value{
+  font-size:14px;line-height:1.55;
+  padding:10px 0 10px;
+  border-bottom:1px dotted var(--rule);
+}
+.dl-grid .dl-label:last-of-type,
+.dl-grid .dl-value:last-of-type{border-bottom:0}
+
+/* lists inside dl values */
+.dl-value ul{
+  margin:4px 0 0 0;padding-left:18px;list-style:disc;
+}
+.dl-value ul li{margin-bottom:4px;line-height:1.5}
+.dl-value ul li:last-child{margin-bottom:0}
+
+@media(max-width:600px){
+  .dl-grid{grid-template-columns:1fr}
+  .dl-grid .dl-label{padding-bottom:0;border-bottom:0;color:var(--ochre)}
+  .dl-grid .dl-value{padding-top:3px}
+}
+
+/* ===== TAGS ===== */
+.tag{
+  display:inline-block;font-family:var(--mono);font-size:10px;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:2.5px 7px;border-radius:3px;margin:0 5px 5px 0;font-weight:500;
+}
+.t80c{background:var(--ochre-pale);color:var(--ochre);border:1px solid #DCC98A}
+.teee{background:var(--green-pale);color:var(--green);border:1px solid #A9C6B6}
+.ttax{background:#F6E2E1;color:var(--red);border:1px solid #E0B4B1}
+.tclosed{background:#E8EAE8;color:#5E6B63;border:1px solid #C6CFC9}
+
+/* ===== CALLOUTS ===== */
+.trap{
+  margin:0;background:#FBF6E6;
+  border-top:1px solid #DCC98A;
+  padding:10px 18px;font-size:13.5px;line-height:1.5;
+}
+.trap b{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ochre);
+  display:inline-block;margin-right:6px;
+}
+.note{
+  background:var(--green-pale);border-left:3px solid var(--green);
+  padding:12px 16px;font-size:13.5px;border-radius:0 var(--rad) var(--rad) 0;
+  margin-bottom:10px;line-height:1.55;
+}
+.warn{
+  background:#F8ECEB;border-left:3px solid var(--red);
+  padding:12px 16px;font-size:13.5px;border-radius:0 var(--rad) var(--rad) 0;
+  margin-top:14px;line-height:1.55;
+}
+.no{color:var(--red);font-weight:600}
+.yes{color:var(--green);font-weight:600}
+.hidden{display:none !important}
+code{font-family:var(--mono);font-size:.88em;background:var(--green-pale);padding:1px 4px;border-radius:2px}
+
+footer{border-top:1px solid var(--rule);padding-top:18px;font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+footer p+p{margin-top:8px}
+
+/* ===== PRINT ===== */
+@media print{
+  body{background:#fff;font-size:10pt}
+  nav.jump,.navrow{display:none}
+  article.scheme{break-inside:avoid;border-left-width:3px}
+  .tw{overflow:visible}
+  table{min-width:0}
+  a{color:inherit;text-decoration:none}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ========== MASTHEAD ========== -->
+<header class="mast">
+  <p class="eyebrow">Personal Finance · Small Savings &amp; Government Schemes</p>
+  <h1>Small Savings Schemes of India<br>Complete Revision Sheet</h1>
+  <p class="standfirst">Every scheme on one page: tenor, extension, min/max, eligibility, payout, joint holding, transfer, premature exit, lock-ins and tax. Rates are the officially notified Q2 FY 2026-27 figures, unchanged for the ninth consecutive quarter.</p>
+  <span class="stamp">Q2 FY 2026-27 · 1 Jul – 30 Sep 2026 · rates unchanged</span>
+</header>
+
+<!-- ========== NAV ========== -->
+<nav class="jump">
+  <div class="navrow">
+    <input id="q" type="search" placeholder="Filter… (try: 80C  joint  NRI  premature)" aria-label="Filter schemes">
+    <a href="#matrix">Matrix</a>
+    <a href="#sb">1·SB</a>
+    <a href="#rd">2·RD</a>
+    <a href="#td">3·TD</a>
+    <a href="#mis">4·MIS</a>
+    <a href="#scss">5·SCSS</a>
+    <a href="#nsc">6·NSC</a>
+    <a href="#kvp">7·KVP</a>
+    <a href="#ppf">8·PPF</a>
+    <a href="#ssy">9·SSY</a>
+    <a href="#mssc">10·MSSC</a>
+    <a href="#nps">11·NPS</a>
+    <a href="#common">Common rules</a>
+    <a href="#tax">Tax table</a>
+    <a href="#numbers">Numbers drill</a>
+    <a href="#hooks">Memory hooks</a>
+  </div>
+</nav>
+
+<!-- ========== SECTION 1: MATRIX ========== -->
+<section id="matrix">
+  <h2>1 · Master Matrix</h2>
+  <p class="lede">Rates notified by the Department of Economic Affairs, Ministry of Finance. Reviewed every quarter; benchmarked to G-Sec yields of comparable maturity plus a prescribed spread.</p>
+  <div class="tw">
+    <table>
+      <thead>
+        <tr>
+          <th>Scheme</th>
+          <th class="num">Rate p.a.</th>
+          <th>Compounding / payout</th>
+          <th class="num">Tenor</th>
+          <th>Extendable?</th>
+          <th class="num">Min deposit</th>
+          <th class="num">Max deposit</th>
+          <th>80C?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PO Savings Account (SB)</td>
+          <td class="num">4.00%</td>
+          <td>Simple; credited annually</td>
+          <td class="num">Open-ended</td>
+          <td>N/A</td>
+          <td class="num">₹500 (balance)</td>
+          <td class="num">No limit</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Recurring Deposit (RD)</td>
+          <td class="num">6.70%</td>
+          <td>Quarterly compound; lump sum at maturity</td>
+          <td class="num">5 years</td>
+          <td>+5 yrs (repeatable)</td>
+          <td class="num">₹100/month</td>
+          <td class="num">No limit</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Time Deposit — 1 yr</td>
+          <td class="num">6.90%</td>
+          <td>Quarterly calculated; paid annually</td>
+          <td class="num">1 year</td>
+          <td>Yes, same tenure</td>
+          <td class="num">₹1,000</td>
+          <td class="num">No limit</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Time Deposit — 2 yr</td>
+          <td class="num">7.00%</td>
+          <td>Quarterly calculated; paid annually</td>
+          <td class="num">2 years</td>
+          <td>Yes</td>
+          <td class="num">₹1,000</td>
+          <td class="num">No limit</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Time Deposit — 3 yr</td>
+          <td class="num">7.10%</td>
+          <td>Quarterly calculated; paid annually</td>
+          <td class="num">3 years</td>
+          <td>Yes</td>
+          <td class="num">₹1,000</td>
+          <td class="num">No limit</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td><b>Time Deposit — 5 yr</b></td>
+          <td class="num">7.50%</td>
+          <td>Quarterly calculated; paid annually</td>
+          <td class="num">5 years</td>
+          <td>Yes</td>
+          <td class="num">₹1,000</td>
+          <td class="num">No limit</td>
+          <td class="yes">Yes</td>
+        </tr>
+        <tr>
+          <td>Monthly Income Scheme (MIS)</td>
+          <td class="num">7.40%</td>
+          <td>Simple; <b>paid monthly</b></td>
+          <td class="num">5 years</td>
+          <td class="no">No</td>
+          <td class="num">₹1,000</td>
+          <td class="num">₹9L / ₹15L joint</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Senior Citizens' Savings Scheme (SCSS)</td>
+          <td class="num">8.20%</td>
+          <td>Simple; <b>paid quarterly</b></td>
+          <td class="num">5 years</td>
+          <td>+3 yrs unlimited blocks</td>
+          <td class="num">₹1,000</td>
+          <td class="num">₹30L total</td>
+          <td class="yes">Yes</td>
+        </tr>
+        <tr>
+          <td>National Savings Certificate (NSC)</td>
+          <td class="num">7.70%</td>
+          <td>Annual compound; cumulative to maturity</td>
+          <td class="num">5 years</td>
+          <td class="no">No</td>
+          <td class="num">₹1,000</td>
+          <td class="num">No limit</td>
+          <td class="yes">Yes</td>
+        </tr>
+        <tr>
+          <td>Kisan Vikas Patra (KVP)</td>
+          <td class="num">7.50%</td>
+          <td>Annual compound; cumulative (doubles)</td>
+          <td class="num">115 months</td>
+          <td class="no">No</td>
+          <td class="num">₹1,000</td>
+          <td class="num">No limit</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>Public Provident Fund (PPF)</td>
+          <td class="num">7.10%</td>
+          <td>Annual compound; cumulative to maturity</td>
+          <td class="num">15 years</td>
+          <td>+5 yr blocks, unlimited</td>
+          <td class="num">₹500/FY</td>
+          <td class="num">₹1.5L/FY</td>
+          <td class="yes">Yes</td>
+        </tr>
+        <tr>
+          <td>Sukanya Samriddhi Yojana (SSY)</td>
+          <td class="num">8.20%</td>
+          <td>Annual compound; cumulative to maturity</td>
+          <td class="num">21 years</td>
+          <td class="no">No</td>
+          <td class="num">₹250/FY</td>
+          <td class="num">₹1.5L/FY</td>
+          <td class="yes">Yes</td>
+        </tr>
+        <tr>
+          <td>Mahila Samman Cert. <em>(closed Mar 2025)</em></td>
+          <td class="num">7.50%</td>
+          <td>Quarterly compound; cumulative to maturity</td>
+          <td class="num">2 years</td>
+          <td class="no">No</td>
+          <td class="num">₹1,000</td>
+          <td class="num">₹2L per woman</td>
+          <td class="no">No</td>
+        </tr>
+        <tr>
+          <td>NPS Tier I</td>
+          <td class="num">Market-linked</td>
+          <td>NAV-based daily</td>
+          <td class="num">Till age 60</td>
+          <td>Continue till 75</td>
+          <td class="num">₹500/contrib.</td>
+          <td class="num">No limit</td>
+          <td class="yes">Yes (+ extra ₹50K)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="lede" style="margin-top:10px"><b>Rate ranking (highest to lowest):</b> SCSS = SSY (8.2%) &gt; NSC (7.7%) &gt; 5-yr TD = KVP (7.5%) &gt; MIS (7.4%) &gt; PPF = 3-yr TD (7.1%) &gt; 2-yr TD (7.0%) &gt; 1-yr TD (6.9%) &gt; RD (6.7%) &gt; SB (4.0%).</p>
+</section>
+
+<!-- ========== SECTION 2: SCHEME CARDS ========== -->
+<section id="cards">
+  <h2>2 · Scheme by Scheme</h2>
+  <p class="lede">All post office schemes operate under the <b>Government Savings Promotion Act, 1873</b> (renamed 2018) and individual Rules notified in 2019. Use the filter box to isolate any scheme by keyword.</p>
+
+  <!-- ---- 1. SB ---- -->
+  <article class="scheme" id="sb" data-k="savings account sb 4% silent dormant 80TTA 80TTB 10(15)(i) 3500 joint three adults no lock-in">
+    <div class="card-head">
+      <div class="card-head-text">
+        <h3>1 · Post Office Savings Account (SB)</h3>
+        <span class="rules-label">Post Office Savings Account Scheme, 2019</span>
+      </div>
+      <div class="rate-badge"><b>4.00%</b><span>per annum</span></div>
+    </div>
+    <div class="card-body">
+      <div class="dl-grid">
+        <span class="dl-label">Tenor</span>
+        <span class="dl-value">No maturity — open-ended. No lock-in of any kind.</span>
+
+        <span class="dl-label">Extension</span>
+        <span class="dl-value">Not applicable.</span>
+
+        <span class="dl-label">Amounts</span>
+        <span class="dl-value">Min opening / min balance <b>₹500</b>. Min withdrawal ₹50. No maximum.</span>
+
+        <span class="dl-label">Where to open</span>
+        <span class="dl-value">Post offices only. Cheque book, ATM, internet and mobile banking available on request.</span>
+
+        <span class="dl-label">Interest &amp; payout</span>
+        <span class="dl-value">4% p.a. on the <b>minimum balance between the 10th and last day of each month</b>. Credited once at the end of each financial year. No interest for any month where that minimum balance falls below ₹500.</span>
+
+        <span class="dl-label">Max accounts</span>
+        <span class="dl-value"><b>One single account per individual</b>. The same person may additionally be a joint holder in another account.</span>
+
+        <span class="dl-label">Who can open</span>
+        <span class="dl-value">Single adult · joint (max 3 adults) · minor aged 10+ in own name · guardian for a minor or person of unsound mind.</span>
+
+        <span class="dl-label">Who cannot open</span>
+        <span class="dl-value"><span class="no">NRIs · HUF · trusts, societies, institutions.</span></span>
+
+        <span class="dl-label">Joint account</span>
+        <span class="dl-value">Yes — <b>Joint A</b> (both/all to operate together) or <b>Joint B</b> (either or survivor). Conversion single ⇄ joint is permitted.</span>
+
+        <span class="dl-label">Transfer</span>
+        <span class="dl-value">Transferable between post offices. Cannot be transferred to another person.</span>
+
+        <span class="dl-label">Premature rules</span>
+        <span class="dl-value">No penalty. Free withdrawal subject to ₹500 min balance. Inactive for <b>3 consecutive financial years</b> → <b>silent account</b>; revive with fresh KYC. Balance below ₹500 at FY-end → ₹50 maintenance fee; account closed if balance becomes nil.</span>
+
+        <span class="dl-label">Tax treatment</span>
+        <span class="dl-value"><span class="tag ttax">No 80C</span> Interest exempt under <b>Sec 10(15)(i)</b> up to <b>₹3,500</b> (single account) / <b>₹7,000</b> (joint account). Beyond those amounts, 80TTA (₹10,000 for non-seniors) or 80TTB (₹50,000 for seniors 60+) applies — old regime only.</span>
+      </div>
+    </div>
+    <p class="trap"><b>⚠ Exam trap —</b> Two separate exemptions apply to SB interest: Sec 10(15)(i) first (₹3,500/₹7,000), then 80TTA/80TTB on whatever remains. These ₹3,500/₹7,000 limits are unique to the SB account and do not apply to any other scheme.</p>
+  </article>
+
+  <!-- ---- 2. RD ---- -->
+  <article class="scheme" id="rd" data-k="recurring deposit rd 6.70 default rebate advance loan 50% premature 3 years SB rate">
+    <div class="card-head">
+      <div class="card-head-text">
+        <h3>2 · National Savings Recurring Deposit (RD)</h3>
+        <span class="rules-label">National Savings Recurring Deposit Account Rules, 2019</span>
+      </div>
+      <div class="rate-badge"><b>6.70%</b><span>qtrly comp.</span></div>
+    </div>
+    <div class="card-body">
+      <div class="dl-grid">
+        <span class="dl-label">Tenor</span>
+        <span class="dl-value">5 years = <b>60 monthly instalments</b>.</span>
+
+        <span class="dl-label">Extension</span>
+        <span class="dl-value">Yes — a further <b>5 years</b> on application (Form-3), at the rate prevailing on the extension date. Repeatable. Alternatively may be retained <b>without fresh deposits</b> for up to 5 years, earning the SB rate (4%).</span>
+
+        <span class="dl-label">Amounts</span>
+        <span class="dl-value">Min <b>₹100 per month</b>, multiples of ₹10. No maximum.</span>
+
+        <span class="dl-label">Where to open</span>
+        <span class="dl-value">Post offices. Online via DOP internet banking / IPPB app.</span>
+
+        <span class="dl-label">Interest &amp; payout</span>
+        <span class="dl-value">6.70% p.a. compounded quarterly. Entire principal + interest paid as a lump sum at maturity only.</span>
+
+        <span class="dl-label">Max accounts</span>
+        <span class="dl-value"><b>Any number</b> of accounts, individually or jointly.</span>
+
+        <span class="dl-label">Who can open</span>
+        <span class="dl-value">Single adult · joint (max 3) · minor 10+ · guardian for minor / person of unsound mind.</span>
+
+        <span class="dl-label">Who cannot open</span>
+        <span class="dl-value"><span class="no">NRIs · HUF · companies and trusts.</span></span>
+
+        <span class="dl-label">Joint account</span>
+        <span class="dl-value">Yes, up to 3 adults. Conversion single ⇄ joint permitted. Can be pledged as security.</span>
+
+        <span class="dl-label">Default &amp; rebate</span>
+        <span class="dl-value">
+          <ul>
+            <li><b>Default fee:</b> ₹1 per ₹100 of instalment per month of delay.</li>
+            <li>More than <b>4 defaults</b> → account discontinued; revivable within 2 months of the 4th default on payment of arrears + fees.</li>
+            <li><b>Advance rebate:</b> 6 advance deposits → ₹10 per ₹100 denomination rebate; 12 advance deposits → ₹40 per ₹100.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Loan</span>
+        <span class="dl-value">Up to <b>50% of the balance</b>, available after <b>12 deposits completed</b> (one full year). Interest: <b>2% p.a. above the RD rate</b>. Repayable in lump sum or instalments; unrepaid loan + interest recovered from maturity value.</span>
+
+        <span class="dl-label">Premature closure</span>
+        <span class="dl-value">Allowed only <b>after 3 years</b> from the date of opening. Interest is then paid at the <b>PO Savings Account rate (4%)</b> — irrespective of how long the RD ran. Not allowed at all in the first 3 years (except on death).</span>
+
+        <span class="dl-label">Tax treatment</span>
+        <span class="dl-value"><span class="tag ttax">No 80C · interest fully taxable</span> TDS under Sec 194A if interest exceeds the threshold.</span>
+      </div>
+    </div>
+    <p class="trap"><b>⚠ Exam trap —</b> RD premature closure gives the <b>SB rate (4%)</b>, not "rate minus 2%". TD uses "rate minus 2%" for early exit. These are the two most commonly swapped penalties. Know: RD → SB rate; TD → TD rate less 2%.</p>
+  </article>
+
+  <!-- ---- 3. TD ---- -->
+  <article class="scheme" id="td" data-k="time deposit td fixed 1 2 3 5 year 6.9 7.0 7.1 7.5 80C 5-year pledge premature 6 months 2% penalty annual interest">
+    <div class="card-head">
+      <div class="card-head-text">
+        <h3>3 · National Savings Time Deposit / Post Office TD (POTD)</h3>
+        <span class="rules-label">National Savings Time Deposit Account Rules, 2019</span>
+      </div>
+      <div class="rate-badge"><b>6.9–7.5%</b><span>by tenure</span></div>
+    </div>
+    <div class="card-body">
+      <div class="dl-grid">
+        <span class="dl-label">Tenor &amp; rates</span>
+        <span class="dl-value">Four buckets: <b>1 yr (6.90%) · 2 yr (7.00%) · 3 yr (7.10%) · 5 yr (7.50%)</b>.</span>
+
+        <span class="dl-label">Extension</span>
+        <span class="dl-value">Yes, for an identical term. Window from maturity date to apply: 6 months (1-yr), 12 months (2-yr), 18 months (3-yr and 5-yr). Auto-renewal can be opted at opening.</span>
+
+        <span class="dl-label">Amounts</span>
+        <span class="dl-value">Min <b>₹1,000</b>, multiples of ₹100. No maximum.</span>
+
+        <span class="dl-label">Where to open</span>
+        <span class="dl-value">Post offices. Can be pledged to banks and financial institutions as security.</span>
+
+        <span class="dl-label">Interest &amp; payout</span>
+        <span class="dl-value">Calculated quarterly but <b>credited / paid annually</b>. Annual interest credited to the holder's linked SB account. Interest not withdrawn earns no further return.</span>
+
+        <span class="dl-label">Max accounts</span>
+        <span class="dl-value">Any number in any tenure bucket, individually or jointly.</span>
+
+        <span class="dl-label">Who can open</span>
+        <span class="dl-value">Single adult · joint (max 3) · minor 10+ · guardian.</span>
+
+        <span class="dl-label">Who cannot open</span>
+        <span class="dl-value"><span class="no">NRIs · HUF.</span></span>
+
+        <span class="dl-label">Joint account</span>
+        <span class="dl-value">Yes, up to 3 adults. Conversion single ⇄ joint permitted.</span>
+
+        <span class="dl-label">Premature closure</span>
+        <span class="dl-value">
+          <ul>
+            <li><b>Before 6 months</b> — not permitted at all.</li>
+            <li><b>6 to 12 months</b> — only the <b>SB rate (4%)</b> paid.</li>
+            <li><b>After 1 year (1/2/3-yr TDs)</b> — completed years earn <b>TD rate less 2%</b>; broken period beyond that earns SB rate.</li>
+            <li><b>5-yr TD closed after 4 years</b> — earns the <b>SB rate (4%)</b> for the entire period. <em>(Nov 2023 amendment; previously the 3-yr TD rate applied.)</em></li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Tax treatment</span>
+        <span class="dl-value"><span class="tag t80c">5-yr TD only: Sec 80C</span> 1/2/3-yr TDs carry no 80C deduction. Interest is fully taxable in all four buckets. TDS under Sec 194A applies if interest exceeds the threshold.</span>
+      </div>
+    </div>
+    <p class="trap"><b>⚠ Exam trap —</b> Only the 5-year TD qualifies for 80C — and even then, the interest earned is taxable each year. It is an ETE instrument, not EEE. Premature closure before 5 years defeats the 80C deduction claimed. Also note: the 5-yr TD closed after year 4 now earns the SB rate (4%), not the 3-yr TD rate.</p>
+  </article>
+
+  <!-- ---- 4. MIS ---- -->
+  <article class="scheme" id="mis" data-k="monthly income scheme mis pomis 7.4 monthly payout 9 lakh 15 lakh 3 lakh minor 1 year 2% 1% premature joint guardian">
+    <div class="card-head">
+      <div class="card-head-text">
+        <h3>4 · Post Office Monthly Income Scheme (MIS / POMIS)</h3>
+        <span class="rules-label">National Savings Monthly Income Account Rules, 2019</span>
+      </div>
+      <div class="rate-badge"><b>7.40%</b><span>paid monthly</span></div>
+    </div>
+    <div class="card-body">
+      <div class="dl-grid">
+        <span class="dl-label">Tenor</span>
+        <span class="dl-value"><b>5 years.</b></span>
+
+        <span class="dl-label">Extension</span>
+        <span class="dl-value"><span class="no">No extension facility.</span> Close and reinvest into a new account on maturity. If left unclosed, balance earns the SB rate for up to 2 years only.</span>
+
+        <span class="dl-label">Amounts</span>
+        <span class="dl-value">
+          <ul>
+            <li>Min <b>₹1,000</b>, multiples of ₹1,000.</li>
+            <li>Max <b>₹9 lakh</b> (single account).</li>
+            <li>Max <b>₹15 lakh</b> (joint account) — raised from ₹9L in Budget 2023.</li>
+            <li>Guardian on behalf of minor: separate limit of <b>₹3 lakh</b>.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Where to open</span>
+        <span class="dl-value">Post offices.</span>
+
+        <span class="dl-label">Interest &amp; payout</span>
+        <span class="dl-value">7.4% p.a. paid as <b>equal monthly instalments</b> from one month after opening. Credited to the linked SB account or via ECS. Unclaimed monthly interest earns <b>no further interest.</b></span>
+
+        <span class="dl-label">Max accounts</span>
+        <span class="dl-value">Any number of accounts, but the aggregate across all accounts must stay within the ₹9L (single) / ₹15L (joint) ceiling. In a joint account, <b>each holder's share is counted equally</b> against his individual ₹9L headroom.</span>
+
+        <span class="dl-label">Who can open</span>
+        <span class="dl-value">Single adult · joint (max 3 adults) · minor 10+ · guardian for a minor.</span>
+
+        <span class="dl-label">Who cannot open</span>
+        <span class="dl-value"><span class="no">NRIs · HUF.</span></span>
+
+        <span class="dl-label">Joint account</span>
+        <span class="dl-value">Yes, up to 3 adults; ₹15L ceiling for joint. Conversion single ⇄ joint permitted.</span>
+
+        <span class="dl-label">Transfer</span>
+        <span class="dl-value">Between post offices. Can be pledged as security.</span>
+
+        <span class="dl-label">Premature closure</span>
+        <span class="dl-value">
+          <ul>
+            <li><b>Before 1 year</b> — not permitted.</li>
+            <li><b>After 1 year, before 3 years</b> — <b>2% of principal deducted.</b></li>
+            <li><b>After 3 years, before 5 years</b> — <b>1% of principal deducted.</b></li>
+            <li>Interest already paid out is not recovered. On death: no deduction; nominee receives principal plus interest up to the preceding month.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Tax treatment</span>
+        <span class="dl-value"><span class="tag ttax">No 80C · interest fully taxable</span> No TDS at the post office on MIS interest, but the holder must declare and pay tax on it.</span>
+      </div>
+    </div>
+    <p class="trap"><b>⚠ Exam trap —</b> MIS penalty is a deduction <b>from principal</b> (2% / 1%), not a cut in the interest rate. Compare SCSS: same style of penalty. TD and RD instead cut the interest rate. Know the two groups: (MIS, SCSS) → principal deduction; (TD, RD) → rate reduction.</p>
+  </article>
+
+  <!-- ---- 5. SCSS ---- -->
+  <article class="scheme" id="scss" data-k="senior citizens savings scheme scss 8.2 30 lakh 60 years VRS 55 defence 50 quarterly spouse joint unlimited blocks 3 year extension premature 1.5% 1% 80C TDS 1 lakh 80TTB">
+    <div class="card-head">
+      <div class="card-head-text">
+        <h3>5 · Senior Citizens' Savings Scheme (SCSS)</h3>
+        <span class="rules-label">Senior Citizens' Savings Scheme Rules, 2019 (amended Nov 2023)</span>
+      </div>
+      <div class="rate-badge"><b>8.20%</b><span>paid quarterly</span></div>
+    </div>
+    <div class="card-body">
+      <div class="dl-grid">
+        <span class="dl-label">Tenor</span>
+        <span class="dl-value"><b>5 years.</b></span>
+
+        <span class="dl-label">Extension</span>
+        <span class="dl-value"><b>Yes — unlimited successive 3-year blocks</b> (Nov 2023 amendment removed the earlier "once only" restriction). Apply within 1 year of maturity. Extended block earns the rate prevailing on the date of maturity of the original / previous block.</span>
+
+        <span class="dl-label">Amounts</span>
+        <span class="dl-value">Min <b>₹1,000</b>, multiples of ₹1,000. Max <b>₹30 lakh aggregate</b> across all SCSS accounts (raised from ₹15L in Budget 2023).</span>
+
+        <span class="dl-label">Where to open</span>
+        <span class="dl-value">Post offices <b>and</b> authorised banks — all public-sector banks plus ICICI, HDFC, Axis and IDBI Bank.</span>
+
+        <span class="dl-label">Interest &amp; payout</span>
+        <span class="dl-value">8.2% p.a. simple interest, <b>paid quarterly</b> on 1 April, 1 July, 1 October and 1 January. Not compounded. Unclaimed quarterly interest earns no further return.</span>
+
+        <span class="dl-label">Max accounts</span>
+        <span class="dl-value">Multiple accounts permitted, subject to the ₹30L aggregate ceiling.</span>
+
+        <span class="dl-label">Who can open</span>
+        <span class="dl-value">
+          <ul>
+            <li>Any individual <b>aged 60 or above.</b></li>
+            <li><b>Aged 55–60</b> — retired on superannuation or under VRS / special VRS.</li>
+            <li><b>Aged 50+ retired defence personnel</b> — civilian defence employees are excluded.</li>
+            <li>For the 55–60 and 50+ categories: account must be opened <b>within 3 months</b> of receiving retirement benefits (relaxed from 1 month by the Nov 2023 amendment) and the deposit cannot exceed the retirement benefit amount received.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Who cannot open</span>
+        <span class="dl-value"><span class="no">NRIs · PIOs · HUF.</span></span>
+
+        <span class="dl-label">Joint account</span>
+        <span class="dl-value">Only with the <b>spouse</b>. The entire deposit is attributed to the <b>first / primary holder</b> for the ₹30L ceiling and for tax purposes. The spouse need not meet the age requirement.</span>
+
+        <span class="dl-label">Transfer</span>
+        <span class="dl-value">Between post offices and banks. Transfer fee: ₹5 per ₹1,000 of deposit. <span class="no">No loan facility and cannot be pledged.</span></span>
+
+        <span class="dl-label">Premature closure</span>
+        <span class="dl-value">
+          <ul>
+            <li><b>Before 1 year</b> — all interest paid out is recovered; only principal returned.</li>
+            <li><b>1 to 2 years</b> — <b>1.5% of deposit</b> amount deducted.</li>
+            <li><b>2 to 5 years</b> — <b>1% of deposit</b> amount deducted.</li>
+            <li><b>During an extended block</b> — no deduction if closed after 1 year into that extension block.</li>
+            <li>On death — no penalty; interest at SCSS rate up to date of death, SB rate thereafter. A surviving spouse who is joint holder may continue the account in his/her own name.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Tax treatment</span>
+        <span class="dl-value"><span class="tag t80c">80C on deposit</span> Interest is fully taxable. <b>TDS</b> under Sec 194A where interest exceeds <b>₹1,00,000 p.a.</b> for a senior citizen (raised from ₹50,000 in Budget 2025). <b>Sec 80TTB</b> deduction of up to ₹50,000 on interest income available to seniors under the old regime.</span>
+      </div>
+    </div>
+    <p class="trap"><b>⚠ Exam trap —</b> Three tested facts: (a) 55–60 and 50+ defence entries are conditional on the <em>source</em> of money (retirement benefits) AND a <em>3-month window</em>; (b) joint holding is restricted to the spouse only — and the ceiling attaches to the first holder alone; (c) the SCSS extension cap was "once only" before Nov 2023 — old books are wrong.</p>
+  </article>
+
+  <!-- ---- 6. NSC ---- -->
+  <article class="scheme" id="nsc" data-k="national savings certificate nsc 7.7 five year 80C deemed reinvestment years 1-4 pledge joint no premature cumulative">
+    <div class="card-head">
+      <div class="card-head-text">
+        <h3>6 · National Savings Certificate, VIII Issue (NSC)</h3>
+        <span class="rules-label">National Savings Certificates (VIIIth Issue) Rules, 2019</span>
+      </div>
+      <div class="rate-badge"><b>7.70%</b><span>annual comp.</span></div>
+    </div>
+    <div class="card-body">
+      <div class="dl-grid">
+        <span class="dl-label">Tenor</span>
+        <span class="dl-value"><b>5 years.</b> ₹1,000 grows to approximately ₹1,449 at maturity.</span>
+
+        <span class="dl-label">Extension</span>
+        <span class="dl-value"><span class="no">None.</span> On maturity, invest proceeds into a fresh NSC if desired.</span>
+
+        <span class="dl-label">Amounts</span>
+        <span class="dl-value">Min <b>₹1,000</b>, multiples of ₹100. <b>No maximum</b> — though the 80C deduction is capped at ₹1.5L across all eligible instruments.</span>
+
+        <span class="dl-label">Where to open</span>
+        <span class="dl-value">Post offices only.</span>
+
+        <span class="dl-label">Interest &amp; payout</span>
+        <span class="dl-value">7.7% compounded annually. <b>Paid entirely at maturity</b> — purely cumulative; no interim cash flows.</span>
+
+        <span class="dl-label">Max accounts</span>
+        <span class="dl-value">Any number of certificates.</span>
+
+        <span class="dl-label">Who can open</span>
+        <span class="dl-value">Single adult · joint up to 3 adults (Type A — payable jointly; Type B — payable to either or survivor) · minor 10+ · guardian.</span>
+
+        <span class="dl-label">Who cannot open</span>
+        <span class="dl-value"><span class="no">NRIs · HUF · trusts, companies, societies.</span></span>
+
+        <span class="dl-label">Joint account</span>
+        <span class="dl-value">Yes — Joint A and Joint B variants, up to 3 adults.</span>
+
+        <span class="dl-label">Transfer</span>
+        <span class="dl-value">Freely transferable between post offices. Transfer to another person is permitted only in specific cases: on the holder's death to nominee/legal heir; on a court order; to the pledgee (Gazetted Officer); or from a deceased joint holder to the surviving joint holder. <b>Can be pledged</b> as security to banks, government bodies and housing finance companies.</span>
+
+        <span class="dl-label">Premature closure</span>
+        <span class="dl-value"><b>Not permitted</b> except: (a) death of the holder or any holder in a joint account; (b) forfeiture by a pledgee who is a Gazetted Officer; (c) court order. Effectively a hard 5-year lock-in in all other cases.</span>
+
+        <span class="dl-label">Tax treatment</span>
+        <span class="dl-value">
+          <span class="tag t80c">80C on purchase</span>
+          <ul>
+            <li>Interest accrues annually and must be declared as <b>"Income from Other Sources"</b> each year — even though no cash is received.</li>
+            <li><b>Years 1–4:</b> the accrued interest is deemed reinvested in NSC and therefore qualifies as a fresh <b>80C deduction</b> in that year (within the ₹1.5L limit), effectively cancelling the tax for most investors.</li>
+            <li><b>Year 5:</b> the final year's interest is paid out at maturity, taxable as income, and has <b>no corresponding 80C offset</b> because money leaves the scheme.</li>
+            <li>No TDS is deducted at source.</li>
+          </ul>
+        </span>
+      </div>
+    </div>
+    <p class="trap"><b>⚠ Exam trap —</b> The deemed-reinvestment rule is the single most tested NSC concept. Years 1–4 interest: taxable as income, but offset by 80C deduction → effectively neutral for those with unused 80C room. Year 5 interest: taxable income with no 80C offset. Also remember: NSC can be pledged (unlike PPF); PPF cannot.</p>
+  </article>
+
+  <!-- ---- 7. KVP ---- -->
+  <article class="scheme" id="kvp" data-k="kisan vikas patra kvp 7.5 115 months doubles no 80C premature 30 months 2.5 years pledge joint">
+    <div class="card-head">
+      <div class="card-head-text">
+        <h3>7 · Kisan Vikas Patra (KVP)</h3>
+        <span class="rules-label">Kisan Vikas Patra Rules, 2019</span>
+      </div>
+      <div class="rate-badge"><b>7.50%</b><span>115 months</span></div>
+    </div>
+    <div class="card-body">
+      <div class="dl-grid">
+        <span class="dl-label">Tenor</span>
+        <span class="dl-value"><b>115 months</b> (9 years 7 months) at the current 7.5% rate. The tenor is not fixed — it moves inversely with the rate, because the scheme's design promise is that money <b>doubles</b> at maturity.</span>
+
+        <span class="dl-label">Extension</span>
+        <span class="dl-value"><span class="no">None.</span> Reinvest proceeds in a fresh KVP if desired.</span>
+
+        <span class="dl-label">Amounts</span>
+        <span class="dl-value">Min <b>₹1,000</b>, multiples of ₹100. No maximum.</span>
+
+        <span class="dl-label">Where to open</span>
+        <span class="dl-value">Post offices and designated public-sector banks.</span>
+
+        <span class="dl-label">Interest &amp; payout</span>
+        <span class="dl-value">7.5% compounded annually. Entire corpus (original amount × 2) paid at maturity. Nothing in between.</span>
+
+        <span class="dl-label">Max accounts</span>
+        <span class="dl-value">Any number of certificates.</span>
+
+        <span class="dl-label">Who can open</span>
+        <span class="dl-value">Single adult · joint up to 3 adults (Type A / Type B) · minor 10+ · guardian.</span>
+
+        <span class="dl-label">Who cannot open</span>
+        <span class="dl-value"><span class="no">NRIs · HUF · trusts and companies.</span></span>
+
+        <span class="dl-label">Joint account</span>
+        <span class="dl-value">Yes — Joint A and Joint B, up to 3 adults.</span>
+
+        <span class="dl-label">Transfer</span>
+        <span class="dl-value">Between post offices freely. Transfer to another person only in the same specific circumstances as NSC. Can be pledged as security.</span>
+
+        <span class="dl-label">Premature closure</span>
+        <span class="dl-value">Permitted after <b>2 years 6 months (30 months)</b> from the date of deposit, at the value prescribed in the applicable tables. Also allowed before 30 months on death of holder, forfeiture by a Gazetted-Officer pledgee, or court order.</span>
+
+        <span class="dl-label">Tax treatment</span>
+        <span class="dl-value"><span class="tag ttax">No 80C · interest fully taxable</span> Interest is taxable on accrual or receipt, as consistently followed. No TDS.</span>
+      </div>
+    </div>
+    <p class="trap"><b>⚠ Exam trap —</b> KVP looks like NSC but gets <b>zero tax benefit</b>. Its selling points are capital doubling and liquidity from month 30. The exam pair to drill: <em>NSC = 80C deduction; KVP = no tax benefit.</em> Also: KVP tenor changes each quarter when the rate changes; NSC tenor is fixed at 5 years.</p>
+  </article>
+
+  <!-- ---- 8. PPF ---- -->
+  <article class="scheme" id="ppf" data-k="public provident fund ppf 15 years 7.1 500 1.5 lakh EEE no joint one account loan 3rd 6th year 25% withdrawal 7th year 50% extension 5 year block NRI attachment court immunity">
+    <div class="card-head">
+      <div class="card-head-text">
+        <h3>8 · Public Provident Fund (PPF)</h3>
+        <span class="rules-label">Public Provident Fund Scheme, 2019</span>
+      </div>
+      <div class="rate-badge"><b>7.10%</b><span>annual comp.</span></div>
+    </div>
+    <div class="card-body">
+      <div class="dl-grid">
+        <span class="dl-label">Tenor</span>
+        <span class="dl-value"><b>15 financial years</b>, counted from the <b>end of the FY in which the account was opened</b> — so an account opened in any month of FY 2024-25 matures on 31 March 2040.</span>
+
+        <span class="dl-label">Extension</span>
+        <span class="dl-value">In blocks of <b>5 years, unlimited times</b>, in either mode:
+          <ul>
+            <li><b>With fresh contributions</b> — apply within 1 year of maturity (Form 4). Up to 60% of the balance at the start of the block may be withdrawn over the block (once per FY).</li>
+            <li><b>Without contributions</b> — the default if no application is filed. Balance keeps earning the PPF rate; any amount may be withdrawn once per FY. Once in this mode, contributions cannot resume.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Amounts</span>
+        <span class="dl-value">Min <b>₹500 per FY</b>. Max <b>₹1,50,000 per FY</b>, multiples of ₹50. The ₹1.5L cap is <b>combined</b> across the holder's own account plus any minor account he operates as guardian. Any number of contributions per year (the old 12-deposit limit was removed in 2019).</span>
+
+        <span class="dl-label">Where to open</span>
+        <span class="dl-value">Post offices and authorised banks (all PSBs and major private banks including SBI, HDFC, ICICI, Axis, Kotak).</span>
+
+        <span class="dl-label">Interest &amp; payout</span>
+        <span class="dl-value">Compounded annually. Interest computed on the <b>lowest balance between the close of the 5th day and the last day of each month</b>. Credited on 31 March each year. Deposit <b>on or before the 5th</b> to earn interest for that month. Entire corpus paid at maturity.</span>
+
+        <span class="dl-label">Max accounts</span>
+        <span class="dl-value"><b>Strictly one account per individual.</b> A guardian may additionally hold one per minor ward. A second own account is irregular: merged with the first, earns zero interest for the excess, and may attract regulatory action.</span>
+
+        <span class="dl-label">Who can open</span>
+        <span class="dl-value">Any <b>resident individual</b> in his/her own name; a guardian on behalf of a minor or person of unsound mind.</span>
+
+        <span class="dl-label">Who cannot open</span>
+        <span class="dl-value">
+          <ul>
+            <li><span class="no">NRIs cannot open a new account.</span></li>
+            <li><span class="no">HUF cannot open</span> (barred since 2005).</li>
+            <li>A <b>resident who becomes NRI</b> — existing account continues to maturity at the PPF rate but <b>cannot be extended</b>. From 1 Oct 2024, accounts where NRI status was undisclosed earn <b>no interest</b> retrospectively.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Joint account</span>
+        <span class="dl-value"><b class="no">Not permitted under any circumstances.</b> Nomination up to one or more persons is allowed (nomination changes are now free).</span>
+
+        <span class="dl-label">Transfer</span>
+        <span class="dl-value">Freely transferable between post offices and banks with no loss of continuity. Not transferable to another person. <b class="no">Cannot be pledged as security.</b></span>
+
+        <span class="dl-label">Loan facility</span>
+        <span class="dl-value">Available from the <b>start of the 3rd FY to the end of the 6th FY</b> from account opening.
+          <ul>
+            <li>Maximum: <b>25% of the balance at the end of the 2nd preceding FY</b> (not the current balance).</li>
+            <li>Interest: <b>1% p.a. above the prevailing PPF rate</b> (currently 8.1% p.a.) if repaid within <b>36 months</b>.</li>
+            <li>If not repaid within 36 months: interest jumps to <b>6% p.a. flat</b> (charged from the date of loan disbursal retroactively).</li>
+            <li>Repayment: principal first, then interest (max 2 monthly instalments for interest portion).</li>
+            <li>Second loan only after first is fully cleared.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Partial withdrawal</span>
+        <span class="dl-value">From the <b>7th FY</b> onwards. Once per financial year. Maximum: <b>50% of the lower of</b> (a) balance at end of the <b>4th FY immediately preceding</b> the year of withdrawal, or (b) balance at end of the <b>immediately preceding FY</b>.</span>
+
+        <span class="dl-label">Premature closure</span>
+        <span class="dl-value">Only after <b>5 complete financial years</b>, and only for three reasons:
+          <ul>
+            <li>Life-threatening illness of the holder, spouse, dependent children or parents (with medical certificate).</li>
+            <li>Higher education of the holder or dependent children (with admission proof).</li>
+            <li>Change of residency status to NRI (with emigration documents).</li>
+          </ul>
+          Penalty: interest recomputed at <b>1% below the rate credited</b>, from the date of opening or from the start of the current 5-year extension block — whichever is relevant.
+        </span>
+
+        <span class="dl-label">Tax treatment</span>
+        <span class="dl-value"><span class="tag t80c">80C on deposit</span><span class="tag teee">EEE status</span> Contributions deductible under 80C. Interest exempt under <b>Sec 10(11)</b>. Maturity proceeds fully exempt. <b>Balance is immune from court attachment</b> for the holder's debts — a unique statutory protection not available in any other small savings scheme.</span>
+      </div>
+    </div>
+    <p class="trap"><b>⚠ Exam trap —</b> Four separate year-based rules for PPF: deposit before the <b>5th of each month</b> (interest); loan from the <b>3rd to 6th FY</b>; partial withdrawal from the <b>7th FY</b>; premature closure after <b>5 complete FYs</b>. The 15-year clock starts from the <em>end of the FY</em> of opening, not the calendar date. And partial withdrawal is capped on the <em>lower</em> of two balances — the earlier, smaller balance almost always binds.</p>
+  </article>
+
+  <!-- ---- 9. SSY ---- -->
+  <article class="scheme" id="ssy" data-k="sukanya samriddhi ssy girl child below 10 21 years 15 years deposit 250 1.5 lakh 8.2 one per girl two per family twins EEE 80C marriage 18 partial withdrawal 50%">
+    <div class="card-head">
+      <div class="card-head-text">
+        <h3>9 · Sukanya Samriddhi Account (SSY)</h3>
+        <span class="rules-label">Sukanya Samriddhi Account Scheme, 2019</span>
+      </div>
+      <div class="rate-badge"><b>8.20%</b><span>annual comp.</span></div>
+    </div>
+    <div class="card-body">
+      <div class="dl-grid">
+        <span class="dl-label">Tenor</span>
+        <span class="dl-value">Account matures <b>21 years from the date of opening</b> — or on the girl's marriage after she turns 18, whichever is earlier. <b>Deposits are required only for the first 15 years</b>; balance earns interest for the remaining 6 years with no further deposits needed.</span>
+
+        <span class="dl-label">Extension</span>
+        <span class="dl-value"><span class="no">No extension.</span> After 21 years the account earns no interest and the corpus should be withdrawn.</span>
+
+        <span class="dl-label">Amounts</span>
+        <span class="dl-value">Min <b>₹250 per FY</b>. Max <b>₹1,50,000 per FY</b>, multiples of ₹50. Aggregated across all accounts opened for the same girl.</span>
+
+        <span class="dl-label">Where to open</span>
+        <span class="dl-value">Post offices and authorised banks.</span>
+
+        <span class="dl-label">Interest &amp; payout</span>
+        <span class="dl-value">8.2% compounded annually; credited at the end of each FY. Entire corpus paid as lump sum on maturity.</span>
+
+        <span class="dl-label">Max accounts</span>
+        <span class="dl-value"><b>One account per girl child.</b> Maximum <b>two accounts per family</b>. A third is allowed only where twins/triplets are born as the second birth, or triplets at the first birth — with a birth certificate and affidavit.</span>
+
+        <span class="dl-label">Who can open</span>
+        <span class="dl-value">A <b>natural or legal guardian</b>, for a girl child <b>below 10 years of age</b> at opening. The girl herself operates the account once she turns 18.</span>
+
+        <span class="dl-label">Who cannot open</span>
+        <span class="dl-value"><span class="no">Girl aged 10 or above at opening · NRI girl child.</span> From Oct 2024: accounts opened by grandparents who are not legal guardians must be transferred to the natural/legal guardian.</span>
+
+        <span class="dl-label">Joint account</span>
+        <span class="dl-value"><b class="no">Not permitted.</b> Single girl-child account only. Nomination allowed.</span>
+
+        <span class="dl-label">Transfer</span>
+        <span class="dl-value">Free on production of proof of the guardian/girl relocating; otherwise a transfer fee applies. Transferable between post offices and banks anywhere in India.</span>
+
+        <span class="dl-label">Default</span>
+        <span class="dl-value">Failure to deposit the ₹250 minimum makes the account <b>irregular</b>. Revive by paying <b>₹50 penalty per defaulted year</b> + arrears, within 15 years of opening.</span>
+
+        <span class="dl-label">Partial withdrawal</span>
+        <span class="dl-value">After the girl attains <b>18</b> or passes the <b>10th standard</b> (whichever is earlier): up to <b>50% of balance</b> at the end of the preceding FY, for higher education. Available as a lump sum or up to 5 annual instalments.</span>
+
+        <span class="dl-label">Premature closure</span>
+        <span class="dl-value">
+          <ul>
+            <li><b>Marriage after age 18</b> — permitted from 1 month before to 3 months after the date of marriage (documentary proof required).</li>
+            <li><b>Death of the girl child</b> — balance paid to guardian with interest.</li>
+            <li><b>After 5 years, on extreme compassionate grounds</b> — life-threatening illness of the holder or death of the guardian.</li>
+            <li><b>Any other ground of hardship</b> — closure permitted but interest paid only at the <b>SB rate (4%)</b>.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Tax treatment</span>
+        <span class="dl-value"><span class="tag t80c">80C on deposit</span><span class="tag teee">EEE status</span> Deposits deductible under 80C. Interest exempt under <b>Sec 10(11A)</b>. Maturity proceeds fully exempt.</span>
+      </div>
+    </div>
+    <p class="trap"><b>⚠ Exam trap —</b> Three numbers that confuse: girl must be <b>below 10</b> at opening; deposits required only for <b>15 years</b>; account matures at <b>21 years</b>. Partial withdrawal trigger is 18 years <em>or 10th standard pass</em>, whichever is earlier — the 10th standard clause is often missed. SSY and PPF each have their own ₹1.5L/FY ceiling — they do not share one.</p>
+  </article>
+
+  <!-- ---- 10. MSSC ---- -->
+  <article class="scheme dim" id="mssc" data-k="mahila samman savings certificate mssc closed 2025 women 2 lakh 7.5 two years quarterly 5.5% premature 40% partial withdrawal gender only">
+    <div class="card-head">
+      <div class="card-head-text">
+        <h3>10 · Mahila Samman Savings Certificate (MSSC) — <em>Subscription closed</em></h3>
+        <span class="rules-label">Mahila Samman Savings Certificate, 2023 — window closed 31 March 2025; existing certificates run to maturity</span>
+      </div>
+      <div class="rate-badge off"><b>7.50%</b><span>closed</span></div>
+    </div>
+    <div class="card-body">
+      <div class="dl-grid">
+        <span class="dl-label">Status</span>
+        <span class="dl-value"><span class="tag tclosed">No new accounts from 1 Apr 2025</span> A one-time scheme introduced in Budget 2023 for a two-year window (1 Apr 2023 – 31 Mar 2025). Not extended in Budget 2025. Existing certificates continue to their 2-year maturity. Still examined in theory papers.</span>
+
+        <span class="dl-label">Tenor</span>
+        <span class="dl-value">2 years from the date of deposit. <span class="no">No extension.</span></span>
+
+        <span class="dl-label">Amounts</span>
+        <span class="dl-value">Min ₹1,000, multiples of ₹100. Max <b>₹2 lakh per woman</b> (aggregate). A minimum gap of <b>3 months</b> was required between opening two separate accounts.</span>
+
+        <span class="dl-label">Where opened</span>
+        <span class="dl-value">Post offices, all public-sector banks, and select private banks (ICICI, HDFC, Axis, etc.).</span>
+
+        <span class="dl-label">Interest &amp; payout</span>
+        <span class="dl-value">7.5% p.a. compounded <b>quarterly</b>, paid as a lump sum at maturity. (The only small savings scheme with quarterly compounding and a 2-year tenor.)</span>
+
+        <span class="dl-label">Who could open</span>
+        <span class="dl-value">Any <b>woman</b> in her own name, or a guardian on behalf of a <b>minor girl</b>. No upper age limit. Men could not open one, even as guardian for a female relative.</span>
+
+        <span class="dl-label">Who could not open</span>
+        <span class="dl-value"><span class="no">Men · NRIs.</span></span>
+
+        <span class="dl-label">Joint account</span>
+        <span class="dl-value"><b class="no">Not permitted.</b></span>
+
+        <span class="dl-label">Partial withdrawal</span>
+        <span class="dl-value">Up to <b>40%</b> of the balance, once, after completing <b>1 year</b> from opening.</span>
+
+        <span class="dl-label">Premature closure</span>
+        <span class="dl-value">
+          <ul>
+            <li><b>After 6 months</b> without giving a reason — permitted at a reduced rate of <b>5.5% p.a.</b></li>
+            <li>Death of the account holder — full balance with interest up to the preceding month.</li>
+            <li>Life-threatening illness of the holder, or death of the guardian.</li>
+            <li>Before 6 months — not permitted except on death or compassionate grounds.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Tax treatment</span>
+        <span class="dl-value"><span class="tag ttax">No 80C · interest fully taxable</span></span>
+      </div>
+    </div>
+    <p class="trap"><b>⚠ Exam trap —</b> MSSC has the unique combination: quarterly compounding + 2-year tenor + ₹2L cap + gender restriction. The partial withdrawal limit is <b>40%</b> (not 50% as in PPF/SSY). Premature exit rate is specifically <b>5.5%</b> — the only scheme with a named fallback rate lower than its main rate but specified numerically.</p>
+  </article>
+
+  <!-- ---- 11. NPS ---- -->
+  <article class="scheme" id="nps" data-k="national pension system nps tier I tier II PFRDA 80CCD 1B 50000 80CCD 2 employer 14% annuity 40% 80% exit premature age 60 75 vatsalya minor NRI OCI market linked">
+    <div class="card-head">
+      <div class="card-head-text">
+        <h3>11 · National Pension System (NPS)</h3>
+        <span class="rules-label">PFRDA Act, 2013 — regulated by PFRDA, not under the small savings Rules framework</span>
+      </div>
+      <div class="rate-badge"><b>Market</b><span>NAV-linked</span></div>
+    </div>
+    <div class="card-body">
+      <div class="dl-grid">
+        <span class="dl-label">Structure</span>
+        <span class="dl-value"><b>Tier I</b> — mandatory pension account, locked in. <b>Tier II</b> — voluntary open savings account; available only to existing Tier I holders.</span>
+
+        <span class="dl-label">Tenor</span>
+        <span class="dl-value">Tier I: from entry until <b>age 60</b>, extendable (in annual increments) up to <b>age 75</b>. Tier II: no tenor and no lock-in — freely withdrawable.</span>
+
+        <span class="dl-label">Amounts</span>
+        <span class="dl-value">
+          <ul>
+            <li>Tier I: min <b>₹500 per contribution</b>, min <b>₹1,000 per FY</b> to keep active. No maximum.</li>
+            <li>Tier II: ₹1,000 to open, ₹250 per subsequent contribution, no annual minimum. No maximum.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Where to open</span>
+        <span class="dl-value">Points of Presence (PoPs) — banks, post offices, brokers — or online via <b>eNPS</b>. Records held by a CRA (Protean / KFintech / CAMS). A single <b>PRAN</b> (Permanent Retirement Account Number) is portable across all employers and locations.</span>
+
+        <span class="dl-label">Who can open</span>
+        <span class="dl-value">Any Indian citizen, resident or <b>NRI or OCI</b>, aged <b>18 to 70</b> at entry. (NPS is the only scheme here where NRIs and OCIs are permitted.)</span>
+
+        <span class="dl-label">Who cannot open</span>
+        <span class="dl-value"><span class="no">HUF · PIO cardholders who are not OCIs · undischarged insolvents · persons of unsound mind.</span></span>
+
+        <span class="dl-label">Joint account</span>
+        <span class="dl-value"><b class="no">Not permitted.</b> NPS is strictly individual. Nomination of up to 3 persons.</span>
+
+        <span class="dl-label">Investment choice</span>
+        <span class="dl-value">
+          <ul>
+            <li><b>Active choice:</b> subscriber allocates across E (equity, cap 75%), C (corporate bonds), G (gilts/G-Secs), A (alternatives, cap 5%).</li>
+            <li><b>Auto choice / lifecycle funds:</b> LC75 (aggressive), LC50 (moderate), LC25 (conservative) — equity automatically tapers as the subscriber ages.</li>
+            <li>Fund manager and scheme can be switched up to twice per FY.</li>
+          </ul>
+        </span>
+
+        <span class="dl-label">Partial withdrawal</span>
+        <span class="dl-value">After <b>3 years</b> of account opening. Up to <b>25% of the subscriber's own contributions</b> (employer contributions and gains excluded). Maximum <b>3 times</b> in the entire tenure. Permitted reasons: children's higher education/marriage, residential property purchase/construction, treatment of specified critical illnesses, disability, skill development, or starting a business.</span>
+
+        <span class="dl-label">Normal exit at 60</span>
+        <span class="dl-value">Minimum <b>40% of corpus must purchase an annuity</b>; up to <b>60% taken as tax-free lump sum</b>. If the total corpus is <b>₹5 lakh or less</b>, the entire amount may be withdrawn in one go.</span>
+
+        <span class="dl-label">Premature exit</span>
+        <span class="dl-value">Permitted after <b>5 years</b> of participation. Minimum <b>80% must be annuitised</b>; only 20% as lump sum. If the total corpus is <b>₹2.5 lakh or less</b>, full withdrawal is allowed.</span>
+
+        <span class="dl-label">On death</span>
+        <span class="dl-value">Entire corpus paid to the nominee or legal heir. The annuity requirement is waived — the nominee may take 100% as lump sum.</span>
+
+        <span class="dl-label">Tax treatment</span>
+        <span class="dl-value">
+          <ul>
+            <li><b>80CCD(1)</b> — own contribution, within the overall ₹1.5L 80C ceiling; capped at 10% of salary (employees) or 20% of gross total income (self-employed). Old regime.</li>
+            <li><b>80CCD(1B)</b> — <b>additional ₹50,000</b>, completely over and above the ₹1.5L limit. Old regime only. Also available for NPS Vatsalya contributions by the parent (Budget 2025).</li>
+            <li><b>80CCD(2)</b> — employer's contribution: 14% of basic+DA for central/state government employees; 14% for private-sector employees from FY 2024-25 under the <b>new tax regime</b>; 10% under the old regime for private employers. This is the <b>only NPS benefit available under the new regime.</b></li>
+            <li>Lump sum on exit (up to 60%) exempt under <b>Sec 10(12A)</b>. Annuity income fully taxable in the year of receipt. Net result: <b>EEE on lump sum, EET on annuity.</b></li>
+          </ul>
+        </span>
+
+        <span class="dl-label">NPS Vatsalya</span>
+        <span class="dl-value">Launched September 2024. For <b>minors below 18</b>, opened and operated by the guardian. Minimum ₹1,000 per year. Converts automatically into a regular Tier I account when the child turns 18. Parent can claim the <b>80CCD(1B) additional ₹50,000</b> deduction on Vatsalya contributions (Budget 2025 provision).</span>
+      </div>
+    </div>
+    <p class="trap"><b>⚠ Exam trap —</b> (a) 80CCD(1B) is the only way to get a deduction beyond ₹1.5L on own contribution; (b) 80CCD(2) is the <em>only</em> NPS benefit that works under the new tax regime; (c) the annuity threshold asymmetry: exit at 60 needs 40% annuitised; exit before 60 needs 80%; (d) partial withdrawal is from <em>own contributions only</em>, not from total corpus.</p>
+  </article>
+
+</section>
+
+<!-- ========== SECTION 3: COMMON RULES ========== -->
+<section id="common">
+  <h2>3 · Rules Common to All Post Office Schemes</h2>
+  <p class="lede">These cut across schemes and are frequently tested because candidates study schemes in isolation.</p>
+  <div class="note">
+    <b>Governing framework.</b> The Government Savings Banks Act, 1873 was renamed the <b>Government Savings Promotion Act</b> in 2018, consolidating the PPF Act 1968 and the Government Savings Certificates Act 1959. Each scheme's operative rules were re-notified in <b>2019</b>. Rates are set quarterly by the Department of Economic Affairs, benchmarked to G-Sec yields of comparable maturity plus a spread (the Shyamala Gopinath committee formula).
+  </div>
+  <div class="tw" style="margin-top:16px">
+    <table>
+      <thead>
+        <tr><th>Rule area</th><th>Position</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Minor operating in own name</td>
+          <td>From age <b>10</b> in SB, RD, TD, MIS, NSC and KVP. A guardian may open for any age. At 18, the account must be converted via a fresh KYC form.</td>
+        </tr>
+        <tr>
+          <td>Nomination</td>
+          <td>Available in all schemes at opening or later. Multiple nominees with specified shares. Nomination changes are now free of charge.</td>
+        </tr>
+        <tr>
+          <td>NRI eligibility</td>
+          <td><span class="no">Barred from opening any post office small savings account.</span> Existing PPF and SSY accounts opened while resident continue to original maturity but cannot be extended. NPS is the sole exception — NRIs and OCIs are eligible.</td>
+        </tr>
+        <tr>
+          <td>HUF, trusts, companies</td>
+          <td>Cannot open any of these schemes. PPF for HUF was withdrawn in 2005.</td>
+        </tr>
+        <tr>
+          <td>Joint holding</td>
+          <td>Up to <b>3 adults</b> in SB, RD, TD, MIS, NSC and KVP. <b>Spouse only</b> in SCSS. <b>Not permitted at all</b> in PPF, SSY, MSSC and NPS.</td>
+        </tr>
+        <tr>
+          <td>Transfer between offices</td>
+          <td>All schemes transferable between post offices. PPF, SSY and SCSS additionally transferable between banks and post offices. No scheme is transferable to another person except NSC and KVP in specified circumstances.</td>
+        </tr>
+        <tr>
+          <td>Pledging as security</td>
+          <td>Permitted for RD, TD, MIS, NSC and KVP. <span class="no">Not permitted for PPF, SSY or SCSS.</span></td>
+        </tr>
+        <tr>
+          <td>Death of holder</td>
+          <td>Lock-in and penalty provisions fall away in all schemes. Nominee or legal heir is paid principal plus interest generally up to the month preceding payment.</td>
+        </tr>
+        <tr>
+          <td>Silent / dormant accounts</td>
+          <td>SB: no transaction for 3 consecutive FYs. RD: discontinued after 4 consecutive defaults. PPF/SSY: irregular (default) if annual minimum not deposited; revive with ₹50 penalty per defaulted year + arrears.</td>
+        </tr>
+        <tr>
+          <td>Court attachment protection</td>
+          <td>PPF balance uniquely immune from court attachment under any decree for the holder's debts. This protection does not extend to any other scheme.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== SECTION 4: TAX ========== -->
+<section id="tax">
+  <h2>4 · Tax Treatment at a Glance</h2>
+  <p class="lede">Section 80C has a combined ceiling of <b>₹1,50,000</b> across all qualifying instruments — it is not scheme-specific. All 80C/80CCD(1B)/80TTA/80TTB deductions are available under the <b>old regime only</b>. The sole exception: 80CCD(2) (employer NPS) is available under both regimes.</p>
+  <div class="tw">
+    <table>
+      <thead>
+        <tr><th>Scheme</th><th>Investment (E)</th><th>Interest / accretion (E)</th><th>Maturity (E)</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><b>PPF</b></td><td>80C deductible</td><td>Exempt — Sec 10(11)</td><td>Exempt</td><td><span class="tag teee">EEE</span></td></tr>
+        <tr><td><b>SSY</b></td><td>80C deductible</td><td>Exempt — Sec 10(11A)</td><td>Exempt</td><td><span class="tag teee">EEE</span></td></tr>
+        <tr><td><b>NPS Tier I (lump sum)</b></td><td>80CCD(1)+(1B)+(2)</td><td>Exempt while accumulating</td><td>Up to 60% lump sum exempt — Sec 10(12A)</td><td><span class="tag teee">EEE</span></td></tr>
+        <tr><td><b>NPS Tier I (annuity)</b></td><td>As above</td><td>Exempt while accumulating</td><td>Annuity payments taxable at slab rate</td><td><span class="tag t80c">EET on annuity</span></td></tr>
+        <tr><td><b>SCSS</b></td><td>80C deductible</td><td>Taxable; TDS if >₹1L (seniors); 80TTB up to ₹50K</td><td>Principal returned — not taxed</td><td><span class="tag t80c">ETE</span></td></tr>
+        <tr><td><b>5-yr Time Deposit</b></td><td>80C deductible</td><td>Taxable annually; TDS under 194A</td><td>Principal returned — not taxed</td><td><span class="tag t80c">ETE</span></td></tr>
+        <tr><td><b>NSC</b></td><td>80C deductible</td><td>Taxable but years 1–4 offset by 80C reinvestment deduction; year 5 taxable with no offset</td><td>Principal returned — not taxed</td><td><span class="tag t80c">Effectively ETE</span></td></tr>
+        <tr><td>1/2/3-yr TD</td><td>No deduction</td><td>Fully taxable; TDS under 194A</td><td>Principal returned — not taxed</td><td><span class="tag ttax">TTE</span></td></tr>
+        <tr><td>RD</td><td>No deduction</td><td>Fully taxable</td><td>Principal not taxed</td><td><span class="tag ttax">TTE</span></td></tr>
+        <tr><td>MIS</td><td>No deduction</td><td>Fully taxable; no TDS at PO</td><td>Principal returned — not taxed</td><td><span class="tag ttax">TTE</span></td></tr>
+        <tr><td>KVP</td><td>No deduction</td><td>Fully taxable on accrual</td><td>Principal returned — not taxed</td><td><span class="tag ttax">TTE</span></td></tr>
+        <tr><td>MSSC</td><td>No deduction</td><td>Fully taxable</td><td>Principal returned — not taxed</td><td><span class="tag ttax">TTE</span></td></tr>
+        <tr><td>PO Savings Account</td><td>No deduction</td><td>Exempt up to ₹3,500/₹7,000 under Sec 10(15)(i); then 80TTA or 80TTB</td><td>—</td><td><span class="tag ttax">TTE (partly exempt)</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="warn">
+    <b>Only these are 80C instruments:</b> PPF, SSY, NSC, SCSS and the 5-year Time Deposit — plus NPS via 80CCD. Everything else (MIS, KVP, RD, 1/2/3-yr TDs, MSSC, SB) gives no Section 80C deduction. If an exam question asks for "tax-saving small savings instruments", this exact list is the answer.
+  </div>
+</section>
+
+<!-- ========== SECTION 5: NUMBERS DRILL ========== -->
+<section id="numbers">
+  <h2>5 · The Numbers Drill</h2>
+  <p class="lede">Cover the right column and recite. These are the numbers examiners test most often.</p>
+
+  <h3>Lock-ins and premature exit penalties</h3>
+  <div class="tw">
+    <table>
+      <thead>
+        <tr><th>Scheme</th><th class="num">Earliest exit</th><th>Penalty / rate on early exit</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>SB</td><td class="num">Anytime</td><td>None — free withdrawal (₹500 min balance)</td></tr>
+        <tr><td>RD</td><td class="num">After 3 years</td><td>Interest recomputed at SB rate (4%); not allowed before 3 years</td></tr>
+        <tr><td>TD (1/2/3-yr)</td><td class="num">After 6 months</td><td>6–12 months: SB rate. After 1 yr: TD rate less 2% for completed years; SB rate for broken period</td></tr>
+        <tr><td>TD (5-yr) closed after 4 yrs</td><td class="num">After 6 months</td><td>SB rate (4%) for the entire period (Nov 2023 rule)</td></tr>
+        <tr><td>MIS</td><td class="num">After 1 year</td><td>1–3 yrs: 2% of principal deducted; 3–5 yrs: 1% of principal deducted</td></tr>
+        <tr><td>SCSS</td><td class="num">Anytime</td><td>&lt;1 yr: all interest recovered; 1–2 yrs: 1.5% of deposit; 2–5 yrs: 1% of deposit</td></tr>
+        <tr><td>NSC</td><td class="num">Not allowed</td><td>Death / court order / pledgee forfeiture only</td></tr>
+        <tr><td>KVP</td><td class="num">After 30 months</td><td>Value per prescribed table; no penalty per se — just lower maturity</td></tr>
+        <tr><td>PPF</td><td class="num">After 5 complete FYs</td><td>Interest recomputed at 1% below the credited rate; only 3 permitted reasons</td></tr>
+        <tr><td>SSY</td><td class="num">After 5 years</td><td>Compassionate grounds only; otherwise SB rate (4%) on closure</td></tr>
+        <tr><td>MSSC</td><td class="num">After 6 months</td><td>Rate reduced to 5.5% p.a. for the entire holding</td></tr>
+        <tr><td>NPS Tier I</td><td class="num">After 5 years</td><td>80% of corpus must be annuitised; only 20% as lump sum</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Deposit ceilings</h3>
+  <div class="tw">
+    <table>
+      <thead>
+        <tr><th>Limit</th><th class="num">Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>MIS — single account</td><td class="num">₹9,00,000</td></tr>
+        <tr><td>MIS — joint account (max 3 adults)</td><td class="num">₹15,00,000</td></tr>
+        <tr><td>MIS — guardian for minor</td><td class="num">₹3,00,000</td></tr>
+        <tr><td>SCSS — aggregate across all accounts</td><td class="num">₹30,00,000</td></tr>
+        <tr><td>PPF — per financial year</td><td class="num">₹1,50,000</td></tr>
+        <tr><td>SSY — per financial year</td><td class="num">₹1,50,000</td></tr>
+        <tr><td>MSSC — per woman (subscription closed)</td><td class="num">₹2,00,000</td></tr>
+        <tr><td>Section 80C overall ceiling</td><td class="num">₹1,50,000</td></tr>
+        <tr><td>Section 80CCD(1B) — NPS additional</td><td class="num">₹50,000</td></tr>
+        <tr><td>SB interest: Sec 10(15)(i) exemption</td><td class="num">₹3,500 (single) / ₹7,000 (joint)</td></tr>
+        <tr><td>TDS threshold on SCSS interest (senior citizens)</td><td class="num">₹1,00,000 p.a.</td></tr>
+        <tr><td>NPS: full withdrawal allowed at exit if corpus ≤</td><td class="num">₹5,00,000 (at 60) / ₹2,50,000 (premature)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Age and eligibility markers</h3>
+  <div class="tw">
+    <table>
+      <thead>
+        <tr><th class="num">Age</th><th>What it unlocks</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="num">Below 10</td><td>Girl child eligible for a new SSY account</td></tr>
+        <tr><td class="num">10</td><td>Minor may open and operate SB, RD, TD, MIS, NSC, KVP in own name</td></tr>
+        <tr><td class="num">18</td><td>SSY holder takes over account operation; SSY partial withdrawal for education permitted; NPS Vatsalya converts to Tier I; minimum NPS entry age</td></tr>
+        <tr><td class="num">21</td><td>SSY matures</td></tr>
+        <tr><td class="num">50</td><td>Retired defence personnel eligible for SCSS (within 3 months of retirement)</td></tr>
+        <tr><td class="num">55</td><td>VRS / superannuation retirees eligible for SCSS (within 3 months of retirement)</td></tr>
+        <tr><td class="num">60</td><td>General SCSS eligibility; NPS normal exit age; Sec 80TTB available</td></tr>
+        <tr><td class="num">70</td><td>Maximum NPS entry age</td></tr>
+        <tr><td class="num">75</td><td>Maximum age to continue in NPS</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ========== SECTION 6: MEMORY HOOKS ========== -->
+<section id="hooks">
+  <h2>6 · Memory Hooks</h2>
+  <div class="note"><b>Which schemes pay regular cash?</b> Only two: <b>MIS</b> (monthly) and <b>SCSS</b> (quarterly). TD pays annually. All others are cumulative — nothing until maturity.</div>
+  <div class="note"><b>Which have no joint account option?</b> <b>PPF · SSY · MSSC · NPS</b>. SCSS is the half-case: spouse only. Everything else allows up to 3 adults.</div>
+  <div class="note"><b>Which have no extension at all?</b> MIS, NSC, KVP, SSY. Extendable: RD (+5 yrs), TD (same tenure), SCSS (+3 yrs, unlimited blocks), PPF (+5 yrs, unlimited blocks).</div>
+  <div class="note"><b>The three EEE instruments:</b> PPF · SSY · NPS lump sum (up to 60%). Nothing else in the small savings universe is fully exempt on all three events.</div>
+  <div class="note"><b>Penalty style — two groups:</b> MIS and SCSS deduct from <em>principal</em> (2%/1% and 1.5%/1% respectively). TD and RD cut the <em>interest rate</em> (to TD rate–2% and SB rate respectively). PPF reduces the rate by 1%. MSSC drops to 5.5% flat.</div>
+  <div class="note"><b>Who allows NRIs?</b> Only NPS. Every post office small savings scheme bars NRIs from opening a new account.</div>
+  <div class="note"><b>Court attachment immunity:</b> Only PPF has this. Not SCSS, not SSY, not NPS — only PPF.</div>
+  <div class="note"><b>NSC vs KVP — the tax flip:</b> NSC → 80C deduction + deemed reinvestment benefit. KVP → zero tax benefit, but liquidity after 30 months and capital doubling. Same rate (7.5% for KVP vs 7.7% for NSC), vastly different tax profiles.</div>
+</section>
+
+<footer>
+  <p><b>Rate currency.</b> All rates are as notified for <b>Q2 FY 2026-27 (1 July – 30 September 2026)</b>, held unchanged by the Ministry of Finance for the ninth consecutive quarter. Rates are reviewed on the last day of each quarter — verify against the official DEA notification after 30 September 2026.</p>
+  <p><b>Rule currency.</b> Rules reflect the 2019 scheme notifications as amended by the November 2023 relaxations (SCSS unlimited extensions, PPF premature-closure interest method, 5-yr TD premature exit rate, SCSS window to 3 months), the October 2024 NRI-account circulars for PPF and SSY, and Budget 2025 (SCSS TDS threshold raised to ₹1L; 80CCD(1B) extended to NPS Vatsalya).</p>
+  <p>Prepared as a revision aid for the NISM PGPFP / CFP curriculum. Not investment advice.</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var q=document.getElementById('q');
+  var cards=Array.prototype.slice.call(document.querySelectorAll('article.scheme'));
+  if(!q)return;
+  q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase();
+    cards.forEach(function(c){
+      if(!v){c.classList.remove('hidden');return;}
+      var hay=(c.getAttribute('data-k')||'')+' '+c.textContent.toLowerCase();
+      c.classList.toggle('hidden',hay.indexOf(v)===-1);
+    });
+  });
+})();
+</script>
+</body>
+</html>
