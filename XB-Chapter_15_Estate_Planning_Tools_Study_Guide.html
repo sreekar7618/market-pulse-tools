@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 15 — Tools for Estate Planning | NISM XB Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A2238;
+    --ink-soft:#4A5268;
+    --ink-faint:#7A8296;
+    --paper:#F4F2EB;
+    --paper-card:#FFFFFF;
+    --rule:#DAD4C3;
+    --rule-strong:#C7C0AC;
+    --brass:#93711F;
+    --brass-deep:#6E5416;
+    --brass-tint:#F1E6C8;
+    --trap:#7A2432;
+    --trap-bg:#F8EAEA;
+    --trap-line:#E3B9BE;
+    --tip:#2E5233;
+    --tip-bg:#E9F1E8;
+    --tip-line:#BFD8C2;
+    --info:#28486B;
+    --info-bg:#E7EEF4;
+    --info-line:#BBCEDF;
+    --sidebar-w: 288px;
+    --content-max: 860px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  ::selection{ background: var(--brass-tint); color:var(--ink); }
+
+  a{ color:var(--brass-deep); }
+
+  /* ===== Layout shell ===== */
+  .shell{
+    display:flex;
+    max-width:1280px;
+    margin:0 auto;
+    align-items:flex-start;
+  }
+
+  /* ===== Sidebar / TOC ===== */
+  .sidebar{
+    width:var(--sidebar-w);
+    flex-shrink:0;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+    padding:28px 18px 40px 28px;
+    border-right:1px solid var(--rule);
+    scrollbar-width:thin;
+    scrollbar-color:var(--rule-strong) transparent;
+  }
+  .sidebar::-webkit-scrollbar{ width:6px; }
+  .sidebar::-webkit-scrollbar-thumb{ background:var(--rule-strong); border-radius:3px; }
+
+  .brand{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:14px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--brass-deep);
+    margin-bottom:4px;
+  }
+  .brand-sub{
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-bottom:26px;
+    line-height:1.5;
+  }
+
+  .toc-group{ margin-bottom:4px; }
+  .toc-link{
+    display:flex;
+    gap:10px;
+    align-items:baseline;
+    text-decoration:none;
+    color:var(--ink-soft);
+    font-size:13.5px;
+    padding:7px 10px;
+    border-radius:6px;
+    transition:background .15s ease, color .15s ease;
+    cursor:pointer;
+  }
+  .toc-link:hover{ background:var(--brass-tint); color:var(--ink); }
+  .toc-link.active{ background:var(--brass-tint); color:var(--brass-deep); font-weight:600; }
+  .toc-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--brass);
+    flex-shrink:0;
+    width:28px;
+  }
+
+  /* ===== Main content ===== */
+  .main{
+    flex:1;
+    min-width:0;
+    padding:48px 56px 120px;
+  }
+  .content{ max-width:var(--content-max); }
+
+  /* ===== Hero ===== */
+  .hero{
+    margin-bottom:46px;
+  }
+  .hero-eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--brass);
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:44px;
+    line-height:1.08;
+    margin:0 0 16px;
+    letter-spacing:-0.01em;
+  }
+  .hero-desc{
+    font-size:16.5px;
+    color:var(--ink-soft);
+    max-width:640px;
+    margin-bottom:28px;
+  }
+  .objectives{
+    background:var(--paper-card);
+    border:1px solid var(--rule);
+    border-left:4px solid var(--brass);
+    border-radius:4px;
+    padding:22px 26px;
+  }
+  .objectives-title{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--brass-deep);
+    margin-bottom:12px;
+    font-weight:600;
+  }
+  .objectives ul{ margin:0; padding-left:0; list-style:none; columns:2; column-gap:28px;}
+  .objectives li{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin-bottom:8px;
+    padding-left:20px;
+    position:relative;
+    break-inside:avoid;
+  }
+  .objectives li::before{
+    content:"";
+    position:absolute;
+    left:0; top:8px;
+    width:7px; height:7px;
+    border-radius:50%;
+    background:var(--brass);
+  }
+
+  /* ===== Section scaffolding ===== */
+  .part{
+    padding-top:64px;
+    margin-top:-20px;
+  }
+  .part-head{
+    display:flex;
+    align-items:baseline;
+    gap:16px;
+    margin-bottom:8px;
+    border-bottom:2px solid var(--ink);
+    padding-bottom:14px;
+  }
+  .part-num{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:20px;
+    color:var(--brass);
+  }
+  .part-head h2{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:29px;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .part-intro{
+    color:var(--ink-soft);
+    font-size:15.5px;
+    margin:16px 0 30px;
+    max-width:680px;
+  }
+
+  /* ===== Clause card (signature element) ===== */
+  .clause{
+    position:relative;
+    background:var(--paper-card);
+    border:1px solid var(--rule);
+    border-left:3px solid var(--brass);
+    border-radius:4px;
+    padding:26px 30px 26px 30px;
+    margin:22px 0;
+    overflow:hidden;
+  }
+  .clause-ghost{
+    position:absolute;
+    right:18px; top:-4px;
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:76px;
+    color:#EDE8D8;
+    line-height:1;
+    z-index:0;
+    user-select:none;
+    pointer-events:none;
+  }
+  .clause-head{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:10px;
+    position:relative;
+    z-index:1;
+  }
+  .clause h3{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:19.5px;
+    margin:0;
+    color:var(--ink);
+  }
+  .clause-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--brass-deep);
+    background:var(--brass-tint);
+    padding:3px 9px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .clause p{ position:relative; z-index:1; margin:0 0 12px; color:var(--ink-soft); font-size:15px;}
+  .clause p:last-child{ margin-bottom:0; }
+  .clause ul, .clause ol{ position:relative; z-index:1; margin:0 0 12px; padding-left:22px; color:var(--ink-soft); font-size:15px;}
+  .clause li{ margin-bottom:6px; }
+  .clause strong{ color:var(--ink); }
+
+  /* ===== Callouts ===== */
+  .callout{
+    border-radius:4px;
+    padding:16px 20px;
+    margin:18px 0;
+    font-size:14.5px;
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .callout-icon{ font-size:17px; flex-shrink:0; margin-top:1px; }
+  .callout-body b{ display:block; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:4px; font-family:'IBM Plex Mono',monospace; font-weight:600;}
+  .callout-trap{ background:var(--trap-bg); border:1px solid var(--trap-line); color:#5C1B26; }
+  .callout-trap .callout-body b{ color:var(--trap); }
+  .callout-tip{ background:var(--tip-bg); border:1px solid var(--tip-line); color:#204025; }
+  .callout-tip .callout-body b{ color:var(--tip); }
+  .callout-info{ background:var(--info-bg); border:1px solid var(--info-line); color:#1D3550; }
+  .callout-info .callout-body b{ color:var(--info); }
+
+  /* ===== Tables ===== */
+  .tbl-wrap{ overflow-x:auto; margin:20px 0; border-radius:4px; border:1px solid var(--rule); }
+  table{ width:100%; border-collapse:collapse; background:var(--paper-card); font-size:14px; }
+  th{
+    background:var(--ink);
+    color:#F4F2EB;
+    text-align:left;
+    padding:11px 16px;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    font-size:12.5px;
+    letter-spacing:0.03em;
+  }
+  td{
+    padding:11px 16px;
+    border-top:1px solid var(--rule);
+    color:var(--ink-soft);
+    vertical-align:top;
+  }
+  tr:nth-child(even) td{ background:#FAF9F4; }
+  td.hl{ color:var(--ink); font-weight:600; }
+
+  /* ===== Grid cards (will types, ownership models, etc) ===== */
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:14px;
+    margin:20px 0;
+  }
+  .mini-card{
+    background:var(--paper-card);
+    border:1px solid var(--rule);
+    border-radius:6px;
+    padding:16px 18px;
+  }
+  .mini-card-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--brass);
+    margin-bottom:6px;
+    font-weight:600;
+  }
+  .mini-card h4{
+    font-family:'Source Serif 4', serif;
+    font-size:16px;
+    font-weight:600;
+    margin:0 0 6px;
+  }
+  .mini-card p{ font-size:13.5px; color:var(--ink-soft); margin:0; }
+
+  /* ===== Diagram frame ===== */
+  .diagram{
+    background:var(--paper-card);
+    border:1px solid var(--rule);
+    border-radius:6px;
+    padding:24px;
+    margin:22px 0;
+    text-align:center;
+  }
+  .diagram-cap{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-faint);
+    margin-top:10px;
+    letter-spacing:0.02em;
+  }
+
+  /* ===== Formula card ===== */
+  .formula{
+    background:var(--ink);
+    color:#F4F2EB;
+    border-radius:6px;
+    padding:22px 26px;
+    margin:20px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:15px;
+    text-align:center;
+    letter-spacing:0.01em;
+  }
+  .formula .op{ color:var(--brass); font-weight:600; }
+
+  /* ===== Section jump-nav within page (breadcrumb style) ===== */
+  .subnav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:0 0 34px;
+  }
+  .subnav a{
+    font-size:12.5px;
+    text-decoration:none;
+    color:var(--ink-soft);
+    background:var(--paper-card);
+    border:1px solid var(--rule);
+    padding:6px 12px;
+    border-radius:20px;
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .subnav a:hover{ border-color:var(--brass); color:var(--brass-deep); }
+
+  hr.divider{
+    border:none;
+    border-top:1px solid var(--rule);
+    margin:56px 0;
+  }
+
+  .footnote{
+    font-size:12.5px;
+    color:var(--ink-faint);
+    border-top:1px solid var(--rule);
+    padding-top:14px;
+    margin-top:10px;
+  }
+
+  /* ===== Caselet ===== */
+  .caselet{
+    background:var(--paper-card);
+    border:1px solid var(--rule);
+    border-radius:6px;
+    overflow:hidden;
+    margin:24px 0;
+  }
+  .caselet-head{
+    background:var(--ink);
+    color:#F4F2EB;
+    padding:16px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .caselet-head h4{
+    font-family:'Source Serif 4', serif;
+    font-size:17px;
+    margin:0;
+    font-weight:600;
+  }
+  .caselet-head span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    color:var(--brass-tint);
+    background:rgba(255,255,255,.08);
+    padding:4px 10px;
+    border-radius:20px;
+  }
+  .caselet-body{ padding:22px 26px; }
+  .caselet-body p{ color:var(--ink-soft); font-size:15px; }
+  .options{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin:16px 0; }
+  .opt{
+    font-size:13.5px;
+    padding:9px 14px;
+    border-radius:5px;
+    border:1px solid var(--rule);
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .opt.correct{ border-color:var(--tip); background:var(--tip-bg); color:var(--tip); font-weight:600; }
+
+  /* ===== Mobile ===== */
+  .toc-toggle{ display:none; }
+  @media (max-width: 980px){
+    .sidebar{ display:none; }
+    .main{ padding:28px 20px 90px; }
+    .hero h1{ font-size:32px; }
+    .objectives ul{ columns:1; }
+    .card-grid{ grid-template-columns:1fr; }
+    .options{ grid-template-columns:1fr; }
+  }
+
+  @media print{
+    .sidebar{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <nav class="sidebar" id="sidebar">
+    <div class="brand">NISM · XB · Level 2</div>
+    <div class="brand-sub">Chapter 15 — Tools for Estate Planning<br>Visual study guide</div>
+
+    <div class="toc-group">
+      <a class="toc-link" href="#overview"><span class="toc-num">15.1</span>The Big Picture</a>
+      <a class="toc-link" href="#wills"><span class="toc-num">15.2</span>Wills</a>
+      <a class="toc-link" href="#probate"><span class="toc-num">15.3</span>Probate</a>
+      <a class="toc-link" href="#gifts"><span class="toc-num">15.4</span>Gifts, Joint Holding &amp; Nomination</a>
+      <a class="toc-link" href="#family"><span class="toc-num">15.5</span>Family Settlement &amp; Business</a>
+      <a class="toc-link" href="#trusts"><span class="toc-num">15.6</span>Trusts</a>
+      <a class="toc-link" href="#guardianship"><span class="toc-num">15.7</span>Guardianship</a>
+      <a class="toc-link" href="#poa"><span class="toc-num">15.8</span>Power of Attorney</a>
+      <a class="toc-link" href="#caselets"><span class="toc-num">15.9</span>Exam Caselets</a>
+    </div>
+  </nav>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+    <div class="content">
+
+      <!-- HERO -->
+      <header class="hero">
+        <div class="hero-eyebrow">NISM Series X-B · Investment Adviser Level 2</div>
+        <h1>Tools for Estate Planning</h1>
+        <p class="hero-desc">Chapter 15, unpacked in plain English — every tool a person can use to pass on wealth, either while they're alive or after they're gone, with the statute sections that actually get tested.</p>
+        <div class="objectives">
+          <div class="objectives-title">After this chapter, you should be able to explain</div>
+          <ul>
+            <li>The tools of estate planning, and when each applies</li>
+            <li>Wills, Gifts, and Nomination — and how they differ legally</li>
+            <li>The probate process, end to end</li>
+            <li>Family settlement as a planning tool</li>
+            <li>Trusts — characteristics, regulation, taxation</li>
+            <li>Power of Attorney — scope and limits</li>
+          </ul>
+        </div>
+      </header>
+
+      <!-- ============ 15.1 OVERVIEW ============ -->
+      <section class="part" id="overview">
+        <div class="part-head">
+          <span class="part-num">15.1</span>
+          <h2>The Big Picture</h2>
+        </div>
+        <p class="part-intro">Every estate-planning tool answers one question: <em>does it work while I'm alive, or only once I'm gone?</em> That single split organises the whole chapter — get comfortable with it first, and everything else slots in underneath.</p>
+
+        <div class="diagram">
+          <svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:720px;height:auto;font-family:'Inter',sans-serif;">
+            <!-- root -->
+            <rect x="290" y="10" width="180" height="46" rx="6" fill="#1A2238"/>
+            <text x="380" y="38" text-anchor="middle" fill="#F4F2EB" font-size="15" font-weight="600" font-family="Source Serif 4, serif">Estate Planning</text>
+
+            <!-- lines down -->
+            <line x1="380" y1="56" x2="380" y2="80" stroke="#C7C0AC" stroke-width="1.5"/>
+            <line x1="180" y1="80" x2="580" y2="80" stroke="#C7C0AC" stroke-width="1.5"/>
+            <line x1="180" y1="80" x2="180" y2="100" stroke="#C7C0AC" stroke-width="1.5"/>
+            <line x1="580" y1="80" x2="580" y2="100" stroke="#C7C0AC" stroke-width="1.5"/>
+
+            <!-- left branch header -->
+            <rect x="70" y="100" width="220" height="42" rx="6" fill="#F8EAEA" stroke="#E3B9BE"/>
+            <text x="180" y="126" text-anchor="middle" fill="#7A2432" font-size="13.5" font-weight="600">Tools used POST-DEATH</text>
+
+            <!-- right branch header -->
+            <rect x="470" y="100" width="220" height="42" rx="6" fill="#E9F1E8" stroke="#BFD8C2"/>
+            <text x="580" y="126" text-anchor="middle" fill="#2E5233" font-size="13.5" font-weight="600">Tools used DURING LIFETIME</text>
+
+            <!-- left items -->
+            <line x1="180" y1="142" x2="180" y2="160" stroke="#E3B9BE" stroke-width="1.5"/>
+            <rect x="90" y="160" width="180" height="34" rx="5" fill="#FFFFFF" stroke="#E3B9BE"/>
+            <text x="180" y="182" text-anchor="middle" fill="#1A2238" font-size="13">Will</text>
+
+            <rect x="90" y="202" width="180" height="34" rx="5" fill="#FFFFFF" stroke="#E3B9BE"/>
+            <text x="180" y="224" text-anchor="middle" fill="#1A2238" font-size="13">Nomination</text>
+
+            <!-- right items: two columns -->
+            <line x1="580" y1="142" x2="580" y2="155" stroke="#BFD8C2" stroke-width="1.5"/>
+            <line x1="480" y1="155" x2="680" y2="155" stroke="#BFD8C2" stroke-width="1.5"/>
+            <line x1="480" y1="155" x2="480" y2="167" stroke="#BFD8C2" stroke-width="1.5"/>
+            <line x1="680" y1="155" x2="680" y2="167" stroke="#BFD8C2" stroke-width="1.5"/>
+
+            <g font-size="12.5" fill="#1A2238">
+              <rect x="400" y="167" width="160" height="30" rx="5" fill="#FFFFFF" stroke="#BFD8C2"/>
+              <text x="480" y="187" text-anchor="middle">Family Settlement</text>
+
+              <rect x="600" y="167" width="160" height="30" rx="5" fill="#FFFFFF" stroke="#BFD8C2"/>
+              <text x="680" y="187" text-anchor="middle">Trust</text>
+
+              <rect x="400" y="204" width="160" height="30" rx="5" fill="#FFFFFF" stroke="#BFD8C2"/>
+              <text x="480" y="224" text-anchor="middle">Guardianship</text>
+
+              <rect x="600" y="204" width="160" height="30" rx="5" fill="#FFFFFF" stroke="#BFD8C2"/>
+              <text x="680" y="224" text-anchor="middle">Joint Holding</text>
+
+              <rect x="400" y="241" width="160" height="30" rx="5" fill="#FFFFFF" stroke="#BFD8C2"/>
+              <text x="480" y="261" text-anchor="middle">Gift</text>
+
+              <rect x="600" y="241" width="160" height="30" rx="5" fill="#FFFFFF" stroke="#BFD8C2"/>
+              <text x="680" y="261" text-anchor="middle">Power of Attorney</text>
+
+              <rect x="500" y="278" width="160" height="26" rx="5" fill="#FFFFFF" stroke="#BFD8C2"/>
+              <text x="580" y="295" text-anchor="middle">Mutation</text>
+            </g>
+          </svg>
+          <div class="diagram-cap">Fig 15.1 — Classification of estate planning tools (Sec. 15.1)</div>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-icon">💡</div>
+          <div class="callout-body">
+            <b>Why the split matters</b>
+            A Will only ever speaks after death — that's the whole point of it. A Trust, Gift, or POA works <em>immediately</em>. That timing difference is why the exam loves to test "which tool for which situation" caselets.
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 15.2 WILLS ============ -->
+      <section class="part" id="wills">
+        <div class="part-head">
+          <span class="part-num">15.2</span>
+          <h2>Wills</h2>
+        </div>
+        <p class="part-intro">The workhorse of estate planning. A Will only activates after death, stays fully private and changeable until then, and follows a precise statutory playbook — the Indian Succession Act, 1925 ("ISA").</p>
+
+        <div class="subnav">
+          <a href="#w-def">Definition &amp; roles</a>
+          <a href="#w-types">7 types</a>
+          <a href="#w-capacity">Who can make one</a>
+          <a href="#w-reg">Registration</a>
+          <a href="#w-revoke">Revocation</a>
+          <a href="#w-codicil">Codicils</a>
+          <a href="#w-succession">Succession certificate</a>
+          <a href="#w-executor">Executor</a>
+        </div>
+
+        <!-- 15.2.1 -->
+        <div class="clause" id="w-def">
+          <div class="clause-ghost">1</div>
+          <div class="clause-head">
+            <h3>What exactly is a Will?</h3>
+            <span class="clause-tag">Sec. 2(h) &amp; Sec. 62, ISA 1925</span>
+          </div>
+          <p>A Will is the testator's <strong>legal declaration of intent</strong> about their property, meant to take effect only after death. Three roles to keep straight:</p>
+          <ul>
+            <li><strong>Testator</strong> — the person making the Will</li>
+            <li><strong>Legatee</strong> — the person named to receive a portion of the estate</li>
+            <li><strong>Executor</strong> — the person named to administer the estate</li>
+          </ul>
+          <p>Until death, the Will is a <strong>confidential, fully revocable</strong> document — the testator can tear it up and start over any number of times, with zero legal friction.</p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-icon">✓</div>
+          <div class="callout-body">
+            <b>Why bother writing one</b>
+            No confusion among heirs · lets the testator address special situations (minor children, a widowed daughter, special needs) that generic inheritance law ignores · can disinherit a fraudulent/disobedient family member · tax advantages · and appoints a trusted executor instead of leaving it to a court-appointed administrator.
+          </div>
+        </div>
+
+        <!-- 15.2.2 -->
+        <div class="clause" id="w-types">
+          <div class="clause-ghost">2</div>
+          <div class="clause-head">
+            <h3>Seven types of Will</h3>
+            <span class="clause-tag">Sec. 15.2.2</span>
+          </div>
+          <p>The exam likes to describe a scenario and ask "what kind of Will is this?" — know these by their <em>trigger condition</em>, not just their name.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="mini-card">
+            <div class="mini-card-num">01</div>
+            <h4>Conditional / Contingent</h4>
+            <p>Takes effect only if a stated condition occurs. If the condition fails or was invalid to begin with, the Will itself is not enforceable.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">02</div>
+            <h4>Joint &amp; Mutual</h4>
+            <p>Two+ people write one document, but law treats it as <em>two separate Wills</em>, each probated individually. "Mutual" adds reciprocal benefit — each is the other's legatee.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">03</div>
+            <h4>Duplicate</h4>
+            <p>A signed, attested copy held by the executor/trustee. If the testator destroys <em>their</em> copy, both copies are treated as revoked.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">04</div>
+            <h4>Holograph</h4>
+            <p>Entirely handwritten by the testator. Considered strong evidence of genuineness precisely because it's fully in their own hand.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">05</div>
+            <h4>Concurrent</h4>
+            <p>Two Wills for property in two different countries, treated as independent — unless the two estates are linked, in which case both go to probate together.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">06</div>
+            <h4>Sham</h4>
+            <p>Executed with every formality, but with no real testamentary intent — done for some other ("collateral") purpose. Courts treat this as a nullity.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">07</div>
+            <h4>Privileged / Unprivileged</h4>
+            <p>A soldier in actual warfare, an airman, or a mariner at sea can pronounce a Will orally before 2 witnesses — that's <em>privileged</em>. Every other Will is <em>unprivileged</em>.</p>
+          </div>
+        </div>
+
+        <!-- 15.2.3 -->
+        <div class="clause" id="w-capacity">
+          <div class="clause-ghost">3</div>
+          <div class="clause-head">
+            <h3>Legal requirements &amp; testamentary capacity</h3>
+            <span class="clause-tag">Sec. 59, ISA 1925</span>
+          </div>
+          <p>Four essentials for a valid Will: <strong>testamentary capacity &amp; sound mind, knowledge of contents, freedom from undue influence/fraud/coercion,</strong> and a <strong>voluntary act</strong>.</p>
+          <p>Who's eligible to write one:</p>
+          <ul>
+            <li>A person of sound mind — <em>as long as they're not a minor</em></li>
+            <li>A married woman — for any property she could alienate on her own during her lifetime</li>
+            <li>A deaf, dumb, or blind person — if they understand what they're doing</li>
+            <li>Someone with ordinary insanity — during a lucid interval when they're of sound mind</li>
+          </ul>
+          <p><strong>Testamentary capacity</strong> specifically means the testator can comprehend: the extent of their property, their relationship to the people who might reasonably expect a bequest, and the effect of what they're putting in the Will.</p>
+        </div>
+
+        <!-- 15.2.4 -->
+        <div class="clause" id="w-reg">
+          <div class="clause-ghost">4</div>
+          <div class="clause-head">
+            <h3>Registration of Wills</h3>
+            <span class="clause-tag">Sec. 17 &amp; Sec. 18, Registration Act 1908</span>
+          </div>
+          <p>Registration is <strong>optional</strong>, not compulsory — an unregistered Will is fully genuine. But registering has real upside: it can't be tampered with, destroyed, or stolen; certified copies are tightly controlled (only to the testator/agent while alive, and only against a death certificate afterward); and it sits in safe custody at the Registrar's office.</p>
+          <p>The Registrar can visit the testator instead of requiring an office visit for: bodily infirmity that makes travel risky, a person in judicial/civil custody, and a Muslim <em>pardanashin</em> woman. No stamp duty applies since a Will is registered on plain paper.</p>
+        </div>
+
+        <div class="callout callout-trap">
+          <div class="callout-icon">⚠</div>
+          <div class="callout-body">
+            <b>Exam trap</b>
+            Registration is compulsory in exactly one situation: a bequest to a <strong>charitable or religious institution by a non-Hindu</strong>. That Will must be deposited with the Registrar within <strong>6 months</strong> of execution, and the testator must <strong>survive 12 months</strong> from execution — otherwise the bequest fails. Miss either condition and the charitable gift is void, even though the rest of the Will stands.
+          </div>
+        </div>
+
+        <!-- 15.2.5 -->
+        <div class="clause" id="w-revoke">
+          <div class="clause-ghost">5</div>
+          <div class="clause-head">
+            <h3>Modifying &amp; revoking a Will</h3>
+            <span class="clause-tag">Sec. 57, Sec. 62, Sec. 70, ISA 1925</span>
+          </div>
+          <p>A Will is <strong>always revocable</strong> until death — no deed can make it irrevocable — but the testator must be of sound mind at the moment of revocation. Merely <em>intending</em> to revoke at some future date doesn't count.</p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:680px;height:auto;font-family:'Inter',sans-serif;">
+            <g>
+              <rect x="10" y="20" width="160" height="120" rx="6" fill="#FFFFFF" stroke="#DAD4C3"/>
+              <text x="90" y="48" text-anchor="middle" font-size="24" fill="#93711F" font-weight="600" font-family="Source Serif 4, serif">i</text>
+              <text x="90" y="76" text-anchor="middle" font-size="12.5" fill="#1A2238" font-weight="600">Later Will</text>
+              <text x="90" y="94" text-anchor="middle" font-size="12.5" fill="#1A2238" font-weight="600">or codicil</text>
+              <text x="90" y="118" text-anchor="middle" font-size="11" fill="#7A8296">duly executed</text>
+            </g>
+            <g>
+              <rect x="190" y="20" width="160" height="120" rx="6" fill="#FFFFFF" stroke="#DAD4C3"/>
+              <text x="270" y="48" text-anchor="middle" font-size="24" fill="#93711F" font-weight="600" font-family="Source Serif 4, serif">ii</text>
+              <text x="270" y="76" text-anchor="middle" font-size="12.5" fill="#1A2238" font-weight="600">Written</text>
+              <text x="270" y="94" text-anchor="middle" font-size="12.5" fill="#1A2238" font-weight="600">declaration</text>
+              <text x="270" y="118" text-anchor="middle" font-size="11" fill="#7A8296">of intent to revoke</text>
+            </g>
+            <g>
+              <rect x="370" y="20" width="160" height="120" rx="6" fill="#FFFFFF" stroke="#DAD4C3"/>
+              <text x="450" y="48" text-anchor="middle" font-size="24" fill="#93711F" font-weight="600" font-family="Source Serif 4, serif">iii</text>
+              <text x="450" y="76" text-anchor="middle" font-size="12.5" fill="#1A2238" font-weight="600">Burning /</text>
+              <text x="450" y="94" text-anchor="middle" font-size="12.5" fill="#1A2238" font-weight="600">tearing</text>
+              <text x="450" y="118" text-anchor="middle" font-size="11" fill="#7A8296">by testator, with intent</text>
+            </g>
+            <g>
+              <rect x="550" y="20" width="160" height="120" rx="6" fill="#FFFFFF" stroke="#DAD4C3"/>
+              <text x="630" y="48" text-anchor="middle" font-size="24" fill="#93711F" font-weight="600" font-family="Source Serif 4, serif">iv</text>
+              <text x="630" y="76" text-anchor="middle" font-size="12.5" fill="#1A2238" font-weight="600">Subsequent</text>
+              <text x="630" y="94" text-anchor="middle" font-size="12.5" fill="#1A2238" font-weight="600">marriage</text>
+              <text x="630" y="118" text-anchor="middle" font-size="11" fill="#7A8296">automatic revocation</text>
+            </g>
+            <text x="360" y="175" text-anchor="middle" font-size="12.5" fill="#4A5268">Four modes of revocation — any one is enough</text>
+          </svg>
+          <div class="diagram-cap">Fig 15.2 — Modes of revocation (Sec. 62, ISA 1925)</div>
+        </div>
+
+        <div class="callout callout-trap">
+          <div class="callout-icon">⚠</div>
+          <div class="callout-body">
+            <b>Exam trap — marriage &amp; divorce</b>
+            For <strong>Hindus</strong>, marriage does <em>not</em> revoke a Will or codicil (Sec. 57) — this is the opposite of the English common-law default many candidates expect. Divorce also does <em>not</em> revoke a Will. And simply <strong>losing</strong> the physical document is not revocation either — only destruction carried out (or approved) by the testator, with intent, counts.
+          </div>
+        </div>
+
+        <!-- 15.2.6 -->
+        <div class="clause" id="w-codicil">
+          <div class="clause-ghost">6</div>
+          <div class="clause-head">
+            <h3>Codicils</h3>
+            <span class="clause-tag">Sec. 2(b), ISA 1925</span>
+          </div>
+          <p>A codicil is a small supplementary document that <strong>alters or adds to</strong> an existing Will without rewriting it. It must be executed and attested exactly like a Will, and it isn't independent — it's legally treated as part of the Will it modifies.</p>
+          <p>If the changes are substantial, the better route is a fresh Will that expressly revokes the earlier one — a codicil is for minor edits (e.g., swapping out one executor for another), not a rewrite.</p>
+        </div>
+
+        <!-- 15.2.7 -->
+        <div class="clause" id="w-succession">
+          <div class="clause-ghost">7</div>
+          <div class="clause-head">
+            <h3>Succession Certificate</h3>
+            <span class="clause-tag">Sec. 370 &amp; Sec. 371, ISA 1925</span>
+          </div>
+          <p>Issued by a <strong>District Court</strong> to establish a legal heir's authority to collect debts and securities of someone who died — but <em>only when there's no Will</em>. If a valid Will exists, the property already vests with the executor, so a succession certificate cannot be granted.</p>
+          <p>It's narrow in scope: provident fund, insurance, bank deposits, shares, and government securities. It does <em>not</em> establish ownership/title — it only authorises the holder to collect and discharge those specific debts.</p>
+        </div>
+
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Succession Certificate</th><th>Legal Heir Certificate</th></tr></thead>
+            <tbody>
+              <tr><td>Issued by Civil (District) Court</td><td>Issued by the Tehsildar of the district</td></tr>
+              <tr><td>Authorises a rightful person to succeed to the deceased</td><td>Identifies &amp; establishes the living heirs of the deceased</td></tr>
+              <tr><td>Purpose: gain authority over <strong>debts &amp; securities</strong> where no Will exists</td><td>Purpose: stake a claim as a rightful heir to the estate</td></tr>
+              <tr><td>Valid proof under succession law — holder can become beneficiary</td><td>Not conclusive/valid evidence under succession law</td></tr>
+              <tr><td>Extensive right — every payment made to the holder is treated as valid</td><td>Limited mainly to insurance claims etc.</td></tr>
+              <tr><td>Only the certified legal heir can apply</td><td>Spouse, parents, son, or daughter of the deceased can apply</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 15.2.8 -->
+        <div class="clause" id="w-executor">
+          <div class="clause-ghost">8</div>
+          <div class="clause-head">
+            <h3>Role of the Executor</h3>
+            <span class="clause-tag">Sec. 2(c) &amp; Sec. 222, ISA 1925</span>
+          </div>
+          <p>The executor is the person the testator names to carry out the Will — <strong>collate assets, pay off liabilities, distribute the legacy.</strong> Only an executor named in the Will can receive probate (Sec. 222).</p>
+          <p>The job in sequence: pay funeral/burial costs and obtain the death certificate → locate and value every asset → pay off debts, liabilities, and taxes (lenders get paid before heirs) → distribute what's left as the Will directs. If a trust is created by the Will, the executor also has to work through the trust deed.</p>
+          <ul>
+            <li>Almost anyone can be an executor — family, friends, even a corporate body (Sec. 223) or a beneficiary can be named</li>
+            <li>A <strong>minor</strong> can be named executor, but probate can't be granted until they turn 18 — a legal guardian applies for letters of administration meanwhile</li>
+            <li>A person of <strong>unsound mind</strong> cannot be appointed</li>
+            <li>No cap on the <strong>number</strong> of executors a testator can appoint</li>
+            <li>An executor has a <strong>right of refusal</strong> before starting — but once accepted, the role is legally binding until a court releases them</li>
+            <li>An executor who is also a legatee cannot claim their legacy unless they show clear intent to actually act as executor (Sec. 141)</li>
+          </ul>
+          <p>If no executor is named — or the named executor is incapable, refuses, or dies mid-administration — the court appoints an <strong>Administrator</strong> instead, via Letters of Administration.</p>
+        </div>
+      </section>
+
+      <!-- ============ 15.3 PROBATE ============ -->
+      <section class="part" id="probate">
+        <div class="part-head">
+          <span class="part-num">15.3</span>
+          <h2>Probate</h2>
+        </div>
+        <p class="part-intro">Probate is the court's stamp of approval on a Will — proof, under the court's seal, that this really is the deceased's genuine last Will.</p>
+
+        <div class="clause">
+          <div class="clause-ghost">1</div>
+          <div class="clause-head">
+            <h3>What probate actually certifies</h3>
+            <span class="clause-tag">Sec. 2(f), ISA 1925</span>
+          </div>
+          <p>Probate is a copy of the Will, <strong>certified under the seal of a competent court</strong>. It establishes both the legal character of the executor and the validity of every act the executor takes under the Will.</p>
+          <p>When there's no valid probate route available (no executor named, the named executor is incapable/refuses/died mid-way), the court issues <strong>Letters of Administration</strong> to the legatee instead — functionally similar, but for situations without a workable executor.</p>
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-icon">📍</div>
+          <div class="callout-body">
+            <b>When is probate mandatory?</b>
+            Only when the Will (or codicil) was made in — or the immovable property sits in — the three Presidency towns: <strong>Kolkata, and the municipal limits of Chennai and Mumbai.</strong> Everywhere else in India, probate is optional, though it's still often demanded by asset holders (banks, registrars) as practical proof.
+          </div>
+        </div>
+
+        <div class="callout callout-trap">
+          <div class="callout-icon">⚠</div>
+          <div class="callout-body">
+            <b>Exam trap — probate ≠ succession certificate</b>
+            They look similar but sit on opposite sides of one fact: <strong>does a Will exist?</strong> Probate certifies a Will (issued when there IS one). A succession certificate is issued by a civil court precisely because there is <em>no</em> Will. Never use the terms interchangeably.
+          </div>
+        </div>
+
+        <div class="clause">
+          <div class="clause-ghost">2</div>
+          <div class="clause-head">
+            <h3>The process</h3>
+          </div>
+          <p>The executor (or, if none, any competent person) files an application with the appropriate court, attaching the Will and details of the testator's death, assets, and executor. At least one attesting witness must verify the application. The court then <strong>issues notice to all legal heirs</strong> and publishes a public notice in a national newspaper, inviting objections — only once those are cleared does the court grant probate. Court fees are typically a fixed amount or a percentage of asset value, and vary by state since Wills are a state subject.</p>
+        </div>
+      </section>
+
+      <!-- ============ 15.4 GIFTS, JOINT HOLDING, NOMINATION ============ -->
+      <section class="part" id="gifts">
+        <div class="part-head">
+          <span class="part-num">15.4</span>
+          <h2>Gifts, Joint Holding &amp; Nomination</h2>
+        </div>
+        <p class="part-intro">Three everyday tools that move assets to family members quickly and quietly — without any of the ceremony a Will requires.</p>
+
+        <div class="subnav">
+          <a href="#g-gift">Gifts</a>
+          <a href="#g-joint">Joint Holding</a>
+          <a href="#g-nom">Nomination</a>
+        </div>
+
+        <div class="clause" id="g-gift">
+          <div class="clause-ghost">1</div>
+          <div class="clause-head">
+            <h3>Gifts</h3>
+            <span class="clause-tag">Sec. 15.4.1</span>
+          </div>
+          <p>A gift is a <strong>voluntary transfer without consideration</strong> — the <strong>donor</strong> gives, the <strong>donee</strong> receives. Anyone competent to contract can make one. A gift is generally irrevocable, unless the donee agrees to revoke it.</p>
+          <p>Tax treatment: gifts are taxable as "income from other sources" — <em>except</em> gifts from defined relatives (spouse, siblings of self/spouse, parents, grandparents, children, grandchildren, etc.), gifts received on marriage, or property inherited under a Will, all of which are exempt. Once transferred though, any <strong>income the gift subsequently generates</strong> is taxed in the donee's hands.</p>
+        </div>
+
+        <div class="clause" id="g-joint">
+          <div class="clause-ghost">2</div>
+          <div class="clause-head">
+            <h3>Joint Holding</h3>
+            <span class="clause-tag">Sec. 15.4.2</span>
+          </div>
+          <p>Property held by more than one person, accessible per the chosen mode of operation: <strong>jointly</strong> (all holders must approve every transaction), <strong>either or survivor</strong>, or <strong>anyone or survivor</strong>. The first holder is usually the "registered" holder for information and benefit purposes.</p>
+        </div>
+
+        <div class="callout callout-trap">
+          <div class="callout-icon">⚠</div>
+          <div class="callout-body">
+            <b>Exam trap</b>
+            Joint holding makes <em>access</em> simple, not <em>ownership</em> certain — if heirs contest it legally, the joint holder's practical claim can still be overridden by the laws of succession.
+          </div>
+        </div>
+
+        <div class="clause" id="g-nom">
+          <div class="clause-ghost">3</div>
+          <div class="clause-head">
+            <h3>Nomination</h3>
+            <span class="clause-tag">Sec. 15.4.3</span>
+          </div>
+          <p>Nomination lets an asset holder name who should <strong>receive the monies</strong> on their death — but a nominee is legally reduced to a <em>trustee of the bequest</em> if a dispute arises; final ownership still follows succession law.</p>
+          <ul>
+            <li>Only an <strong>individual</strong> can nominate. Corporates, partnership firms, trusts, HUF Kartas, and POA holders <strong>cannot</strong> nominate.</li>
+            <li>A minor can be a <em>nominee</em> (with a named guardian), and multiple nominees are allowed with defined percentage shares.</li>
+            <li>A <strong>Will overrides a nomination</strong> — but the institution can still validly pay the nominee first; the onus to prove a better claim then falls on whoever contests it.</li>
+          </ul>
+        </div>
+
+        <div class="callout callout-trap">
+          <div class="callout-icon">⚠</div>
+          <div class="callout-body">
+            <b>The one big exception</b>
+            Under the <strong>Insurance Act, 1938</strong> and the <strong>EPF Act</strong>, "beneficial nominees" — immediate family (spouse, parents, children) — actually <em>are</em> entitled to the money outright; other legal heirs get no claim. This is the opposite of the general rule, and a favourite exam trick. Outside these two Acts, courts have generally upheld legal heirs' rights over the nominee's.
+          </div>
+        </div>
+
+        <p style="color:var(--ink-soft); font-size:14.5px;">Recent updates worth knowing: <strong>SEBI (Jan 2025)</strong> raised the maximum number of nominees allowed on securities accounts to <strong>10</strong>. Banking law amendments are introducing "one after another" successive nomination — an alternate nominee steps in automatically if the first is unavailable.</p>
+      </section>
+
+      <!-- ============ 15.5 FAMILY SETTLEMENT ============ -->
+      <section class="part" id="family">
+        <div class="part-head">
+          <span class="part-num">15.5</span>
+          <h2>Family Settlement &amp; Business</h2>
+        </div>
+        <p class="part-intro">The biggest section in the chapter — how families move property and businesses between generations, and how they protect what they've built along the way.</p>
+
+        <div class="subnav">
+          <a href="#f-settlement">Family settlement</a>
+          <a href="#f-transfer">Forms of transfer</a>
+          <a href="#f-business">Family business</a>
+          <a href="#f-valuation">Valuation</a>
+          <a href="#f-wealth">Wealth transfer tools</a>
+          <a href="#f-tenancy">Joint tenancy</a>
+          <a href="#f-protection">Asset protection</a>
+          <a href="#f-ibc">Creditor protection / IBC</a>
+        </div>
+
+        <!-- 15.5 intro -->
+        <div class="clause" id="f-settlement">
+          <div class="clause-ghost">1</div>
+          <div class="clause-head">
+            <h3>Family Settlement</h3>
+          </div>
+          <p>An instrument used to resolve disputes or rival property claims <strong>within</strong> a family — entered voluntarily, in good faith, purely to restore harmony. It's not a formal "transfer" in the tax sense, which gives it three real advantages:</p>
+          <ul>
+            <li>No capital gains tax — family arrangements are not treated as a transfer</li>
+            <li>Not treated as a gift</li>
+            <li>Clubbing provisions do not apply</li>
+          </ul>
+          <p>It can be oral or written, and stamped/registered only if the parties choose to.</p>
+        </div>
+
+        <!-- 15.5.1 & 15.5.2 -->
+        <div class="clause" id="f-transfer">
+          <div class="clause-ghost">2</div>
+          <div class="clause-head">
+            <h3>Forms of intra-family property transfer</h3>
+          </div>
+          <p>Property moves within a family for love, care, or planning purposes — each route carries a different tax and process footprint:</p>
+        </div>
+
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Route</th><th>When title changes</th><th>Tax / cost angle</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="hl">Joint ownership</td>
+                <td>On death of one owner, their share passes to the survivor</td>
+                <td>No tax event on death; capital gains <em>may</em> apply if transferred during one's lifetime</td>
+              </tr>
+              <tr>
+                <td class="hl">Gifting</td>
+                <td>Immediate</td>
+                <td>No tax within blood relatives, but stamp duty is mandatory (immovable property gifts must be registered); several states offer concessional rates for spouse/children</td>
+              </tr>
+              <tr>
+                <td class="hl">Will / Inheritance</td>
+                <td>Only after the testator's death; revocable until then</td>
+                <td>No tax on the beneficiary on receipt; registration not required (only mutation); capital gains apply only if the inheritor later sells — using the <em>previous owner's</em> cost of acquisition</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Family business -->
+        <div class="clause" id="f-business">
+          <div class="clause-ghost">3</div>
+          <div class="clause-head">
+            <h3>Estate planning for family businesses</h3>
+          </div>
+          <p>Studies cited in the chapter note only about <strong>70% of family businesses survive into the next generation</strong> — succession is one of the biggest risks a family enterprise faces. Three broad strategies help:</p>
+          <ul>
+            <li><strong>Rise to the challenge</strong> — transfer ownership early via a limited partnership, ESOP, or non-voting stock to heirs not active in the business, while operators keep management control</li>
+            <li><strong>Partial sale</strong> — sell part of the business for liquidity to fund the older generation, while the younger generation grows from the residual business's cash flow</li>
+            <li><strong>Create a trust</strong> — generates a fixed income stream, keeps control within the family during the trust term, and can pass the business on after a defined period</li>
+          </ul>
+        </div>
+
+        <div class="clause">
+          <div class="clause-ghost">4</div>
+          <div class="clause-head">
+            <h3>Five ownership models for a family business</h3>
+          </div>
+        </div>
+
+        <div class="card-grid">
+          <div class="mini-card">
+            <div class="mini-card-num">Model 01</div>
+            <h4>Owner-Operator</h4>
+            <p>Simplest: control stays with the founder (or a couple). Works well across generations — <em>if</em> the family can agree on a fair successor.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Model 02</div>
+            <h4>Partnership</h4>
+            <p>Only active leaders own and benefit. Fragile when the next generation isn't equal in number or involvement — a classic exam story: four brothers succeed equally, but the third generation includes a daughter excluded as "not a partner," and the business ends up sold.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Model 03</div>
+            <h4>Distributed</h4>
+            <p>Ownership passes to <em>all</em> descendants, working in the business or not. Most popular model — but friction arises between contributors and non-contributors over pay and distributions.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Model 04</div>
+            <h4>Nested</h4>
+            <p>Family branches jointly own some assets, separately own others — small ownership groups "nested" inside a larger one that funds each branch's own portfolio. Risk: the core business gets underfunded.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Model 05</div>
+            <h4>Public</h4>
+            <p>Shares partly publicly traded, business still privately controlled; professional managers run day-to-day operations. Chosen when outside capital is needed or owners want distance from daily operations.</p>
+          </div>
+        </div>
+
+        <!-- Valuation -->
+        <div class="clause" id="f-valuation">
+          <div class="clause-ghost">5</div>
+          <div class="clause-head">
+            <h3>Valuing a family business</h3>
+          </div>
+        </div>
+
+        <div class="card-grid">
+          <div class="mini-card">
+            <div class="mini-card-num">Method 1</div>
+            <h4>Capitalizing Earnings</h4>
+            <p>Values the business on cash flow available to owners/investors, factoring in current and future capital needs.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Method 2</div>
+            <h4>Projected Earnings (DCF)</h4>
+            <p>Discounted cash flow — based on anticipated future earnings. A 5-year+ horizon makes accuracy harder to pin down.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Method 3</div>
+            <h4>Market Approach</h4>
+            <p>Benchmarks against what the market pays for similar businesses — a directional range, not a precise figure.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Method 4</div>
+            <h4>Net Asset Value</h4>
+            <p>Sums the real estate, machinery, and other hard assets built up over decades — can exceed the operating value alone.</p>
+          </div>
+        </div>
+
+        <!-- Wealth transfer tools -->
+        <div class="clause" id="f-wealth">
+          <div class="clause-ghost">6</div>
+          <div class="clause-head">
+            <h3>Inter-generational wealth transfer — four tools</h3>
+          </div>
+          <ul>
+            <li><strong>Succession laws</strong> — the default when nothing else is planned: Hindu Succession Act 1956, Mohammedan Personal Law, and Indian Succession Act 1925 (Christians/Jews/Parsis)</li>
+            <li><strong>Will</strong> — easy to write, freely revocable, but more open to challenge, which can delay transfer and erode value</li>
+            <li><strong>Gift</strong> — immediate, tax-free within blood relatives, low litigation risk — but stamp duty applies and it's irrevocable once executed</li>
+            <li><strong>Trust</strong> — the most sustainable structure for long-term wealth transfer across multiple generations</li>
+          </ul>
+        </div>
+
+        <!-- Joint tenancy vs tenancy in common -->
+        <div class="clause" id="f-tenancy">
+          <div class="clause-ghost">7</div>
+          <div class="clause-head">
+            <h3>Joint Tenancy vs. Tenancy-in-Common</h3>
+          </div>
+          <p>Both describe co-ownership by two or more people, but they behave completely differently at death.</p>
+        </div>
+
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th></th><th>Joint Tenants</th><th>Tenants-in-Common</th></tr></thead>
+            <tbody>
+              <tr><td class="hl">On death</td><td><strong>Right of survivorship</strong> — the deceased's interest passes automatically to the surviving joint tenant(s)</td><td>No survivorship — the deceased's share passes per their Will, or succession law if none</td></tr>
+              <tr><td class="hl">Acquiring interest</td><td>Must be acquired by all tenants at the <em>same time</em>, from the <em>same transaction</em>, with identical interest</td><td>Interest can be acquired separately; shares can be unequal (equal, if unstated)</td></tr>
+              <tr><td class="hl">Will</td><td>Only the sole surviving joint tenant can bequeath the interest by Will</td><td>Full freedom to deal with one's own share as they wish</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Asset protection -->
+        <div class="clause" id="f-protection">
+          <div class="clause-ghost">8</div>
+          <div class="clause-head">
+            <h3>Asset Protection</h3>
+          </div>
+          <p>Strategies that shield personal or business assets from creditor claims. The right degree of protection depends on four factors: <strong>identity of the debtor</strong> (spouse's assets, guarantors), <strong>identity of the creditor</strong> (a government creditor has more seizing power than a private one), <strong>nature of the claim</strong> (dischargeable claims need less protection), and <strong>nature of the asset</strong> (PPF, for instance, is protected from creditor claims by law).</p>
+          <ul>
+            <li><strong>Corporations / LLPs</strong> — the entity's debt doesn't attach to the individual owner, except in cases of fraudulent transfer</li>
+            <li><strong>Asset Protection Trusts</strong> — assets held in trust aren't legally "owned" by the settlor, so creditors can't reach them; trade-off: it's irrevocable, and the settlor gives up control</li>
+            <li><strong>Transferring property rights</strong> — gifting legal ownership to a spouse or trusted party; risky if that relationship later sours, and still exposed if the transfer itself was fraudulent</li>
+          </ul>
+        </div>
+
+        <!-- Creditor protection / IBC -->
+        <div class="clause" id="f-ibc">
+          <div class="clause-ghost">9</div>
+          <div class="clause-head">
+            <h3>Creditor Protection Period</h3>
+          </div>
+          <p>Before 2016, defaulting companies could vanish with limited consequence — creditors had only slow civil courts as recourse. A sequence of laws built up creditor protection over three decades:</p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 780 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:760px;height:auto;font-family:'Inter',sans-serif;">
+            <line x1="40" y1="80" x2="740" y2="80" stroke="#C7C0AC" stroke-width="2"/>
+            <g>
+              <circle cx="90" cy="80" r="6" fill="#93711F"/>
+              <text x="90" y="60" text-anchor="middle" font-size="12" fill="#1A2238" font-weight="600">Companies Act</text>
+              <text x="90" y="105" text-anchor="middle" font-size="11" fill="#7A8296">Winding up /</text>
+              <text x="90" y="118" text-anchor="middle" font-size="11" fill="#7A8296">SICA</text>
+            </g>
+            <g>
+              <circle cx="260" cy="80" r="6" fill="#93711F"/>
+              <text x="260" y="60" text-anchor="middle" font-size="12" fill="#1A2238" font-weight="600">1993</text>
+              <text x="260" y="105" text-anchor="middle" font-size="11" fill="#7A8296">RDDBFI Act —</text>
+              <text x="260" y="118" text-anchor="middle" font-size="11" fill="#7A8296">first tribunal</text>
+            </g>
+            <g>
+              <circle cx="430" cy="80" r="6" fill="#93711F"/>
+              <text x="430" y="60" text-anchor="middle" font-size="12" fill="#1A2238" font-weight="600">2002</text>
+              <text x="430" y="105" text-anchor="middle" font-size="11" fill="#7A8296">SARFAESI —</text>
+              <text x="430" y="118" text-anchor="middle" font-size="11" fill="#7A8296">seize assets directly</text>
+            </g>
+            <g>
+              <circle cx="600" cy="80" r="6" fill="#93711F"/>
+              <text x="600" y="60" text-anchor="middle" font-size="12" fill="#1A2238" font-weight="600">CICRA</text>
+              <text x="600" y="105" text-anchor="middle" font-size="11" fill="#7A8296">CIBIL &amp; credit</text>
+              <text x="600" y="118" text-anchor="middle" font-size="11" fill="#7A8296">bureaus emerge</text>
+            </g>
+            <g>
+              <circle cx="700" cy="80" r="7" fill="#7A2432"/>
+              <text x="700" y="60" text-anchor="middle" font-size="12.5" fill="#7A2432" font-weight="700">2016</text>
+              <text x="700" y="105" text-anchor="middle" font-size="11" fill="#7A2432" font-weight="600">IBC — timelined,</text>
+              <text x="700" y="118" text-anchor="middle" font-size="11" fill="#7A2432" font-weight="600">effective resolution</text>
+            </g>
+          </svg>
+          <div class="diagram-cap">Fig 15.3 — Evolution of creditor-protection law (Sec. 15.5.9)</div>
+        </div>
+
+        <p style="color:var(--ink-soft); font-size:14.5px;">The <strong>Insolvency and Bankruptcy Code (IBC), 2016</strong> runs on strict timelines: a financial creditor files with the adjudicating authority → default is ascertained within <strong>14 days</strong> → if confirmed, admission is communicated within <strong>7 days</strong> → corporate insolvency resolution process begins.</p>
+      </section>
+
+      <!-- ============ 15.6 TRUSTS ============ -->
+      <section class="part" id="trusts">
+        <div class="part-head">
+          <span class="part-num">15.6</span>
+          <h2>Trusts — Characteristics &amp; Regulations</h2>
+        </div>
+        <p class="part-intro">The most powerful — and most tested — tool in this chapter. A trust separates <em>legal ownership</em> from <em>benefit</em>, which is precisely what makes it so useful for privacy, control, and tax planning.</p>
+
+        <div class="subnav">
+          <a href="#t-anatomy">Anatomy of a trust</a>
+          <a href="#t-elements">Essential elements</a>
+          <a href="#t-adv">Advantages / disadvantages</a>
+          <a href="#t-class">Classification</a>
+          <a href="#t-parties">Parties &amp; hybrid</a>
+          <a href="#t-revoke">Cancellation &amp; revocation</a>
+          <a href="#t-tax">Taxation</a>
+          <a href="#t-perp">Perpetuities &amp; pass-through</a>
+          <a href="#t-stamp">Stamp duty &amp; capital gains</a>
+          <a href="#t-offshore">Offshore trusts</a>
+          <a href="#t-dni">DNI — worked example</a>
+        </div>
+
+        <!-- Anatomy -->
+        <div class="clause" id="t-anatomy">
+          <div class="clause-ghost">1</div>
+          <div class="clause-head">
+            <h3>What a trust actually is</h3>
+            <span class="clause-tag">Sec. 3, Indian Trust Act 1882</span>
+          </div>
+          <p>The Indian Trust Act, 1882 defines a trust as: <em>"an obligation annexed to the ownership of property, arising out of a confidence reposed in and accepted by the owner … for the benefit of another, or of another and the owner."</em></p>
+        </div>
+
+        <div class="diagram">
+          <svg viewBox="0 0 720 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:640px;height:auto;font-family:'Inter',sans-serif;">
+            <g>
+              <rect x="10" y="70" width="150" height="70" rx="8" fill="#E7EEF4" stroke="#BBCEDF"/>
+              <text x="85" y="98" text-anchor="middle" font-size="13.5" font-weight="600" fill="#28486B" font-family="Source Serif 4, serif">Settlor</text>
+              <text x="85" y="116" text-anchor="middle" font-size="10.5" fill="#28486B">reposes confidence,</text>
+              <text x="85" y="128" text-anchor="middle" font-size="10.5" fill="#28486B">transfers property</text>
+            </g>
+            <path d="M160 105 L275 105" stroke="#93711F" stroke-width="2" marker-end="url(#arrow)"/>
+            <text x="215" y="97" text-anchor="middle" font-size="10.5" fill="#93711F">trust property</text>
+
+            <g>
+              <rect x="280" y="60" width="160" height="90" rx="8" fill="#1A2238"/>
+              <text x="360" y="90" text-anchor="middle" font-size="13.5" font-weight="600" fill="#F4F2EB" font-family="Source Serif 4, serif">Trustee</text>
+              <text x="360" y="108" text-anchor="middle" font-size="10.5" fill="#DAD4C3">holds legal title,</text>
+              <text x="360" y="122" text-anchor="middle" font-size="10.5" fill="#DAD4C3">manages per</text>
+              <text x="360" y="136" text-anchor="middle" font-size="10.5" fill="#DAD4C3">the trust deed</text>
+            </g>
+            <path d="M440 105 L555 105" stroke="#93711F" stroke-width="2" marker-end="url(#arrow)"/>
+            <text x="497" y="97" text-anchor="middle" font-size="10.5" fill="#93711F">income / benefit</text>
+
+            <g>
+              <rect x="560" y="70" width="150" height="70" rx="8" fill="#E9F1E8" stroke="#BFD8C2"/>
+              <text x="635" y="98" text-anchor="middle" font-size="13.5" font-weight="600" fill="#2E5233" font-family="Source Serif 4, serif">Beneficiary</text>
+              <text x="635" y="116" text-anchor="middle" font-size="10.5" fill="#2E5233">holds equitable</text>
+              <text x="635" y="128" text-anchor="middle" font-size="10.5" fill="#2E5233">(beneficial) interest</text>
+            </g>
+
+            <rect x="200" y="175" width="320" height="34" rx="17" fill="#F1E6C8"/>
+            <text x="360" y="196" text-anchor="middle" font-size="11.5" fill="#6E5416" font-weight="600">Governed by the Trust Deed</text>
+
+            <defs>
+              <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#93711F"/></marker>
+            </defs>
+          </svg>
+          <div class="diagram-cap">Fig 15.4 — The three parties to a trust (Sec. 3, ITA 1882)</div>
+        </div>
+
+        <div class="clause" id="t-elements">
+          <div class="clause-ghost">2</div>
+          <div class="clause-head">
+            <h3>Five essential elements</h3>
+            <span class="clause-tag">Sec. 6, ITA 1882</span>
+          </div>
+          <p>A trust is validly created only when the author indicates, with reasonable certainty: <strong>(a)</strong> an intention to create a trust, <strong>(b)</strong> the purpose, <strong>(c)</strong> the beneficiary, <strong>(d)</strong> the trust property, and <strong>(e)</strong> — unless the trust is by Will, or the author is themself trustee — actually transfers the property to the trustee.</p>
+          <p>Private/family trusts fall under the Indian Trust Act, 1882 itself. Public charitable/religious trusts follow a mix of religious law and state legislation (e.g. the Bombay Public Trust Act, 1950).</p>
+        </div>
+
+        <!-- Adv/Disadv -->
+        <div class="clause" id="t-adv">
+          <div class="clause-ghost">3</div>
+          <div class="clause-head">
+            <h3>Advantages vs. disadvantages</h3>
+          </div>
+        </div>
+
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+            <tbody>
+              <tr><td>Provides for family members/relatives dependent on the settlor</td><td>Structurally complex</td></tr>
+              <tr><td>Reduces the probability of litigation</td><td>Can be expensive to establish and maintain</td></tr>
+              <tr><td>Lets the settlor's charitable wishes be administered systematically</td><td>Transferring immovable property in is costly (stamp duty varies by state)</td></tr>
+              <tr><td>Preserves wealth across a lifetime with orderly, planned distribution</td><td>Settlor loses control over property once transferred/gifted in</td></tr>
+              <tr><td>Effective for gifting to minors, or caring for elderly/incapacitated family</td><td>Trustees' powers are restricted strictly by the trust deed</td></tr>
+              <tr><td>Strong tax-planning tool — growth belongs to the beneficiary</td><td></td></tr>
+              <tr><td>Bypasses probate entirely — assets pass directly to beneficiaries</td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Classification -->
+        <div class="clause" id="t-class">
+          <div class="clause-ghost">4</div>
+          <div class="clause-head">
+            <h3>Classifying a trust — four independent axes</h3>
+          </div>
+          <p>A single trust gets classified along <em>several</em> axes at once — these aren't mutually exclusive categories. A trust can simultaneously be private, irrevocable, and discretionary, for instance.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="mini-card">
+            <div class="mini-card-num">Axis: WHO benefits</div>
+            <h4>Public vs. Private</h4>
+            <p><strong>Public</strong> — for the general public or a section of it (temples, schools, hospitals); permanent, indefinite character. <strong>Private</strong> — for specific, ascertained individuals/families.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Axis: CAN it be undone</div>
+            <h4>Revocable vs. Irrevocable</h4>
+            <p><strong>Revocable</strong> — settlor keeps control, can modify/end it; taxed in the settlor's hands (treated like an alternative to a Will). <strong>Irrevocable</strong> — locked in until its purpose completes; Sec. 77/78 ITA requires an express power-of-revocation clause, or it's irrevocable by default.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Axis: TRUSTEE discretion</div>
+            <h4>Discretionary vs. Determinate</h4>
+            <p><strong>Discretionary</strong> — trustees decide how much income each beneficiary gets; taxed at Maximum Marginal Rate (30%), with exceptions. <strong>Determinate</strong> — each beneficiary's share is fixed/ascertainable in the deed; taxed via the trustee as representative assessee, at the beneficiary's own slab rate.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Axis: HOW created</div>
+            <h4>Oral / Written, Implied / Express</h4>
+            <p>Movable property can be settled <strong>orally</strong>; immovable property needs a <strong>written deed</strong>. An <strong>implied</strong> trust arises from circumstances alone; an <strong>express</strong> trust has a formal deed spelling out terms.</p>
+          </div>
+        </div>
+
+        <div class="callout callout-trap">
+          <div class="callout-icon">⚠</div>
+          <div class="callout-body">
+            <b>Exam trap — discretionary trust taxation</b>
+            Discretionary trusts are taxed at the flat <strong>Maximum Marginal Rate (30%)</strong> under Sec. 164(1) — <em>except</em> when: (a) no beneficiary is also a beneficiary of any other trust or has income otherwise taxed above MMR, or (b) the trust is the <strong>sole trust created under a Will</strong> for the support and maintenance of dependent relatives. Miss the exception and you'll answer 30% when slab rate actually applies.
+          </div>
+        </div>
+
+        <p style="color:var(--ink-soft); font-size:14.5px;">A <strong>Hybrid Trust</strong> blends both: the trustee pays a fixed, determinate amount to certain beneficiaries per the deed, and retains full discretion over how the <em>remaining</em> trust property is distributed.</p>
+
+        <!-- Trust vs Will -->
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Trust</th><th>Will</th></tr></thead>
+            <tbody>
+              <tr><td>Effective as soon as it's created</td><td>Effective only on death</td></tr>
+              <tr><td>Can distribute property before, at, or after death</td><td>Only directs what happens at death</td></tr>
+              <tr><td>Covers only property actually transferred into it</td><td>Covers everything in the testator's name at death</td></tr>
+              <tr><td>No probate — no court oversees it</td><td>May require probate court oversight</td></tr>
+              <tr><td>Stays private</td><td>Can become a public record</td></tr>
+              <tr><td>Plans for disability, tax savings</td><td>Can name a guardian for minors</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Parties + hybrid -->
+        <div class="clause" id="t-parties">
+          <div class="clause-ghost">5</div>
+          <div class="clause-head">
+            <h3>Parties to a trust deed</h3>
+          </div>
+          <ul>
+            <li><strong>Settlor / Author</strong> — sets up the trust; in a living trust, retains the right to amend/revoke it (if more than one settlor, generally all must agree to change it)</li>
+            <li><strong>Trustee</strong> — accepts the confidence; holds legal title, and the power to buy, sell, borrow against, or transfer trust assets, subject to the deed</li>
+            <li><strong>Beneficiary</strong> — entitled to the benefit; can be a <strong>primary</strong> beneficiary (first in line) or a <strong>residual/secondary</strong> beneficiary (entitled only after the primary beneficiaries). In a private trust, settlor and beneficiary can be the same person.</li>
+          </ul>
+        </div>
+
+        <!-- Revocation -->
+        <div class="clause" id="t-revoke">
+          <div class="clause-ghost">6</div>
+          <div class="clause-head">
+            <h3>Cancellation &amp; revocation of a private trust</h3>
+          </div>
+          <p>The Indian Trust Act has no formal dissolution mechanism — a trust simply becomes <strong>extinct</strong> when its purpose is fulfilled, becomes unlawful, or becomes impossible (destruction of trust property), or when it is <strong>revoked</strong>. Revocation can happen when:</p>
+          <ul>
+            <li>Beneficiaries, competent to contract, consent that the current structure no longer serves them</li>
+            <li>The trust was created specifically to pay off the settlor's debts to creditors</li>
+            <li>A trust created by a non-testamentary document (or verbally) expressly reserved a power of revocation to the settlor</li>
+          </ul>
+        </div>
+
+        <!-- Taxation -->
+        <div class="clause" id="t-tax">
+          <div class="clause-ghost">7</div>
+          <div class="clause-head">
+            <h3>How a trust actually gets taxed</h3>
+            <span class="clause-tag">Sec. 60–64, Sec. 160–164, Income Tax Act</span>
+          </div>
+          <p><strong>Public trusts</strong> get exemptions under Chapter III (Sec. 11, 12, 12A, 12AA, 12AB, 13) for services rendered to the nation. <strong>Private trusts</strong> are taxed at slab rate or Maximum Marginal Rate depending on their structure (Sec. 160–164).</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="mini-card">
+            <div class="mini-card-num">Sec. 60</div>
+            <h4>Income transferred, asset not</h4>
+            <p>If income is transferred (revocable or not) <em>without</em> transferring the underlying asset, that income is taxed in the <strong>transferor's</strong> hands only.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Sec. 61</div>
+            <h4>Revocable transfer of asset</h4>
+            <p>Income from a <strong>revocable</strong> transfer of the asset itself is taxed in the transferor's hands.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Sec. 62</div>
+            <h4>The carve-out</h4>
+            <p>Sec. 61 does <em>not</em> apply if the trust isn't revocable during the beneficiary's lifetime, and the transferor gets no direct/indirect benefit from the income.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Sec. 161(1A)</div>
+            <h4>Business income</h4>
+            <p>If any part of trust income is business profit, the <strong>entire</strong> trust income is taxed at MMR — unless it's the sole trust under a Will for a dependent relative's support &amp; maintenance, in which case slab rate applies.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Sec. 64</div>
+            <h4>Minor's income clubbing</h4>
+            <p>A minor's income (including from a private trust for the minor) is clubbed with the parent/guardian's income — <em>except</em> income of a minor with a disability specified under Sec. 80U.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Sec. 164(1)</div>
+            <h4>Discretionary trust default</h4>
+            <p>Where beneficiaries' shares are indeterminate/unknown, income is taxed at MMR (30%), subject to the two exceptions noted above.</p>
+          </div>
+        </div>
+
+        <p style="color:var(--ink-soft); font-size:14.5px;">A trust can even be created <strong>for a deity</strong> — in <em>CIT v. Sri Jagannath Jew [1977] 107 ITR 9 (SC)</em>, the Supreme Court held the deity was the legal owner of the estate and assessable as such, even though the managers also handled secular duties like family members' residence and transport.</p>
+
+        <!-- Perpetuities + pass-through -->
+        <div class="clause" id="t-perp">
+          <div class="clause-ghost">8</div>
+          <div class="clause-head">
+            <h3>Perpetuities &amp; the pass-through concept</h3>
+          </div>
+          <p><strong>No trust can run forever.</strong> Property can't be tied up beyond the lifetime of a living person <em>plus</em> the minority (until 18) of someone born by the end of that period. Income accumulation is similarly capped — generally the transferor's lifetime, or <strong>18 years</strong> from the transfer, whichever is later. Exception: transfers for public benefit (religion, knowledge, commerce, health, safety) escape the rule.</p>
+          <p>A private trust has <strong>no separate legal identity</strong> — it's a <strong>pass-through (flow-through) entity.</strong> Income "flows through" to beneficiaries as if it were their own income; the trustee is only liable to tax in a <em>representative</em> capacity, not as the actual owner.</p>
+        </div>
+
+        <!-- Stamp duty -->
+        <div class="clause" id="t-stamp">
+          <div class="clause-ghost">9</div>
+          <div class="clause-head">
+            <h3>Stamp duty &amp; capital gains on transfer into a trust</h3>
+            <span class="clause-tag">Art. 58, Indian Stamp Act 1899 · Sec. 47(iii), Income Tax Act</span>
+          </div>
+          <ul>
+            <li>Stamp duty is levied on the <strong>trust deed itself</strong> (Article 58) — not on later distributions to beneficiaries</li>
+            <li>Settling <strong>immovable property</strong> via a registered document during the settlor's lifetime attracts stamp duty; settling property <strong>via a Will</strong> does not</li>
+            <li><strong>Sec. 47(iii)</strong> exempts the transferor from capital gains tax when transferring capital assets into an <strong>irrevocable</strong> trust — but transfers into a <strong>revocable</strong> trust remain fully subject to capital gains</li>
+          </ul>
+        </div>
+
+        <div class="callout callout-trap">
+          <div class="callout-icon">⚠</div>
+          <div class="callout-body">
+            <b>Two traps stacked together</b>
+            (1) Stamp duty applies to a <em>lifetime</em> transfer into a trust, but NOT to a <em>testamentary</em> (Will-based) settlement. (2) Capital gains exemption under Sec. 47(iii) applies only to <em>irrevocable</em> trusts — revocable trust transfers are fully taxable. Read the question carefully for both "revocable/irrevocable" AND "lifetime/testamentary."
+          </div>
+        </div>
+
+        <!-- Offshore -->
+        <div class="clause" id="t-offshore">
+          <div class="clause-ghost">10</div>
+          <div class="clause-head">
+            <h3>Offshore trusts</h3>
+          </div>
+          <p>Trusts formed outside India, under a foreign trust law — used for cross-border families, offshore business, or NRI succession planning. India places no restriction on non-resident trustees or beneficiaries.</p>
+          <ul>
+            <li><strong>Revocable</strong> offshore trust — income is treated as the settlor's own, taxed directly in their hands</li>
+            <li><strong>Irrevocable</strong>, all-Indian-resident beneficiaries — trustee taxed in a representative capacity</li>
+            <li><strong>Irrevocable</strong>, mixed resident/non-resident beneficiaries — only the Indian beneficiary is taxed on distributions received; trustee has no representative role in India</li>
+            <li>Partial Indian control — can be taxed as an Association of Persons</li>
+          </ul>
+          <p>Indian resident beneficiaries must report their interest in an offshore trust in the information schedule of their income tax return.</p>
+        </div>
+
+        <!-- DNI -->
+        <div class="clause" id="t-dni">
+          <div class="clause-ghost">11</div>
+          <div class="clause-head">
+            <h3>Distributable Net Income (DNI)</h3>
+          </div>
+          <p>DNI is the slice of trust income that's actually allotted to beneficiaries — it becomes their income, once distributed, and exists mainly to prevent double taxation.</p>
+        </div>
+
+        <div class="formula">
+          DNI <span class="op">=</span> Taxable Income <span class="op">−</span> Capital Gains <span class="op">+</span> Tax Exemptions
+          <div style="font-size:11.5px; color:#C7C0AC; margin-top:8px; font-family:'Inter',sans-serif;">(swap in Capital <em>Loss</em> as an addition, if that's what occurred)</div>
+        </div>
+
+        <div class="clause">
+          <div class="clause-head"><h3 style="font-size:16px;">Worked example</h3></div>
+          <p>Trust ABC: total income ₹1,00,000 (₹50,000 interest + ₹50,000 dividends), trustee fees ₹20,000, capital gains ₹20,000, exemption ₹20,000.</p>
+        </div>
+        <div class="tbl-wrap">
+          <table>
+            <tbody>
+              <tr><td>Interest + Dividends</td><td class="hl">₹50,000 + ₹50,000</td></tr>
+              <tr><td>Less: Fees</td><td class="hl">− ₹20,000</td></tr>
+              <tr><td>Add: Capital gains</td><td class="hl">+ ₹20,000</td></tr>
+              <tr><td>Less: Exemption</td><td class="hl">− ₹20,000</td></tr>
+              <tr><td><strong>Taxable Income</strong></td><td class="hl"><strong>₹80,000</strong></td></tr>
+              <tr><td>Less: Capital gains (removed again for DNI)</td><td class="hl">− ₹20,000</td></tr>
+              <tr><td>Add: Exemption (added back for DNI)</td><td class="hl">+ ₹20,000</td></tr>
+              <tr><td><strong>Distributable Net Income (DNI)</strong></td><td class="hl"><strong>₹80,000</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============ 15.7 GUARDIANSHIP ============ -->
+      <section class="part" id="guardianship">
+        <div class="part-head">
+          <span class="part-num">15.7</span>
+          <h2>Guardianship</h2>
+        </div>
+        <p class="part-intro">Who legally steps in when someone — a minor, an elderly parent, a person with special needs — cannot manage their own affairs.</p>
+
+        <div class="clause">
+          <div class="clause-head"><h3>Two kinds of responsibility</h3></div>
+          <p>A guardian's duties split into two distinct roles, which can sit with the same person or be split between two people:</p>
+          <ul>
+            <li><strong>Guardian of the Person</strong> — responsible for custody and day-to-day care</li>
+            <li><strong>Guardian of the Estate</strong> — responsible for managing financial affairs</li>
+          </ul>
+        </div>
+
+        <div class="card-grid">
+          <div class="mini-card">
+            <div class="mini-card-num">Type 01</div>
+            <h4>Natural Guardian</h4>
+            <p>No legal process needed — it falls by birth. Parents are natural guardians until the child turns 18.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Type 02</div>
+            <h4>Court-Appointed Guardian</h4>
+            <p>For individuals with no living parents, incapacitated by birth, accident, or other cause — the court appoints someone to decide on their behalf.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Type 03</div>
+            <h4>Testamentary Guardian</h4>
+            <p>Appointed via a Will — most common for minor children, managing the child's affairs within the limits the Will sets.</p>
+          </div>
+        </div>
+
+        <p style="color:var(--ink-soft); font-size:14.5px;">A legal guardian's financial authority typically covers: managing bank accounts, making and managing investments (mutual funds, shares, bonds), and availing loans or government concessions on behalf of the person under guardianship.</p>
+      </section>
+
+      <!-- ============ 15.8 POWER OF ATTORNEY ============ -->
+      <section class="part" id="poa">
+        <div class="part-head">
+          <span class="part-num">15.8</span>
+          <h2>Power of Attorney</h2>
+        </div>
+        <p class="part-intro">A POA lets someone act on your behalf <em>right now</em> — unlike a Will, which only ever speaks after death.</p>
+
+        <div class="clause">
+          <div class="clause-head">
+            <h3>Definition &amp; parties</h3>
+            <span class="clause-tag">Sec. 1A, POA Act 1882 · Sec. 2(21), Indian Stamp Act</span>
+          </div>
+          <p>A POA is a formal instrument by which the <strong>donor</strong> (principal) empowers the <strong>donee</strong> (agent/attorney) to act on their behalf, for a specific act or generally. Both parties must ordinarily be 18+ and of sound mind — with two notable exceptions: a <strong>married woman</strong> can execute a POA even as a minor, and under Sec. 184 of the Contract Act, even a <strong>minor can be a donee</strong>. A person of unsound mind cannot be appointed attorney under any circumstance.</p>
+        </div>
+
+        <div class="card-grid">
+          <div class="mini-card">
+            <div class="mini-card-num">Type 01</div>
+            <h4>General POA</h4>
+            <p>Broad authorization — the agent can act generally, across more than one transaction.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Type 02</div>
+            <h4>Special POA</h4>
+            <p>Narrow — restricted to one specific matter/transaction. Authority expires once that transaction completes.</p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-card-num">Type 03</div>
+            <h4>Special POA for Registration</h4>
+            <p>Authorizes the attorney specifically to present an already-executed but unregistered document for registration.</p>
+          </div>
+        </div>
+
+        <div class="clause">
+          <div class="clause-head">
+            <h3>Revocation</h3>
+            <span class="clause-tag">Sec. 201, Indian Contract Act 1872</span>
+          </div>
+          <p>A POA ends when: the principal revokes it · either party is declared insolvent · the donee renounces the power · the underlying business is completed · or either party dies. If the agent has their own interest in the agency (Sec. 202), the POA cannot be revoked without the agent's consent — and Sec. 206 requires sufficient notice of revocation to avoid liability for resulting damages.</p>
+        </div>
+
+        <div class="callout callout-trap">
+          <div class="callout-icon">⚠</div>
+          <div class="callout-body">
+            <b>Exam trap — registration</b>
+            A POA generally does <strong>NOT</strong> require compulsory registration under Sec. 17(1)(b) of the Registration Act — because it only <em>authorises</em> the donee to act; it doesn't itself create, assign, or extinguish any title in immovable property. It becomes compulsorily registrable only if it creates an actual interest (a charge) in immovable property in favour of the donee.
+          </div>
+        </div>
+
+        <p style="color:var(--ink-soft); font-size:14.5px;"><strong>Authentication</strong> (Sec. 85, Indian Evidence Act) can be done by a Notary Public, any court/judge/magistrate, an Indian Consul/Vice-Consul, or a representative of the Central Government. <strong>Stamp duty</strong> is a state matter (Article 48, Indian Stamp Act) — but stamping alone doesn't define the POA's legal nature; its content does. An agent's control <strong>ends automatically on the principal's death</strong>, and NRIs can execute a POA from abroad, provided it's authenticated by the Indian Embassy/Consulate where it was executed.</p>
+      </section>
+
+      <!-- ============ 15.9 CASELETS ============ -->
+      <section class="part" id="caselets">
+        <div class="part-head">
+          <span class="part-num">15.9</span>
+          <h2>Exam Caselets</h2>
+        </div>
+        <p class="part-intro">Two worked scenarios straight from the chapter — the second is exactly the calculation style XB likes to test.</p>
+
+        <div class="caselet">
+          <div class="caselet-head">
+            <h4>Case 1 — Probate objections</h4>
+            <span>Concept check</span>
+          </div>
+          <div class="caselet-body">
+            <p>Mr. PQR, a Hindu, died leaving a Will. Unmarried, no immediate family. He has 2 living siblings, and 2 deceased siblings who left behind spouses and children. His Will gives 1/5 of the estate to a living brother, and 1/5 each to a nephew and niece of a surviving sister.</p>
+            <p><strong>Q: Who can contest the Will during probate?</strong></p>
+            <div class="options">
+              <div class="opt">Living brother</div>
+              <div class="opt">Living sister</div>
+              <div class="opt">Spouse/children of deceased siblings</div>
+              <div class="opt correct">✓ All of the above</div>
+            </div>
+            <p>When the Will is filed for probate, the court issues notice to <strong>all legal heirs</strong> — including spouses and children of deceased siblings — inviting objections. Anyone who doesn't respond is presumed to have no objection. A Will can only be challenged on specific legal grounds, which the court then evaluates.</p>
+          </div>
+        </div>
+
+        <div class="caselet">
+          <div class="caselet-head">
+            <h4>Case 2 — Trust taxation for parents</h4>
+            <span>Calculation</span>
+          </div>
+          <div class="caselet-body">
+            <p>Rajesh created a trust for his parents (senior citizens), <strong>equal beneficial interest</strong>. Father: fixed monthly pension ₹40,000. Mother: net annual value ₹3.80 lakh from a let-out property. The trust property itself generated a net annual value of ₹5.40 lakh in FY 2024-25.</p>
+            <p><strong>Q: Tax payable (New Regime) by the trustee as representative assessee for AY 2025-26, including 4% cess?</strong></p>
+            <div class="options">
+              <div class="opt">₹58,485</div>
+              <div class="opt">₹75,000</div>
+              <div class="opt correct">✓ ₹24,180</div>
+              <div class="opt">₹62,343</div>
+            </div>
+
+            <p style="margin-top:18px;"><strong>How it's solved</strong> — the trust's ₹5.40L NAV is split equally: ₹2.70L notionally added to each parent's own income, then each parent (as represented by the trustee) is taxed on <em>their own slab</em>, with only the trust-income slice taxed as such.</p>
+          </div>
+          <div class="tbl-wrap" style="margin:0 26px 22px; width:auto;">
+            <table>
+              <thead><tr><th>Father's side</th><th>₹</th></tr></thead>
+              <tbody>
+                <tr><td>Pension (₹40,000 × 12)</td><td class="hl">4,80,000</td></tr>
+                <tr><td>+ Trust share (₹5.40L ÷ 2)</td><td class="hl">2,70,000</td></tr>
+                <tr><td>Total income</td><td class="hl">7,50,000</td></tr>
+                <tr><td>− Standard deduction</td><td class="hl">75,000</td></tr>
+                <tr><td>Assessable taxable income</td><td class="hl">6,75,000</td></tr>
+                <tr><td>Trust-income slice (₹4.8L→₹6.75L) taxed @5%</td><td class="hl"><strong>9,750</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tbl-wrap" style="margin:0 26px 22px; width:auto;">
+            <table>
+              <thead><tr><th>Mother's side</th><th>₹</th></tr></thead>
+              <tbody>
+                <tr><td>Net annual value, rented property</td><td class="hl">3,80,000</td></tr>
+                <tr><td>+ Trust share (₹5.40L ÷ 2)</td><td class="hl">2,70,000</td></tr>
+                <tr><td>Assessable taxable income</td><td class="hl">6,50,000</td></tr>
+                <tr><td>Trust-income slice (₹3.8L→₹6.5L) taxed @5%</td><td class="hl"><strong>13,500</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tbl-wrap" style="margin:0 26px 26px; width:auto;">
+            <table>
+              <tbody>
+                <tr><td>Total tax on trust's assessable income (9,750 + 13,500)</td><td class="hl">23,250</td></tr>
+                <tr><td>+ Cess @ 4%</td><td class="hl">930</td></tr>
+                <tr><td><strong>Total tax payable by trustee (representative assessee)</strong></td><td class="hl"><strong>24,180</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout-tip" style="margin:0 26px 24px;">
+            <div class="callout-icon">✓</div>
+            <div class="callout-body">
+              <b>The key idea being tested</b>
+              This is a <strong>determinate trust</strong> (equal beneficial interest is specified), so it's <em>not</em> taxed at the flat 30% MMR. Instead, each parent's trust-income share stacks on top of their own income to find the applicable slab — and only <em>that slice</em> is taxed at the resulting marginal rate, via the trustee acting as representative assessee for each parent separately.
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <hr class="divider">
+
+      <div class="callout callout-info" style="margin:0 0 24px;">
+        <div class="callout-icon">🎥</div>
+        <div class="callout-body">
+          <b>Still confused?</b>
+          If you are still confused you can watch this video.
+          <div style="margin-top:14px; border-radius:8px; overflow:hidden; border:1px solid var(--info-line); background:#000;">
+            <iframe src="https://drive.google.com/file/d/1pVdyUINGPygEfil4ZSP9LeSJsaAbhgmQ/preview" width="100%" height="440" style="display:block; border:0;" allow="autoplay" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="footnote">
+        Source: NISM Series X-B (Investment Adviser Level 2), Chapter 15 — Tools for Estate Planning, pp. 345–389. Reformatted and simplified as a personal study aid.
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  // Active link highlighting on scroll
+  const links = document.querySelectorAll('.toc-link');
+  const sections = Array.from(links).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+
+  function onScroll(){
+    let idx = 0;
+    const scrollPos = window.scrollY + 140;
+    sections.forEach((sec, i) => {
+      if (sec && sec.offsetTop <= scrollPos) idx = i;
+    });
+    links.forEach(l => l.classList.remove('active'));
+    if(links[idx]) links[idx].classList.add('active');
+  }
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+</script>
+
+</body>
+</html>

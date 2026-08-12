@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ch 14 — Estate &amp; Succession Planning, simplified</title>
+<style>
+  :root{
+    --purple:#7F77DD; --purple-bg:#EEEDFE; --purple-text:#3C3489;
+    --teal:#1D9E75; --teal-bg:#E1F5EE; --teal-text:#085041;
+    --gray:#888780; --gray-bg:#F1EFE8; --gray-text:#444441;
+    --coral:#D85A30; --coral-bg:#FAECE7; --coral-text:#712B13;
+    --blue:#378ADD; --blue-bg:#E6F1FB; --blue-text:#0C447C;
+    --pink:#D4537E; --pink-bg:#FBEAF0; --pink-text:#72243E;
+    --amber:#BA7517; --amber-bg:#FAEEDA; --amber-text:#633806;
+    --ink:#222; --sub:#5b5b58; --line:#d8d6cd; --bg:#fff; --card:#fafaf7;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --ink:#eee; --sub:#b8b6ac; --line:#3a3a37; --bg:#1b1b19; --card:#232320;
+      --purple-bg:#26215C; --purple-text:#CECBF6;
+      --teal-bg:#04342C; --teal-text:#9FE1CB;
+      --gray-bg:#2C2C2A; --gray-text:#D3D1C7;
+      --coral-bg:#4A1B0C; --coral-text:#F5C4B3;
+      --blue-bg:#042C53; --blue-text:#B5D4F4;
+      --pink-bg:#4B1528; --pink-text:#F4C0D1;
+      --amber-bg:#412402; --amber-text:#FAC775; }
+  }
+  body{ font-family:-apple-system,'Segoe UI',Roboto,Arial,sans-serif; background:var(--bg); color:var(--ink); max-width:900px; margin:0 auto; padding:32px 24px 90px; line-height:1.65; }
+  h1{ font-size:23px; font-weight:600; margin-bottom:2px; }
+  h2{ font-size:18px; font-weight:600; margin-top:48px; border-top:1px solid var(--line); padding-top:22px; }
+  h3{ font-size:15px; font-weight:600; margin-top:26px; color:var(--sub); text-transform:uppercase; letter-spacing:.03em; font-size:12px; }
+  .subtitle{ color:var(--sub); font-size:14px; margin-bottom:8px; }
+  .toc{ background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 22px; font-size:13.5px; margin:20px 0 8px; }
+  .toc a{ color:var(--ink); text-decoration:none; }
+  .toc ol{ margin:6px 0 0; padding-left:18px; columns:2; }
+  .legend{ display:flex; gap:20px; font-size:13px; color:var(--sub); margin:10px 0 24px; flex-wrap:wrap; }
+  .swatch{ display:inline-block; width:11px; height:11px; border-radius:3px; margin-right:6px; vertical-align:middle; }
+  svg text{ font-family:inherit; fill:var(--ink); }
+  .box-purple rect{ fill:var(--purple-bg); stroke:var(--purple); } .box-purple text{ fill:var(--purple-text); }
+  .box-teal rect{ fill:var(--teal-bg); stroke:var(--teal); } .box-teal text{ fill:var(--teal-text); }
+  .box-gray rect{ fill:var(--gray-bg); stroke:var(--gray); } .box-gray text{ fill:var(--gray-text); }
+  .box-coral rect{ fill:var(--coral-bg); stroke:var(--coral); } .box-coral text{ fill:var(--coral-text); }
+  .box-blue rect{ fill:var(--blue-bg); stroke:var(--blue); } .box-blue text{ fill:var(--blue-text); }
+  .box-pink rect{ fill:var(--pink-bg); stroke:var(--pink); } .box-pink text{ fill:var(--pink-text); }
+  svg line{ stroke:var(--line); stroke-width:1.3; }
+  table{ border-collapse:collapse; width:100%; margin:12px 0 8px; font-size:13.5px; }
+  th{ text-align:left; font-weight:600; border-bottom:2px solid var(--line); padding:8px 10px; color:var(--sub); font-size:11.5px; text-transform:uppercase; letter-spacing:.03em; }
+  td{ padding:8px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+  tr:hover td{ background:var(--card); }
+  .tag{ display:inline-block; font-size:11px; padding:2px 7px; border-radius:10px; font-weight:600; white-space:nowrap; }
+  .tag-direct{ background:var(--purple-bg); color:var(--purple-text); }
+  .tag-rep{ background:var(--teal-bg); color:var(--teal-text); }
+  .tag-2005{ background:var(--coral-bg); color:var(--coral-text); }
+  .note{ background:var(--card); border-left:3px solid var(--gray); padding:12px 16px; border-radius:0 6px 6px 0; font-size:13.5px; margin:16px 0; }
+  .warn{ background:var(--coral-bg); border-left:3px solid var(--coral); color:var(--coral-text); padding:12px 16px; border-radius:0 6px 6px 0; font-size:13.5px; margin:16px 0; }
+  .example{ background:var(--purple-bg); border-radius:8px; padding:16px 20px; font-size:13.5px; margin:14px 0; }
+  .cards{ display:flex; gap:14px; margin:16px 0; flex-wrap:wrap; }
+  .card{ flex:1; min-width:220px; border-radius:10px; padding:16px 18px; }
+  .card h4{ margin:0 0 6px; font-size:14px; }
+  .card p{ margin:0; font-size:13px; color:var(--sub); }
+  .card.c1{ background:var(--blue-bg); } .card.c1 h4{ color:var(--blue-text); }
+  .card.c2{ background:var(--teal-bg); } .card.c2 h4{ color:var(--teal-text); }
+  .card.c3{ background:var(--coral-bg); } .card.c3 h4{ color:var(--coral-text); }
+</style>
+</head>
+<body>
+
+<h1>Estate &amp; succession planning — the whole chapter, simplified</h1>
+<div class="subtitle">NISM XB, Chapter 14 · with heir trees for Hindu and Muslim succession</div>
+
+<div class="toc"><strong>On this page</strong>
+<ol>
+<li><a href="#s1">What "estate" actually means</a></li>
+<li><a href="#s2">Dying without a will</a></li>
+<li><a href="#s3">The 5 building blocks of a plan</a></li>
+<li><a href="#s4">Hindu Succession Act — male heirs</a></li>
+<li><a href="#s5">Hindu Succession Act — female heirs</a></li>
+<li><a href="#s6">Muslim personal law</a></li>
+<li><a href="#s7">Married Women's Property Act, 1874</a></li>
+<li><a href="#s8">Mutation</a></li>
+<li><a href="#s9">Worked examples</a></li>
+</ol>
+</div>
+
+<h2 id="s1">1. What "estate" actually means</h2>
+<p>An estate isn't just "the house and the bank account" — it's everything you own or control, in whatever form (sole name, joint, in a trust), plus anything that gets created on your death, like a life insurance payout. The syllabus splits it three ways:</p>
+<div class="cards">
+<div class="card c1"><h4>Gross estate</h4><p>Real estate, bank accounts, investments, businesses, retirement accounts (NPS), life insurance — anything that determines your net worth.</p></div>
+<div class="card c2"><h4>Residue estate</h4><p>Personal items not named in a will/trust — car, jewellery, furniture, clothes — plus any outstanding payments owed to you at death.</p></div>
+<div class="card c3"><h4>Estate debt</h4><p>What you owe: home/car loans, credit card dues, business liabilities, unpaid taxes, pending legal claims.</p></div>
+</div>
+<p style="font-size:13.5px;color:var(--sub)">One more distinction worth keeping straight: <strong>estate planning</strong> is about your personal assets and applies to everyone. <strong>Succession planning</strong> is specifically about handing over a family business while you're alive — different question, different timeline.</p>
+
+<h2 id="s2">2. Dying without a will (intestate)</h2>
+<p>Indian Succession Act, 1925, Section 30: you're "intestate" for any asset you haven't validly disposed of by will. When that happens, your legal heirs must apply to a civil court for a <strong>succession certificate</strong>, and the law that decides who gets what depends entirely on your religion — this is the single most important branching point in the whole chapter.</p>
+<table>
+<tr><th>Religion</th><th>Testamentary (with a will)</th><th>Intestate (no will)</th></tr>
+<tr><td>Hindus, Jains, Sikhs, Buddhists</td><td>Indian Succession Act, 1925</td><td>Hindu Succession Act, 1956 (as amended 2005)</td></tr>
+<tr><td>Christians, Parsis, Jews</td><td>Indian Succession Act, 1925</td><td>Indian Succession Act, 1925</td></tr>
+<tr><td>Muslims</td><td>Muslim personal law (Shia/Sunni)</td><td>Muslim personal law (Shia/Sunni)</td></tr>
+</table>
+<p style="font-size:13.5px;color:var(--sub)">Muslims are the outlier — no single Indian statute governs them either way; it's entirely religious-text-based, and it differs between Shias and Sunnis.</p>
+
+<h2 id="s3">3. The 5 building blocks of an estate plan</h2>
+<table>
+<tr><th style="width:140px">Element</th><th>What it does</th></tr>
+<tr><td><strong>Will</strong></td><td>Says who inherits what, and names a guardian for minor children or dependants with special needs.</td></tr>
+<tr><td><strong>Trust</strong></td><td>A separate legal arrangement holding assets for a beneficiary. Can be created via a will (testamentary trust) — but then it still goes through probate.</td></tr>
+<tr><td><strong>Power of Attorney</strong></td><td>Lets someone manage your finances if you're incapacitated. Commonly used by NRIs to manage Indian assets remotely.</td></tr>
+<tr><td><strong>Living will</strong></td><td>An advance directive to physicians for end-of-life situations (terminal illness, coma, advanced dementia) when you can't communicate decisions yourself.</td></tr>
+<tr><td><strong>Nomination &amp; beneficiary designation</strong></td><td>Technically not a formal "component," but essential in practice. A nominee is only a <em>custodian</em> until assets reach the real legal heirs — except under the new Insurance Act, where a parent/spouse/child nominee automatically becomes a <em>beneficial</em> nominee and can actually keep the money.</td></tr>
+</table>
+
+<h2 id="s4">4. Hindu Succession Act, 1956 — male dying intestate</h2>
+<p style="font-size:14px;color:var(--sub);margin-top:-8px">Only 4 people inherit directly: <strong>widow, son, daughter, mother</strong>. Everyone else on the Class I list is standing in for a son or daughter who died first — read every long entry as "this person, because their parent predeceased."</p>
+
+<svg width="100%" viewBox="0 0 680 360" role="img" aria-label="Class I heirs family tree">
+<defs><marker id="a1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="currentColor" stroke-width="1.4"/></marker></defs>
+<g class="box-gray"><rect x="230" y="20" width="220" height="56" rx="8" stroke-width="1"/>
+<text x="340" y="42" text-anchor="middle" font-size="14" font-weight="600">Hindu male</text>
+<text x="340" y="60" text-anchor="middle" font-size="12">dies intestate (no will)</text></g>
+<g style="color:var(--line)">
+<line x1="340" y1="76" x2="118" y2="138" marker-end="url(#a1)"/>
+<line x1="340" y1="76" x2="265" y2="138" marker-end="url(#a1)"/>
+<line x1="340" y1="76" x2="415" y2="138" marker-end="url(#a1)"/>
+<line x1="340" y1="76" x2="562" y2="138" marker-end="url(#a1)"/>
+</g>
+<g class="box-purple"><rect x="50" y="140" width="130" height="44" rx="8" stroke-width="1"/><text x="115" y="167" text-anchor="middle" font-size="14" font-weight="600">Widow</text></g>
+<g class="box-purple"><rect x="200" y="140" width="130" height="44" rx="8" stroke-width="1"/><text x="265" y="167" text-anchor="middle" font-size="14" font-weight="600">Son</text></g>
+<g class="box-purple"><rect x="350" y="140" width="130" height="44" rx="8" stroke-width="1"/><text x="415" y="167" text-anchor="middle" font-size="14" font-weight="600">Daughter</text></g>
+<g class="box-purple"><rect x="500" y="140" width="130" height="44" rx="8" stroke-width="1"/><text x="565" y="167" text-anchor="middle" font-size="14" font-weight="600">Mother</text></g>
+<g style="color:var(--line)">
+<line x1="265" y1="184" x2="84" y2="248" marker-end="url(#a1)"/>
+<line x1="265" y1="184" x2="202" y2="248" marker-end="url(#a1)"/>
+<line x1="265" y1="184" x2="332" y2="248" marker-end="url(#a1)"/>
+<line x1="415" y1="184" x2="442" y2="248" marker-end="url(#a1)"/>
+<line x1="415" y1="184" x2="560" y2="248" marker-end="url(#a1)"/>
+</g>
+<g class="box-teal"><rect x="40" y="250" width="88" height="44" rx="8" stroke-width="1"/><text x="84" y="277" text-anchor="middle" font-size="13" font-weight="600">Grandson</text></g>
+<g class="box-teal"><rect x="138" y="250" width="128" height="44" rx="8" stroke-width="1"/><text x="202" y="277" text-anchor="middle" font-size="13" font-weight="600">Granddaughter</text></g>
+<g class="box-teal"><rect x="276" y="250" width="112" height="44" rx="8" stroke-width="1"/><text x="332" y="277" text-anchor="middle" font-size="13" font-weight="600">Son's widow</text></g>
+<g class="box-teal"><rect x="398" y="250" width="88" height="44" rx="8" stroke-width="1"/><text x="442" y="277" text-anchor="middle" font-size="13" font-weight="600">Grandson</text></g>
+<g class="box-teal"><rect x="496" y="250" width="128" height="44" rx="8" stroke-width="1"/><text x="560" y="277" text-anchor="middle" font-size="13" font-weight="600">Granddaughter</text></g>
+<text x="84" y="316" text-anchor="middle" font-size="11" fill="var(--sub)">via</text>
+<text x="202" y="316" text-anchor="middle" font-size="11" fill="var(--sub)">predeceased son</text>
+<text x="442" y="332" text-anchor="middle" font-size="11" fill="var(--sub)">via predeceased</text>
+<text x="500" y="346" text-anchor="middle" font-size="11" fill="var(--sub)">daughter</text>
+</svg>
+<div class="legend">
+  <span><span class="swatch" style="background:var(--purple)"></span>Direct heirs — inherit immediately</span>
+  <span><span class="swatch" style="background:var(--teal)"></span>By representation — only if that child predeceased</span>
+  <span><span class="swatch" style="background:var(--coral)"></span>2005 amendment — one generation further still</span>
+</div>
+<div class="note">The 2005 amendment repeats the <strong>same rule</strong> one generation further down — but only along two of the four grandchild branches (not the "son's widow" branch, and not every combination). Split into the son's line and daughter's line below so each stays readable.</div>
+
+<h3>Son's line, extended</h3>
+<svg width="100%" viewBox="0 0 680 290" role="img" aria-label="Son's line extended to great-grandchildren">
+<defs><marker id="a6" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="currentColor" stroke-width="1.4"/></marker></defs>
+<g class="box-gray"><rect x="240" y="20" width="200" height="56" rx="8" stroke-width="1"/>
+<text x="340" y="42" text-anchor="middle" font-size="14" font-weight="600">Son</text>
+<text x="340" y="60" text-anchor="middle" font-size="12">predeceased his father</text></g>
+<g style="color:var(--line)">
+<line x1="290" y1="76" x2="208" y2="98" marker-end="url(#a6)"/>
+<line x1="390" y1="76" x2="328" y2="98" marker-end="url(#a6)"/>
+<line x1="410" y1="76" x2="460" y2="98" marker-end="url(#a6)"/>
+</g>
+<g class="box-teal"><rect x="164" y="100" width="88" height="44" rx="8" stroke-width="1"/><text x="208" y="127" text-anchor="middle" font-size="13" font-weight="600">Grandson</text></g>
+<g class="box-teal"><rect x="264" y="100" width="128" height="44" rx="8" stroke-width="1"/><text x="328" y="127" text-anchor="middle" font-size="13" font-weight="600">Granddaughter</text></g>
+<g class="box-teal"><rect x="404" y="100" width="112" height="44" rx="8" stroke-width="1"/><text x="460" y="127" text-anchor="middle" font-size="13" font-weight="600">Son's widow</text></g>
+<text x="208" y="163" text-anchor="middle" font-size="10.5" fill="var(--sub)">if he too predeceased →</text>
+<text x="328" y="163" text-anchor="middle" font-size="10.5" fill="var(--sub)">if she too predeceased →</text>
+<g style="color:var(--line)">
+<line x1="208" y1="168" x2="156" y2="208" marker-end="url(#a6)"/>
+<line x1="208" y1="168" x2="287" y2="208" marker-end="url(#a6)"/>
+<line x1="208" y1="168" x2="397" y2="208" marker-end="url(#a6)"/>
+<line x1="328" y1="168" x2="506" y2="208" marker-end="url(#a6)"/>
+</g>
+<g class="box-coral"><rect x="106" y="210" width="101" height="44" rx="8" stroke-width="1"/><text x="156" y="235" text-anchor="middle" font-size="12" font-weight="600">Gt-grandson</text></g>
+<g class="box-coral"><rect x="219" y="210" width="136" height="44" rx="8" stroke-width="1"/><text x="287" y="235" text-anchor="middle" font-size="12" font-weight="600">Gt-granddaughter</text></g>
+<g class="box-coral"><rect x="367" y="210" width="59" height="44" rx="8" stroke-width="1"/><text x="396" y="235" text-anchor="middle" font-size="12" font-weight="600">Widow</text></g>
+<g class="box-coral"><rect x="438" y="210" width="136" height="44" rx="8" stroke-width="1"/><text x="506" y="235" text-anchor="middle" font-size="12" font-weight="600">Gt-granddaughter</text></g>
+<text x="156" y="270" text-anchor="middle" font-size="10" fill="var(--sub)">item 10</text>
+<text x="287" y="270" text-anchor="middle" font-size="10" fill="var(--sub)">item 11</text>
+<text x="396" y="270" text-anchor="middle" font-size="10" fill="var(--sub)">item 12</text>
+<text x="506" y="270" text-anchor="middle" font-size="10" fill="var(--sub)">item 16</text>
+</svg>
+
+<h3>Daughter's line, extended</h3>
+<svg width="100%" viewBox="0 0 680 290" role="img" aria-label="Daughter's line extended to great-grandchildren">
+<defs><marker id="a7" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="currentColor" stroke-width="1.4"/></marker></defs>
+<g class="box-gray"><rect x="240" y="20" width="200" height="56" rx="8" stroke-width="1"/>
+<text x="340" y="42" text-anchor="middle" font-size="14" font-weight="600">Daughter</text>
+<text x="340" y="60" text-anchor="middle" font-size="12">predeceased her father</text></g>
+<g style="color:var(--line)">
+<line x1="310" y1="76" x2="270" y2="98" marker-end="url(#a7)"/>
+<line x1="370" y1="76" x2="390" y2="98" marker-end="url(#a7)"/>
+</g>
+<g class="box-teal"><rect x="226" y="100" width="88" height="44" rx="8" stroke-width="1"/><text x="270" y="127" text-anchor="middle" font-size="13" font-weight="600">Grandson</text></g>
+<g class="box-teal"><rect x="326" y="100" width="128" height="44" rx="8" stroke-width="1"/><text x="390" y="127" text-anchor="middle" font-size="13" font-weight="600">Granddaughter</text></g>
+<text x="270" y="163" text-anchor="middle" font-size="10.5" fill="var(--sub)">if he too predeceased →</text>
+<text x="390" y="163" text-anchor="middle" font-size="10.5" fill="var(--sub)">if she too predeceased →</text>
+<g style="color:var(--line)">
+<line x1="270" y1="168" x2="210" y2="208" marker-end="url(#a7)"/>
+<line x1="390" y1="168" x2="340" y2="208" marker-end="url(#a7)"/>
+<line x1="390" y1="168" x2="471" y2="208" marker-end="url(#a7)"/>
+</g>
+<g class="box-coral"><rect x="142" y="210" width="136" height="44" rx="8" stroke-width="1"/><text x="210" y="235" text-anchor="middle" font-size="12" font-weight="600">Gt-granddaughter</text></g>
+<g class="box-coral"><rect x="290" y="210" width="101" height="44" rx="8" stroke-width="1"/><text x="340" y="235" text-anchor="middle" font-size="12" font-weight="600">Gt-grandson</text></g>
+<g class="box-coral"><rect x="403" y="210" width="136" height="44" rx="8" stroke-width="1"/><text x="471" y="235" text-anchor="middle" font-size="12" font-weight="600">Gt-granddaughter</text></g>
+<text x="210" y="270" text-anchor="middle" font-size="10" fill="var(--sub)">item 15</text>
+<text x="340" y="270" text-anchor="middle" font-size="10" fill="var(--sub)">item 13</text>
+<text x="471" y="270" text-anchor="middle" font-size="10" fill="var(--sub)">item 14</text>
+</svg>
+<p style="font-size:13px;color:var(--sub)">Notice what's <em>missing</em>: there's no "great-grandson via the granddaughter-via-son branch," and no widow box at all past the son's-widow generation. The Act only extends specific branches — that asymmetry is exactly why the list looks so irregular when you meet it as plain text.</p>
+
+<h3>Full statutory list — Class I (16 heirs)</h3>
+<table>
+<tr><th style="width:28px">#</th><th>Heir</th><th style="width:110px">Type</th></tr>
+<tr><td>1</td><td>Son</td><td><span class="tag tag-direct">Direct</span></td></tr>
+<tr><td>2</td><td>Daughter</td><td><span class="tag tag-direct">Direct</span></td></tr>
+<tr><td>3</td><td>Widow</td><td><span class="tag tag-direct">Direct</span></td></tr>
+<tr><td>4</td><td>Mother</td><td><span class="tag tag-direct">Direct</span></td></tr>
+<tr><td>5</td><td>Son of a pre-deceased son</td><td><span class="tag tag-rep">Representation</span></td></tr>
+<tr><td>6</td><td>Daughter of a pre-deceased son</td><td><span class="tag tag-rep">Representation</span></td></tr>
+<tr><td>7</td><td>Son of a pre-deceased daughter</td><td><span class="tag tag-rep">Representation</span></td></tr>
+<tr><td>8</td><td>Daughter of a pre-deceased daughter</td><td><span class="tag tag-rep">Representation</span></td></tr>
+<tr><td>9</td><td>Widow of a pre-deceased son</td><td><span class="tag tag-rep">Representation</span></td></tr>
+<tr><td>10</td><td>Son of a pre-deceased son of a pre-deceased son</td><td><span class="tag tag-2005">2005 amendment</span></td></tr>
+<tr><td>11</td><td>Daughter of a pre-deceased son of a pre-deceased son</td><td><span class="tag tag-2005">2005 amendment</span></td></tr>
+<tr><td>12</td><td>Widow of a pre-deceased son of a pre-deceased son</td><td><span class="tag tag-2005">2005 amendment</span></td></tr>
+<tr><td>13</td><td>Son of a pre-deceased daughter of a pre-deceased daughter</td><td><span class="tag tag-2005">2005 amendment</span></td></tr>
+<tr><td>14</td><td>Daughter of a pre-deceased daughter of a pre-deceased daughter</td><td><span class="tag tag-2005">2005 amendment</span></td></tr>
+<tr><td>15</td><td>Daughter of a pre-deceased son of a pre-deceased daughter</td><td><span class="tag tag-2005">2005 amendment</span></td></tr>
+<tr><td>16</td><td>Daughter of a pre-deceased daughter of a pre-deceased son</td><td><span class="tag tag-2005">2005 amendment</span></td></tr>
+</table>
+<p style="font-size:13px;color:var(--sub)"><strong>Father is not a Class I heir</strong> — commonly tested. Adopted children count as Class I; multiple widows inherit jointly as one share.</p>
+
+<h3>How the property actually splits (Section 10)</h3>
+<div class="example">
+Not a headcount — it's <strong>shares</strong>: Widow (all widows together) = 1 share · each surviving son/daughter/mother = 1 share each · the entire branch of a pre-deceased child = 1 share, split again inside that branch.<br><br>
+<strong>Example:</strong> widow + 2 surviving sons + 1 surviving daughter + mother + one pre-deceased son (survived by his widow and 2 children) = <strong>6 shares</strong> (1/6 each). The pre-deceased son's 1/6 is then split three ways inside his branch → his widow, son and daughter each get 1/18 of the whole estate.
+</div>
+
+<h3>Priority order (Section 8) — when do you even reach Class II?</h3>
+<svg width="100%" viewBox="0 0 680 100" role="img" aria-label="Succession priority order for a Hindu male">
+<defs><marker id="a2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="currentColor" stroke-width="1.4"/></marker></defs>
+<g class="box-gray"><rect x="20" y="20" width="145" height="52" rx="8" stroke-width="1"/><text x="92" y="40" text-anchor="middle" font-size="13" font-weight="600">Class I</text><text x="92" y="58" text-anchor="middle" font-size="11">close family</text></g>
+<line x1="165" y1="46" x2="192" y2="46" style="color:var(--line)" marker-end="url(#a2)"/>
+<g class="box-gray"><rect x="192" y="20" width="145" height="52" rx="8" stroke-width="1"/><text x="264" y="40" text-anchor="middle" font-size="13" font-weight="600">Class II</text><text x="264" y="58" text-anchor="middle" font-size="11">extended family, 9 entries</text></g>
+<line x1="337" y1="46" x2="364" y2="46" style="color:var(--line)" marker-end="url(#a2)"/>
+<g class="box-gray"><rect x="364" y="20" width="145" height="52" rx="8" stroke-width="1"/><text x="436" y="40" text-anchor="middle" font-size="13" font-weight="600">Agnates</text><text x="436" y="58" text-anchor="middle" font-size="11">all-male chain of relation</text></g>
+<line x1="509" y1="46" x2="536" y2="46" style="color:var(--line)" marker-end="url(#a2)"/>
+<g class="box-gray"><rect x="536" y="20" width="124" height="52" rx="8" stroke-width="1"/><text x="598" y="40" text-anchor="middle" font-size="13" font-weight="600">Cognates</text><text x="598" y="58" text-anchor="middle" font-size="11">chain includes a female</text></g>
+</svg>
+<p style="font-size:13.5px;color:var(--sub);margin-top:-4px">You only move right if <em>zero</em> heirs survive in the box before it — Class I and II take everything before an agnate or cognate ever sees a rupee.</p>
+
+<h3>Class II — 9 entries, tried strictly in order</h3>
+<p style="font-size:13.5px;color:var(--sub);margin-top:-8px">Class II isn't a representation tree like Class I — nobody "steps into" anyone's shoes here. It's a strict <strong>priority ladder</strong> (Section 9): entry I is tried first, and you only drop to entry II if entry I is completely empty, and so on.</p>
+
+<svg width="100%" viewBox="0 0 680 620" role="img" aria-label="Class II priority ladder, entries I through IX">
+<defs><marker id="a8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="currentColor" stroke-width="1.4"/></marker></defs>
+<g class="box-gray"><rect x="60" y="20" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="44" font-size="13" font-weight="600">Entry I — Father</text></g>
+<line x1="340" y1="68" x2="340" y2="84" style="color:var(--line)" marker-end="url(#a8)"/>
+<g class="box-teal"><rect x="60" y="84" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="108" font-size="13" font-weight="600">Entry II — Son's daughter's son/daughter &#183; brother &#183; sister</text></g>
+<line x1="340" y1="132" x2="340" y2="148" style="color:var(--line)" marker-end="url(#a8)"/>
+<g class="box-teal"><rect x="60" y="148" width="560" height="66" rx="8" stroke-width="1"/>
+<text x="80" y="174" font-size="13" font-weight="600">Entry III — Daughter's son's son/daughter,</text>
+<text x="80" y="196" font-size="13" font-weight="600">daughter's daughter's son/daughter</text></g>
+<line x1="340" y1="214" x2="340" y2="230" style="color:var(--line)" marker-end="url(#a8)"/>
+<g class="box-teal"><rect x="60" y="230" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="254" font-size="13" font-weight="600">Entry IV — Brother's son/daughter &#183; sister's son/daughter</text></g>
+<line x1="340" y1="278" x2="340" y2="294" style="color:var(--line)" marker-end="url(#a8)"/>
+<g class="box-blue"><rect x="60" y="294" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="318" font-size="13" font-weight="600">Entry V — Father's father &#183; father's mother</text></g>
+<line x1="340" y1="342" x2="340" y2="358" style="color:var(--line)" marker-end="url(#a8)"/>
+<g class="box-blue"><rect x="60" y="358" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="382" font-size="13" font-weight="600">Entry VI — Father's widow &#183; brother's widow</text></g>
+<line x1="340" y1="406" x2="340" y2="422" style="color:var(--line)" marker-end="url(#a8)"/>
+<g class="box-blue"><rect x="60" y="422" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="446" font-size="13" font-weight="600">Entry VII — Father's brother &#183; father's sister</text></g>
+<line x1="340" y1="470" x2="340" y2="486" style="color:var(--line)" marker-end="url(#a8)"/>
+<g class="box-pink"><rect x="60" y="486" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="510" font-size="13" font-weight="600">Entry VIII — Mother's father &#183; mother's mother</text></g>
+<line x1="340" y1="534" x2="340" y2="550" style="color:var(--line)" marker-end="url(#a8)"/>
+<g class="box-pink"><rect x="60" y="550" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="574" font-size="13" font-weight="600">Entry IX — Mother's brother &#183; mother's sister</text></g>
+</svg>
+<div class="legend">
+  <span><span class="swatch" style="background:var(--gray)"></span>Direct ascendant — father alone</span>
+  <span><span class="swatch" style="background:var(--teal)"></span>Your own siblings &amp; their descendants</span>
+  <span><span class="swatch" style="background:var(--blue)"></span>Extended paternal family</span>
+  <span><span class="swatch" style="background:var(--pink)"></span>Extended maternal family</span>
+</div>
+<p style="font-size:13px;color:var(--sub);margin-top:-8px">Read the shape of the ladder, not just the boxes: your own siblings and their children (teal) are exhausted <em>before</em> the law even looks at your father's parents or siblings (blue) — and your mother's side of the family (pink) is the very last resort in the whole of Class II. Entry VI is the odd one out, pairing a paternal in-law (father's widow, i.e. a stepmother) with a sibling's widow in the same entry.</p>
+
+<table>
+<tr><th style="width:60px">Entry</th><th>Heirs</th></tr>
+<tr><td>I</td><td>Father</td></tr>
+<tr><td>II</td><td>Son's daughter's son · Son's daughter's daughter · Brother · Sister</td></tr>
+<tr><td>III</td><td>Daughter's son's son · Daughter's son's daughter · Daughter's daughter's son · Daughter's daughter's daughter</td></tr>
+<tr><td>IV</td><td>Brother's son · Sister's son · Brother's daughter · Sister's daughter</td></tr>
+<tr><td>V</td><td>Father's father · Father's mother</td></tr>
+<tr><td>VI</td><td>Father's widow · Brother's widow</td></tr>
+<tr><td>VII</td><td>Father's brother · Father's sister</td></tr>
+<tr><td>VIII</td><td>Mother's father · Mother's mother</td></tr>
+<tr><td>IX</td><td>Mother's brother · Mother's sister</td></tr>
+</table>
+<p style="font-size:13px;color:var(--sub)">Entry I beats entry II, entry II beats entry III, and so on (Section 9). Everyone <em>within</em> the same entry shares equally (Section 11).</p>
+
+<h3>A few definitions worth locking in</h3>
+<table>
+<tr><th style="width:150px">Term</th><th>Meaning</th></tr>
+<tr><td>Full blood</td><td>Same father <em>and</em> same mother</td></tr>
+<tr><td>Half blood</td><td>Same father, different mother</td></tr>
+<tr><td>Uterine blood</td><td>Same mother, different father — <strong>excluded</strong> from Class I/II inheritance entirely</td></tr>
+<tr><td>Agnate</td><td>Related wholly through males (blood or adoption)</td></tr>
+<tr><td>Cognate</td><td>Related through blood/adoption, but the chain includes at least one female link</td></tr>
+<tr><td>Illegitimate child</td><td>Not recognised as related to the father under this Act, but <em>is</em> recognised through the mother</td></tr>
+</table>
+
+<div class="note"><strong>Caselet from the chapter:</strong> unmarried Hindu man dies intestate, survived by 1 brother and 2 sisters. No widow, no children, no mother → zero Class I heirs → falls to Class II. Brother and sisters are all in Entry II, so all three inherit equally.</div>
+
+<h2 id="s5">5. Hindu Succession Act — female dying intestate (Section 15)</h2>
+<p style="font-size:14px;color:var(--sub);margin-top:-8px">Before 1956, a woman only held property as a "limited owner." Section 14 fixed that — anything she possesses is her <strong>absolute property</strong>. Section 15 then lays out her own succession order, which runs through her husband's side before her own parents':</p>
+<svg width="100%" viewBox="0 0 680 344" role="img" aria-label="Order of succession for a Hindu female">
+<defs><marker id="a3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="currentColor" stroke-width="1.4"/></marker></defs>
+<g class="box-gray"><rect x="60" y="20" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="44" font-size="13" font-weight="600">1 &#183; Sons, daughters (incl. children of a predeceased son/daughter) &amp; husband</text></g>
+<line x1="340" y1="68" x2="340" y2="84" style="color:var(--line)" marker-end="url(#a3)"/>
+<g class="box-gray"><rect x="60" y="84" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="108" font-size="13" font-weight="600">2 &#183; Heirs of the husband</text></g>
+<line x1="340" y1="132" x2="340" y2="148" style="color:var(--line)" marker-end="url(#a3)"/>
+<g class="box-gray"><rect x="60" y="148" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="172" font-size="13" font-weight="600">3 &#183; Mother and father</text></g>
+<line x1="340" y1="196" x2="340" y2="212" style="color:var(--line)" marker-end="url(#a3)"/>
+<g class="box-gray"><rect x="60" y="212" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="236" font-size="13" font-weight="600">4 &#183; Heirs of the father</text></g>
+<line x1="340" y1="260" x2="340" y2="276" style="color:var(--line)" marker-end="url(#a3)"/>
+<g class="box-gray"><rect x="60" y="276" width="560" height="48" rx="8" stroke-width="1"/><text x="80" y="300" font-size="13" font-weight="600">5 &#183; Heirs of the mother</text></g>
+</svg>
+<p style="font-size:13.5px;color:var(--sub);margin-top:-4px">Notice the shape: her own children and husband come first (same instinct as the male's Class I), but if none survive, the estate goes to <strong>her husband's family</strong> before it ever reaches her own parents.</p>
+
+<h2 id="s6">6. Muslim personal law</h2>
+<p style="font-size:14px;color:var(--sub);margin-top:-8px">No single Indian statute — succession follows religious sources (the Quran, the Prophet's practice, scholarly consensus, and analogical reasoning), and the rules differ between Shias and Sunnis. There's no concept of inheriting a fixed "birthright" while the ancestor is alive — rights crystallise only on the date of death, and only for heirs who are themselves still living on that date.</p>
+
+<svg width="100%" viewBox="0 0 680 130" role="img" aria-label="Sharers versus residuary heirs in Muslim succession">
+<defs><marker id="a4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="currentColor" stroke-width="1.4"/></marker></defs>
+<g class="box-gray"><rect x="255" y="10" width="170" height="48" rx="8" stroke-width="1"/><text x="340" y="34" text-anchor="middle" font-size="13" font-weight="600">Estate of deceased</text></g>
+<line x1="300" y1="58" x2="220" y2="82" style="color:var(--line)" marker-end="url(#a4)"/>
+<line x1="380" y1="58" x2="460" y2="82" style="color:var(--line)" marker-end="url(#a4)"/>
+<g class="box-blue"><rect x="90" y="84" width="220" height="44" rx="8" stroke-width="1"/><text x="200" y="106" text-anchor="middle" font-size="13" font-weight="600">Sharers</text><text x="200" y="122" text-anchor="middle" font-size="11">fixed % share — 12 relations</text></g>
+<g class="box-teal"><rect x="370" y="84" width="220" height="44" rx="8" stroke-width="1"/><text x="480" y="106" text-anchor="middle" font-size="13" font-weight="600">Residuary</text><text x="480" y="122" text-anchor="middle" font-size="11">splits whatever's left over</text></g>
+</svg>
+
+<h3>The 12 sharers</h3>
+<table>
+<tr><th style="width:28px">#</th><th>Sharer</th></tr>
+<tr><td>1</td><td>Husband</td></tr><tr><td>2</td><td>Wife</td></tr>
+<tr><td>3</td><td>Daughter</td></tr><tr><td>4</td><td>Son's daughter (or further down that line)</td></tr>
+<tr><td>5</td><td>Father</td></tr><tr><td>6</td><td>Paternal grandfather</td></tr>
+<tr><td>7</td><td>Mother</td></tr><tr><td>8</td><td>Grandmother, male line</td></tr>
+<tr><td>9</td><td>Full sister</td></tr><tr><td>10</td><td>Consanguine sister (same father)</td></tr>
+<tr><td>11</td><td>Uterine sister (same mother)</td></tr><tr><td>12</td><td>Uterine brother</td></tr>
+</table>
+
+<div class="example">
+<strong>The share sizes that get tested:</strong>
+<ul style="margin:10px 0 0;padding-left:20px">
+<li>Wife: 1/4 if no lineal descendants, otherwise 1/8</li>
+<li>Husband: 1/2 if no lineal descendants, otherwise 1/4</li>
+<li>Sole daughter: 1/2. Two or more daughters together: 2/3</li>
+<li><strong>If both sons and daughters survive, daughters stop being sharers and become residuary</strong> — the leftover is split so each son gets exactly double what each daughter gets.</li>
+</ul>
+</div>
+
+<h3>Two ways the estate gets carved up</h3>
+<table>
+<tr><th style="width:170px">Method</th><th>Used by</th><th>How it works</th></tr>
+<tr><td>Per capita</td><td>Sunni law</td><td>Estate divided equally among heirs — share depends only on headcount.</td></tr>
+<tr><td>Per strip</td><td>Shia law</td><td>Estate divided by branch/line first — your share depends on which branch you belong to, and how many people are in it.</td></tr>
+</table>
+<p style="font-size:13.5px;color:var(--sub)">Unlike Hindu law, Muslim law makes <strong>no distinction between self-acquired and ancestral property</strong> — everything you hold, however you got it, passes to your heirs the same way.</p>
+
+<h3>Women, widows, and a few edge cases</h3>
+<table>
+<tr><td style="width:190px"><strong>Rights of daughters</strong></td><td>Both sons and daughters inherit — but a female heir's share is always half of a male heir's in the same position.</td></tr>
+<tr><td><strong>Widow — childless</strong></td><td>1/4 of the estate (after funeral costs, debts).</td></tr>
+<tr><td><strong>Widow — with children/grandchildren</strong></td><td>1/8 of the estate.</td></tr>
+<tr><td><strong>Deathbed marriage</strong></td><td>If a man marries during his final illness and dies of it without recovering or consummating the marriage, the widow has <em>no</em> inheritance right. But if he divorces her during that illness and then dies, her right continues until she remarries.</td></tr>
+<tr><td><strong>Child in the womb</strong></td><td>Entitled to a share only if born alive; if stillborn, treated as if that share never existed.</td></tr>
+<tr><td><strong>No legal heir at all</strong></td><td><strong>Escheat</strong> — the government inherits.</td></tr>
+<tr><td><strong>The will (Wasiyat)</strong></td><td>Anyone 15+ and of sound mind can make one — written, oral, or even by gesture, no formalities required. But it can only dispose of <strong>up to 1/3 of net assets</strong>; the remaining 2/3 must go to the heirs. Freely revocable anytime, expressly or by implication (e.g. later selling the same property).</td></tr>
+</table>
+
+<h2 id="s7">7. Married Women's Property Act, 1874</h2>
+<p style="font-size:14px;color:var(--sub);margin-top:-8px">Purpose: ring-fence a married woman's own property from her husband's creditors and tax troubles. Applies to any woman who was Hindu, Muslim, Buddhist, Sikh or Jain at marriage (or whose husband was).</p>
+<table>
+<tr><td style="width:210px"><strong>What counts as her separate property</strong></td><td>Her own wages/earnings from employment or trade she runs herself (not her husband's business); income from her own literary, artistic or scientific work; and all savings and investments made from that income.</td></tr>
+<tr><td><strong>Her own insurance policy</strong></td><td>She can insure her own life independently of her husband — fully valid, and the proceeds are her separate property, same as if she were unmarried.</td></tr>
+<tr><td><strong>His policy, for her benefit</strong></td><td>If a husband takes a policy on his own life "for the benefit of his wife (and/or children)," it's treated as a <strong>trust</strong> for them. It stays outside his estate and is protected from his creditors, so long as the trust's purpose still exists.</td></tr>
+<tr><td><strong>Her legal standing</strong></td><td>She can sue in her own name to protect her separate property, with the same civil and criminal remedies as an unmarried woman.</td></tr>
+<tr><td><strong>Her post-nuptial debts</strong></td><td>If she contracts a debt after marriage, the creditor can sue her and recover it out of her separate property, as if she were unmarried.</td></tr>
+<tr><td><strong>His liability for her ante-nuptial (pre-marriage) debts</strong></td><td>Marriage alone doesn't make the husband liable — she remains liable to the extent of her separate property.</td></tr>
+<tr><td><strong>His liability if she's a trustee</strong></td><td>He isn't liable for her breach of trust or mismanagement as an executrix/trustee — unless he personally interferes in the administration.</td></tr>
+</table>
+
+<h2 id="s8">8. Mutation</h2>
+<p style="font-size:14px;color:var(--sub);margin-top:-8px">Mutation is simply updating the <strong>revenue records</strong> to show a new name against a property — done at the state level, and it exists mainly so the tax department knows who to bill.</p>
+<svg width="100%" viewBox="0 0 680 100" role="img" aria-label="Mutation process">
+<defs><marker id="a5" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="currentColor" stroke-width="1.4"/></marker></defs>
+<g class="box-gray"><rect x="42" y="20" width="140" height="52" rx="8" stroke-width="1"/><text x="112" y="40" text-anchor="middle" font-size="12.5" font-weight="600">Ownership changes</text><text x="112" y="58" text-anchor="middle" font-size="11">sale, death, gift</text></g>
+<line x1="182" y1="46" x2="194" y2="46" style="color:var(--line)" marker-end="url(#a5)"/>
+<g class="box-gray"><rect x="194" y="20" width="140" height="52" rx="8" stroke-width="1"/><text x="264" y="40" text-anchor="middle" font-size="12.5" font-weight="600">Dues cleared</text><text x="264" y="58" text-anchor="middle" font-size="11">by present owner</text></g>
+<line x1="334" y1="46" x2="346" y2="46" style="color:var(--line)" marker-end="url(#a5)"/>
+<g class="box-gray"><rect x="346" y="20" width="140" height="52" rx="8" stroke-width="1"/><text x="416" y="40" text-anchor="middle" font-size="12.5" font-weight="600">Records updated</text><text x="416" y="58" text-anchor="middle" font-size="11">by revenue authority</text></g>
+<line x1="486" y1="46" x2="498" y2="46" style="color:var(--line)" marker-end="url(#a5)"/>
+<g class="box-coral"><rect x="498" y="20" width="140" height="52" rx="8" stroke-width="1"/><text x="568" y="40" text-anchor="middle" font-size="12.5" font-weight="600">≠ proof of title</text><text x="568" y="58" text-anchor="middle" font-size="11">not a judicial finding</text></g>
+</svg>
+<div class="warn"><strong>The exam trap:</strong> mutation is <em>not</em> proof that you own the property — the proceedings aren't judicial. Title comes from the underlying deed/inheritance, not from the revenue record. The one thing mutation <em>does</em> do: where there are co-owners, it stops any single one of them from claiming sole ownership based on the record.</div>
+
+<h2 id="s9">9. Worked examples</h2>
+
+<h3>Class I — direct heirs only, no representation</h3>
+<div class="example">Suresh dies intestate. Survived by his widow <strong>Lakshmi</strong>, his mother <strong>Kamala</strong>, and two children, <strong>Arun</strong> and <strong>Meena</strong> — nobody predeceased him.<br><br>
+4 people, 4 equal units: Lakshmi 1/4 · Kamala 1/4 · Arun 1/4 · Meena 1/4.</div>
+
+<h3>Class I — representation, one branch predeceased</h3>
+<div class="example">Same family, except Suresh's third child, <strong>Vijay</strong>, died two years before him, survived by his widow <strong>Sunita</strong> and two children, <strong>Rohan</strong> and <strong>Priya</strong>.<br><br>
+Now 5 units: Lakshmi 1/5 · Kamala 1/5 · Arun 1/5 · Meena 1/5 · <strong>Vijay's branch 1/5</strong>, and that last 1/5 splits three ways — Sunita, Rohan and Priya each get roughly <strong>1/15</strong>.</div>
+
+<h3>Class I — the gap the Schedule doesn't cover</h3>
+<div class="example">Vijay's daughter <strong>Radha</strong> (item 6) herself predeceases Suresh, leaving a son <strong>Karan</strong> and a daughter <strong>Anjali</strong>.<br><br>
+<strong>Anjali</strong> qualifies under item 16 and takes a share. <strong>Karan gets nothing under Class I</strong> — there's no Schedule entry for "son of a pre-deceased daughter of a pre-deceased son." He'd only be checked under <strong>Class II, Entry II(1)</strong>, and only if Class I turns out completely empty.</div>
+
+<h3>Class II — one entry takes everything</h3>
+<div class="example">Suresh has zero Class I heirs, survived by his father's brother (Entry VII) and his mother's brother (Entry IX).<br><br>
+Entry VII is checked first and isn't empty, so the <strong>father's brother takes the entire estate</strong>. The mother's brother gets <strong>nothing</strong> — entries never blend, and closeness in plain English doesn't matter, only entry order.</div>
+
+<h3>Class II — equal split within one entry</h3>
+<div class="example">Suresh has zero Class I heirs, survived by one brother, one sister, and a son's-daughter's-son — all three sit in <strong>Entry II</strong>.<br><br>
+They split equally: <strong>1/3 each</strong>, even though the siblings feel closer than a grandnephew.</div>
+
+<h3>Married Women's Property Act — one couple, all seven provisions</h3>
+<div class="example"><strong>Priya</strong> runs a boutique and writes a cookbook. Her husband <strong>Ravi</strong> runs a separate business that later goes bankrupt.
+<ul style="margin:10px 0 0;padding-left:20px">
+<li><strong>Separate property:</strong> boutique income + cookbook royalties + savings from both are hers alone — Ravi's creditors can't touch them.</li>
+<li><strong>Her own policy:</strong> Priya insures her own life independently — the payout is entirely hers.</li>
+<li><strong>His policy, for her benefit:</strong> Ravi takes a policy on his own life "for the benefit of his wife and children" — it's treated as a trust for them, stays outside his estate, and his creditors can't touch it.</li>
+<li><strong>Her legal standing:</strong> a customer owes the boutique money — Priya can sue in her own name, no need for Ravi to be involved.</li>
+<li><strong>Her post-nuptial debt:</strong> Priya takes a loan after marriage to expand the boutique — the lender can only recover from her separate property, never Ravi's.</li>
+<li><strong>His liability for her ante-nuptial debt:</strong> Priya had an old college loan before marrying Ravi — marriage doesn't make Ravi liable for it.</li>
+<li><strong>His liability as her trustee:</strong> Priya is later appointed executrix of her aunt's estate and mismanages it — Ravi isn't liable, unless he personally steps in and interferes.</li>
+</ul>
+</div>
+
+<h3>Mutation — one flat, start to finish</h3>
+<div class="example">Your father dies and leaves you his flat. You clear the pending property tax, and the revenue authority updates its register to show your name — that's mutation, done.<br><br>
+Your sibling later produces a different Will claiming joint ownership. Your name in the mutation register <strong>doesn't protect you</strong> — a court decides true ownership from the actual Will/succession certificate/deed, regardless of what the revenue register says. Mental shortcut: <strong>mutation = who gets the tax bill; title = who actually owns it.</strong></div>
+
+</body>
+</html>

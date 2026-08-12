@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ch. 7 — NRI, NR & Indian Tax | Study Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #16233A;
+    --ink-soft: #33415A;
+    --paper: #F5F4EF;
+    --card: #FCFBF8;
+    --hairline: #DCD6C6;
+    --teal: #0E6E5C;
+    --teal-soft: #E4EFEC;
+    --teal-mid: #1a8a70;
+    --amber: #A9791F;
+    --amber-soft: #F6EEDC;
+    --muted: #667085;
+    --danger: #9C3B3B;
+    --danger-soft: #F6E9E7;
+    --blue: #1D4E89;
+    --blue-soft: #E8EEF6;
+    --purple: #5B3FA0;
+    --purple-soft: #EEE9F8;
+    --radius: 10px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+
+  /* ── LAYOUT ── */
+  .shell {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    max-width: 1180px;
+    margin: 0 auto;
+    min-height: 100vh;
+  }
+  @media (max-width: 860px) {
+    .shell { grid-template-columns: 1fr; }
+    .sidebar { position: static !important; height: auto !important; border-right: none; border-bottom: 1px solid var(--hairline); }
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 28px 16px 28px 24px;
+    border-right: 1px solid var(--hairline);
+    background: var(--paper);
+  }
+  .sidebar-logo {
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--teal);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .sidebar-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    line-height: 1.4;
+  }
+  .nav-group-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 16px 0 6px;
+  }
+  .nav-item {
+    display: block;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-bottom: 2px;
+    transition: all .15s;
+    border-left: 2px solid transparent;
+  }
+  .nav-item:hover { background: var(--teal-soft); color: var(--teal); border-left-color: var(--teal); }
+  .nav-item.active { background: var(--teal-soft); color: var(--teal); border-left-color: var(--teal); font-weight: 600; }
+
+  /* ── MAIN ── */
+  .main { padding: 40px 44px 80px; max-width: 860px; }
+  @media (max-width: 640px) { .main { padding: 24px 18px 60px; } }
+
+  /* HERO */
+  .hero { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--hairline); }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+  }
+  .hero h1 { font-size: clamp(24px, 4vw, 34px); margin-bottom: 10px; }
+  .hero p { font-size: 14px; color: var(--muted); max-width: 540px; line-height: 1.6; }
+
+  /* SECTION */
+  .section { margin-bottom: 52px; scroll-margin-top: 24px; }
+  .section-title {
+    font-size: 20px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon { font-size: 20px; }
+  .section-desc { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .section-divider { border: none; border-top: 1px solid var(--hairline); margin: 40px 0; }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+  .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  /* GRIDS */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  @media (max-width: 580px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+
+  /* STATUS PILLS */
+  .sc {
+    border-radius: var(--radius);
+    padding: 16px;
+    border: 1px solid;
+  }
+  .sc.teal   { background: var(--teal-soft);   border-color: #a8d5cb; }
+  .sc.amber  { background: var(--amber-soft);  border-color: #d4b87a; }
+  .sc.danger { background: var(--danger-soft); border-color: #d4a0a0; }
+  .sc.blue   { background: var(--blue-soft);   border-color: #a8c0de; }
+  .sc.purple { background: var(--purple-soft); border-color: #c2aee8; }
+  .sc .sc-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .sc.teal   .sc-label { color: var(--teal); }
+  .sc.amber  .sc-label { color: var(--amber); }
+  .sc.danger .sc-label { color: var(--danger); }
+  .sc.blue   .sc-label { color: var(--blue); }
+  .sc.purple .sc-label { color: var(--purple); }
+  .sc .sc-title {
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .sc p { font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; }
+
+  /* CALLOUT BOXES */
+  .callout {
+    border-radius: 0 var(--radius) var(--radius) 0;
+    border-left: 3px solid;
+    padding: 12px 16px;
+    margin: 12px 0;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .callout.teal   { background: var(--teal-soft);   border-color: var(--teal);   color: var(--ink); }
+  .callout.amber  { background: var(--amber-soft);  border-color: var(--amber);  color: var(--ink); }
+  .callout.danger { background: var(--danger-soft); border-color: var(--danger); color: var(--ink); }
+  .callout.blue   { background: var(--blue-soft);   border-color: var(--blue);   color: var(--ink); }
+  .callout.purple { background: var(--purple-soft); border-color: var(--purple); color: var(--ink); }
+  .callout strong { color: inherit; }
+  .callout.teal strong   { color: var(--teal); }
+  .callout.amber strong  { color: var(--amber); }
+  .callout.danger strong { color: var(--danger); }
+  .callout.blue strong   { color: var(--blue); }
+  .callout.purple strong { color: var(--purple); }
+
+  /* CODE BLOCK */
+  .code-block {
+    background: #1E2533;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: #C8D0E0;
+    line-height: 1.9;
+    margin: 12px 0;
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .code-block .cg { color: #5CB88A; }
+  .code-block .cr { color: #E07070; }
+  .code-block .ca { color: #D4A056; }
+  .code-block .cb { color: #6BA4E8; }
+  .code-block .cp { color: #B48EED; }
+  .code-block .cm { color: #7B8EA8; }
+
+  /* TABLE */
+  .tbl-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--hairline); margin: 12px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--teal-soft);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    color: var(--teal);
+    padding: 10px 13px;
+    text-align: left;
+    border-bottom: 1px solid var(--hairline);
+    white-space: nowrap;
+  }
+  td {
+    padding: 10px 13px;
+    border-bottom: 1px solid var(--hairline);
+    color: var(--ink);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(14,110,92,0.03); }
+
+  /* BADGES */
+  .badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .bt { background: var(--teal-soft);   color: var(--teal);   border: 1px solid #a8d5cb; }
+  .ba { background: var(--amber-soft);  color: var(--amber);  border: 1px solid #d4b87a; }
+  .br { background: var(--danger-soft); color: var(--danger); border: 1px solid #d4a0a0; }
+  .bb { background: var(--blue-soft);   color: var(--blue);   border: 1px solid #a8c0de; }
+  .bp { background: var(--purple-soft); color: var(--purple); border: 1px solid #c2aee8; }
+
+  /* STEPS */
+  .steps { display: flex; flex-direction: column; }
+  .step {
+    display: flex;
+    gap: 13px;
+    align-items: flex-start;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .step:last-child { border-bottom: none; padding-bottom: 0; }
+  .step-num {
+    min-width: 27px; height: 27px;
+    border-radius: 50%;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .sn-t { background: var(--teal-soft);   color: var(--teal);   border: 1px solid #a8d5cb; }
+  .sn-a { background: var(--amber-soft);  color: var(--amber);  border: 1px solid #d4b87a; }
+  .sn-r { background: var(--danger-soft); color: var(--danger); border: 1px solid #d4a0a0; }
+  .sn-b { background: var(--blue-soft);   color: var(--blue);   border: 1px solid #a8c0de; }
+  .sn-p { background: var(--purple-soft); color: var(--purple); border: 1px solid #c2aee8; }
+  .step-body { font-size: 13px; color: var(--ink-soft); line-height: 1.65; padding-top: 3px; }
+  .step-body strong { color: var(--ink); }
+
+  /* ACCORDION */
+  .acc {
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .acc-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 13px 16px;
+    cursor: pointer; user-select: none;
+    transition: background .15s;
+  }
+  .acc-head:hover { background: var(--teal-soft); }
+  .acc-head-title { font-size: 13px; font-weight: 600; color: var(--ink); display: flex; align-items: center; gap: 8px; }
+  .acc-icon { font-size: 16px; color: var(--muted); transition: transform .2s; }
+  .acc-icon.open { transform: rotate(45deg); }
+  .acc-body {
+    display: none;
+    padding: 14px 16px;
+    border-top: 1px solid var(--hairline);
+    font-size: 13px; color: var(--ink-soft); line-height: 1.75;
+  }
+  .acc-body.open { display: block; }
+  .acc-body strong { color: var(--ink); }
+
+  /* MNEMONIC */
+  .mnem {
+    background: var(--purple-soft);
+    border: 1px dashed #c2aee8;
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    margin: 12px 0;
+    font-size: 13px; color: var(--ink); line-height: 1.7;
+  }
+  .mnem .mnem-title { font-weight: 700; color: var(--purple); font-size: 14px; margin-bottom: 4px; }
+
+  /* NUMBER CARD */
+  .num-card {
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    padding: 14px;
+    text-align: center;
+  }
+  .num-card .big { font-family: 'Source Serif 4', serif; font-size: 26px; font-weight: 700; color: var(--teal); }
+  .num-card .small { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+
+  /* PILLS */
+  .pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+  .pill { font-size: 12px; padding: 4px 11px; border-radius: 20px; border: 1px solid var(--hairline); color: var(--ink-soft); background: var(--card); }
+
+  /* EXPAND/COLLAPSE */
+  .controls { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 20px; }
+  .ctrl-btn {
+    font-size: 12px; font-weight: 500;
+    padding: 6px 14px; border-radius: 20px;
+    border: 1px solid var(--hairline);
+    background: var(--card); color: var(--muted);
+    cursor: pointer; transition: all .15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .ctrl-btn:hover { background: var(--teal-soft); color: var(--teal); border-color: #a8d5cb; }
+
+  /* TOPIC (top-level collapsible) */
+  .topic {
+    background: var(--card);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .topic-head {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 20px;
+    cursor: pointer; user-select: none;
+    transition: background .15s;
+  }
+  .topic-head:hover { background: var(--teal-soft); }
+  .topic-icon {
+    width: 34px; height: 34px; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+    background: var(--teal-soft);
+  }
+  .topic-title { flex: 1; }
+  .topic-title h3 { font-family: 'Source Serif 4', serif; font-size: 15px; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
+  .topic-title p { font-size: 11.5px; color: var(--muted); }
+  .topic-chevron { font-size: 20px; color: var(--muted); transition: transform .25s ease; flex-shrink: 0; }
+  .topic-chevron.open { transform: rotate(180deg); }
+  .topic-body {
+    display: none;
+    padding: 4px 20px 20px;
+    border-top: 1px solid var(--hairline);
+  }
+  .topic-body.open { display: block; }
+
+  /* CORRECT/CORRECTED BANNER */
+  .corrected-tag {
+    display: inline-block;
+    font-size: 10px; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    background: var(--teal-soft); color: var(--teal);
+    border: 1px solid #a8d5cb;
+    border-radius: 20px; padding: 2px 8px;
+    margin-left: 8px; vertical-align: middle;
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--hairline); border-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sidebar-logo">NISM Series X-B</div>
+  <div class="sidebar-sub">Chapter 7 · Concepts in Taxation<br>Study Reference — Corrected Edition</div>
+
+  <div class="nav-group-label">Foundations</div>
+  <a class="nav-item" href="#concepts">🔑 Key Concepts</a>
+
+  <div class="nav-group-label">Residential Status</div>
+  <a class="nav-item" href="#resstatus">🌍 Decision Tree</a>
+  <a class="nav-item" href="#scope">💰 Scope of Income</a>
+
+  <div class="nav-group-label">NRI & FEMA</div>
+  <a class="nav-item" href="#fema">⚖️ FEMA vs Income Tax</a>
+  <a class="nav-item" href="#deemed">🚨 Deemed Resident</a>
+
+  <div class="nav-group-label">Real-World Traps</div>
+  <a class="nav-item" href="#wfa">💼 Work-From-Anywhere</a>
+  <a class="nav-item" href="#crs">🔍 CRS — How You Get Caught</a>
+
+  <div class="nav-group-label">Quick Revision</div>
+  <a class="nav-item" href="#memory">🧠 Memory Tricks</a>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<main class="main">
+
+  <div class="hero">
+    <div class="hero-eyebrow">NISM Series X-B · Chapter 7 · Corrected Study Reference</div>
+    <h1>NRI, NR & Indian Tax — The Complete Picture</h1>
+    <p>Everything from your Chapter 7 sessions — key concepts, residential status, scope of income, FEMA vs Income Tax, deemed resident, and the CRS trap. Corrected based on official Income Tax material and PwC guidance.</p>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl-btn" onclick="toggleAll(true)">Expand all</button>
+    <button class="ctrl-btn" onclick="toggleAll(false)">Collapse all</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — KEY CONCEPTS
+  ═══════════════════════════════════════ -->
+  <div class="section" id="concepts">
+    <div class="section-title"><span class="icon">🔑</span> Key Concepts</div>
+    <div class="section-desc">PY vs AY · Person · Assessee · Income · Five Heads of Income</div>
+
+    <div class="grid2">
+      <div class="sc teal">
+        <div class="sc-label">Sec 3 · Previous Year (PY)</div>
+        <div class="sc-title">The year income is earned</div>
+        <p>FY 2024-25 = Apr 1 2024 → Mar 31 2025. Tax is calculated for this year.</p>
+      </div>
+      <div class="sc teal">
+        <div class="sc-label">Sec 2(9) · Assessment Year (AY)</div>
+        <div class="sc-title">PY + 1 — the year of filing</div>
+        <p>If PY = 2024-25, then AY = 2025-26. Tax is filed and assessed in the AY.</p>
+      </div>
+    </div>
+    <div class="callout teal"><strong>Memory hook:</strong> PY = the year you earned. AY = the year the tax man assesses. Always PY + 1 = AY.</div>
+
+    <div class="card" style="margin-top:14px">
+      <div class="card-label">Sec 2(31) — 7 Types of Person</div>
+      <div class="pills">
+        <span class="pill">Individual</span><span class="pill">HUF</span><span class="pill">Company</span>
+        <span class="pill">Partnership / LLP</span><span class="pill">AOP / BOI</span>
+        <span class="pill">Local Authority</span><span class="pill">Artificial Juridical Person</span>
+      </div>
+      <div class="mnem">
+        <div class="mnem-title">"I Have Cash, Pretty Ladies Also Admire"</div>
+        Individual · HUF · Company · Partnership · Local authority · AOP/BOI · Artificial juridical person
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-label">Sec 2(7) — Assessee</div>
+        <p style="font-size:13px;color:var(--ink-soft)">Anyone <strong style="color:var(--ink)">liable to pay tax</strong> or any sum under the Act, OR any person in respect of whom any proceeding has been initiated — for income, loss, or refund.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Sec 2(24) — Income (inclusive definition)</div>
+        <p style="font-size:13px;color:var(--ink-soft)">Listed items <em>plus</em> anything in the nature of income. Includes PGBP, dividends, capital gains, gifts from non-relatives (Sec 56), perquisites from employment.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Five Heads of Income — expand each</div>
+      <div class="acc">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <span class="acc-head-title"><span class="badge bt">1</span> Income from Salary — Sec 17</span>
+          <span class="acc-icon">+</span>
+        </div>
+        <div class="acc-body">
+          Requires <strong>employer–employee relationship.</strong> Without it → income assessed under PGBP or IFOS.<br><br>
+          Includes: wages, pension, gratuity, perquisites, employer PF contribution &gt;12%, NPS contribution, leave encashment.<br><br>
+          Key deductions: Employer NPS up to <strong>14% of salary</strong> → Sec 80CCD(2). Government Agniveer corpus → Sec 80CCH (available even under new regime).
+        </div>
+      </div>
+      <div class="acc">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <span class="acc-head-title"><span class="badge bt">2</span> Income from House Property — Sec 22-27</span>
+          <span class="acc-icon">+</span>
+        </div>
+        <div class="acc-body">
+          Rental income from buildings or land appurtenant thereto. <strong>Annual value</strong> is the computation base. Self-occupied property has deemed income rules. Section 24(b) allows interest deduction on home loan.
+        </div>
+      </div>
+      <div class="acc">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <span class="acc-head-title"><span class="badge bt">3</span> PGBP — Profits & Gains from Business or Profession</span>
+          <span class="acc-icon">+</span>
+        </div>
+        <div class="acc-body">
+          Covers business income, professional income, F&amp;O trading. F&amp;O is classified as <strong>non-speculative PGBP</strong>. If income doesn't fit Salary or House Property, check here before IFOS.
+        </div>
+      </div>
+      <div class="acc">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <span class="acc-head-title"><span class="badge bt">4</span> Capital Gains — Sec 45–55A</span>
+          <span class="acc-icon">+</span>
+        </div>
+        <div class="acc-body">
+          Profit on <strong>transfer of a capital asset.</strong> STCG vs LTCG depends on holding period. Tax treatment varies by security type. Equity LTCG taxed at 12.5% above ₹1.25L (post Budget 2024). Capital loss can only set off against capital gain.
+        </div>
+      </div>
+      <div class="acc">
+        <div class="acc-head" onclick="toggleAcc(this)">
+          <span class="acc-head-title"><span class="badge bt">5</span> Income from Other Sources (IFOS) — Sec 56</span>
+          <span class="acc-icon">+</span>
+        </div>
+        <div class="acc-body">
+          <strong>Residual head</strong> — anything not covered under the four heads above. Includes: gifts from non-relatives &gt;₹50,000, property received below market price, dividend, FD interest, lottery winnings.
+        </div>
+      </div>
+    </div>
+
+    <div class="callout amber" style="margin-top:12px"><strong>⚠ Exam trap:</strong> Citizenship ≠ Residential status. A UK citizen can be a tax resident of India. Always evaluate Income Tax residency, FEMA status, and immigration law as three completely independent determinations.</div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — RESIDENTIAL STATUS
+  ═══════════════════════════════════════ -->
+  <div class="section" id="resstatus">
+    <div class="section-title"><span class="icon">🌍</span> Residential Status — Decision Tree <span class="corrected-tag">✓ Corrected</span></div>
+    <div class="section-desc">Two gates · ROR · RNOR · NR · HUF rules · The 120-day correction</div>
+
+    <div class="grid3">
+      <div class="sc teal">
+        <div class="sc-label">ROR</div>
+        <div class="sc-title">Resident & Ordinarily Resident</div>
+        <p>Long settled in India. <strong>Worldwide income</strong> taxable.</p>
+      </div>
+      <div class="sc amber">
+        <div class="sc-label">RNOR</div>
+        <div class="sc-title">Resident but Not Ordinarily Resident</div>
+        <p>Recently returned or specific clauses. Indian income + India-controlled foreign business only.</p>
+      </div>
+      <div class="sc danger">
+        <div class="sc-label">NR</div>
+        <div class="sc-title">Non-Resident</div>
+        <p>Lives abroad. <strong>Indian income only</strong> taxable.</p>
+      </div>
+    </div>
+
+    <!-- CORRECTED GATE 1 -->
+    <div class="card" style="border-color:#a8d5cb;margin-top:12px">
+      <div class="card-label">Gate 1 — Are you a Resident? Satisfy ANY ONE basic condition</div>
+      <div class="callout danger" style="margin-top:8px"><strong>Key rule:</strong> 182 days alone is sufficient — no additional condition needed. Other clauses are alternative routes only when you stayed less than 182 days in that FY.</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>Clause</th><th>Indian Citizens / PIOs</th><th>Other Foreign Nationals</th><th>Outcome</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge bt">(a)</span></td>
+              <td>Stay <strong>≥ 182 days</strong> in PY — sufficient alone</td>
+              <td>Stay ≥ 182 days in PY</td>
+              <td>Resident → Gate 2</td>
+            </tr>
+            <tr>
+              <td><span class="badge bt">(b)</span></td>
+              <td>Visiting India + Indian income ≤ ₹15L + stay ≥ 182 days or leaving for employment</td>
+              <td>Stay ≥ 60 days in PY AND ≥ 365 days in preceding 4 years</td>
+              <td>Resident → Gate 2</td>
+            </tr>
+            <tr>
+              <td><span class="badge bt">(c)</span></td>
+              <td>Indian ship crew + ≥ 182 days in PY + ≥ 365 days in 4 preceding years</td>
+              <td>—</td>
+              <td>Resident → Gate 2</td>
+            </tr>
+            <tr>
+              <td><span class="badge bt">(e)</span></td>
+              <td>Not visiting/leaving + stay ≥ 60 days in PY + ≥ 365 days in preceding 4 years</td>
+              <td>—</td>
+              <td>Resident → Gate 2</td>
+            </tr>
+            <tr style="background:var(--amber-soft)">
+              <td><span class="badge ba">(d) ✓ corrected</span></td>
+              <td colspan="2">
+                Indian citizen / PIO visiting India + income <strong>&gt; ₹15L</strong> + stay <strong>120–181 days</strong> in PY + ≥ 365 days in 4 preceding years.<br>
+                <span style="font-size:12px;color:var(--amber)">⚠ Statute locks outcome directly to RNOR — does NOT proceed to Gate 2. Always RNOR, never ROR.</span>
+              </td>
+              <td><strong style="color:var(--amber)">Directly RNOR</strong></td>
+            </tr>
+            <tr style="background:var(--amber-soft)">
+              <td><span class="badge ba">(f)</span></td>
+              <td colspan="2">
+                <strong>Deemed Resident (from FY 2020-21):</strong> Indian citizen + Indian income &gt; ₹15L + not liable to tax anywhere else.
+              </td>
+              <td><strong style="color:var(--amber)">Directly RNOR</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout amber" style="margin-top:10px">
+        <strong>The corrected picture on clause (d):</strong><br>
+        The official Income Tax material and PwC both confirm that when residency is triggered <em>solely</em> by the 120-day rule, the person is <strong>statutorily locked into RNOR</strong> — not sent through Gate 2. This is listed directly under RNOR conditions in the official Income Tax summary, not under general Resident conditions.
+        <br><br>
+        <strong>Day-count summary for Indian income &gt; ₹15L:</strong><br>
+        0–119 days → NR &nbsp;|&nbsp; 120–181 days → <strong>RNOR (by statute)</strong> &nbsp;|&nbsp; 182+ days → Resident → Gate 2 for ROR/RNOR
+      </div>
+    </div>
+
+    <!-- GATE 2 -->
+    <div class="card" style="border-color:#d4b87a">
+      <div class="card-label">Gate 2 — If Resident via clauses (a)(b)(c)(e): ROR or RNOR? Satisfy ANY ONE</div>
+      <div class="steps" style="margin-top:10px">
+        <div class="step">
+          <div class="step-num sn-a">a</div>
+          <div class="step-body">Non-resident in India for <strong>at least 9 out of 10 years</strong> immediately preceding the PY</div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-a">b</div>
+          <div class="step-body">Been in India for <strong>729 days or less</strong> during the 7 years immediately preceding the PY</div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-a">c</div>
+          <div class="step-body">Became resident via <strong>clause (f)</strong> — deemed resident route (always RNOR)</div>
+        </div>
+      </div>
+      <div class="callout teal" style="margin-top:10px">If <strong>none</strong> of the above met → <strong>ROR (Resident and Ordinarily Resident)</strong> — taxed on worldwide income.</div>
+    </div>
+
+    <!-- HUF -->
+    <div class="card">
+      <div class="card-label">HUF Residential Status — Simpler Rule</div>
+      <div class="grid2" style="margin-top:8px">
+        <div class="sc teal">
+          <div class="sc-label">Resident</div>
+          <p>Control and management <strong>wholly or partly in India.</strong> Even one decision taken in India = Resident. RNOR further depends on Karta's status.</p>
+        </div>
+        <div class="sc danger">
+          <div class="sc-label">Non-Resident</div>
+          <p>Control and management <strong>wholly outside India.</strong> Even one India decision breaks this — no partial rule for HUF.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RNOR buffer -->
+    <div class="card">
+      <div class="card-label">RNOR — The Returning NRI Buffer (why it exists)</div>
+      <p style="font-size:13px;color:var(--ink-soft);margin:8px 0">The law recognises that someone returning after years abroad shouldn't be immediately hit with worldwide taxation the moment they cross 182 days. RNOR is a transition buffer — you're physically resident but your foreign income stays protected while you re-establish roots.</p>
+      <div class="code-block"><span class="ca">Dubai example — 10 years abroad, then returning:</span>
+Years 1–10:  In Dubai       → <span class="cr">NR</span> every year  (RNOR irrelevant — not even a Resident)
+Year 11:     Return, 200d   → <span class="ca">Resident</span> → Gate 2 → NR for 9/10 years → <span class="ca">RNOR</span>
+Year 12:     Stay 300d      → <span class="ca">Resident</span> → Gate 2 → RNOR conditions still met → <span class="ca">RNOR</span>
+Year 13-14:  Gate 2 conditions start failing → becomes <span class="cg">ROR</span></div>
+      <div class="callout teal"><strong>Key insight:</strong> RNOR is NOT about being abroad this year. It tests how deeply rooted you are in India based on your past years — once you have already crossed into Resident territory.</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — SCOPE OF INCOME
+  ═══════════════════════════════════════ -->
+  <div class="section" id="scope">
+    <div class="section-title"><span class="icon">💰</span> Scope of Income — Table 7.1</div>
+    <div class="section-desc">What gets taxed for ROR · RNOR · NR — the most tested table in Chapter 7</div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th style="width:42%">Nature of Income</th><th>ROR</th><th>RNOR</th><th>NR</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Income received / deemed received <strong>in India</strong></td>
+            <td><span class="badge bt">✓ Taxable</span></td>
+            <td><span class="badge bt">✓ Taxable</span></td>
+            <td><span class="badge bt">✓ Taxable</span></td>
+          </tr>
+          <tr>
+            <td>Income accrues / arises / deemed <strong>in India</strong></td>
+            <td><span class="badge bt">✓ Taxable</span></td>
+            <td><span class="badge bt">✓ Taxable</span></td>
+            <td><span class="badge bt">✓ Taxable</span></td>
+          </tr>
+          <tr>
+            <td>Income outside India from business <strong>controlled from India</strong> or profession <strong>set up in India</strong></td>
+            <td><span class="badge bt">✓ Taxable</span></td>
+            <td><span class="badge bt">✓ Taxable</span></td>
+            <td><span class="badge br">✗ Not taxable</span></td>
+          </tr>
+          <tr style="background:var(--amber-soft)">
+            <td><strong>Any other income</strong> — purely foreign, foreign business fully outside India</td>
+            <td><span class="badge bt">✓ Taxable</span></td>
+            <td><span class="badge br">✗ Not taxable</span></td>
+            <td><span class="badge br">✗ Not taxable</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout teal">
+      <strong>Pattern to memorise:</strong><br>
+      Rows 1 &amp; 2 → All three statuses taxed. Indian source = always taxed, no exceptions.<br>
+      Row 3 → NR escapes (no India nexus for them). ROR and RNOR both pay.<br>
+      Row 4 → Only ROR pays. This is the "worldwide income" row. RNOR and NR both escape it.
+    </div>
+
+    <div class="grid3" style="margin-top:14px">
+      <div class="sc teal">
+        <div class="sc-label">ROR</div>
+        <div class="sc-title">Worldwide income</div>
+        <p>Everything taxable regardless of where earned or held.</p>
+      </div>
+      <div class="sc amber">
+        <div class="sc-label">RNOR</div>
+        <div class="sc-title">Indian + India-controlled foreign</div>
+        <p>Foreign passive income (e.g. US bank interest) = NOT taxable in India.</p>
+      </div>
+      <div class="sc danger">
+        <div class="sc-label">NR</div>
+        <div class="sc-title">Indian income only</div>
+        <p>Only income that accrues or is received in India.</p>
+      </div>
+    </div>
+
+    <div class="card" style="border-color:#a8d5cb;margin-top:12px">
+      <div class="card-label">Chapter Example — Mr. A and his US bank account interest</div>
+      <div class="code-block"><span class="cb">Scenario:</span> Mr. A has a US bank account earning interest.
+
+<span class="cg">If ROR:</span>  Interest → taxable in India
+          ROR = worldwide income. No exceptions.
+
+<span class="ca">If RNOR:</span> Interest → NOT taxable in India
+          US interest = purely foreign passive income → Row 4
+          RNOR escapes Row 4 → zero India tax on this income</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════
+       SECTION 4 — FEMA vs INCOME TAX
+  ═══════════════════════════════════════ -->
+  <div class="section" id="fema">
+    <div class="section-title"><span class="icon">⚖️</span> FEMA vs Income Tax — Two Different Laws</div>
+    <div class="section-desc">NRI vs NR · Citizenship split · PIO vs OCI — the most common real-world confusion</div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Parameter</th><th>NRI — FEMA / RBI</th><th>NR — Income Tax Act</th></tr></thead>
+        <tbody>
+          <tr><td>Which law</td><td>FEMA 1999, RBI guidelines</td><td>Income Tax Act 1961</td></tr>
+          <tr><td>Applies to</td><td>Indian citizens only</td><td>Any person (Indian or foreign national)</td></tr>
+          <tr><td>Based on</td><td>Intention to stay abroad + employment/business outside India</td><td>Pure day count of physical presence in India</td></tr>
+          <tr><td>Purpose</td><td>Controls investments, NRE/NRO accounts, remittances</td><td>Determines which income gets taxed in India</td></tr>
+          <tr><td>Determined</td><td>At time of each transaction / remittance</td><td>At end of FY based on total day count</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout teal"><strong>One-liner:</strong> NRI = FEMA's word (where you live &amp; work). NR = Income Tax's word (how many days in India). Two laws, two separate answers for the same person.</div>
+
+    <div class="card" style="border-color:#d4a0a0;margin-top:12px">
+      <div class="card-label">Classic divergence — Dubai job, visited India 200 days</div>
+      <div class="code-block"><span class="ca">Facts:</span> Working in Dubai (UAE employment visa) but visited India 200 days this FY.
+
+<span class="cb">FEMA view:</span>  <span class="cg">Still NRI ✓</span>
+  Employment formally outside India ✓
+  UAE residence visa maintained ✓
+  Salary paid outside India ✓
+
+<span class="cp">Income Tax view:</span>  <span class="cr">RESIDENT — not NR</span>
+  200 days > 182 days → basic condition satisfied → Resident
+  Gate 2 → likely ROR or RNOR depending on history</div>
+      <div class="callout danger"><strong>Same person. Same year. NRI under FEMA. Resident under Income Tax.</strong> This is the most tested distinction in exams and in real professional practice.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">What happens when you take foreign citizenship?</div>
+      <div class="tbl-wrap" style="margin-top:8px">
+        <table>
+          <thead><tr><th>Category</th><th>Indian Citizen?</th><th>FEMA Treatment</th></tr></thead>
+          <tbody>
+            <tr><td><span class="badge bt">NRI</span></td><td>Yes — holds Indian passport</td><td>Full NRI benefits. NRE/NRO accounts, free repatriation.</td></tr>
+            <tr><td><span class="badge ba">PIO</span></td><td>No — took foreign passport</td><td>Similar to NRI for most investment purposes.</td></tr>
+            <tr><td><span class="badge bb">OCI</span></td><td>No — registered OCI card</td><td>Near-identical to NRI for banking &amp; investment.</td></tr>
+            <tr><td><span class="badge br">Foreign National</span></td><td>No — no Indian origin</td><td>Full foreign national rules apply.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout amber"><strong>Key rule:</strong> The moment you take foreign citizenship → you automatically lose Indian citizenship (India doesn't allow dual citizenship). Apply for OCI card to retain near-NRI treatment for banking and investment.</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════
+       SECTION 5 — DEEMED RESIDENT
+  ═══════════════════════════════════════ -->
+  <div class="section" id="deemed">
+    <div class="section-title"><span class="icon">🚨</span> Deemed Resident — Sec 6(1A)</div>
+    <div class="section-desc">Introduced FY 2020-21 · Always RNOR · Never ROR · The globe-trotting loophole plugged</div>
+
+    <!-- REFRAMED EXAMPLE -->
+    <div class="card" style="border-color:#d4b87a">
+      <div class="card-label">The loophole before FY 2020-21 — Raj's setup</div>
+      <div class="tbl-wrap" style="margin-bottom:10px">
+        <table>
+          <thead><tr><th>Income source</th><th>Amount</th><th>Where earned</th><th>Tax there</th></tr></thead>
+          <tbody>
+            <tr><td>Indian business income — routed via Dubai shell company</td><td>₹5 crore</td><td>India (real work) but routed to Dubai</td><td>0% (UAE has no income tax)</td></tr>
+            <tr><td>Foreign income</td><td>₹0</td><td>—</td><td>—</td></tr>
+            <tr style="background:var(--amber-soft)"><td><strong>Total income</strong></td><td><strong>₹5 crore</strong></td><td>—</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="code-block"><span class="ca">Raj — Indian citizen, stays only 100 days in India deliberately:</span>
+Days in India = 100 days  (< 182 → not Resident by day count)
+No tax liability in Dubai  (UAE = zero income tax country)
+
+Raj routes all ₹5 crore through a Dubai shell company:
+  → Shell company = just a registered address, no real office
+  → All actual work done in India, all clients Indian
+  → Money flows: India work → Dubai entity → Raj's UAE bank account
+
+Indian tax view → <span class="cr">NR</span>
+  NR pays tax only on income that accrues or is received IN India
+  Income structured to accrue in Dubai (on paper) → not Indian income
+  → <span class="cr">₹5 crore entirely escapes Indian tax</span>
+  → Dubai tax = ₹0
+
+Total tax on ₹5 crore = <span class="cr">₹0</span>  ← the loophole
+Government loses ~₹1.5 crore in legitimate tax every year</div>
+    </div>
+
+    <!-- SEC 6(1A) CONDITIONS -->
+    <div class="card" style="border-color:#a8d5cb">
+      <div class="card-label">Sec 6(1A) — All THREE conditions must be met simultaneously</div>
+      <div class="steps" style="margin-top:10px">
+        <div class="step">
+          <div class="step-num sn-b">1</div>
+          <div class="step-body">You are an <strong>Indian citizen</strong></div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-b">2</div>
+          <div class="step-body">Your <strong>Indian income exceeds ₹15 lakhs</strong> in that financial year</div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-b">3</div>
+          <div class="step-body">You are <strong>not liable to pay tax in ANY other country</strong> — not due to low income, but because of deliberate domicile / residence arrangement</div>
+        </div>
+      </div>
+      <div class="callout teal" style="margin-top:10px">If all three hit → <strong>Deemed Resident → always RNOR. Never ROR. Hardcoded by statute.</strong></div>
+    </div>
+
+    <!-- AFTER SEC 6(1A) -->
+    <div class="card" style="border-color:#a8c0de">
+      <div class="card-label">Same Raj — After Sec 6(1A) — loophole closed</div>
+      <div class="code-block"><span class="cb">Check all three conditions:</span>
+Indian citizen                         ✓
+Indian income ₹5 crore > ₹15L         ✓  (income is Indian in substance)
+Not liable to tax anywhere else        ✓  (UAE = 0% tax)
+
+→ ALL THREE MET → <span class="ca">DEEMED RESIDENT → RNOR</span>
+→ ₹5 crore Indian income → <span class="cr">fully taxable in India (~₹1.5 crore tax)</span>
+→ Raj can no longer escape by staying 100 days out of India
+
+<span class="cm">Before 2020:</span>  ₹5 crore income → <span class="cg">₹0 tax</span>   (day count trick worked)
+<span class="cm">After  2020:</span>  ₹5 crore income → <span class="cr">~₹1.5 crore tax</span>  (day count trick dead)</div>
+      <div class="callout amber"><strong>Why not make him ROR?</strong> ROR would have taxed any foreign income too — seen as overreach for those genuinely operating abroad. Deemed resident is surgical: it only ensures Indian income cannot escape regardless of how few days Raj spends in India.</div>
+    </div>
+
+    <!-- BEFORE VS AFTER COMPARISON -->
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th></th><th>Before 2020</th><th>After 2020 — Sec 6(1A)</th></tr></thead>
+        <tbody>
+          <tr><td>Days in India</td><td>100 (deliberate)</td><td>100 (same trick attempted)</td></tr>
+          <tr><td>Resident status</td><td><span class="badge br">NR</span></td><td><span class="badge ba">Deemed Resident — RNOR</span></td></tr>
+          <tr><td>₹5 crore Indian income</td><td><strong style="color:var(--teal)">₹0 tax</strong> (routing trick worked)</td><td><strong style="color:var(--danger)">~₹1.5 crore tax</strong> (routing caught)</td></tr>
+          <tr><td>Day count trick</td><td>Works perfectly</td><td>Dead for income &gt; ₹15L</td></tr>
+          <tr style="background:var(--teal-soft)"><td><strong>Difference</strong></td><td colspan="2"><strong>~₹1.5 crore that escaped now flows to government</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ROUTING QUESTION — GENUINE VS SHELL -->
+    <div class="card" style="border-color:#d4b87a; margin-top:4px">
+      <div class="card-label">But wait — what if Raj sets up a REAL Dubai company?</div>
+      <p style="font-size:13px;color:var(--ink-soft);margin:8px 0 12px">This is the natural next question — and the answer depends entirely on whether the Dubai entity has genuine economic substance or is just a shell.</p>
+      <div class="grid2">
+        <div class="sc teal">
+          <div class="sc-label">✓ Genuine Dubai company — legal</div>
+          <p style="font-size:12.5px">Real office in Dubai · Actual employees · Business decisions made there · Contracts signed in Dubai · Revenue genuinely earned abroad<br><br>
+          → Income accrues in Dubai = foreign income<br>
+          → RNOR protects it → zero India tax<br>
+          → <strong>Routing works legitimately</strong></p>
+        </div>
+        <div class="sc danger">
+          <div class="sc-label">✗ Shell Dubai company — caught</div>
+          <p style="font-size:12.5px">Registered address only · No real employees · All work done in India · All clients Indian · Raj makes all decisions from India<br><br>
+          → Three separate laws attack simultaneously<br>
+          → <strong>No escape regardless of routing</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- THREE LAYER ATTACK -->
+    <div class="card" style="border-color:#d4a0a0">
+      <div class="card-label">Shell company — three-layer government attack</div>
+      <div class="steps" style="margin-top:10px">
+        <div class="step">
+          <div class="step-num sn-b">1st</div>
+          <div class="step-body">
+            <strong>POEM — Place of Effective Management</strong><br>
+            <span style="color:var(--ink-soft)">If a foreign company's real control and management is in India → treated as an Indian company → income taxable in India. Raj sitting in India making all decisions → Dubai company's POEM = India → ₹5 crore taxable as Indian company income.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-a">2nd</div>
+          <div class="step-body">
+            <strong>GAAR — General Anti Avoidance Rule</strong><br>
+            <span style="color:var(--ink-soft)">If the main purpose of an arrangement is to get a tax benefit with no real commercial substance → tax authorities ignore the entity entirely → tax the income as if the Dubai company never existed → ₹5 crore taxed directly in Raj's hands.</span>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-r">3rd</div>
+          <div class="step-body">
+            <strong>Sec 6(1A) — Deemed Resident</strong><br>
+            <span style="color:var(--ink-soft)">Even if POEM and GAAR somehow fail → Indian citizen + income &gt; ₹15L + zero tax anywhere → Deemed Resident → RNOR → Indian income taxable. The last line of defence.</span>
+          </div>
+        </div>
+      </div>
+      <div class="callout teal" style="margin-top:10px">
+        <strong>The key test:</strong> Is there real economic substance in Dubai?<br>
+        Real office + real employees + real decisions there → <strong>Legitimate → income is foreign → RNOR protects it</strong><br>
+        Shell with no substance → <strong>POEM + GAAR + Sec 6(1A) all apply → no escape</strong>
+      </div>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th></th><th>Regular Resident</th><th>Deemed Resident</th></tr></thead>
+        <tbody>
+          <tr><td>How you qualify</td><td>Day count (182 days etc.)</td><td>All 3 conditions above</td></tr>
+          <tr><td>Days in India</td><td>≥ 182 days (or alternative)</td><td>Can be even 0 days in India</td></tr>
+          <tr><td>Always treated as</td><td>ROR or RNOR depending on Gate 2</td><td><strong>Always RNOR — never ROR</strong></td></tr>
+          <tr><td>Target person</td><td>Normal India-based individual</td><td>High-income globe-trotting Indian citizen</td></tr>
+          <tr><td>Tax on Indian income</td><td>Yes</td><td>Yes</td></tr>
+          <tr><td>Tax on foreign income</td><td>Only if ROR</td><td>No — RNOR protection applies</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout danger"><strong>⚠ Exam trap:</strong> Even if a person satisfies zero RNOR conditions normally (say he was in India 8 of last 10 years), deemed resident still locks him into RNOR. Cannot become ROR via this route. Ever. Hardcoded.</div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════
+       SECTION 6 — WORK FROM ANYWHERE
+  ═══════════════════════════════════════ -->
+  <div class="section" id="wfa">
+    <div class="section-title"><span class="icon">💼</span> The Work-From-Anywhere Tax Trap</div>
+    <div class="section-desc">UAE visa + 300 days in India · DTAA zero relief · What to actually do</div>
+
+    <div class="card" style="border-color:#d4a0a0">
+      <div class="card-label">The scenario — thousands of post-COVID professionals are in this trap</div>
+      <div class="code-block"><span class="cb">Facts:</span>
+✓ Indian citizen
+✓ Valid UAE employment visa + UAE residence visa
+✓ Income credited to UAE bank → zero tax in UAE
+✓ Physically present in India → ~300 days per FY
+✓ Visits UAE every 6 months just to maintain residency stamp
+✓ Nominal income in India</div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Income Tax Analysis — no escape via visa or bank location</div>
+      <div class="code-block"><span class="cb">Gate 1:</span>
+Days in India = 300 days → 300 > 182 → <span class="cg">RESIDENT</span>
+
+<span class="ca">Gate 2 — ROR or RNOR?</span>
+NR for 9 of last 10 years?     → Probably NO (recently started arrangement)
+≤ 729 days in last 7 years?    → 300d × 7 = 2100 >> 729 → <span class="cr">FAILS</span>
+
+<span class="cr">Result: ROR — Worldwide income taxable in India</span>
+
+UAE salary sitting in Dubai bank = <span class="cr">FULLY TAXABLE IN INDIA</span>
+UAE visa                         = irrelevant to Indian Income Tax Act
+Zero UAE tax                     = zero DTAA relief</div>
+      <div class="callout danger"><strong>Hard truth:</strong> UAE visa, Dubai bank account, UAE work contract — none of it matters to Indian Income Tax. 300 days = Resident = ROR = worldwide income taxable. Full stop.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Why DTAA gives zero relief here</div>
+      <div class="code-block"><span class="cb">How DTAA normally works:</span>
+Both countries want to tax the same income
+→ You get credit for tax paid in Country A, offset against Country B's tax
+
+<span class="cr">The problem here:</span>
+UAE taxes income at 0%
+India taxes at slab rate (say 30%)
+DTAA credit = credit for tax paid in UAE = ₹0
+→ Full Indian slab tax applies with zero offset
+
+DTAA prevents <span class="cm">double</span> taxation — not <span class="cm">single</span> taxation by India alone
+If one country charges zero, there is nothing to offset</div>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Perspective</th><th>Status</th><th>Consequence</th></tr></thead>
+        <tbody>
+          <tr><td>Income Tax</td><td><span class="badge br">ROR</span></td><td>UAE salary fully taxable in India at slab rate</td></tr>
+          <tr><td>FEMA</td><td><span class="badge bt">Likely NRI</span></td><td>Can hold NRE account, repatriate freely</td></tr>
+          <tr><td>UAE</td><td><span class="badge bb">Resident (visa)</span></td><td>Zero tax there</td></tr>
+          <tr style="background:var(--danger-soft)"><td><strong>Reality</strong></td><td><span class="badge br">Pays tax nowhere</span></td><td><strong>Huge risk — CRS will flag it (see next section)</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card" style="border-color:#a8d5cb;margin-top:12px">
+      <div class="card-label">What he should actually do — three options</div>
+      <div class="steps" style="margin-top:8px">
+        <div class="step">
+          <div class="step-num sn-t">1</div>
+          <div class="step-body"><strong>Reduce India stay to &lt; 182 days</strong> — becomes NR → UAE income not taxable in India. This is the only clean, legally safe solution.</div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-a">2</div>
+          <div class="step-body"><strong>Accept ROR status</strong> — declare UAE income in India, pay tax at slab rates, maintain proper records and documentation.</div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-r">3</div>
+          <div class="step-body"><strong>Do nothing</strong> — high risk. CRS will eventually flag it. Back taxes + 12% interest per annum + up to 300% penalty. Criminal prosecution in serious cases.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════
+       SECTION 7 — CRS
+  ═══════════════════════════════════════ -->
+  <div class="section" id="crs">
+    <div class="section-title"><span class="icon">🔍</span> CRS — How You Get Caught Without PAN</div>
+    <div class="section-desc">UAE banks never ask for PAN or Aadhaar — but passport number is enough. Here's the exact mechanism.</div>
+
+    <div class="card">
+      <div class="card-label">What UAE banks collect and report under CRS (no PAN needed)</div>
+      <div class="pills" style="margin-top:8px">
+        <span class="pill">Full legal name</span>
+        <span class="pill">Date of birth</span>
+        <span class="pill">Country of birth</span>
+        <span class="pill">Nationality</span>
+        <span class="badge ba" style="padding:4px 11px">Passport number ← the bridge</span>
+        <span class="pill">Residential address (as declared)</span>
+        <span class="pill">Account balance</span>
+        <span class="pill">Income credited to account</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">How CBDT links passport number to your PAN</div>
+      <div class="code-block"><span class="cb">CRS data arrives from UAE:</span>
+Name + Date of Birth + Passport Number + Account balance
+
+<span class="ca">CBDT matching algorithm:</span>
+Passport number → cross-referenced against:
+  ├── Passport database  (Ministry of External Affairs)
+  ├── PAN database       (Income Tax Department)
+  └── Aadhaar database   (UIDAI)
+
+→ <span class="cg">PAN identified</span>
+→ Your ITR pulled up automatically
+→ Mismatch flagged for action</div>
+      <div class="callout teal"><strong>Passport number is the bridge.</strong> Every time you applied for a passport, filed ITR with travel details, or bought forex at an Indian bank — the PAN-passport linkage was established in government databases.</div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">4 additional detection routes beyond CRS</div>
+      <div class="steps" style="margin-top:8px">
+        <div class="step">
+          <div class="step-num sn-b">1</div>
+          <div class="step-body"><strong>Forex purchases in India</strong> — Every transaction &gt;$10,000 reported under FEMA with PAN captured at point of purchase. Creates a foreign currency movement trail.</div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-b">2</div>
+          <div class="step-body"><strong>Schedule FA &amp; FSI in ITR</strong> — Specifically asks: "Foreign bank account? Foreign assets? Foreign income?" Lying here = deliberate concealment = criminal offence under Income Tax Act.</div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-b">3</div>
+          <div class="step-body"><strong>Air travel data</strong> — Every international departure/arrival logged by Bureau of Immigration, linked to passport. CBDT can independently verify exact days outside India and cross-check your residential status claim.</div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-b">4</div>
+          <div class="step-body"><strong>SWIFT transfers</strong> — If Dubai salary comes to India via bank transfer → SWIFT → correspondent bank → Indian bank → reported under FEMA above threshold. Source of funds trail established.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-color:#d4a0a0">
+      <div class="card-label">How a notice gets generated — exact 6-step sequence</div>
+      <div class="steps" style="margin-top:8px">
+        <div class="step"><div class="step-num sn-r">1</div><div class="step-body">UAE bank reports your account to <strong>UAE Ministry of Finance</strong> annually under CRS obligations.</div></div>
+        <div class="step"><div class="step-num sn-r">2</div><div class="step-body">UAE MoF sends data to <strong>India CBDT</strong> under CRS / FATCA framework — automatically, every year.</div></div>
+        <div class="step"><div class="step-num sn-r">3</div><div class="step-body">CBDT algorithm matches Name + DOB + Passport → <strong>finds your PAN.</strong></div></div>
+        <div class="step"><div class="step-num sn-r">4</div><div class="step-body">System checks your ITR — <strong>Foreign income declared? NO. Foreign bank account declared? NO.</strong> → Mismatch flagged automatically.</div></div>
+        <div class="step"><div class="step-num sn-r">5</div><div class="step-body">Automated notice under <strong>Section 148A</strong> issued — "We have information suggesting undisclosed income." Must respond within 30 days.</div></div>
+        <div class="step"><div class="step-num sn-r">6</div><div class="step-body">Unsatisfactory response → Assessment opened → <strong>Tax + 12% interest per annum + penalty 100% to 300% of tax evaded + possible prosecution.</strong></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">CRS participating countries — 100+ total</div>
+      <div class="pills" style="margin-top:8px">
+        <span class="badge br">UAE ✓</span><span class="badge br">UK ✓</span>
+        <span class="badge br">USA (FATCA) ✓</span><span class="badge br">Canada ✓</span>
+        <span class="badge br">Singapore ✓</span><span class="badge br">Switzerland ✓</span>
+        <span class="badge br">Cayman Islands ✓</span><span class="badge br">Mauritius ✓</span>
+      </div>
+      <div class="callout danger" style="margin-top:10px"><strong>The era of "offshore = invisible" is over.</strong> PAN 2.0 initiative will further link PAN to passport, Aadhaar, and voter ID into one unified record — making the matching near-perfect.</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════
+       SECTION 8 — MEMORY TRICKS
+  ═══════════════════════════════════════ -->
+  <div class="section" id="memory">
+    <div class="section-title"><span class="icon">🧠</span> Memory Tricks &amp; Exam Traps</div>
+    <div class="section-desc">All numbers · 3-question flow · One-liners · 6 most common exam traps</div>
+
+    <div class="card">
+      <div class="card-label">Numbers to tattoo on memory</div>
+      <div class="grid3" style="margin-top:10px">
+        <div class="num-card"><div class="big">182</div><div class="small">Days in PY → automatic Resident. Sufficient alone. No additional condition needed.</div></div>
+        <div class="num-card"><div class="big">120</div><div class="small">Days threshold if Indian income &gt; ₹15L (clause d) → directly RNOR, not ROR</div></div>
+        <div class="num-card"><div class="big">60</div><div class="small">Days if ≥ 365 days in preceding 4 years (general route to Resident)</div></div>
+        <div class="num-card"><div class="big">365</div><div class="small">Aggregate days in preceding 4 years (paired with 60-day or 120-day rule)</div></div>
+        <div class="num-card"><div class="big">9/10</div><div class="small">RNOR condition — NR for 9 of last 10 preceding years</div></div>
+        <div class="num-card"><div class="big">729</div><div class="small">RNOR condition — ≤ 729 days in last 7 years (barely 2 full years)</div></div>
+      </div>
+      <div class="num-card" style="margin-top:10px;text-align:left;padding:12px 16px">
+        <span class="big" style="font-size:20px">₹15 lakh</span>
+        <div class="small" style="text-align:left;margin-top:4px">Indian income threshold that tightens day-count (182 → 120 days) AND triggers deemed resident check under Sec 6(1A).</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">Residential status in 3 questions</div>
+      <div class="steps" style="margin-top:10px">
+        <div class="step">
+          <div class="step-num sn-b">Q1</div>
+          <div class="step-body"><strong>Did you stay ≥ 182 days in India in PY?</strong> Yes → Resident (proceed to Q2). No → check alternative conditions (60/120 days). Still no → NR. Done.</div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-a">Q2</div>
+          <div class="step-body"><strong>If Resident via clauses (a)(b)(c)(e) — NR for 9 of last 10 years OR ≤ 729 days in last 7 years?</strong> Yes to either → RNOR. Note: clause (d) and (f) skip this — directly RNOR.</div>
+        </div>
+        <div class="step">
+          <div class="step-num sn-t">Q3</div>
+          <div class="step-body"><strong>If neither RNOR condition met</strong> → ROR. Taxed on everything worldwide.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-label">One-line summaries — everything at a glance</div>
+      <div class="steps" style="margin-top:8px">
+        <div class="step"><div class="step-num sn-b">PY/AY</div><div class="step-body">PY = the year you earned. AY = the year the tax man assesses. Always PY + 1 = AY.</div></div>
+        <div class="step"><div class="step-num sn-p">NRI vs NR</div><div class="step-body">NRI = FEMA's word (where you live &amp; work). NR = Income Tax's word (how many days in India). Two laws, two separate answers.</div></div>
+        <div class="step"><div class="step-num sn-a">RNOR</div><div class="step-body">Not about being abroad now — tests how deeply rooted you are based on past years, after crossing into Resident territory. Also triggered directly by clause (d) and (f).</div></div>
+        <div class="step"><div class="step-num sn-a">Deemed Res.</div><div class="step-body">Indian citizen + Indian income &gt;₹15L + zero tax anywhere = "nice try, you're RNOR now." Always RNOR, never ROR. Hardcoded.</div></div>
+        <div class="step"><div class="step-num sn-r">WFA Trap</div><div class="step-body">UAE visa + Dubai salary + 300 days in India = ROR. UAE visa and bank account give zero protection under Indian Income Tax.</div></div>
+        <div class="step"><div class="step-num sn-r">CRS</div><div class="step-body">No PAN needed — passport number is the bridge. 100+ countries report automatically. The era of offshore = invisible is over.</div></div>
+      </div>
+    </div>
+
+    <div class="card" style="border-color:#d4a0a0">
+      <div class="card-label">6 most common exam traps — corrected edition</div>
+      <div class="steps" style="margin-top:8px">
+        <div class="step"><div class="step-num sn-r">1</div><div class="step-body"><strong>Citizenship ≠ Residency.</strong> Foreign citizen can be tax resident of India. Always evaluate Income Tax, FEMA, and immigration law separately — three independent determinations.</div></div>
+        <div class="step"><div class="step-num sn-r">2</div><div class="step-body"><strong>Clause (d) — 120 days — directly produces RNOR, not ROR.</strong> The statute locks the outcome to RNOR when residency is triggered solely by the 120-day rule. It never produces ROR. (Corrected from earlier version.)</div></div>
+        <div class="step"><div class="step-num sn-r">3</div><div class="step-body"><strong>Deemed resident = always RNOR.</strong> Never ROR. Even if he satisfies zero RNOR conditions normally. Hardcoded by Sec 6(1A).</div></div>
+        <div class="step"><div class="step-num sn-r">4</div><div class="step-body"><strong>HUF: even one decision in India = Resident.</strong> Only "wholly outside" = NR. There is no partial or proportional rule for HUF.</div></div>
+        <div class="step"><div class="step-num sn-r">5</div><div class="step-body"><strong>DTAA gives zero relief if the other country's tax rate is zero.</strong> DTAA prevents double taxation — not single taxation by India alone. UAE's 0% rate = ₹0 credit.</div></div>
+        <div class="step"><div class="step-num sn-r">6</div><div class="step-body"><strong>Indian income is always taxable for all three statuses.</strong> ROR, RNOR, and NR all pay tax on Indian-sourced income. Only treatment of foreign income differs across statuses.</div></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div><!-- /shell -->
+
+<script>
+  // Smooth active nav highlight on scroll
+  const sections = document.querySelectorAll('.section[id]');
+  const navItems = document.querySelectorAll('.nav-item');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navItems.forEach(n => {
+      n.classList.toggle('active', n.getAttribute('href') === '#' + current);
+    });
+  });
+
+  function toggleAcc(head) {
+    const body = head.nextElementSibling;
+    const icon = head.querySelector('.acc-icon');
+    const isOpen = body.classList.toggle('open');
+    icon.classList.toggle('open', isOpen);
+  }
+
+  function toggleAll(open) {
+    document.querySelectorAll('.acc-body').forEach(b => b.classList.toggle('open', open));
+    document.querySelectorAll('.acc-icon').forEach(i => i.classList.toggle('open', open));
+  }
+</script>
+</body>
+</html>
