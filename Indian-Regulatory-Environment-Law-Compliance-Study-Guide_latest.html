@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indian Regulatory Environment, Law and Compliance — Simplified Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FCFCFA;
+  --ink:#1D2433;
+  --ink-2:#4A5568;
+  --ink-3:#7B8794;
+  --rule:#D9DDE3;
+  --navy:#1F3A5F;
+  --navy-soft:#E8EEF6;
+  --seal:#9E3B2C;
+  --seal-soft:#F7E9E5;
+  --leaf:#2E6B4E;
+  --leaf-soft:#E6F1EA;
+  --amber:#8A6414;
+  --amber-soft:#F6EFDC;
+  --table-head:#EEF1F5;
+  --table-zebra:#F6F7F9;
+  --code:#F1F3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#14181F;
+    --ink:#E6E9EE;
+    --ink-2:#B5BDC9;
+    --ink-3:#8791A0;
+    --rule:#2C333E;
+    --navy:#8FB3E0;
+    --navy-soft:#1C2A3D;
+    --seal:#E38B7A;
+    --seal-soft:#3A2420;
+    --leaf:#7FC59E;
+    --leaf-soft:#1D2F26;
+    --amber:#E0B85C;
+    --amber-soft:#332B15;
+    --table-head:#1E242E;
+    --table-zebra:#191E26;
+    --code:#1E242E;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14181F;
+  --ink:#E6E9EE;
+  --ink-2:#B5BDC9;
+  --ink-3:#8791A0;
+  --rule:#2C333E;
+  --navy:#8FB3E0;
+  --navy-soft:#1C2A3D;
+  --seal:#E38B7A;
+  --seal-soft:#3A2420;
+  --leaf:#7FC59E;
+  --leaf-soft:#1D2F26;
+  --amber:#E0B85C;
+  --amber-soft:#332B15;
+  --table-head:#1E242E;
+  --table-zebra:#191E26;
+  --code:#1E242E;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+}
+a{color:var(--navy)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px 80px}
+
+/* top nav */
+.topnav{
+  position:sticky;top:0;z-index:20;
+  background:var(--paper);
+  border-bottom:1px solid var(--rule);
+}
+.topnav .inner{max-width:900px;margin:0 auto;padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.topnav a{
+  font-size:13px;font-weight:500;text-decoration:none;color:var(--ink-2);
+  padding:4px 10px;border:1px solid var(--rule);border-radius:999px;white-space:nowrap
+}
+.topnav a:hover,.topnav a:focus-visible{border-color:var(--navy);color:var(--navy);outline:none}
+.topnav button{
+  margin-left:auto;font:inherit;font-size:13px;font-weight:500;
+  background:var(--navy);color:#fff;border:0;border-radius:999px;padding:6px 12px;cursor:pointer
+}
+.topnav button:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+
+/* hero */
+.hero{padding:56px 0 28px;border-bottom:1px solid var(--rule)}
+.hero .kicker{font-size:14px;color:var(--ink-3);margin:0 0 6px}
+.hero h1{font-size:40px;line-height:1.1;font-weight:300;margin:0 0 16px;letter-spacing:-.01em}
+.hero p{max-width:66ch;color:var(--ink-2);margin:0 0 10px}
+.hero .howto{margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.hero .howto div{border-left:3px solid var(--navy);padding:2px 0 2px 12px;font-size:14px;color:var(--ink-2)}
+.hero .howto strong{display:block;color:var(--ink);font-weight:600}
+
+/* chapters */
+.chapter{padding:48px 0 12px;border-bottom:1px solid var(--rule)}
+.chapter-head{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-bottom:10px}
+.chapter-head .num{font-size:72px;line-height:.9;font-weight:300;color:var(--navy)}
+.chapter-head h2{font-size:28px;font-weight:600;margin:0;line-height:1.2}
+.chapter-head .sub{font-size:15px;color:var(--ink-2);margin:4px 0 0}
+.one-line{
+  font-size:19px;line-height:1.45;font-weight:400;color:var(--ink);
+  border-left:4px solid var(--seal);padding:8px 16px;margin:18px 0 26px;background:var(--seal-soft)
+}
+.lo{font-size:14px;color:var(--ink-2);margin:0 0 22px}
+.lo ul{margin:6px 0 0;padding-left:20px}
+h3{font-size:21px;font-weight:600;margin:38px 0 10px;line-height:1.25}
+h4{font-size:16.5px;font-weight:600;margin:24px 0 8px;color:var(--ink)}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:3px 0}
+strong{font-weight:600}
+
+/* boxes */
+.box{border:1px solid var(--rule);border-radius:6px;padding:14px 16px;margin:16px 0}
+.box .label{font-size:13px;font-weight:600;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+.box .label span{display:inline-block;width:10px;height:10px;border-radius:2px}
+.box p:last-child,.box ul:last-child,.box ol:last-child,.box table:last-child{margin-bottom:0}
+.ex{background:var(--amber-soft);border-color:transparent}
+.ex .label{color:var(--amber)} .ex .label span{background:var(--amber)}
+.in{background:var(--leaf-soft);border-color:transparent}
+.in .label{color:var(--leaf)} .in .label span{background:var(--leaf)}
+.hook{background:var(--seal-soft);border-color:transparent}
+.hook .label{color:var(--seal)} .hook .label span{background:var(--seal)}
+.idea{background:var(--navy-soft);border-color:transparent}
+.idea .label{color:var(--navy)} .idea .label span{background:var(--navy)}
+.flag{border-left:4px solid var(--amber);background:transparent;border-radius:0}
+.flag .label{color:var(--amber)}
+
+/* tables */
+.tbl{overflow-x:auto;margin:14px 0 20px;border:1px solid var(--rule);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;line-height:1.45}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+th{background:var(--table-head);font-weight:600}
+tbody tr:nth-child(even){background:var(--table-zebra)}
+tbody tr:last-child td{border-bottom:0}
+td .y{color:var(--leaf);font-weight:600}
+td .n{color:var(--seal);font-weight:600}
+.num-cell{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* details */
+details{border:1px solid var(--rule);border-radius:6px;margin:10px 0;background:transparent}
+details summary{cursor:pointer;padding:10px 14px;font-weight:500;list-style:none;display:flex;gap:10px;align-items:baseline}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"+";font-weight:600;color:var(--navy);width:14px;flex:0 0 14px}
+details[open] summary::before{content:"–"}
+details summary:focus-visible{outline:2px solid var(--navy);outline-offset:-2px;border-radius:6px}
+details .body{padding:0 14px 14px 38px;color:var(--ink);font-size:15px}
+details .body p:last-child{margin-bottom:0}
+.q-tag{font-size:12px;color:var(--ink-3);font-weight:400;margin-left:auto;white-space:nowrap}
+.mcq .opt{margin:4px 0}
+.mcq .ok{color:var(--leaf);font-weight:600}
+.mcq .why{margin-top:8px;padding-top:8px;border-top:1px dashed var(--rule)}
+
+/* figures */
+figure{margin:18px 0 22px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:var(--ink-3);margin-top:6px}
+.svg-ink{fill:var(--ink)} .svg-ink2{fill:var(--ink-2)} .svg-rule{stroke:var(--rule)}
+.svg-navy{fill:var(--navy)} .svg-navy-s{fill:var(--navy-soft)} .svg-navy-l{stroke:var(--navy)}
+.svg-seal{fill:var(--seal)} .svg-seal-s{fill:var(--seal-soft)} .svg-seal-l{stroke:var(--seal)}
+.svg-leaf{fill:var(--leaf)} .svg-leaf-s{fill:var(--leaf-soft)} .svg-leaf-l{stroke:var(--leaf)}
+.svg-amber{fill:var(--amber)} .svg-amber-s{fill:var(--amber-soft)} .svg-amber-l{stroke:var(--amber)}
+.svg-paper{fill:var(--paper)}
+svg text{font-family:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif}
+
+code{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.92em;background:var(--code);padding:1px 5px;border-radius:3px}
+.small{font-size:13.5px;color:var(--ink-2)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.tip{font-size:14px;color:var(--ink-2);border-top:1px dashed var(--rule);padding-top:8px;margin-top:8px}
+
+@media (max-width:600px){
+  .hero h1{font-size:30px}
+  .chapter-head .num{font-size:52px}
+  .chapter-head h2{font-size:23px}
+  .one-line{font-size:17px}
+}
+@media print{
+  .topnav{display:none}
+  body{font-size:11.5pt}
+  .wrap{max-width:none;padding:0}
+  .chapter{break-before:page;border:0}
+  .hero{break-after:page}
+  details{break-inside:avoid}
+  .tbl{break-inside:avoid}
+  figure{break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<nav class="topnav" aria-label="Chapters">
+  <div class="inner">
+    <a href="#ch1">1 System</a>
+    <a href="#ch2">2 Regulators</a>
+    <a href="#ch3">3 Acts</a>
+    <a href="#ch4">4 Grievances</a>
+    <a href="#ch5">5 RTI/DIP</a>
+    <a href="#ch6">6 Intermediaries</a>
+    <a href="#cheat">Cheat sheet</a>
+    <a href="#test">Self-test</a>
+    <button type="button" id="toggleAll">Expand all</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker">FPSB India-Specific Education Program — Investment Specialist module, simplified</p>
+  <h1>Indian Regulatory Environment, Law and Compliance, the short version</h1>
+  <p>Same six chapters as the course, but rebuilt to read in one sitting: one idea per topic, one everyday example, one small table for the numbers actually worth memorising. Where the source law lists a dozen sub-clauses, this guide keeps the two or three that show up in exams and in practice, and points you to the source for the rest.</p>
+  <div class="howto">
+    <div><strong>Blue boxes</strong> Core idea, stated once, plainly.</div>
+    <div><strong>Amber boxes</strong> A concrete example.</div>
+    <div><strong>Green boxes</strong> Practice notes: what this means for an RIA day to day.</div>
+    <div><strong>Red boxes</strong> Memory hooks and exam traps.</div>
+  </div>
+  <p class="small" style="margin-top:18px">Use "Expand all" before printing to PDF.</p>
+</header>
+
+<!-- ============================ CHAPTER 1 ============================ -->
+<section class="chapter" id="ch1">
+  <div class="chapter-head">
+    <div class="num">1</div>
+    <div><h2>Regulatory System and Environment</h2><p class="sub">RBI, SEBI, and the erstwhile FMC</p></div>
+  </div>
+  <p class="one-line">India splits financial regulation by product, not by institution: whoever takes your deposit answers to RBI, whoever sells you a security answers to SEBI, whoever sells you insurance answers to IRDAI, and your pension answers to PFRDA.</p>
+
+  <div class="tbl"><table>
+    <thead><tr><th style="width:18%">Regulator</th><th>Domain</th></tr></thead>
+    <tbody>
+      <tr><td><strong>RBI</strong></td><td>Credit and deposits (banks, NBFCs, UCBs)</td></tr>
+      <tr><td><strong>SEBI</strong></td><td>Securities and capital markets</td></tr>
+      <tr><td><strong>IRDAI</strong></td><td>Insurance</td></tr>
+      <tr><td><strong>PFRDA</strong></td><td>The National Pension System (NPS)</td></tr>
+    </tbody>
+  </table></div>
+  <p>Each is a statutory body accountable to Parliament through the Ministry of Finance, but funded by fees from the industry it regulates — which is what gives it independence from government day to day. RBI doesn't regulate every credit entity personally either: it regulates NABARD, and NABARD in turn regulates Regional Rural Banks and co-operative banks; RBI regulates the National Housing Bank, which supervises housing finance companies. Think of it as a chain of command, not a flat list.</p>
+
+  <h3>Reserve Bank of India</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>RBI is the country's central bank: banker to the government, banker to every scheduled bank, issuer of currency, and the body that manages the money supply to keep prices stable while supporting growth.</p></div>
+  <div class="box ex"><p class="label"><span></span>Example</p><p>The 1991 balance-of-payments crisis is the textbook's own illustration of why RBI matters: fiscal deficits through the 1980s, then a Gulf War oil-import shock, pushed India to the edge. RBI's response — liberalisation, fiscal correction, and building up the securities and forex markets — is the reform package still shaping today's financial system.</p></div>
+
+  <h3>Securities and Exchange Board of India</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>A securities market exists so that people with capital can meet people who need it. SEBI's job is to keep that market fair enough that ordinary savers are willing to participate in it.</p></div>
+  <p>India's stock market traces back to informal cotton-share trading in 1860s Bombay; brokers formalised themselves into what became the BSE in 1875. But for most of the 20th century, capital issues were tightly controlled by the government itself (the Capital Issues Control Act, 1947). SEBI was set up in 1988 and got real teeth with the <strong>SEBI Act, 1992</strong>, passed alongside the repeal of that old Act — this is the real starting point of the modern, SEBI-run market.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:20%">Function</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td>Protective</td><td>Stop price rigging, insider trading, fraud</td></tr>
+      <tr><td>Developmental</td><td>Grow the market — train intermediaries, push technology</td></tr>
+      <tr><td>Regulatory</td><td>License and police brokers, AMCs, advisers, takeovers, buybacks</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box hook"><p class="label"><span></span>Memory hook</p><p>SEBI's market today: ~80% of GDP in market cap, 41 million demat accounts — up from a market that barely existed before 1992. That's the scale of what the SEBI Act changed.</p></div>
+
+  <h3>The Forward Markets Commission — now part of SEBI</h3>
+  <p>FMC regulated commodity futures (think MCX, NCDEX) until it was <strong>merged into SEBI on September 28, 2015</strong>. Commodity futures had a chequered run in India — banned for decades, eased back in commodity by commodity from the 1980s, fully reopened in 2003. Today MCX alone carries about 92% of all commodity derivatives trading volume.</p>
+
+  <div class="box hook"><p class="label"><span></span>Exam traps</p>
+    <ul>
+      <li>NABARD regulates RRBs/co-op banks; NHB supervises HFCs — RBI doesn't do this directly.</li>
+      <li>SEBI existed from 1988, but the SEBI Act (1992) is what gave it statutory power.</li>
+      <li>FMC merged into SEBI on <strong>September 28, 2015</strong> — a date worth knowing cold.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ CHAPTER 2 ============================ -->
+<section class="chapter" id="ch2">
+  <div class="chapter-head">
+    <div class="num">2</div>
+    <div><h2>Role of Regulators</h2><p class="sub">Ten functions, boiled down to three jobs and a toolkit</p></div>
+  </div>
+  <p class="one-line">Every Indian regulator wears three hats — lawmaker, police officer, judge — and separately runs a before/during/after playbook for firm failure, plus (for RBI specifically) the actual machinery of managing the rupee.</p>
+
+  <h3>Three hats: rule-maker, police, judge</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>A regulator writes the rules (regulation-making), enforces them (executive functions — licensing, inspection, investigation), and then also judges breaches and hands out penalties (administrative law/quasi-judicial functions). Appeals against SEBI, IRDA and PFRDA orders all go to one place: the <strong>Securities Appellate Tribunal (SAT)</strong>.</p></div>
+  <div class="box flag"><p class="label">Worth flagging</p><p>These executive powers in India don't have standardised statutory checks — which is why the course stresses two safeguards regulators should hold themselves to: use less discretion than they could, and always explain the reasoning behind an action.</p></div>
+
+  <h3>Consumer protection: caveat emptor, with training wheels</h3>
+  <p>Because India regulates by sector, the same kind of product can be treated differently depending on who sells it — "regulatory arbitrage." And <em>caveat emptor</em> (buyer beware) still largely governs Indian finance: consumers are expected to decipher products beyond the basic disclosures. That's why every sector has built its own ombudsman or complaint system (Chapter 4).</p>
+
+  <h3>Before, during, and after a firm fails</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>The FSLRC frames it as a sequence: <strong>consumer protection</strong> governs a firm's behaviour while healthy; <strong>micro-prudential regulation</strong> reduces (never eliminates) the chance it fails; <strong>resolution</strong> — the IBC, in India's case — is what happens once it fails anyway.</p></div>
+  <p>Micro-prudential regulation looks at one firm at a time (regulating its entry, its risk-taking, its capital buffers, its governance, and supervising it on an ongoing basis). <strong>Systemic risk regulation</strong> is the same idea applied to the whole financial system — "the forest, not the trees," as the FSLRC puts it. Deposit insurance is the safety net underneath all of this: DICGC covers up to <strong>Rs. 500,000</strong> per depositor per bank, across all their accounts and branches.</p>
+
+  <h3>Money mechanics: capital controls, public debt, and monetary policy</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>India's current account (trade, remittances) is freely convertible; the capital account (investment flows) is not. The <strong>Central Government</strong> makes the rules for current account transactions (with RBI's input); <strong>RBI</strong> makes the regulations for capital account transactions (with the government's input) — the reverse of what people usually assume.</p></div>
+  <p>RBI also runs the government's borrowing programme, aiming to fund the deficit cheaply without flooding the market — and, contrary to popular belief, this doesn't conflict with monetary policy: two specific 1997 and 2003 rules (no more ad-hoc T-bills to RBI; RBI barred from primary bond auctions) keep the government from simply printing its way out of debt.</p>
+  <p>Monetary policy itself is set by the six-member <strong>Monetary Policy Committee</strong> (3 RBI + 3 government-nominated, Governor has the casting vote), which meets at least 4 times a year to fix the benchmark rate.</p>
+  <div class="box ex"><p class="label"><span></span>Example: how the levers connect</p><p>Say RBI wants to fight inflation. It raises the <strong>CRR</strong> (the cash-only reserve every bank must park with RBI, earning nothing) — banks now have less to lend, so lending rates drift up and borrowing slows. It can also raise the <strong>repo rate</strong> (what banks pay to borrow from RBI overnight), which pushes every other rate in the economy up with it. The <strong>reverse repo rate</strong> (what RBI pays banks to park surplus cash with it) normally sits about 50 bps below repo; the <strong>MSF rate</strong>, for emergency overnight borrowing, sits about 100 bps above it. Loosen the same three dials in the other direction, and you get the classic "rate cut to boost growth" story.</p></div>
+
+  <div class="box hook"><p class="label"><span></span>Exam traps</p>
+    <ul>
+      <li>Micro-prudential = one firm. Systemic risk = the whole system. Don't swap them.</li>
+      <li>Current account rules: Central Govt. Capital account regulations: RBI. (Reversed from what most people guess.)</li>
+      <li>CRR = cash with RBI, earns nothing. SLR = the bank's own cash/gold/securities cushion. Different mechanisms, both reserve ratios.</li>
+      <li>DICGC: Rs. 500,000 per depositor per bank (not per account, not per branch).</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ CHAPTER 3 ============================ -->
+<section class="chapter" id="ch3">
+  <div class="chapter-head">
+    <div class="num">3</div>
+    <div><h2>Acts Relevant to Corporate Entities, Securities and External Trade</h2><p class="sub">Twelve Acts, each reduced to: what it's for, one number worth remembering, one example</p></div>
+  </div>
+  <p class="one-line">These Acts define the entities (companies, trusts, LLPs), instruments (securities, contracts, cheques) and processes (insolvency, money laundering, foreign trade) sitting underneath every piece of financial advice.</p>
+
+  <div class="tbl"><table>
+    <thead><tr><th style="width:30%">Act</th><th style="width:12%">Year</th><th>In one line</th></tr></thead>
+    <tbody>
+      <tr><td>Companies Act</td><td>2013</td><td>How companies are formed, governed, and wound up</td></tr>
+      <tr><td>Indian Trusts Act</td><td>1882</td><td>How a trust is created and revoked</td></tr>
+      <tr><td>Securities Contracts (Regulation) Act</td><td>1956</td><td>What counts as a security; who can run a stock exchange</td></tr>
+      <tr><td>SEBI Act</td><td>1992</td><td>SEBI's own powers and functions</td></tr>
+      <tr><td>FEMA</td><td>1999</td><td>Rules for foreign exchange and cross-border money</td></tr>
+      <tr><td>PMLA</td><td>2002</td><td>Defines and punishes money laundering</td></tr>
+      <tr><td>Insolvency and Bankruptcy Code</td><td>2016</td><td>What happens when a company can't pay its debts</td></tr>
+      <tr><td>Negotiable Instruments Act</td><td>1881</td><td>Cheques, promissory notes, bills of exchange</td></tr>
+      <tr><td>Forward Contracts (Regulation) Act</td><td>1952</td><td>Commodity futures markets</td></tr>
+      <tr><td>Indian Contract Act</td><td>1872</td><td>What makes an agreement legally binding</td></tr>
+      <tr><td>Indian Partnership Act</td><td>1932</td><td>Rights and duties of partners in a firm</td></tr>
+      <tr><td>LLP Act</td><td>2008</td><td>A partnership with limited liability, as a separate legal entity</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Companies Act, 2013</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Governs how every listed and unlisted Indian company is formed, run, and — if needed — wound up. It gave shareholders real teeth (class-action suits, mandatory independent directors, CSR spending) and created the NCLT/NCLAT for fast, specialised company disputes.</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:44%">Number worth remembering</th><th>Value</th></tr></thead>
+    <tbody>
+      <tr><td>CSR spend, once a company crosses the net worth/turnover/profit threshold</td><td>2% of average net profit (last 3 years)</td></tr>
+      <tr><td>Independent directors on a listed company's board</td><td>At least 1/3</td></tr>
+      <tr><td>Auditor rotation</td><td>Every 5 years</td></tr>
+      <tr><td>Shareholders allowed in a private company</td><td>Up to 200 (was 50 under the old Act)</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box ex"><p class="label"><span></span>Example</p><p>A listed company wants to merge with its wholly-owned subsidiary. If 90% of creditors (by value) agree, the Act lets it skip the usual creditors' meeting entirely — a fast-track route that didn't exist before this Act.</p></div>
+
+  <h3>Securities Contracts (Regulation) Act, 1956 (SCRA)</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Defines what counts as a "security" and sets the ownership rules for who can run a stock exchange.</p></div>
+  <div class="box hook"><p class="label"><span></span>The one number set worth memorising</p><p>A recognised stock exchange must keep <strong>at least 51%</strong> public holding. No single ordinary person can own more than <strong>5%</strong>; a few special categories (another exchange, a depository, an approved institution) can go up to <strong>15%</strong> — but all foreign holders together are capped at <strong>49%</strong>.</p></div>
+
+  <h3>SEBI Act, 1992</h3>
+  <p>Gives SEBI the actual powers to act: it can investigate with the same authority as a civil court, freeze bank accounts, suspend trading, and impose penalties — all appealable to the <strong>Securities Appellate Tribunal</strong>, and from there to the Supreme Court within 60 days.</p>
+
+  <h3>FEMA, 1999</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Splits foreign exchange transactions into two buckets and hands them to two different rule-makers.</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:26%"></th><th>Current account (trade, remittances)</th><th>Capital account (investments)</th></tr></thead>
+    <tbody>
+      <tr><th>Who sets the rules</th><td>Central Government (with RBI's input)</td><td>RBI (with the government's input)</td></tr>
+    </tbody>
+  </table></div>
+  <p>Breaking FEMA can cost up to <strong>three times</strong> the amount involved as a penalty — and unpaid penalties can lead to civil imprisonment.</p>
+
+  <h3>PMLA, 2002</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Money laundering is dressing up the proceeds of crime as clean money. PMLA makes this a specific criminal offence — and flips the usual burden of proof: once accused, <strong>you</strong> must prove your assets are legitimate, not the other way round.</p></div>
+  <div class="box ex"><p class="label"><span></span>Example</p><p>A client wants you to help "invest" a large, unexplained cash sum with no clear source. Under PMLA, entities like banks and financial intermediaries (reporting entities) must flag this to the <strong>Financial Intelligence Unit – India (FIU-IND)</strong>. Punishment for laundering: rigorous imprisonment of 3–7 years, up to 10 years if drugs are involved (NDPS Act).</p></div>
+
+  <h3>Insolvency and Bankruptcy Code, 2016 (IBC)</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>India's first real playbook for what happens when a company can't pay its debts: a time-bound process to either revive it or liquidate it fairly.</p></div>
+  <p>A creditor triggers the process at the NCLT → an Interim Resolution Professional takes over management → a Committee of Creditors decides whether to revive the company or liquidate it. If liquidation happens, the money is paid out in a strict order:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:10%">Order</th><th>Who gets paid</th></tr></thead>
+    <tbody>
+      <tr><td>1st</td><td>Resolution process fees and costs</td></tr>
+      <tr><td>2nd</td><td>Secured creditors (via the resolution process)</td></tr>
+      <tr><td>3rd</td><td>Workmen's dues, then employee wages</td></tr>
+      <tr><td>4th</td><td>Unsecured creditors</td></tr>
+      <tr><td>5th</td><td>Government dues — <em>after</em> unsecured creditors</td></tr>
+      <tr><td>Last</td><td>Preference, then ordinary, shareholders</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box flag"><p class="label">Worth flagging</p><p>Government dues ranking below unsecured creditors specifically <strong>overrides</strong> the Companies Act, 2013 — a deliberate, testable exception.</p></div>
+
+  <h3>Negotiable Instruments Act, 1881</h3>
+  <p>Covers promissory notes (an unconditional promise to pay), bills of exchange (an unconditional order to someone else to pay), and cheques. The famous part is <strong>Section 138</strong>: a bounced cheque, for insufficient funds, is a criminal offence — <strong>30 days</strong> to notify the drawer, <strong>15 days</strong> for them to pay up, <strong>1 month</strong> after that to file a complaint. Punishment: up to 2 years, or a fine up to twice the cheque amount, or both.</p>
+
+  <h3>The rest, briefly</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%">Act</th><th>What to remember</th></tr></thead>
+    <tbody>
+      <tr><td>Indian Trusts Act, 1882</td><td>A trust needs a lawful purpose. Once created for someone's benefit, it generally can't be revoked without every beneficiary's consent — except a trust made by Will, which the author can revoke, or one that expressly reserves that right</td></tr>
+      <tr><td>FCRA, 1952</td><td>A forward contract delivers goods within 11 days; beyond that it isn't a simple "ready delivery" deal. This Act is the legal ancestor of today's MCX/NCDEX commodity futures</td></tr>
+      <tr><td>Indian Contract Act, 1872</td><td>A contract needs offer + acceptance + consideration + free consent + competent parties + a lawful object. <strong>Indemnity</strong>: I cover your loss. <strong>Guarantee</strong>: I (the surety) pay if a third party (the debtor) defaults, to you (the creditor). <strong>Bailment</strong>: I hand you my goods for a purpose, you return them. <strong>Pledge</strong>: bailment as security for a debt</td></tr>
+      <tr><td>Indian Partnership Act, 1932</td><td>Partners share profits equally by default, are jointly and severally liable for the firm's acts, and can't be expelled except by a process the partnership contract itself allows</td></tr>
+      <tr><td>LLP Act, 2008</td><td>An LLP is its own legal person — partners aren't personally liable for each other's mistakes, only their own. If it falls to one partner, that person carries full personal liability after <strong>6 months</strong></td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="box hook"><p class="label"><span></span>Exam traps</p>
+    <ul>
+      <li>SCRA numbers: 51% public / 5% ordinary cap / 15% special exception / 49% total foreign cap.</li>
+      <li>PMLA reverses the burden of proof — the accused proves innocence, not the prosecution proving guilt.</li>
+      <li>IBC: government dues rank below unsecured creditors — overrides the Companies Act.</li>
+      <li>Cheque bounce timeline: 30 / 15 / 1 month.</li>
+      <li>Guarantee: surety pays, creditor receives — don't mix up who's who.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ CHAPTER 4 ============================ -->
+<section class="chapter" id="ch4">
+  <div class="chapter-head">
+    <div class="num">4</div>
+    <div><h2>Consumer Grievances Redressal</h2><p class="sub">One ladder per sector: try the entity, escalate, go to court as a last resort</p></div>
+  </div>
+  <p class="one-line">Banking has its Ombudsman, securities has SCORES, insurance has its own Ombudsman, and everything has the Consumer Protection Act as the final backstop.</p>
+
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%">Mechanism</th><th style="width:16%">Since</th><th>How it works</th></tr></thead>
+    <tbody>
+      <tr><td>Banking Ombudsman</td><td>1995</td><td>21 RBI-run offices, free to the consumer; ~96.5% of complaints resolved, two-thirds by mediation</td></tr>
+      <tr><td>SEBI SCORES</td><td>2011</td><td>Online portal for grievances against <em>listed companies and SEBI-registered intermediaries only</em> — the entity gets 30 days to respond before it counts as unresolved</td></tr>
+      <tr><td>Insurance Ombudsman</td><td>1998</td><td>17 ombudsmen; can only decide claims up to Rs. 3 million; insurer must honour an award within 3 months</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box flag"><p class="label">Worth flagging</p><p>SCORES will <em>not</em> take a complaint against a bank, NBFC, insurer, or housing finance company — those go through RBI's or IRDAI's own systems. A common trap: assuming SCORES is a universal financial-grievance portal.</p></div>
+
+  <h3>Consumer Protection Act, 2019: the three-tier ladder</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Where you file a consumer complaint depends purely on the rupee value of the goods or services involved.</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:26%">Forum</th><th>Value of goods/services</th><th>Appeal window</th></tr></thead>
+    <tbody>
+      <tr><td>District Commission</td><td>Up to Rs. 10 million</td><td>45 days to State</td></tr>
+      <tr><td>State Commission</td><td>Rs. 10–100 million</td><td>30 days to National</td></tr>
+      <tr><td>National Commission</td><td>Above Rs. 100 million</td><td>30 days to Supreme Court</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box ex"><p class="label"><span></span>Example</p><p>A consumer disputes a Rs. 25 million service deficiency — that falls between Rs. 10 million and Rs. 100 million, so it starts at the <strong>State Commission</strong>, not the District Commission.</p></div>
+  <p>The 2019 Act also created the <strong>Central Consumer Protection Authority</strong>, which can act on its own (suo moto), recall products, and go after misleading endorsements — this is why celebrity endorsers now carry personal liability for the products they promote.</p>
+
+  <div class="box hook"><p class="label"><span></span>Exam traps</p>
+    <ul>
+      <li>SCORES excludes banks, NBFCs, insurers, pension products — sector-specific mechanisms handle those.</li>
+      <li>Consumer Protection Act jurisdiction is purely about rupee value, not complaint type.</li>
+      <li>Non-compliance with a Commission order: 1 month to 3 years imprisonment, or Rs. 25,000–100,000 fine, or both.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================ CHAPTER 5 ============================ -->
+<section class="chapter" id="ch5">
+  <div class="chapter-head">
+    <div class="num">5</div>
+    <div><h2>Other Acts, Statutes and Regulations</h2><p class="sub">RTI, and SEBI's Disclosure and Investor Protection Guidelines</p></div>
+  </div>
+  <p class="one-line">One law gives citizens a right to information from the government; the other forces companies to disclose everything an investor needs before a new issue.</p>
+
+  <h3>Right to Information Act, 2005</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Any citizen can demand records from a public authority, without giving a reason — the authority must respond or explain, in writing, why it's refusing and how to appeal.</p></div>
+  <p>Exceptions exist for national security, cabinet papers, trade secrets, and anything that would endanger someone's safety or an ongoing investigation. But even then, the authority must release the <strong>non-exempt part</strong> of the record rather than refusing the whole thing.</p>
+
+  <h3>SEBI (Disclosure and Investor Protection) Guidelines, 2000</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>SEBI doesn't fix the price of a new share issue — but it forces the issuer to disclose everything (via a lead manager, a red herring prospectus, and a disclosed price band) so the market can arrive at a fair price itself.</p></div>
+  <div class="box ex"><p class="label"><span></span>Example</p><p>A company doing a rights issue can't touch the money it raises until the exchange confirms at least <strong>90% subscription</strong> — protecting investors from a company that raised only a fraction of what it asked for.</p></div>
+</section>
+
+<!-- ============================ CHAPTER 6 ============================ -->
+<section class="chapter" id="ch6">
+  <div class="chapter-head">
+    <div class="num">6</div>
+    <div><h2>Regulation of Market Intermediaries</h2><p class="sub">Three SEBI rulebooks: for intermediaries generally, for advisers specifically, and for self-regulating bodies</p></div>
+  </div>
+  <p class="one-line">There's no single licence that lets you sell insurance, give investment advice, and manage pensions — each SEBI-regulated role has its own rulebook, and they deliberately keep advice separate from distribution.</p>
+
+  <div class="tbl"><table>
+    <thead><tr><th style="width:26%">Regulation</th><th>Who it covers</th><th>Core rule</th></tr></thead>
+    <tbody>
+      <tr><td>Intermediaries Regulations, 2008</td><td>Brokers, bankers to an issue, custodians, AMCs, and more</td><td>Redress investor grievances within <strong>45 days</strong>; no price rigging, front-running, self-dealing</td></tr>
+      <tr><td>Investment Advisers Regulations, 2013</td><td>Anyone giving investment advice for a fee</td><td>Fiduciary duty; paid <strong>only</strong> by the client, never by a product provider; <strong>Financial Planning counts as investment advice</strong></td></tr>
+      <tr><td>SRO Regulations, 2004</td><td>Self-regulatory bodies for a market segment (not stock exchanges)</td><td>Net worth ≥ INR 10 million; Board must be majority independent directors</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box flag"><p class="label">Worth flagging — the direction of reform</p><p>Mutual fund distribution was originally treated as separate from "advice." SEBI's later proposals push distributors to <strong>choose one role or the other</strong> — you can't earn commission and call yourself a fiduciary adviser to the same client.</p></div>
+</section>
+
+<!-- ============================ CHEAT SHEET ============================ -->
+<section class="chapter" id="cheat">
+  <div class="chapter-head">
+    <div class="num">✓</div>
+    <div><h2>Cheat sheet</h2><p class="sub">The numbers and pairings worth having cold</p></div>
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th style="width:40%">If you see...</th><th>Think...</th><th style="width:8%">Ch</th></tr></thead>
+    <tbody>
+      <tr><td>NABARD / NHB</td><td>NABARD → RRBs/co-op banks. NHB → HFCs (both sit under RBI)</td><td>1</td></tr>
+      <tr><td>SEBI Act, 1992</td><td>The real starting point of SEBI's statutory power (SEBI itself set up 1988)</td><td>1</td></tr>
+      <tr><td>FMC merger date</td><td>September 28, 2015 — merged into SEBI</td><td>1</td></tr>
+      <tr><td>SAT</td><td>One appellate body for SEBI, IRDA, and PFRDA orders</td><td>2</td></tr>
+      <tr><td>Micro-prudential vs systemic risk</td><td>One firm vs the whole system ("trees vs forest")</td><td>2</td></tr>
+      <tr><td>Current account vs capital account (FEMA)</td><td>Central Govt rules vs RBI regulations — reversed from intuition</td><td>2/3</td></tr>
+      <tr><td>CRR / SLR / repo / reverse repo / MSF</td><td>Cash with RBI / bank's own liquid assets / borrow from RBI / lend to RBI / emergency overnight rate</td><td>2</td></tr>
+      <tr><td>DICGC</td><td>Rs. 500,000 per depositor per bank</td><td>2</td></tr>
+      <tr><td>SCRA ownership caps</td><td>51% public / 5% ordinary / 15% special / 49% total foreign</td><td>3</td></tr>
+      <tr><td>PMLA burden of proof</td><td>Reversed — accused proves innocence</td><td>3</td></tr>
+      <tr><td>IBC priority waterfall</td><td>Fees → secured creditors → workmen/wages → unsecured creditors → govt dues → shareholders</td><td>3</td></tr>
+      <tr><td>Cheque bounce (Sec 138)</td><td>30 days notice / 15 days to pay / 1 month to file</td><td>3</td></tr>
+      <tr><td>Indemnity vs guarantee</td><td>I cover your loss vs I (surety) pay if a third party defaults</td><td>3</td></tr>
+      <tr><td>SCORES exclusions</td><td>No banks, NBFCs, insurers, pension products</td><td>4</td></tr>
+      <tr><td>Consumer Protection Act tiers</td><td>≤10M District / 10–100M State / &gt;100M National (Rs.)</td><td>4</td></tr>
+      <tr><td>RTI exemption</td><td>Still gets part access to the non-exempt portion</td><td>5</td></tr>
+      <tr><td>Rights issue fund use</td><td>Only after 90% subscription confirmed</td><td>5</td></tr>
+      <tr><td>IA Regulations</td><td>Client-only remuneration; Financial Planning = investment advice</td><td>6</td></tr>
+      <tr><td>SRO</td><td>Excludes stock exchanges by definition; net worth ≥ INR 10 million</td><td>6</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- ============================ SELF-TEST ============================ -->
+<section class="chapter" id="test">
+  <div class="chapter-head">
+    <div class="num">?</div>
+    <div><h2>Self-test</h2><p class="sub">Eight questions, with the wrong answers explained too</p></div>
+  </div>
+
+  <details class="mcq"><summary>1. Who regulates Regional Rural Banks?<span class="q-tag">Ch 1</span></summary><div class="body">
+    <p class="opt">A. RBI directly</p><p class="opt">B. NABARD</p><p class="opt">C. SEBI</p><p class="opt">D. NHB</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">NABARD regulates RRBs and co-op banks; NABARD itself sits under RBI. NHB's job is housing finance companies, not RRBs.</p>
+  </div></details>
+
+  <details class="mcq"><summary>2. FMC merged into SEBI on which date?<span class="q-tag">Ch 1</span></summary><div class="body">
+    <p class="opt">A. April 4, 1992</p><p class="opt">B. September 5, 2013</p><p class="opt">C. September 28, 2015</p><p class="opt">D. June 27, 2016</p>
+    <p class="ok">Answer: C</p>
+    <p class="why">A is when the SEBI Act was promulgated; B is when FMC's administrative control shifted to the Ministry of Finance (an earlier, separate event); D is when the Monetary Policy Committee was formed.</p>
+  </div></details>
+
+  <details class="mcq"><summary>3. Under FEMA, who regulates capital account transactions?<span class="q-tag">Ch 2/3</span></summary><div class="body">
+    <p class="opt">A. Central Government alone</p><p class="opt">B. RBI, in consultation with the Central Government</p><p class="opt">C. SEBI</p><p class="opt">D. IRDAI</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">It's reversed from what people expect: RBI handles capital account regulations, while the Central Government handles current account rules. SEBI and IRDAI play no role here.</p>
+  </div></details>
+
+  <details class="mcq"><summary>4. Under the IBC, where do government dues rank in the payout order?<span class="q-tag">Ch 3</span></summary><div class="body">
+    <p class="opt">A. Above secured creditors</p><p class="opt">B. Between secured and unsecured creditors</p><p class="opt">C. Below unsecured creditors</p><p class="opt">D. Equal with employee wages</p>
+    <p class="ok">Answer: C</p>
+    <p class="why">This specifically overrides the Companies Act, 2013 — a deliberately testable exception. All other options rank government dues too high.</p>
+  </div></details>
+
+  <details class="mcq"><summary>5. Under the SCRA, what's the maximum combined foreign holding in a recognised stock exchange?<span class="q-tag">Ch 3</span></summary><div class="body">
+    <p class="opt">A. 5%</p><p class="opt">B. 15%</p><p class="opt">C. 49%</p><p class="opt">D. 51%</p>
+    <p class="ok">Answer: C</p>
+    <p class="why">5% is the ordinary individual cap; 15% is the special-category exception (another exchange, a depository, an approved institution); 51% is the minimum <em>public</em> holding requirement — the opposite kind of number.</p>
+  </div></details>
+
+  <details class="mcq"><summary>6. A grievance against a housing finance company — where does it go?<span class="q-tag">Ch 4</span></summary><div class="body">
+    <p class="opt">A. SEBI's SCORES</p><p class="opt">B. RBI/NHB's own mechanisms</p><p class="opt">C. The Insurance Ombudsman</p><p class="opt">D. IRDAI directly</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">SCORES explicitly excludes housing finance companies — they fall under RBI/NHB oversight, not SEBI. C and D relate to insurance, not housing finance.</p>
+  </div></details>
+
+  <details class="mcq"><summary>7. A complaint involves Rs. 50 million in goods/services. Which forum hears it first?<span class="q-tag">Ch 4</span></summary><div class="body">
+    <p class="opt">A. District Commission</p><p class="opt">B. State Commission</p><p class="opt">C. National Commission</p><p class="opt">D. Supreme Court</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">Rs. 50 million sits between the District cap (Rs. 10 million) and the State cap (Rs. 100 million), so it starts at the State Commission.</p>
+  </div></details>
+
+  <details class="mcq"><summary>8. Under the Investment Advisers Regulations, 2013, who may pay the adviser?<span class="q-tag">Ch 6</span></summary><div class="body">
+    <p class="opt">A. The client only</p><p class="opt">B. The product manufacturer only</p><p class="opt">C. Either the client or the manufacturer</p><p class="opt">D. A mix, as long as it's disclosed</p>
+    <p class="ok">Answer: A</p>
+    <p class="why">The fiduciary requirement is that remuneration comes directly from the client and no other source — this is what separates an RIA from a commission-based distributor.</p>
+  </div></details>
+
+  <p class="small" style="margin-top:24px">Source: FPSB India-Specific Education Program, Investment Specialist module, "Regulatory Environment, Law and Compliance" (copyright 2020, Financial Planning Standards Board Ltd.). Verify current figures (rates, thresholds, ombudsman stats) against RBI/SEBI sources before relying on them in practice.</p>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('toggleAll');
+  var open=false;
+  function setAll(state){
+    document.querySelectorAll('details').forEach(function(d){d.open=state;});
+    open=state; btn.textContent=state?'Collapse all':'Expand all';
+  }
+  btn.addEventListener('click',function(){setAll(!open);});
+  window.addEventListener('beforeprint',function(){
+    document.querySelectorAll('details').forEach(function(d){d.setAttribute('data-was',d.open?'1':'0');d.open=true;});
+  });
+  window.addEventListener('afterprint',function(){
+    document.querySelectorAll('details').forEach(function(d){d.open=d.getAttribute('data-was')==='1';});
+  });
+})();
+</script>
+</body>
+</html>

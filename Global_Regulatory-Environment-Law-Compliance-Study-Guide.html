@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regulatory Environment, Law and Compliance — Simplified Study Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FCFCFA;
+  --ink:#1D2433;
+  --ink-2:#4A5568;
+  --ink-3:#7B8794;
+  --rule:#D9DDE3;
+  --navy:#1F3A5F;
+  --navy-soft:#E8EEF6;
+  --seal:#9E3B2C;
+  --seal-soft:#F7E9E5;
+  --leaf:#2E6B4E;
+  --leaf-soft:#E6F1EA;
+  --amber:#8A6414;
+  --amber-soft:#F6EFDC;
+  --table-head:#EEF1F5;
+  --table-zebra:#F6F7F9;
+  --code:#F1F3F5;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#14181F;
+    --ink:#E6E9EE;
+    --ink-2:#B5BDC9;
+    --ink-3:#8791A0;
+    --rule:#2C333E;
+    --navy:#8FB3E0;
+    --navy-soft:#1C2A3D;
+    --seal:#E38B7A;
+    --seal-soft:#3A2420;
+    --leaf:#7FC59E;
+    --leaf-soft:#1D2F26;
+    --amber:#E0B85C;
+    --amber-soft:#332B15;
+    --table-head:#1E242E;
+    --table-zebra:#191E26;
+    --code:#1E242E;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#14181F;
+  --ink:#E6E9EE;
+  --ink-2:#B5BDC9;
+  --ink-3:#8791A0;
+  --rule:#2C333E;
+  --navy:#8FB3E0;
+  --navy-soft:#1C2A3D;
+  --seal:#E38B7A;
+  --seal-soft:#3A2420;
+  --leaf:#7FC59E;
+  --leaf-soft:#1D2F26;
+  --amber:#E0B85C;
+  --amber-soft:#332B15;
+  --table-head:#1E242E;
+  --table-zebra:#191E26;
+  --code:#1E242E;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+}
+a{color:var(--navy)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px 80px}
+
+/* top nav */
+.topnav{
+  position:sticky;top:0;z-index:20;
+  background:var(--paper);
+  border-bottom:1px solid var(--rule);
+}
+.topnav .inner{max-width:900px;margin:0 auto;padding:10px 20px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.topnav a{
+  font-size:13px;font-weight:500;text-decoration:none;color:var(--ink-2);
+  padding:4px 10px;border:1px solid var(--rule);border-radius:999px;white-space:nowrap
+}
+.topnav a:hover,.topnav a:focus-visible{border-color:var(--navy);color:var(--navy);outline:none}
+.topnav button{
+  margin-left:auto;font:inherit;font-size:13px;font-weight:500;
+  background:var(--navy);color:#fff;border:0;border-radius:999px;padding:6px 12px;cursor:pointer
+}
+.topnav button:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+
+/* hero */
+.hero{padding:56px 0 28px;border-bottom:1px solid var(--rule)}
+.hero .kicker{font-size:14px;color:var(--ink-3);margin:0 0 6px}
+.hero h1{font-size:40px;line-height:1.1;font-weight:300;margin:0 0 16px;letter-spacing:-.01em}
+.hero p{max-width:66ch;color:var(--ink-2);margin:0 0 10px}
+.hero .howto{margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.hero .howto div{border-left:3px solid var(--navy);padding:2px 0 2px 12px;font-size:14px;color:var(--ink-2)}
+.hero .howto strong{display:block;color:var(--ink);font-weight:600}
+
+/* chapters */
+.chapter{padding:48px 0 12px;border-bottom:1px solid var(--rule)}
+.chapter-head{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:end;margin-bottom:10px}
+.chapter-head .num{font-size:72px;line-height:.9;font-weight:300;color:var(--navy)}
+.chapter-head h2{font-size:28px;font-weight:600;margin:0;line-height:1.2}
+.chapter-head .sub{font-size:15px;color:var(--ink-2);margin:4px 0 0}
+.one-line{
+  font-size:19px;line-height:1.45;font-weight:400;color:var(--ink);
+  border-left:4px solid var(--seal);padding:8px 16px;margin:18px 0 26px;background:var(--seal-soft)
+}
+.lo{font-size:14px;color:var(--ink-2);margin:0 0 22px}
+.lo ul{margin:6px 0 0;padding-left:20px}
+h3{font-size:21px;font-weight:600;margin:38px 0 10px;line-height:1.25}
+h4{font-size:16.5px;font-weight:600;margin:24px 0 8px;color:var(--ink)}
+p{margin:0 0 12px}
+ul,ol{margin:0 0 14px;padding-left:22px}
+li{margin:3px 0}
+strong{font-weight:600}
+
+/* boxes */
+.box{border:1px solid var(--rule);border-radius:6px;padding:14px 16px;margin:16px 0}
+.box .label{font-size:13px;font-weight:600;margin:0 0 6px;display:flex;align-items:center;gap:8px}
+.box .label span{display:inline-block;width:10px;height:10px;border-radius:2px}
+.box p:last-child,.box ul:last-child,.box ol:last-child,.box table:last-child{margin-bottom:0}
+.ex{background:var(--amber-soft);border-color:transparent}
+.ex .label{color:var(--amber)} .ex .label span{background:var(--amber)}
+.in{background:var(--leaf-soft);border-color:transparent}
+.in .label{color:var(--leaf)} .in .label span{background:var(--leaf)}
+.hook{background:var(--seal-soft);border-color:transparent}
+.hook .label{color:var(--seal)} .hook .label span{background:var(--seal)}
+.idea{background:var(--navy-soft);border-color:transparent}
+.idea .label{color:var(--navy)} .idea .label span{background:var(--navy)}
+.flag{border-left:4px solid var(--amber);background:transparent;border-radius:0}
+.flag .label{color:var(--amber)}
+
+/* tables */
+.tbl{overflow-x:auto;margin:14px 0 20px;border:1px solid var(--rule);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:14.5px;line-height:1.45}
+th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule)}
+th{background:var(--table-head);font-weight:600}
+tbody tr:nth-child(even){background:var(--table-zebra)}
+tbody tr:last-child td{border-bottom:0}
+td .y{color:var(--leaf);font-weight:600}
+td .n{color:var(--seal);font-weight:600}
+.num-cell{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* details */
+details{border:1px solid var(--rule);border-radius:6px;margin:10px 0;background:transparent}
+details summary{cursor:pointer;padding:10px 14px;font-weight:500;list-style:none;display:flex;gap:10px;align-items:baseline}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"+";font-weight:600;color:var(--navy);width:14px;flex:0 0 14px}
+details[open] summary::before{content:"–"}
+details summary:focus-visible{outline:2px solid var(--navy);outline-offset:-2px;border-radius:6px}
+details .body{padding:0 14px 14px 38px;color:var(--ink);font-size:15px}
+details .body p:last-child{margin-bottom:0}
+.q-tag{font-size:12px;color:var(--ink-3);font-weight:400;margin-left:auto;white-space:nowrap}
+.mcq .opt{margin:4px 0}
+.mcq .ok{color:var(--leaf);font-weight:600}
+.mcq .why{margin-top:8px;padding-top:8px;border-top:1px dashed var(--rule)}
+
+/* figures */
+figure{margin:18px 0 22px}
+figure svg{width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:var(--ink-3);margin-top:6px}
+.svg-ink{fill:var(--ink)} .svg-ink2{fill:var(--ink-2)} .svg-rule{stroke:var(--rule)}
+.svg-navy{fill:var(--navy)} .svg-navy-s{fill:var(--navy-soft)} .svg-navy-l{stroke:var(--navy)}
+.svg-seal{fill:var(--seal)} .svg-seal-s{fill:var(--seal-soft)} .svg-seal-l{stroke:var(--seal)}
+.svg-leaf{fill:var(--leaf)} .svg-leaf-s{fill:var(--leaf-soft)} .svg-leaf-l{stroke:var(--leaf)}
+.svg-amber{fill:var(--amber)} .svg-amber-s{fill:var(--amber-soft)} .svg-amber-l{stroke:var(--amber)}
+.svg-paper{fill:var(--paper)}
+svg text{font-family:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif}
+
+code{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-size:.92em;background:var(--code);padding:1px 5px;border-radius:3px}
+.small{font-size:13.5px;color:var(--ink-2)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.tip{font-size:14px;color:var(--ink-2);border-top:1px dashed var(--rule);padding-top:8px;margin-top:8px}
+
+@media (max-width:600px){
+  .hero h1{font-size:30px}
+  .chapter-head .num{font-size:52px}
+  .chapter-head h2{font-size:23px}
+  .one-line{font-size:17px}
+}
+@media print{
+  .topnav{display:none}
+  body{font-size:11.5pt}
+  .wrap{max-width:none;padding:0}
+  .chapter{break-before:page;border:0}
+  .hero{break-after:page}
+  details{break-inside:avoid}
+  .tbl{break-inside:avoid}
+  figure{break-inside:avoid}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<nav class="topnav" aria-label="Chapters">
+  <div class="inner">
+    <a href="#ch1">1 Regulation</a>
+    <a href="#ch2">2 Fiduciary</a>
+    <a href="#ch3">3 Economics</a>
+    <a href="#ch4">4 Social &amp; political</a>
+    <a href="#ch5">5 Compliance</a>
+    <a href="#ch6">6 AML</a>
+    <a href="#cheat">Cheat sheet</a>
+    <a href="#test">Self-test</a>
+    <button type="button" id="toggleAll">Expand all</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="kicker">FPSB Investment Planning Specialist — study companion, condensed from the 104-page module</p>
+  <h1>Regulatory Environment, Law and Compliance, simplified</h1>
+  <p>Six chapters, every topic in the textbook covered, but rebuilt the way you've said you learn best: one-line idea first, then a plain explanation, then a worked example, then a comparison table, then a memory hook. Chapter review questions and the three AML case studies are here as expandable answers.</p>
+  <p>The textbook is written for a global audience (it leans on EU rules like MiFID II and ESMA because they are well codified). Everything from the textbook is kept faithful to what the exam expects. Green "India anchor" boxes translate each idea into SEBI / RBI / PMLA terms so it sticks, but they are <em>not</em> exam content unless the FPSB India paper says so.</p>
+  <div class="howto">
+    <div><strong>Blue boxes</strong> Core idea, stated once, plainly.</div>
+    <div><strong>Amber boxes</strong> Worked examples and scenarios.</div>
+    <div><strong>Green boxes</strong> India anchors: the Indian equivalent, for intuition.</div>
+    <div><strong>Red boxes</strong> Memory hooks and exam traps.</div>
+  </div>
+  <p class="small" style="margin-top:18px">Use "Expand all" before printing to PDF; answers open automatically when you print.</p>
+</header>
+
+<!-- ============================ CHAPTER 1 ============================ -->
+<section class="chapter" id="ch1">
+  <div class="chapter-head">
+    <div class="num">1</div>
+    <div><h2>Introduction to the Regulatory Environment</h2><p class="sub">What financial regulation is for, who the regulators are, and how the EU (MiFID II / ESMA) codified advisor competence</p></div>
+  </div>
+  <p class="one-line">Regulation exists to fix the three ways financial markets fail on their own: abuse of market power, ordinary people who can't judge complex products, and one firm's collapse spilling over onto everyone else.</p>
+  <div class="lo">Learning objectives 1-1 to 1-4: explain how regulation relates to financial services; describe regulators and their functions; know the regulatory, economic and political environments; discuss the impact of compliance on advice.</div>
+
+  <h3>1.1 What is financial regulation?</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Financial regulation is the set of laws and rules that govern what financial institutions (banks, brokers, investment firms, insurers) may do. It is issued by government regulators or international bodies to protect investors, keep markets orderly and promote financial stability. In practice it covers minimum standards for capital and conduct, regular inspections, and investigating and prosecuting misconduct.</p></div>
+  <p>The textbook opens with Brunnermeier's (2009) three classic purposes of regulation. Learn them as three market failures:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:26%">Purpose</th><th>Market failure it fixes</th><th>Everyday example</th></tr></thead>
+    <tbody>
+      <tr><td>1. Constrain monopoly power, prevent distortions to competition, maintain market integrity</td><td>A dominant player can rig prices or manipulate a thin market</td><td>Rules against insider trading and price manipulation; merger control</td></tr>
+      <tr><td>2. Protect the essential needs of ordinary people where information is hard or costly to obtain and mistakes could devastate welfare</td><td>Information asymmetry: the seller knows far more than the buyer</td><td>Mandatory disclosure of fees and risks before a retail investor buys a product</td></tr>
+      <tr><td>3. Act where externalities are large enough that the social cost of failure exceeds the private cost plus the cost of regulating</td><td>One bank's failure triggers a run on healthy banks (systemic risk)</td><td>Capital requirements, deposit insurance, lender of last resort</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box ex"><p class="label"><span></span>Example</p><p>A small saver puts ₹8 lakh in a fixed deposit. She cannot read the bank's balance sheet, has no way to know whether it is over-lending to real estate, and if the bank fails she loses her savings. Purpose 2 (protect people who can't evaluate the product) and Purpose 3 (a bank failure hurts everyone, not just the bank) both apply, so regulators impose capital rules and deposit insurance rather than leaving it to the market.</p></div>
+
+  <h3>1.2 The IMF three-way classification: Economic, Safety, Information</h3>
+  <p>The textbook leans on an IMF paper (White, 1999) that sorts all regulation into three buckets. This is a favourite review question, so learn the labels and what each bucket is <em>for</em>.</p>
+  <figure>
+    <svg viewBox="0 0 860 250" role="img" aria-label="Three-way classification of financial regulation">
+      <rect x="10" y="20" width="270" height="210" rx="8" class="svg-navy-s"/>
+      <rect x="295" y="20" width="270" height="210" rx="8" class="svg-seal-s"/>
+      <rect x="580" y="20" width="270" height="210" rx="8" class="svg-leaf-s"/>
+      <text x="145" y="52" text-anchor="middle" font-size="18" font-weight="600" class="svg-navy">Economic</text>
+      <text x="430" y="52" text-anchor="middle" font-size="18" font-weight="600" class="svg-seal">Safety (prudential)</text>
+      <text x="715" y="52" text-anchor="middle" font-size="18" font-weight="600" class="svg-leaf">Information</text>
+      <text x="145" y="80" text-anchor="middle" font-size="13" class="svg-ink2">"If it isn't broken, don't fix it"</text>
+      <text x="430" y="80" text-anchor="middle" font-size="13" class="svg-ink2">"Control risk, hold enough capital"</text>
+      <text x="715" y="80" text-anchor="middle" font-size="13" class="svg-ink2">"Timely, standardised, comparable"</text>
+      <g font-size="13" class="svg-ink">
+        <text x="30" y="112">Keep markets open to new</text><text x="30" y="130">entrants and new ideas</text>
+        <text x="30" y="156">Let competition pick winners</text>
+        <text x="30" y="182">Intervene only on clear</text><text x="30" y="200">evidence of market failure</text>
+        <text x="315" y="112">Minimum capital, activity limits,</text><text x="315" y="130">fit-and-proper owners</text>
+        <text x="315" y="156">Prompt corrective action,</text><text x="315" y="174">market value accounting</text>
+        <text x="315" y="200">Lender of last resort, deposit insurance</text>
+        <text x="600" y="112">Periodic issuance of financial</text><text x="600" y="130">information by listed companies</text>
+        <text x="600" y="156">Standardised accounting so</text><text x="600" y="174">investors can compare firms</text>
+        <text x="600" y="200">The "lubricant" of securities markets</text>
+      </g>
+    </svg>
+    <figcaption>Figure 1.1 — The IMF (White, 1999) three-way classification. Safety and information concerns should be handled by safety and information rules, not by heavy-handed economic regulation.</figcaption>
+  </figure>
+
+  <h4>Economic regulation</h4>
+  <p>The starting point is "if it isn't broken, don't fix it". Competitive markets have good "welfare properties": the invisible hand guides prices, wages and interest rates through millions of individual decisions, and resources end up allocated efficiently. So economic regulation should be light: keep the sector open to entrants and new products, let better ideas and more efficient firms win. If there is a safety or information problem, fix it with a safety or information rule, not by restricting competition.</p>
+
+  <h4>Safety (prudential) regulation</h4>
+  <p>Prudential regulation requires financial firms to control risks and hold adequate capital. It should be <em>vigorous</em> for banks, insurers and defined-benefit pension plans, because widespread insolvency among these destroys public confidence. The textbook lists nine components; the table below is the exam-ready version, with what each one does and the Indian equivalent you already recognise.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Component</th><th>What it means</th><th>India anchor (for intuition)</th></tr></thead>
+    <tbody>
+      <tr><td>Minimum capital requirements</td><td>Capital is a direct buffer against insolvency and an indirect one: owners with more to lose take less risk. Should be risk-based and forward-looking; ideally include subordinated debt, whose holders also police risk-taking</td><td>RBI's Basel III capital norms (CET1, Tier 1, CRAR); AT1 bonds are the "subordinated debt" layer</td></tr>
+      <tr><td>Restrictions on activities</td><td>A firm may only do activities regulators can "examine and supervise". Anything else goes into a separately capitalised affiliate with arm's-length dealings</td><td>Banks cannot run insurance or mutual fund businesses directly; they use subsidiaries (e.g., SBI Life, SBI Funds Management)</td></tr>
+      <tr><td>Honesty and competency</td><td>Principal owners and senior management must be continuously scrutinised</td><td>RBI / SEBI "fit and proper" criteria for promoters and directors</td></tr>
+      <tr><td>Prompt corrective action</td><td>When capital falls below the minimum, scrutiny rises and restrictions tighten. If insolvent, dispose of it promptly: owners' rights eliminated, managers removed, new owners found or liquidate</td><td>RBI's PCA framework (banks placed under lending/dividend restrictions when capital, asset quality or leverage triggers breach)</td></tr>
+      <tr><td>Market value accounting</td><td>Capital must be measured at current (market) values, not stale historical cost, otherwise losses are recognised too late</td><td>Ind AS fair-value measurement; mark-to-market of bank investment books</td></tr>
+      <tr><td>Lender of last resort</td><td>Usually the central bank; lends to solvent-but-illiquid banks facing depositor runs. Must have the same information as the bank regulator</td><td>RBI as lender of last resort (e.g., liquidity support during the 2020 stress); Yes Bank moratorium and rescue as the "prompt disposal" side</td></tr>
+      <tr><td>Deposit insurance</td><td>Depositors cannot monitor banks, so insurance protects them from regulatory failure. Better to make it explicit in advance than to improvise bailouts. Premiums should be risk-based</td><td>DICGC cover of ₹5 lakh per depositor per bank</td></tr>
+      <tr><td>Personnel</td><td>Laws are useless without a regulatory team that is well-staffed, well-trained and well-paid</td><td>Regulator staffing and supervisory capacity at RBI/SEBI</td></tr>
+      <tr><td>Corporate governance and securities regulation</td><td>Counted as safety regulation: creditor and shareholder rights, minority protection, a bankruptcy code, fiduciary duties on intermediaries, limits on manipulation in thin markets</td><td>Companies Act 2013, SEBI LODR, Insolvency and Bankruptcy Code 2016</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Information regulation</h4>
+  <p>Timely, periodic disclosure by listed companies is the "lubricant" of securities markets. Information should be standardised (same accounting rules) so investors can compare companies. Like prudential rules, it only works if enforced by a well-resourced regulator. Regulation, in the end, needs two things: <strong>laws</strong> (legislation and regulations) and <strong>regulators</strong> to oversee, explain and comment on them.</p>
+  <div class="box hook"><p class="label"><span></span>Memory hook</p><p><strong>E-S-I</strong>: <strong>E</strong>conomic = "don't interfere unless broken"; <strong>S</strong>afety = "capital and control"; <strong>I</strong>nformation = "disclose and standardise". Review question 1 asks for exactly these three words.</p></div>
+
+  <h3>1.3 Regulators: who sets the standards</h3>
+  <p>Every territory with a financial market has regulators. The textbook starts at the top, with the two global standard-setters, and then notes that countries organise regulators very differently.</p>
+  <figure>
+    <svg viewBox="0 0 860 330" role="img" aria-label="Layers of financial regulators from global standard setters to national regulators">
+      <g font-size="13">
+        <rect x="20" y="20" width="820" height="70" rx="6" class="svg-navy-s"/>
+        <text x="40" y="44" font-weight="600" class="svg-navy" font-size="14">Global standard-setters (non-binding standards, "soft law")</text>
+        <text x="40" y="70" class="svg-ink">IOSCO — securities  |  IAIS — insurance  |  BCBS (Basel Committee) — banking  |  FATF — anti-money laundering  |  FSB / G20 endorse them</text>
+        <rect x="20" y="110" width="820" height="70" rx="6" class="svg-amber-s"/>
+        <text x="40" y="134" font-weight="600" class="svg-amber" font-size="14">Regional bodies (where they exist)</text>
+        <text x="40" y="160" class="svg-ink">EU: ESMA (securities), EIOPA (insurance and pensions) — they turn MiFID II directives into detailed guidelines</text>
+        <rect x="20" y="200" width="400" height="110" rx="6" class="svg-seal-s"/>
+        <text x="40" y="224" font-weight="600" class="svg-seal" font-size="14">National regulators (binding law)</text>
+        <text x="40" y="250" class="svg-ink">Single body: Greece, Iceland, Israel, Honduras</text>
+        <text x="40" y="272" class="svg-ink">Several: UK 5, Australia 3, China 3, EU 5, Canada 11</text>
+        <text x="40" y="294" class="svg-ink">India: RBI, SEBI, IRDAI, PFRDA (sector-wise)</text>
+        <rect x="440" y="200" width="400" height="110" rx="6" class="svg-leaf-s"/>
+        <text x="460" y="224" font-weight="600" class="svg-leaf" font-size="14">Professional / quasi-governmental bodies</text>
+        <text x="460" y="250" class="svg-ink">FPSB and its member organisations set professional</text>
+        <text x="460" y="272" class="svg-ink">standards for planners (Code of Ethics), above the</text>
+        <text x="460" y="294" class="svg-ink">legal minimum. India: FPSB India, NISM, AMFI</text>
+      </g>
+      <line x1="430" y1="90" x2="430" y2="110" class="svg-navy-l" stroke-width="2"/>
+      <line x1="430" y1="180" x2="430" y2="200" class="svg-navy-l" stroke-width="2"/>
+    </svg>
+    <figcaption>Figure 1.2 — Regulation flows from global principles down to national law. Standards from IOSCO/IAIS/BCBS/FATF are not laws, but countries adopt them because the IMF and World Bank assess them against these standards.</figcaption>
+  </figure>
+
+  <h4>IOSCO (securities)</h4>
+  <div class="tbl"><table>
+    <tbody>
+      <tr><th style="width:30%">Full name</th><td>International Organization of Securities Commissions</td></tr>
+      <tr><th>Established</th><td>1983</td></tr>
+      <tr><th>Reach</th><td>Members regulate more than 95% of the world's securities markets in more than 115 jurisdictions</td></tr>
+      <tr><th>Status of its Principles</th><td>The IOSCO Objectives and Principles of Securities Regulation are endorsed by the G20 and the Financial Stability Board (FSB), and are the basis for the securities part of IMF / World Bank Financial Sector Assessment Programs (FSAPs)</td></tr>
+      <tr><th>Three resolutions of members (Example 1 in the text)</th><td>
+        <ol>
+          <li><strong>Cooperate</strong> on internationally consistent standards of regulation, oversight and enforcement, to protect investors, keep markets fair, efficient and transparent, and address systemic risk</li>
+          <li><strong>Enhance investor protection</strong> and confidence in market integrity through information exchange and cooperation in enforcement and supervision</li>
+          <li><strong>Exchange information</strong> globally and regionally to develop markets, strengthen market infrastructure and implement appropriate regulation</li>
+        </ol></td></tr>
+    </tbody>
+  </table></div>
+  <div class="box in"><p class="label"><span></span>India anchor</p><p>SEBI is an ordinary member of IOSCO and sits on its board. When SEBI tightens rules on, say, related-party transactions or investor grievance redressal, the drafting usually cites IOSCO principles. That is what the textbook means by "territorial regulations do not occur in a vacuum".</p></div>
+
+  <h4>IAIS (insurance)</h4>
+  <p>The International Association of Insurance Supervisors does for insurance what IOSCO does for securities. Its 2015–2019 strategic plan set seven high-level goals. You do not need to memorise all seven verbatim, but know the flavour: they mirror IOSCO's concerns (standards, financial strength, consumer protection, supervision).</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:8%">No.</th><th>Goal</th><th>In one phrase</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Assessing and responding to insurance sector vulnerabilities</td><td>Spot risks early, respond with forward-looking policy</td></tr>
+      <tr><td>2</td><td>IAIS as the global standard setter for insurance</td><td>Micro-prudential, macro-prudential and conduct-of-business standards</td></tr>
+      <tr><td>3</td><td>Contributing to financial stability</td><td>Identify global systemically important insurers (G-SIIs)</td></tr>
+      <tr><td>4</td><td>Enhancing effective supervision</td><td>Members apply best practice and cooperate</td></tr>
+      <tr><td>5</td><td>Implementation and observance of the Insurance Core Principles (ICPs)</td><td>Monitor implementation; build capacity in less-developed jurisdictions</td></tr>
+      <tr><td>6</td><td>Effective stakeholder outreach</td><td>Transparent processes, partnerships, while staying independent</td></tr>
+      <tr><td>7</td><td>Effective and efficient organisation</td><td>Sound governance and a strong secretariat</td></tr>
+    </tbody>
+  </table></div>
+  <p>Regulators mostly target large firms and expect them to push rules down through boards and senior management to employees. But many rules apply <em>directly</em> to independent advisors who work outside a firm, so the course treats legislation as a whole rather than splitting "firm rules" from "independent advisor rules".</p>
+
+  <h3>1.4 Legislation and regulation: the post-2008 reset</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Most current financial regulation is a direct response to the 2007–2008 global financial crisis. There was regulation before; it simply failed to prevent the crisis, so it was reworked, amended and added to. The aim of regulation is not to punish the industry but to support territorial and global economic well-being and growth.</p></div>
+  <p>Three post-crisis themes run through everything else in the course:</p>
+  <ul>
+    <li><strong>Safety now means the whole system</strong>, not just individual investors: banks must hold adequate capital (Basel III).</li>
+    <li><strong>Accurate, clear accounting</strong> so regulators can verify capital is maintained and risk is managed.</li>
+    <li><strong>Transparency</strong>: timely, accurate financial reports written clearly and distributed openly, including to regulators.</li>
+  </ul>
+
+  <h4>The EU example: MiFID and MiFID II</h4>
+  <p>The EU has one of the most comprehensive rulebooks for investment advice, so the textbook uses it as its worked example even though it legally applies only in Europe.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%"></th><th>MiFID (I)</th><th>MiFID II</th></tr></thead>
+    <tbody>
+      <tr><th>Reference</th><td>Directive 2004/39/EC</td><td>Directive 2014/65/EU</td></tr>
+      <tr><th>Dates</th><td>Put into force 2008 (per the textbook)</td><td>Adopted May 2014; effective January 2018</td></tr>
+      <tr><th>Purpose</th><td>Single EU market for investment services; harmonised investor protection; improve competitiveness</td><td>Reform after the crisis; stronger conduct and competence rules for all investment firms plus specific rules for advice</td></tr>
+      <tr><th>Detailed rules written by</th><td>—</td><td>ESMA (European Securities and Markets Authority)</td></tr>
+    </tbody>
+  </table></div>
+  <p>The key MiFID II rules (Articles 24 and 25) that matter for advisors:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:6%"></th><th style="width:30%">Rule</th><th>Plain English</th></tr></thead>
+    <tbody>
+      <tr><td>a</td><td>Act honestly, fairly and professionally in the client's best interests</td><td>Applies to <em>all</em> investment firms, not just independent ones</td></tr>
+      <tr><td>b(i)</td><td>Independent advisers must assess a sufficiently diverse range of instruments</td><td>Diverse by type and by issuer; not limited to the firm's own products or those of closely linked entities</td></tr>
+      <tr><td>b(ii)</td><td>Independent advisers must not accept and retain third-party fees, commissions or benefits</td><td>Exception: minor non-monetary benefits that improve service quality and cannot impair the duty to act in the client's interest, provided they are clearly disclosed</td></tr>
+      <tr><td>c</td><td>Staff giving advice or information must have the necessary knowledge and competence</td><td>This is the hook for the ESMA Guidelines below</td></tr>
+      <tr><td>d</td><td>Before advising, obtain the client's knowledge and experience, financial situation (including ability to bear losses) and objectives (including risk tolerance)</td><td>The suitability assessment; the recommendation must match risk tolerance and loss-bearing ability</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box in"><p class="label"><span></span>India anchor</p><p>Rule b(ii) is the same logic as SEBI's Investment Adviser Regulations 2013: a registered IA is paid only by the client and cannot earn distribution commission on the products it advises on (the 2020 amendments separated advisory from distribution at the client level). Rule d is Regulation 16 (risk profiling) and Regulation 17 (suitability) of the same rules. Your NISM X-A/X-B syllabus covered this; it is the Indian implementation of the MiFID idea.</p></div>
+
+  <h3>1.5 The ESMA Guidelines on knowledge and competence</h3>
+  <p>ESMA published these in 2015; they took effect on 3 January 2017. They matter to you for two reasons: (1) they directly regulate EU advisors and indirectly guide everyone else, and (2) they make a distinction the whole profession uses: <strong>giving information</strong> versus <strong>giving advice</strong>.</p>
+  <figure>
+    <svg viewBox="0 0 860 300" role="img" aria-label="ESMA guideline structure: information staff, advice staff, organisational requirements">
+      <g font-size="13">
+        <rect x="20" y="20" width="400" height="150" rx="6" class="svg-navy-s"/>
+        <text x="40" y="46" font-weight="600" class="svg-navy" font-size="14">V.II — Staff giving information</text>
+        <text x="40" y="72" class="svg-ink">Understand product features, risks, tax, total costs</text>
+        <text x="40" y="94" class="svg-ink">Know how markets and economic events affect prices</text>
+        <text x="40" y="116" class="svg-ink">Past vs future performance; limits of forecasting</text>
+        <text x="40" y="138" class="svg-ink">Market abuse and AML; KIIDs and prospectuses; basic valuation</text>
+        <rect x="440" y="20" width="400" height="150" rx="6" class="svg-seal-s"/>
+        <text x="460" y="46" font-weight="600" class="svg-seal" font-size="14">V.III — Staff giving advice = all of V.II, plus</text>
+        <text x="460" y="72" class="svg-ink">Costs of the advice itself, not just the product</text>
+        <text x="460" y="94" class="svg-ink">Meet the MiFID suitability requirements</text>
+        <text x="460" y="116" class="svg-ink">Recognise when a product is NOT suitable</text>
+        <text x="460" y="138" class="svg-ink">Portfolio management fundamentals and diversification</text>
+        <rect x="20" y="190" width="820" height="95" rx="6" class="svg-leaf-s"/>
+        <text x="40" y="216" font-weight="600" class="svg-leaf" font-size="14">V.IV — Organisational requirements (for the firm)</text>
+        <text x="40" y="242" class="svg-ink">Assess staff via qualification + experience  |  Annual review of development needs  |  Keep records for the Competent Authority</text>
+        <text x="40" y="266" class="svg-ink">Unqualified staff may act only under supervision, max 4 years; supervisor signs off suitability reports and is responsible</text>
+      </g>
+    </svg>
+    <figcaption>Figure 1.3 — The three parts of the ESMA Guidelines. V.II and V.III are about people; V.IV is about the firm.</figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:34%">Competence area</th><th style="width:22%">Information staff (V.II)</th><th style="width:22%">Advice staff (V.III)</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Key characteristics, risks, features, general tax implications of products</td><td class="y">Yes</td><td class="y">Yes</td><td>Extra care for complex products</td></tr>
+      <tr><td>Total costs and charges to the client</td><td class="y">Yes</td><td class="y">Yes, plus the cost of the advice and related services</td><td></td></tr>
+      <tr><td>How markets work and affect pricing; impact of economic and geopolitical events</td><td class="y">Yes</td><td class="y">Yes</td><td>Why Chapters 3 and 4 exist</td></tr>
+      <tr><td>Past vs future performance; limits of forecasting</td><td class="y">Yes</td><td class="y">Yes</td><td></td></tr>
+      <tr><td>Market abuse and anti-money laundering</td><td class="y">Yes</td><td class="y">Yes</td><td>Why Chapter 6 exists</td></tr>
+      <tr><td>Assess KIIDs, prospectuses, financial statements</td><td class="y">Yes</td><td class="y">Yes</td><td></td></tr>
+      <tr><td>Market structures, trading venues, secondary markets; basic valuation</td><td class="y">Yes</td><td class="y">Yes</td><td></td></tr>
+      <tr><td>Suitability obligations; recognising when a product is <em>not</em> suitable given changes since data was gathered</td><td class="n">No</td><td class="y">Yes</td><td>The defining difference</td></tr>
+      <tr><td>Portfolio management fundamentals and diversification</td><td class="n">No</td><td class="y">Yes</td><td></td></tr>
+    </tbody>
+  </table></div>
+  <p>The firm-level rules (V.IV) you should be able to reproduce:</p>
+  <ul>
+    <li>Clearly separate the roles of giving advice and giving information in job descriptions.</li>
+    <li>Assess staff through an appropriate qualification <em>and</em> appropriate experience.</li>
+    <li>Review, at least annually, staff development needs and regulatory changes; require continuous professional development and product-specific training before new products are offered.</li>
+    <li>Submit competence records to the Competent Authority (CA) on request.</li>
+    <li>Staff without the necessary knowledge and competence cannot provide the service; staff lacking the qualification or experience may work only under supervision, with intensity matched to the gap (including sitting in on meetings, calls and emails). The supervisor is responsible as if giving the service personally, including signing off suitability reports. Supervised status cannot exceed <strong>four years</strong> (or less if the CA says so).</li>
+  </ul>
+  <div class="box ex"><p class="label"><span></span>Example</p><p>Priya joins an advisory firm with a relevant degree but no client experience. Under V.IV she may meet clients, but a qualified supervisor sits in on her first meetings, reviews her emails and signs each suitability report as though it were her own work. The firm logs Priya's qualification, her supervised hours and its annual review, because the regulator can ask for the file. If Priya has not become fully competent within four years, she must stop giving advice.</p></div>
+  <div class="box in"><p class="label"><span></span>India anchor</p><p>The Indian version of "appropriate qualification" is the NISM X-A and X-B certifications you cleared, plus the experience and (for individuals) the PG qualification requirements in the IA Regulations; the annual review idea shows up as continuing professional education requirements for certifications. The information-vs-advice distinction maps to mutual fund distributor (NISM V-A, product information and "appropriateness") versus investment adviser (advice and suitability).</p></div>
+
+  <h4>EIOPA (insurance and pensions in the EU)</h4>
+  <p>The insurance twin of ESMA. Its five goals: better protect consumers and rebuild trust; ensure high, effective and consistent regulation and supervision across member states; greater harmonisation of rules; stronger oversight of cross-border groups; promote a coordinated EU supervisory response.</p>
+
+  <h4>Where FPSB fits</h4>
+  <p>Beyond governments, most territories have non-governmental or quasi-governmental bodies that raise standards among members. FPSB is one: it develops high-level professional standards for financial planners through its member organisations. This is where the Code of Ethics (covered in the Personal and Professional Ethics course) comes from.</p>
+
+  <div class="box hook"><p class="label"><span></span>Exam traps for Chapter 1</p>
+    <ul>
+      <li>IOSCO = securities; IAIS = insurance; EIOPA = EU insurance <em>and pensions</em>; ESMA = EU securities. Don't swap them.</li>
+      <li>IOSCO principles are endorsed by the G20 and the FSB, and used by the IMF/World Bank in FSAPs. Three separate bodies; keep them straight.</li>
+      <li>MiFID II: adopted May 2014, in force January 2018. ESMA Guidelines: published 2015, effective 3 January 2017. Supervision cap: four years.</li>
+      <li>The "underlying desire of regulators" (review question 2) is to keep the territorial and global economy thriving and growing, not to punish firms.</li>
+    </ul>
+  </div>
+
+  <h3>Chapter 1 review questions</h3>
+  <details><summary>1. What are the areas the IMF identifies as the three-way framework for classification of regulation?<span class="q-tag">Review Q1</span></summary><div class="body"><p>Economic, Safety and Information. Economic regulation keeps markets open and competitive and intervenes only on clear evidence of failure; Safety (prudential) regulation makes firms control risk and hold adequate capital; Information regulation requires timely, standardised disclosure so investors can compare and decide.</p></div></details>
+  <details><summary>2. How would you describe the underlying desire of regulators regarding regulatory actions?<span class="q-tag">Review Q2</span></summary><div class="body"><p>To keep the territorial and global economic environment thriving and growing. Regulation is sometimes seen as excessive by practitioners, but its aim is to support economic well-being, and the 2007–08 crisis showed that at least some regulation is vital to strong development.</p></div></details>
+  <details><summary>3. How would you summarise the ESMA Guidelines? If you are not in the EU, what is their significance to you?<span class="q-tag">Review Q3</span></summary><div class="body"><p>The Guidelines set knowledge and competence criteria in three areas: staff giving information about products and services (V.II), staff giving investment advice (V.III), and the firm's obligations to assess, maintain and update competence (V.IV). They are legally binding only in the EU, but the concepts (product and cost knowledge, market understanding, forecasting limits, AML awareness, suitability, supervision of the not-yet-competent) travel everywhere. Each territory has its own rules; ESMA gives you a well-codified framework to compare them against, and for a fiduciary practitioner it is a good description of what "competent" looks like.</p></div></details>
+  <details><summary>Example 1 from the text: the three goals of IOSCO's resolution<span class="q-tag">Text example</span></summary><div class="body"><p>(1) Cooperate on developing, implementing and promoting adherence to internationally consistent standards of regulation, oversight and enforcement, to protect investors, keep markets fair, efficient and transparent and address systemic risk. (2) Enhance investor protection and confidence in market integrity through strengthened information exchange and cooperation in enforcement and supervision. (3) Exchange information globally and regionally to assist market development, strengthen infrastructure and implement appropriate regulation.</p></div></details>
+</section>
+
+<!-- ============================ CHAPTER 2 ============================ -->
+<section class="chapter" id="ch2">
+  <div class="chapter-head">
+    <div class="num">2</div>
+    <div><h2>Legislated "Client Best Interest" Requirement</h2><p class="sub">The fiduciary standard, and why it is a higher bar than mere suitability</p></div>
+  </div>
+  <p class="one-line">Everyone agrees the client comes first. The whole chapter is about what that actually means when two products both "fit" the client but only one pays you.</p>
+  <div class="lo">Learning objective 2-1: describe the legal framework within which financial advisors operate, including their legal, social and ethical responsibilities.</div>
+
+  <h3>2.1 Client first: three sources, one principle</h3>
+  <p>The textbook shows that the "client first" idea appears in three places at once, which is why it feels uncontroversial:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:26%">Source</th><th>What it says</th></tr></thead>
+    <tbody>
+      <tr><td>MiFID II, amplified by the ESMA Guidelines</td><td>Firms and advisors must act in the best interest of the client (ESMA p. 35) and select products best suited to the client profile (ESMA p. 42)</td></tr>
+      <tr><td>FPSB Code of Ethics and Professional Responsibility</td><td>Principle 1: place the client's interest first</td></tr>
+      <tr><td>MiFID's description of good advice</td><td>Advice should be <strong>fair, transparent, efficient and integrated</strong></td></tr>
+    </tbody>
+  </table></div>
+  <p>The difficulty is not the principle but its application. Is it enough that a recommendation is "suitable" (meets the client's stated needs and objectives), or must the advisor meet the deeper "client first" standard, which in Anglo-Saxon countries is called a <strong>fiduciary</strong> (or fiduciary-like) standard?</p>
+
+  <h3>2.2 The fiduciary standard</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>A fiduciary relationship is one of trust, confidence and reliance: the client relies on the advisor's discretion and expertise, and the advisor knowingly accepts that trust. At its core, being a fiduciary means acting with <strong>undivided loyalty</strong> to the client, in other words, in the client's best interest.</p></div>
+  <p>One professional body breaks fiduciary duty into three requirements, each with a test question:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:18%">Requirement</th><th>What it means</th><th>The question to ask</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Trust</strong></td><td>A client who does not fully trust the advisor can never be confident they are getting the best advice</td><td>Without trust, can client confidence be achieved?</td></tr>
+      <tr><td><strong>Loyalty</strong></td><td>A loyal advisor is not swayed by outside forces to recommend higher-commission products</td><td>Without loyalty, can clients be sure their interests are looked after?</td></tr>
+      <tr><td><strong>Disclosure</strong></td><td>Clients must know and understand how the advisor is paid and whether conflicts exist that could compromise independence</td><td>Without disclosure, can the advisor provide prudent advice?</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box hook"><p class="label"><span></span>Memory hook</p><p><strong>T-L-D</strong>: Trust, Loyalty, Disclosure. Chapter 2's only review question asks you to "describe the concept of operating as a fiduciary" and the model answer is: undivided loyalty, act in the client's best interest, three requirements of trust, loyalty and disclosure.</p></div>
+
+  <h3>2.3 Fiduciary duty versus the duty of suitability</h3>
+  <p>The distinction becomes visible only when there is a conflict of interest. The textbook's own scenario is worth memorising because exam questions tend to be built on it.</p>
+  <figure>
+    <svg viewBox="0 0 860 330" role="img" aria-label="Decision flow when two suitable products differ by payment to the advisor">
+      <g font-size="13">
+        <rect x="280" y="15" width="300" height="52" rx="6" class="svg-navy-s"/>
+        <text x="430" y="37" text-anchor="middle" font-weight="600" class="svg-navy">Two options, both "suitable"</text>
+        <text x="430" y="56" text-anchor="middle" class="svg-ink2">Option A pays the advisor; Option B does not</text>
+        <line x1="430" y1="67" x2="430" y2="95" class="svg-navy-l" stroke-width="2"/>
+        <rect x="255" y="95" width="350" height="46" rx="6" class="svg-amber-s"/>
+        <text x="430" y="123" text-anchor="middle" font-weight="600" class="svg-amber">Which one is actually better for the client?</text>
+        <line x1="330" y1="141" x2="255" y2="160" class="svg-navy-l" stroke-width="2"/>
+        <line x1="530" y1="141" x2="605" y2="160" class="svg-navy-l" stroke-width="2"/>
+        <text x="210" y="178" text-anchor="middle" class="svg-ink2">B (no payment) is better or equal</text>
+        <text x="650" y="178" text-anchor="middle" class="svg-ink2">A (pays advisor) is better</text>
+        <rect x="20" y="185" width="380" height="120" rx="6" class="svg-leaf-s"/>
+        <text x="40" y="211" font-weight="600" class="svg-leaf">Duty of loyalty</text>
+        <text x="40" y="236" class="svg-ink">Recommend B. Do not let the payment</text>
+        <text x="40" y="256" class="svg-ink">influence the advice. Under a pure suitability</text>
+        <text x="40" y="276" class="svg-ink">standard you could have recommended A;</text>
+        <text x="40" y="296" class="svg-ink">as a fiduciary you may not.</text>
+        <rect x="460" y="185" width="380" height="120" rx="6" class="svg-seal-s"/>
+        <text x="480" y="211" font-weight="600" class="svg-seal">Duty of disclosure</text>
+        <text x="480" y="236" class="svg-ink">You may recommend A, but you must fully</text>
+        <text x="480" y="256" class="svg-ink">disclose the payment before the client</text>
+        <text x="480" y="276" class="svg-ink">decides, and make sure the client</text>
+        <text x="480" y="296" class="svg-ink">understands it.</text>
+      </g>
+    </svg>
+    <figcaption>Figure 2.1 — The textbook's conflict-of-interest scenario. Loyalty decides which product; disclosure handles the case where the better product also pays you.</figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Dimension</th><th>Suitability standard</th><th>Fiduciary / client-first standard</th></tr></thead>
+    <tbody>
+      <tr><td>The test</td><td>Is this type of investment suitable for the client's objectives, needs and financial situation?</td><td>Is this the best choice for the client, taking into account everything a prudent expert would consider?</td></tr>
+      <tr><td>Two suitable options, different commission</td><td>May recommend either; not required to choose the lower-cost one</td><td>If a lower-cost option gives the same benefits, must recommend it, all else being equal</td></tr>
+      <tr><td>What the advisor must weigh (ERISA attorney's list)</td><td>Suitability of the product type</td><td>Reasonableness of fees; adequacy of diversification; conflicts of interest; consistency with the trust or governing document; and so on</td></tr>
+      <tr><td>How the process is judged</td><td>Did it fit?</td><td>Against a prudent, reasonable hypothetical person knowledgeable about investments, portfolio concepts and the purpose of the investments</td></tr>
+      <tr><td>Regulatory style</td><td>Rules-based (specific suitability requirements)</td><td>Principles-based (the higher "client first" standard)</td></tr>
+      <tr><td>Where found</td><td>Territories whose legal systems lack the fiduciary concept; ESMA/MiFID "suitable for the client"; many broker-dealer regimes</td><td>Anglo-Saxon common-law territories; US ERISA for retirement advice; FPSB Principle 1</td></tr>
+      <tr><td>Relative weight</td><td>The lesser standard</td><td>The greater standard</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box ex"><p class="label"><span></span>Worked example</p><p>Ramesh, 38, wants ₹10 lakh in a diversified large-cap equity fund for a 10-year goal. Two options fit: a regular plan (expense ratio ~1.8%, trail commission to the distributor) and a direct plan of the same scheme (expense ratio ~0.9%, no commission). Both are <em>suitable</em>: same underlying portfolio, same risk, same horizon fit. Under suitability alone, recommending the regular plan is defensible. Under a fiduciary standard the direct plan must be recommended, because it delivers the same benefit at lower cost. Roughly, 0.9% a year saved on ₹10 lakh growing at 12% is over ₹2 lakh of extra terminal wealth after 10 years (the difference between compounding at 11.1% and 10.2%: about ₹28.6 lakh vs ₹26.4 lakh). That gap is the economic meaning of "all else being equal, choose the lower-cost option".</p></div>
+  <div class="box in"><p class="label"><span></span>India anchor</p><p>India legislates both standards side by side. Regulation 15(1) of the SEBI (Investment Advisers) Regulations 2013 says an IA "shall act in a fiduciary capacity towards its clients". A mutual fund distributor (your NISM V-A track) operates on appropriateness/suitability and earns trail commission, which is exactly why the regulator does not let one person be both adviser and distributor to the same client. The textbook's US example (ERISA for retirement pensions, with fines and imprisonment for breach) plays the same role that Regulation 15 plays here: a specific, legally enforceable fiduciary duty.</p></div>
+
+  <h3>2.4 When the law is unclear: how to behave anyway</h3>
+  <p>Even where "fiduciary" is a legal term, people disagree about applying it, and the word "legal" itself distorts behaviour because interpretations and common practice differ. The textbook's guidance:</p>
+  <ul>
+    <li><strong>Know your territory's law.</strong> If you are under a specific fiduciary regime (like ERISA in the US), be clear about it and comply.</li>
+    <li><strong>Where the law is unclear, choose to put the client first anyway.</strong></li>
+    <li><strong>Start from "first, do no harm"</strong> (<em>primum non nocere</em>, borrowed from medicine): abstain from what harms the client and do what benefits them. This is the foundation; beyond it, application gets harder.</li>
+    <li><strong>Use the firm's management and compliance specialists</strong> when a question arises. Shared wisdom illuminates a path forward.</li>
+    <li><strong>Document</strong> client meetings and decisions. Documentation shows the advisor's intent, and the client's agreement, to put the client first.</li>
+  </ul>
+  <p>Embracing the principles-based client-first standard is described as moving "a long way on the path toward greater professionalism". The Personal and Professional Ethics course goes deeper.</p>
+
+  <div class="box hook"><p class="label"><span></span>Exam traps for Chapter 2</p>
+    <ul>
+      <li>Suitability does <em>not</em> require choosing the lower-cost option; fiduciary does (all else equal). This is the single most testable sentence in the chapter.</li>
+      <li>Rules-based → suitability; principles-based → client first. Not the other way round.</li>
+      <li>Fiduciary is the greater standard; suitability the lesser. Both aim at the client's interest; the difference is "subtle but significant".</li>
+      <li>ERISA is a US retirement-advice law with fiduciary requirements; it is the textbook's example of a specific legal regime, not a global standard.</li>
+    </ul>
+  </div>
+
+  <h3>Chapter 2 review question</h3>
+  <details><summary>1. Whether or not your territory recognises the legal concept of fiduciary, how would you describe the concept of operating as a fiduciary?<span class="q-tag">Review Q1</span></summary><div class="body"><p>A fiduciary acts with undivided loyalty to the client, in the client's best interest. The relationship involves trust, confidence and reliance on the advisor's expertise and discretion, which the advisor knowingly accepts. It rests on three requirements: trust (the client can be confident they are getting the best advice), loyalty (the advisor is not swayed by commissions or outside incentives) and disclosure (the client knows how the advisor is paid and what conflicts exist). In practice this means choosing the option that is best for the client even when another suitable option pays the advisor more, and fully disclosing any conflict before the client decides.</p></div></details>
+</section>
+
+<!-- ============================ CHAPTER 3 ============================ -->
+<section class="chapter" id="ch3">
+  <div class="chapter-head">
+    <div class="num">3</div>
+    <div><h2>Economic Environment and Financial Advice</h2><p class="sub">Monetary and fiscal policy, economic indicators, the business cycle, and the schools of macroeconomic thought</p></div>
+  </div>
+  <p class="one-line">No advisor can predict the future, but every plan is built on assumptions about it. This chapter gives you the vocabulary to read the economy so you know when those assumptions have stopped being true.</p>
+  <div class="lo">Learning objectives 3-1 to 3-4: basic micro- and macro-economics as they apply to advice; the impact of monetary and fiscal policy; the normal business cycle and its impact on planning; economic indicators and their impact.</div>
+
+  <h3>3.1 Monetary policy versus fiscal policy</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Governments have two levers to steer the economy. <strong>Monetary policy</strong> belongs to the central bank and works through money supply and interest rates. <strong>Fiscal policy</strong> belongs to the government's budget and works through taxation and spending. Both try to speed up or slow down growth.</p></div>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%"></th><th>Monetary policy</th><th>Fiscal policy</th></tr></thead>
+    <tbody>
+      <tr><th>Who</th><td>Central bank</td><td>Government (legislature and treasury, via the budget)</td></tr>
+      <tr><th>Levers</th><td>Open market operations, discount rate, reserve requirements</td><td>Government spending and taxation</td></tr>
+      <tr><th>What it moves</th><td>Money supply and interest rates, hence spending vs saving</td><td>Aggregate demand (total spending on goods and services at a given time and price level)</td></tr>
+      <tr><th>Styles</th><td>Tighten (raise rates, drain money) or ease (cut rates, add money)</td><td>Discretionary (one-off change) or automatic stabilisation (built into the tax system); also called contractionary or expansionary</td></tr>
+      <tr><th>India anchor</th><td>RBI Monetary Policy Committee; repo rate, CRR, SLR, OMOs</td><td>Union Budget; income tax slabs, GST rates, capex and subsidy allocations</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>The three monetary tools</h4>
+  <figure>
+    <svg viewBox="0 0 860 260" role="img" aria-label="How central bank tools change money supply and interest rates">
+      <g font-size="13">
+        <rect x="20" y="20" width="250" height="215" rx="6" class="svg-navy-s"/>
+        <text x="145" y="46" text-anchor="middle" font-weight="600" class="svg-navy" font-size="14">To EASE (stimulate)</text>
+        <text x="40" y="76" class="svg-ink">Buy government bonds</text>
+        <text x="40" y="94" class="svg-ink2">cash flows into banks</text>
+        <text x="40" y="124" class="svg-ink">Cut the discount rate</text>
+        <text x="40" y="142" class="svg-ink2">cheaper to borrow from the central bank</text>
+        <text x="40" y="172" class="svg-ink">Lower reserve requirements</text>
+        <text x="40" y="190" class="svg-ink2">banks can lend more of each deposit</text>
+        <text x="145" y="222" text-anchor="middle" font-weight="600" class="svg-leaf">Money supply up, rates down</text>
+        <rect x="305" y="20" width="250" height="215" rx="6" class="svg-amber-s"/>
+        <text x="430" y="46" text-anchor="middle" font-weight="600" class="svg-amber" font-size="14">Transmission</text>
+        <text x="430" y="82" text-anchor="middle" class="svg-ink">More money and cheaper credit</text>
+        <text x="430" y="104" text-anchor="middle" class="svg-ink">→ consumers and firms spend more</text>
+        <text x="430" y="126" text-anchor="middle" class="svg-ink">→ economy grows</text>
+        <text x="430" y="148" text-anchor="middle" class="svg-ink">→ demand outruns supply</text>
+        <text x="430" y="170" text-anchor="middle" class="svg-ink">→ prices rise (inflation)</text>
+        <text x="430" y="200" text-anchor="middle" class="svg-ink2">Also moves exchange rates, so export</text>
+        <text x="430" y="218" text-anchor="middle" class="svg-ink2">and import prices, so inflation again</text>
+        <rect x="590" y="20" width="250" height="215" rx="6" class="svg-seal-s"/>
+        <text x="715" y="46" text-anchor="middle" font-weight="600" class="svg-seal" font-size="14">To TIGHTEN (cool down)</text>
+        <text x="610" y="76" class="svg-ink">Sell government bonds</text>
+        <text x="610" y="94" class="svg-ink2">cash drains out of banks</text>
+        <text x="610" y="124" class="svg-ink">Raise the discount rate</text>
+        <text x="610" y="142" class="svg-ink2">dearer to borrow; all rates follow</text>
+        <text x="610" y="172" class="svg-ink">Raise reserve requirements</text>
+        <text x="610" y="190" class="svg-ink2">banks must sit on more deposits</text>
+        <text x="715" y="222" text-anchor="middle" font-weight="600" class="svg-seal">Money supply down, rates up</text>
+      </g>
+    </svg>
+    <figcaption>Figure 3.1 — The three tools of monetary policy and their direction. Reserve requirement changes hit bank liquidity hard, so most central banks use them cautiously (China has used them more aggressively against inflation).</figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%">Tool</th><th>Mechanism</th><th>To ease</th><th>To tighten</th><th>India anchor</th></tr></thead>
+    <tbody>
+      <tr><td>Open market operations (OMO)</td><td>Primary tool. Central bank buys or sells government bonds, changing the supply of bank reserves</td><td>Buy bonds (inject cash)</td><td>Sell bonds (absorb cash)</td><td>RBI OMO purchases/sales of G-Secs; "Operation Twist"</td></tr>
+      <tr><td>Discount rate</td><td>Rate the central bank charges commercial banks to borrow. Indirectly moves every other rate; with a lag, moves inflation and exchange rates</td><td>Cut</td><td>Raise</td><td>Repo rate (and bank rate / MSF); this feeds MCLR and EBLR, which you have already studied</td></tr>
+      <tr><td>Reserve requirements</td><td>Share of deposits banks must hold back. Higher requirement = less to lend = rates rise</td><td>Lower</td><td>Raise</td><td>Cash Reserve Ratio (CRR); SLR works similarly by forcing holdings of approved securities</td></tr>
+      <tr><td>Basel III (not a tool, but affects money supply)</td><td>Global, voluntary framework on capital adequacy; banks must retain more capital, which constrains lending</td><td colspan="2">Structural, not cyclical</td><td>RBI's Basel III implementation</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box ex"><p class="label"><span></span>Example (numbers illustrative)</p><p>Suppose a bank has ₹100 crore of deposits and the reserve requirement is 4%. It must hold ₹4 crore idle and can lend ₹96 crore. If the central bank raises the requirement to 5%, lendable funds fall to ₹95 crore; credit gets scarcer, so the interest rate on loans edges up. Multiply this across every bank and the whole economy's money supply contracts. That is why a one-percentage-point change in a reserve ratio is a big deal, and why the textbook says most central banks use it cautiously.</p></div>
+
+  <h4>Fiscal policy in detail</h4>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Approach</th><th>What it is</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Discretionary policy</td><td>A singular (one-off) policy change decided by the government</td><td>A stimulus package; a one-time infrastructure programme; a tax cut announced in a budget</td></tr>
+      <tr><td>Automatic stabilisation: fiscal drag</td><td>A progressive tax system automatically takes a larger share as incomes rise, reducing disposable income and cooling a boom without any new decision</td><td>As salaries rise, more income falls into the 30% slab; the economy is cooled "automatically"</td></tr>
+      <tr><td>Automatic stabilisation: fiscal boost</td><td>Lower tax rates leave more income available, supporting demand</td><td>Cutting tax rates so households keep more of each rupee</td></tr>
+      <tr><td>Expansionary vs contractionary</td><td>Economists' labels for policies that stimulate or slow growth</td><td>Deficit spending is expansionary; austerity is contractionary</td></tr>
+    </tbody>
+  </table></div>
+  <p>Governments spend mainly on pensions and salaries, subsidies, health care, education and infrastructure. Spending gives an initial positive push but widens the budget deficit, and large deficits eventually hurt the economy. So the wish to stimulate must be tempered by the reality of debt, tax revenue and broad economic impact.</p>
+
+  <h3>3.2 Economics 101: scarcity</h3>
+  <p>Economics is the study of how people, businesses and governments deal with <strong>scarcity</strong>: human wants exceed what can be produced (Robinson). Lionel Robbins' refinement: economics is "the study of the use of scarce resources which have alternative uses", so it is really about the <em>decisions</em> made and their consequences. Financial advice is economics in miniature: the advisor helps clients meet life goals with scarce resources that have alternative uses. The textbook's list of planning questions:</p>
+  <ul>
+    <li>Which goals are achievable, and in what order?</li>
+    <li>What resources can be applied to each goal?</li>
+    <li>If some goals are unachievable, which is most important?</li>
+    <li>How much of a resource should go to a given goal or need?</li>
+    <li>Can one resource serve more than one goal?</li>
+    <li>Can resources be increased or liabilities reduced?</li>
+  </ul>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%"></th><th>Microeconomics</th><th>Macroeconomics</th></tr></thead>
+    <tbody>
+      <tr><th>Studies</th><td>How supply and demand interact in individual markets for goods and services</td><td>The big picture: GDP, employment, inflation, how the whole economy works</td></tr>
+      <tr><th>Advisor's version</th><td>One household's budget and trade-offs</td><td>The environment every plan lives in</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>3.3 Economic indicators</h3>
+  <p>People want to know the future in order to plan for it. We can't know it, so the next best thing is reliable, timely statistical information about likely trends. Each territory has its own indicators, but Baumohl's key set is:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:30%">Indicator family</th><th>Why it matters</th><th>India anchor (where to look)</th></tr></thead>
+    <tbody>
+      <tr><td>Employment</td><td>Jobs drive income and spending</td><td>PLFS (government), CMIE unemployment data</td></tr>
+      <tr><td>Consumer spending and consumer sentiment</td><td>Largest part of GDP in developed economies; sentiment leads spending</td><td>RBI Consumer Confidence Survey; GST collections; auto sales</td></tr>
+      <tr><td>Gross domestic product (production and inventories)</td><td>The scorecard of output</td><td>NSO quarterly GDP; IIP; manufacturing PMI</td></tr>
+      <tr><td>Housing</td><td>Long-term spending; permits predict future activity</td><td>Housing registrations; RBI house price index</td></tr>
+      <tr><td>Central bank</td><td>Rate decisions and statements set the tone for credit</td><td>RBI MPC decisions and minutes</td></tr>
+      <tr><td>Foreign trade</td><td>Net exports add to or subtract from GDP; trade deficits signal living beyond means</td><td>Monthly trade data; current account deficit</td></tr>
+      <tr><td>Wages and prices</td><td>Inflation and its drivers</td><td>CPI, WPI; RBI's 4% target with a 2–6% band</td></tr>
+    </tbody>
+  </table></div>
+  <p>Three cautions the textbook stresses:</p>
+  <ul>
+    <li><strong>Data gets revised.</strong> Governments release projections before all data is compiled; statisticians later adjust. So never base big decisions on one report; look at a series.</li>
+    <li><strong>Some sources are unreliable</strong>, sometimes for political reasons. Multiple sources help, but bad data is bad regardless of how much research you do.</li>
+    <li><strong>An indicator's value depends on the cycle.</strong> In a recession nobody cares about inflation data (people have less money, businesses can't raise prices); in a boom inflation is on everyone's mind. Recession plus inflation can occur when resources become scarce.</li>
+  </ul>
+  <div class="box ex"><p class="label"><span></span>Example</p><p>Advance orders for durable goods are a forward-looking indicator. If factories stop receiving orders, sellers are sitting on inventory or seeing no demand, which points to a slowdown. A sharp rise in orders points to a robust sales environment. In India, the closest everyday read is the manufacturing PMI's "new orders" component.</p></div>
+
+  <h3>3.4 The business cycle</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>The business cycle is a recurring short-term pattern: growth, then weakness and downturn (recession), then recovery and renewed growth. It is measured by <strong>output</strong> (real GDP) and <strong>unemployment</strong> (the share of the labour force without jobs). In the long run these have normal levels, called <strong>potential output</strong> and the <strong>natural rate of unemployment</strong>; the cycle is the short-term wobble around them.</p></div>
+  <figure>
+    <svg viewBox="0 0 860 330" role="img" aria-label="Business cycle curve showing expansion, peak, downturn, trough and recovery">
+      <line x1="60" y1="290" x2="830" y2="290" class="svg-rule" stroke-width="1.5"/>
+      <line x1="60" y1="290" x2="60" y2="30" class="svg-rule" stroke-width="1.5"/>
+      <text x="820" y="312" text-anchor="end" font-size="12" class="svg-ink2">Time</text>
+      <text x="66" y="42" font-size="12" class="svg-ink2">Real GDP</text>
+      <line x1="60" y1="175" x2="830" y2="105" stroke-dasharray="6 5" class="svg-amber-l" stroke-width="2"/>
+      <text x="360" y="48" font-size="12" class="svg-amber">Dashed line: potential output (long-run trend)</text>
+      <path d="M70 200 C 170 100, 240 60, 300 90 S 430 250, 490 240 S 600 60, 690 80 S 790 200, 830 180" fill="none" class="svg-navy-l" stroke-width="3"/>
+      <g font-size="13" font-weight="600" class="svg-navy">
+        <text x="150" y="150">Expansion</text>
+        <text x="290" y="70">Peak</text>
+        <text x="380" y="215">Downturn</text>
+        <text x="450" y="275" class="svg-seal">Trough</text>
+        <text x="585" y="205">Recovery</text>
+        <text x="670" y="58">Peak</text>
+      </g>
+      <g font-size="12" class="svg-ink2">
+        <text x="120" y="270">Boom when actual output</text><text x="120" y="286">is above potential</text>
+        <text x="540" y="270">Recession when actual output</text><text x="540" y="286">is below potential</text>
+      </g>
+      <circle cx="300" cy="86" r="5" class="svg-seal"/>
+      <circle cx="490" cy="240" r="5" class="svg-seal"/>
+      <circle cx="690" cy="76" r="5" class="svg-seal"/>
+    </svg>
+    <figcaption>Figure 3.2 — The four textbook phases: expansion, downturn/contraction, recession or depression (the trough), recovery. Recessions are recognised only well after they begin, because nobody knows how long a decline will last until it has lasted.</figcaption>
+  </figure>
+
+  <h4>Phase 1 — Expansion</h4>
+  <p>GDP has four spending areas (Ip): <strong>consumer spending and housing</strong> (consumption; the largest component in wealthy territories), <strong>business investment</strong> (factories, equipment, other businesses; long-term), <strong>government spending</strong> (varies hugely by policy; Keynesian stimulus is hard to switch off) and <strong>exports</strong> (really net exports: exports minus imports; a trade deficit means living beyond one's means). In an expansion all four grow, largely because confidence grows: consumers and firms spend, tax receipts rise, governments spend more, exports may rise. Gradual, sustainable expansion is healthy; too-fast expansion is a <strong>boom</strong> (rapid growth, higher GDP, lower unemployment, rising asset prices, and eventually inflation because demand outruns supply).</p>
+
+  <h4>Bubbles</h4>
+  <p>A boom can become a bubble: confidence skyrockets and people pay ever-higher prices assuming the market will keep rising (it never does; markets always rise and fall). Bubbles occur most often in investments, housing being the classic case. When they pop, prices drop precipitously; in the mid-2000s US housing bubble many areas fell about 30% from peak to trough.</p>
+  <div class="box ex"><p class="label"><span></span>Example from the text: Dutch tulip mania (1600s)</p><p>One tulip variety, Admiral Liefken, was valued at 4,400 florins. For scale: four fat oxen were worth 480 florins, 1,000 pounds of cheese 120 florins, a suit of clothes 80 florins. So one bulb was worth about nine teams of oxen or 55 suits. In 1636 the Dutch exchange opened a tulip division (it spread to London and Paris); gambling became rampant, the bubble burst and speculators lost everything. Two lessons: bubbles are hard to identify while you are in one, and hard to bring under control once identified.</p></div>
+  <div class="box in"><p class="label"><span></span>India anchor</p><p>The 1992 Harshad Mehta episode and the 2007–08 run-up (the Sensex fell by more than half from its January 2008 peak to March 2009) are the Indian versions of the same story: prices detached from fundamentals, then a precipitous fall. Use them when a client says "it can only go up".</p></div>
+
+  <h4>Phase 2 — Downturn and contraction</h4>
+  <p>Every expansion is eventually followed by contraction. The mechanism, step by step:</p>
+  <ol>
+    <li>Expansion brings inflation; suppliers raise prices because they can. Unemployment is low, so employees demand and get higher wages; employers recover this through still-higher prices.</li>
+    <li>Prices reach a level consumers decide is unjustified; they delay or cancel purchases.</li>
+    <li>Inventories build; businesses cut orders; factories cut production.</li>
+    <li>Layoffs begin; the pool of workers grows; employers cut wages and benefits.</li>
+    <li>Lower wages mean less discretionary spending; fewer people buy fewer goods.</li>
+    <li>Sellers cut prices; profits fall; some firms close; lower corporate values hit the stock market, souring sentiment further.</li>
+  </ol>
+  <p>Government can also cause a slowdown, through two interrelated factors: (1) a <strong>decrease in government spending</strong> (a debt-loaded government must eventually cut back; if the economy was propped up by that spending, it contracts) and (2) <strong>central bank intervention</strong> to adjust money supply and rates.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:40%">The four things central banks do (Ball)</th><th>Which ones drive the economy?</th></tr></thead>
+    <tbody>
+      <tr><td>1. Clear private bank payments (cheques, electronic transfers)</td><td>Plumbing</td></tr>
+      <tr><td>2. Lend to private banks to support liquidity in difficult times</td><td>Lender of last resort (Chapter 1)</td></tr>
+      <tr><td>3. Control money supply</td><td class="y">Monetary policy: significant impact</td></tr>
+      <tr><td>4. Regulate the territory's private banks</td><td class="y">Prudential regulation: significant impact</td></tr>
+    </tbody>
+  </table></div>
+  <p>Inflation is not bad in itself; <em>too much</em> is, and so is too much deflation. Central banks therefore keep an inflation target and adjust money supply to hit it: cut rates to help growth; when growth overheats, raise rates to cool it. Keeping inflation on target is described as more art than science.</p>
+
+  <h4>Phase 3 — Recession and depression</h4>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%"></th><th>Recession</th><th>Depression</th></tr></thead>
+    <tbody>
+      <tr><th>Definition</th><td>A period of economic decline. One common test: two consecutive quarters of falling GDP. Others exist; all point to ongoing loss of economic strength</td><td>No explicit definition; "a really bad recession". One suggested test (Ip): contraction of at least 10%, or lasting at least three years (or more than two)</td></tr>
+      <tr><th>Typical features</th><td>Low growth, low output, low wages, high unemployment, stagnation</td><td>Same, but deeper and longer</td></tr>
+      <tr><th>Duration</th><td>Most last not much more than a year; some last several years</td><td>The Great Depression ran about 12 years (1929 to ~1941), arguably two depressions back to back</td></tr>
+      <tr><th>Recent history</th><td>The "great recession" began in the US in late 2007, spread worldwide, officially ended in the US mid-2009, with slow recovery and constant relapse fears</td><td>Most economies never experience one</td></tr>
+      <tr><th>Timing problem</th><td colspan="2">Recessions are reported well after they start and declared over well after growth resumes; you can't identify a trend until you are well into it</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box in"><p class="label"><span></span>India anchor</p><p>India's FY2020-21 pandemic year is a clean example of a two-consecutive-quarter contraction (April–June and July–September 2020 both showed negative real GDP growth), followed by a sharp recovery; full-year real GDP fell in the region of 6%. Use it to show clients that a contraction and a recovery can both happen inside a single planning year.</p></div>
+
+  <h4>Phase 4 — Recovery</h4>
+  <p>Demand for goods and services increases; people become optimistic and make delayed purchases. Prices are still low but not for long, because supplies are low after a recession. Production rises slowly, then hiring, then wages (starting low). More money means more demand, so prices rise until supply catches up; consumers accept this because they are working and optimistic. Stock market returns usually grow in this phase. Recovery leads seamlessly into expansion and the cycle repeats.</p>
+
+  <h3>3.5 Economic indicators revisited: leading and lagging</h3>
+  <p>Indicators either <strong>predict</strong> (leading) or <strong>confirm</strong> (lagging) economic conditions. The same indicator reads differently across the cycle: in expansion GDP measures growth; in recession it measures depth.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:40%">Leading indicator (predicts)</th><th>How to read it</th></tr></thead>
+    <tbody>
+      <tr><td>Average hourly workweek in manufacturing</td><td>Sustained rise or fall in hours predicts hiring or firing</td></tr>
+      <tr><td>Average weekly initial claims for unemployment</td><td>Claims rise as the economy deteriorates, fall as it strengthens</td></tr>
+      <tr><td>Manufacturers' new orders for consumer goods and materials</td><td>How comfortable manufacturers are with inventories and future demand</td></tr>
+      <tr><td>Vendor performance / delivery times index</td><td>Slower deliveries = orders flooding in (bottlenecks); faster deliveries = slowdown</td></tr>
+      <tr><td>New orders for non-defence capital goods</td><td>Firms stop buying equipment if they expect a slowdown</td></tr>
+      <tr><td>Building permits for new private homes</td><td>Predicts future building activity</td></tr>
+      <tr><td>Stock prices</td><td>Investors price in what they expect the economy to do</td></tr>
+      <tr><td>Real money supply (e.g., M2: currency, demand deposits, savings, bank CDs)</td><td>M2 growth below inflation signals a weakening economy</td></tr>
+      <tr><td>Interest rate spread (10-year government bond minus central bank rate)</td><td>Higher long rates = growth ahead; narrowing spread or inverted curve (short above long) = contraction ahead</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:40%">Lagging indicator (confirms)</th><th>How to read it</th></tr></thead>
+    <tbody>
+      <tr><td>Average duration of unemployment</td><td>Firms hire or fire only once the cycle is clear</td></tr>
+      <tr><td>Inventories-to-sales ratio (manufacturing and trade)</td><td>Peaks mid-recession, falls at the start of recovery as sales outpace inventories</td></tr>
+      <tr><td>Change in labour cost per unit of output</td><td>Peaks during recession as output per hour drops faster than pay</td></tr>
+      <tr><td>Average prime rate charged by banks</td><td>Rate for best corporate borrowers; trails broader changes</td></tr>
+      <tr><td>Commercial and industrial loans outstanding</td><td>Business debt peaks after a recession has begun</td></tr>
+      <tr><td>CPI for services</td><td>Service inflation peaks months after recession begins, declines once recovery starts</td></tr>
+      <tr><td>Ratio of consumer instalment credit to personal income</td><td>Falling income makes debt service a bigger share; consumers cut spending, then return to normal borrowing after conditions improve</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box hook"><p class="label"><span></span>Memory hook</p><p>Leading indicators are mostly <em>decisions about the future</em> (orders, permits, stock prices, the yield curve). Lagging indicators are mostly <em>consequences that show up late</em> (how long people stay unemployed, loan balances, service prices). If an item is a "ratio" or a "duration", it is almost always lagging.</p></div>
+
+  <h3>3.6 Economics overview: two economic systems and price controls</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%"></th><th>Government-controlled economy</th><th>Market-controlled economy</th></tr></thead>
+    <tbody>
+      <tr><th>Who decides production and consumption</th><td>The state: what, how much, for whom</td><td>Individuals and firms: households choose labour and consumption; firms choose output based on demand</td></tr>
+      <tr><th>Typical failure</th><td>Without demand and cost data, overabundance of some goods, shortages of others; inefficiency raises costs; quotas get revised; the cycle repeats</td><td>Prices do the coordination; firms that can't compete must become efficient, improve products, or close</td></tr>
+    </tbody>
+  </table></div>
+  <p>The key idea about prices: <strong>scarcity determines price, not the other way round</strong>. Beachfront homes are expensive because there are few of them and many want them; computers are cheap despite huge demand because supply is enormous. Prices guide both consumers and producers.</p>
+  <p><strong>Price controls</strong> sabotage this. Diamonds (supply restricted by mining and distribution firms keeps prices high), agricultural price supports (produce stored rather than distributed because full distribution would lower prices), and government policies paying farmers not to grow crops are the textbook examples. Controls often create artificial shortages, public frustration and black markets.</p>
+
+  <h3>3.7 Macroeconomic schools of thought</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:16%">School</th><th style="width:20%">Key people</th><th>Core claims</th><th>Weakness the text notes</th></tr></thead>
+    <tbody>
+      <tr><td>Classical</td><td>Adam Smith (<em>The Wealth of Nations</em>, 1776), David Ricardo, Jean-Baptiste Say, Thomas Malthus</td><td>Wealth is goods and services, not gold (against the Mercantilists). Markets self-balance: a change in supply is balanced by a change in demand. The <strong>invisible hand</strong>: self-interested participants produce the most efficient outcome. Government should leave things alone. <strong>Say's Law</strong>: supply creates its own demand (no surplus is possible). <strong>Malthus</strong>: population outgrows the means to support it, so jobs stay scarce and wages low</td><td>Say's Law "very definitively disproved" by history; classical theory could not explain unused resources in the 1930s</td></tr>
+      <tr><td>Keynesian</td><td>John Maynard Keynes (<em>The General Theory of Employment, Interest and Money</em>); A. W. Phillips</td><td>Focus on <strong>aggregate demand</strong> and on situations where resources go unused. Low interest rates don't always trigger investment if the outlook is grim. Wages and prices have <em>limited</em> flexibility. Government can and should invest to lift the economy, accepting an inflation trade-off (the <strong>Phillips Curve</strong>)</td><td>The exploitable trade-off broke down; "history has not been kind to any unmodified school"</td></tr>
+      <tr><td>Supply-side</td><td>—</td><td>Free markets from regulation, eliminate price controls, lower taxes. Better production costs and productivity, with no regulation, will prevent recessions. Two themes: <strong>lower taxes and deregulation</strong></td><td>A variation, not a complete theory</td></tr>
+      <tr><td>New classical</td><td>—</td><td>Believe in wage and price flexibility. Recessions come from unpredictable <strong>supply shocks</strong> (natural disasters, political events); the other big cause is government</td><td></td></tr>
+      <tr><td>Monetarism</td><td>Milton Friedman (disagreed with both classical and Keynesian camps)</td><td>Control the supply and demand of money. Excess money growth is inflationary; central banks should keep prices stable by controlling the <em>rate of growth</em> of money supply. Steady money growth supports steady growth with low inflation</td><td></td></tr>
+      <tr><td>New Keynesian</td><td>—</td><td>Updated Keynes: wages and prices are <strong>sticky</strong> (menu costs like reprinting catalogues; firms prefer not to cut prices). Supports government intervention in a faltering economy</td><td></td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>The Phillips Curve, worked through</h4>
+  <figure>
+    <svg viewBox="0 0 860 330" role="img" aria-label="Phillips curve showing inflation and unemployment trade-off with target of two percent">
+      <line x1="80" y1="280" x2="820" y2="280" class="svg-rule" stroke-width="1.5"/>
+      <line x1="80" y1="280" x2="80" y2="30" class="svg-rule" stroke-width="1.5"/>
+      <text x="820" y="318" text-anchor="end" font-size="12" class="svg-ink2">Unemployment (%)</text>
+      <text x="86" y="42" font-size="12" class="svg-ink2">Inflation (%)</text>
+      <path d="M140 50 C 180 120, 300 215, 420 232 S 650 270, 800 268" fill="none" class="svg-navy-l" stroke-width="3"/>
+      <line x1="80" y1="232" x2="820" y2="232" stroke-dasharray="6 5" class="svg-amber-l" stroke-width="2"/>
+      <text x="700" y="226" font-size="12" class="svg-amber">Target inflation 2%</text>
+      <circle cx="236" cy="150" r="6" class="svg-seal"/>
+      <text x="250" y="140" font-size="13" font-weight="600" class="svg-seal">Start: 6% inflation, 3% unemployment</text>
+      <circle cx="420" cy="232" r="6" class="svg-leaf"/>
+      <text x="435" y="218" font-size="13" font-weight="600" class="svg-leaf">Point A: 2% inflation, 5% unemployment</text>
+      <path d="M244 156 Q 320 226, 412 232" fill="none" class="svg-seal-l" stroke-width="2" stroke-dasharray="4 4"/>
+      <text x="300" y="196" font-size="12" class="svg-ink2">Government reduces money supply</text>
+      <text x="236" y="300" text-anchor="middle" font-size="12" class="svg-ink2">3%</text>
+      <text x="420" y="300" text-anchor="middle" font-size="12" class="svg-ink2">5%</text>
+    </svg>
+    <figcaption>Figure 3.3 — The textbook's Phillips Curve example. Hitting the 2% inflation target costs two percentage points of unemployment; the government accepts the trade-off.</figcaption>
+  </figure>
+  <p>The 1960s explanation of why a fiscal stimulus raises inflation (learn the sequence):</p>
+  <ol>
+    <li>Government spending generates growth, so demand for labour rises.</li>
+    <li>The pool of unemployed shrinks.</li>
+    <li>Firms compete for fewer workers by raising nominal wages.</li>
+    <li>Workers gain bargaining power and seek further wage rises.</li>
+    <li>Wage costs rise.</li>
+    <li>Firms pass the higher costs on as higher prices.</li>
+  </ol>
+  <p>Policymakers in the 1960s–70s believed they could exploit this trade-off, picking a target inflation rate and contracting the economy to reach it. The example: inflation at 6% with unemployment at 3%; the government cuts money supply to bring inflation to the 2% target; unemployment rises to 5% (point A). Reality later showed the trade-off is not stable, which is why every school has been revised.</p>
+
+  <h4>What causes recessions (modern view)</h4>
+  <p>Beyond supply shocks and government action, a fall in aggregate demand can come from: higher interest rates (less borrowing and investment); falling real wages; falling consumer confidence; a credit crunch (banks lend less, so less investment); deflation (people delay spending; the real value of debt rises, so debtors are worse off); currency appreciation (exports become expensive, demand for them falls). In a recession prices fall as businesses discount to protect profits (a leftward shift of the demand curve lowers equilibrium price and quantity), but essentials like bread fall far less; the price cut depends on how far each product's demand curve shifts.</p>
+
+  <div class="box hook"><p class="label"><span></span>Exam traps for Chapter 3</p>
+    <ul>
+      <li>To <em>increase</em> money supply the central bank <em>buys</em> bonds, <em>cuts</em> the discount rate and <em>lowers</em> reserve requirements. If you can remember "buy = give cash", the other two follow.</li>
+      <li>Discretionary vs automatic stabilisation are the two <em>approaches</em> to fiscal policy; expansionary vs contractionary are labels for direction. Fiscal drag = progressive tax; fiscal boost = lower tax.</li>
+      <li>Four business-cycle stages (review Q4): expansion, downturn, recession/depression, recovery. Not "peak" and "trough" (those are turning points on the figure).</li>
+      <li>Say's Law belongs to a classical economist (Say), and the text says history disproved it. Friedman is monetarism, between the camps, not Keynesian.</li>
+      <li>Depression thresholds (Ip): 10% contraction or three years (or more than two).</li>
+    </ul>
+  </div>
+
+  <h3>Chapter 3 review questions</h3>
+  <details><summary>1. How do monetary and fiscal policy differ? What are the primary tools or approaches of each?<span class="q-tag">Review Q1</span></summary><div class="body"><p>Monetary policy is run by the central bank; fiscal policy by the government through its budget. Monetary tools: open market operations (buying government bonds injects money; selling withdraws it), the discount rate (raise to tighten, cut to ease) and reserve requirements (raise to cut money supply, lower to expand it). Fiscal policy has two approaches: discretionary (a one-off policy change) and automatic stabilisation (fiscal drag from progressive taxation, or fiscal boost from lower tax rates), plus government spending decisions.</p></div></details>
+  <details><summary>2. How would you describe the two major types of economic systems?<span class="q-tag">Review Q2</span></summary><div class="body"><p>Government-controlled and market-controlled. The economic difference is who controls production and consumption. In a government-controlled system the state decides what is produced, in what quantity and with what availability, usually without good demand and cost data, so shortages and surpluses recur. In a market-controlled system households and firms decide, guided by prices that reflect supply and demand.</p></div></details>
+  <details><summary>3. Your territory's economy has become weaker than normal. What might be causing it, and which indicators should you research?<span class="q-tag">Review Q3</span></summary><div class="body"><p>Research the key indicator families: employment, consumer spending and sentiment, GDP (production and inventories), housing, central bank actions, foreign trade, and wages and prices; add the leading indicators (new orders, permits, initial jobless claims, the yield-curve spread) to see what is coming. Likely causes: the economy is in the downward part of the business cycle (goods not being made, sold or bought), or government intervention (spending cuts, central bank tightening) is temporarily holding back development. Other demand-side causes: higher rates, falling real wages or confidence, a credit crunch, deflation, or currency appreciation hurting exports.</p></div></details>
+  <details><summary>4. What are the primary stages of the business cycle?<span class="q-tag">Review Q4</span></summary><div class="body"><p>Expansion; downturn (contraction); recession or depression; recovery. Recovery flows into the next expansion.</p></div></details>
+</section>
+
+<!-- ============================ CHAPTER 4 ============================ -->
+<section class="chapter" id="ch4">
+  <div class="chapter-head">
+    <div class="num">4</div>
+    <div><h2>Social and Political Environments</h2><p class="sub">How government sentiment, regional blocs, global trade, welfare, tax and retirement policy shape a client's plan</p></div>
+  </div>
+  <p class="one-line">Governments change, treaties change, benefits change. A plan that assumes the current political and economic environment will simply continue is a plan with a hidden risk in it.</p>
+  <div class="lo">Learning objective 4-1: demonstrate knowledge of social and political environments relevant to financial planning and the economic environment.</div>
+
+  <h3>4.1 Local economic environment: government and politics</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>A national government has two primary tools to affect its economy: the <strong>legislature</strong> and the <strong>central bank (and treasury)</strong>. Its impact comes both from what it does and from what it does not do.</p></div>
+  <p>Regional and quasi-governmental bodies also matter (EU, ASEAN Free Trade Area, LAFTA, the Latin American Integration Association, NAFTA). The textbook keeps its observations at the national level.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Type of government action</th><th>Economic effect</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Laws with an <em>indirect</em> or unintended economic impact</td><td>Raise business costs, which are passed to consumers as higher prices. Not a reason to oppose the law, but there is always a cost</td><td>Worker safety rules (once feared as recession-causing, now absorbed into prices and widely accepted); environmental protection (pollution, nuclear accidents, mining contamination). The decision is whether benefits are worth the cost</td></tr>
+      <tr><td>Laws with a <em>direct</em> economic impact</td><td>Move demand, deficits and incomes immediately</td><td>Tax increases or cuts; changes to pensions and benefits; balanced-budget amendments; deficit spending</td></tr>
+      <tr><td>Crisis-forced action</td><td>Natural (tsunami, earthquake), social-cultural, political; when the government acts there is an economic impact</td><td>Disaster relief spending</td></tr>
+      <tr><td>Gridlock (doing nothing)</td><td>Forceful support of ideological positions can freeze policy</td><td>Budget stand-offs</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box ex"><p class="label"><span></span>Text example 1: how internal politics can impact an economy</p><p>Through what the government does (passing laws with direct effects such as tax and pension changes, or indirect cost effects such as safety and environmental rules) and what it fails to do (gridlock driven by ideology). Either way, the advisor should not assume continuation of the current political and economic environment. Good practice: <strong>plan for the worst and hope for the best</strong>: what if gridlock persists, what if there is war, what if strikes disrupt the client's livelihood, does the plan survive a significantly negative environment?</p></div>
+
+  <h3>4.2 Regional economic environment</h3>
+  <p>No territory exists in isolation. Neighbours affect each other, especially in regional military conflict. Governments change, nations fall into civil or external war, trade agreements change. Implications for investments, standard of living, even personal and property safety. The advisor's responses: review the client's <strong>insurance and risk management</strong> portfolio, and <strong>diversify geographically</strong> to avoid concentration in one area.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Regional bloc</th><th>Nature</th><th>Lesson</th></tr></thead>
+    <tbody>
+      <tr><td>European Union</td><td>Began with an economic focus, grew into a political union; no border controls between members, so people can work, travel, live and buy across the EU</td><td>Upside: more trade and a better regional economy. Downside: one member's distress (Greek austerity and unrest) can drag the region; the UK's decision to leave shows real and potential difficulties</td></tr>
+      <tr><td>APEC (Asia-Pacific Economic Cooperation)</td><td>Less political, more economic; 21 members; faster customs, better business climates, aligned standards</td><td>Many free trade agreements are mainly economic</td></tr>
+      <tr><td>Andean Community (South America)</td><td>Regional economic and somewhat political cooperative</td><td>Economic blocs can drift political, as the EU did</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box hook"><p class="label"><span></span>Planning takeaway</p><p>Treaties may be temporary. Any financial benefit that depends on a treaty should be viewed, at least somewhat, through that filter.</p></div>
+
+  <h3>4.3 Global economic environment: trade</h3>
+  <p>"When one territory sneezes, another catches cold." Imports bring goods in and send money out; exports do the reverse. A <strong>trade deficit</strong> (imports exceed exports) means more money flows out than in. Short-term deficits are not necessarily bad (people enjoy cheaper goods), but extended or growing deficits cause job losses, rising national debt and a large stock of the currency in foreign hands, so trading partners try to keep some balance.</p>
+  <h4>Why nations trade at all (Sowell)</h4>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%">Reason</th><th>Meaning</th><th>Textbook example</th><th>India anchor</th></tr></thead>
+    <tbody>
+      <tr><td>Absolute advantage</td><td>One territory can produce a good more cheaply or better than others because of climate, geography, skills or costs</td><td>Brazil, Colombia and Ethiopia in Arabica coffee: soil, climate, agricultural focus. If your territory can't grow coffee, you import it</td><td>India in IT services and generic pharmaceuticals</td></tr>
+      <tr><td>Comparative advantage</td><td>Even a territory that is better at <em>everything</em> gains by specialising where it is <em>most</em> better, because of <strong>opportunity cost</strong>: making one thing means not making another</td><td>A territory focuses on mobile phones (its strongest area) and imports computers, even though it could make them, because diverting production would hurt the economy</td><td>India exports software and imports high-end semiconductors rather than trying to make everything</td></tr>
+      <tr><td>Economies of scale</td><td>Let another territory that has already made the huge investment produce the good, and buy it</td><td>Car manufacturing needs enormous investment in training, plants and workers; a territory without that base may find development costs exceed benefits. Exception: a territory may build the industry anyway for national security</td><td>Domestic defence manufacturing push despite higher cost</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box ex"><p class="label"><span></span>Worked example: comparative advantage</p><p>Territory X can make 10 phones or 5 computers with the same resources; Territory Y can make 4 phones or 4 computers. X is better at both (absolute advantage in both). But X's opportunity cost of one computer is 2 phones, while Y's is 1 phone. Y gives up less to make computers, so Y should make computers and X should make phones, then trade. Both end up with more than if each made both. That is the whole logic of comparative advantage in one line: specialise where your opportunity cost is lowest.</p></div>
+
+  <h3>4.4 Exchange rates and currency risk</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:22%">Concept</th><th>Explanation</th></tr></thead>
+    <tbody>
+      <tr><td>Floating rate</td><td>Set by the foreign-exchange market; changes constantly. A strong economy usually means a strong currency. Most territories float, though nearly all exercise some control</td></tr>
+      <tr><td>Fixed (pegged) rate</td><td>Set by government, usually by pegging to another currency or a basket, to stabilise the currency or control inflation. Within the euro area, member currencies were fixed to the euro to support the treaty</td></tr>
+      <tr><td>Why it matters for purchases</td><td>If the relative value is very favourable or unfavourable, a purchase abroad may be accelerated or delayed</td></tr>
+      <tr><td>Currency trading</td><td>Investors trade currencies for safety (hedging one currency with another) or profit. <strong>Arbitrage</strong>: buy an asset in one market and sell it in another to exploit a price difference (e.g., use strong Swedish kronor to buy US products, or trade directly on a forex market). Supply and demand again</td></tr>
+      <tr><td>Currency risk</td><td>Investing abroad exposes you to the currency as well as the asset. Hedging tools exist (see the Investment course), but the risk is real</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box ex flag"><p class="label"><span></span>Text example: currency risk wipes out a gain (with a flag)</p><p>The textbook says: you live in territory A, invest in territory B, the investment rises 10%, but B's currency "appreciates against your territory's currency by 10%" and you realise no gain. Taken literally that is backwards: if B's currency strengthens, an investor from A gets <em>more</em> home currency back. The point the textbook is making is correct, the direction is mis-stated: a 10% currency move <em>against you</em> cancels a 10% gain in the asset. Concretely: ₹1,00,000 converted at ₹80/$ buys $1,250; a US stock rises 10% to $1,375; if the rupee has meanwhile strengthened to about ₹72.7/$, converting back gives ₹1,00,000, so zero gain despite the stock rising. What hurts a rupee investor abroad is the rupee <em>strengthening</em>; what hurts a foreign investor in India is the rupee <em>weakening</em>. If an exam question repeats the textbook's wording, answer with the textbook's conclusion (no gain), not the mechanics.</p></div>
+  <div class="box in"><p class="label"><span></span>India anchor</p><p>The rupee is a managed float: market-determined, but RBI intervenes to smooth volatility. Clients investing abroad under the Liberalised Remittance Scheme (LRS) take on currency risk; historically the rupee has depreciated against the dollar over long periods, which has added to rupee returns from US assets, but that is a historical pattern, not a guarantee.</p></div>
+
+  <h3>4.5 Social welfare policy</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Social welfare is organised public or private assistance for disadvantaged groups, and more broadly the quality of life (drug abuse, environmental quality, crime, availability of essential services). People disagree about whether it is welcome, but it undeniably <strong>costs money and generally raises taxes</strong>. For the advisor, what matters is that welfare programmes affect clients' financial well-being, so you should know the range of benefits available and keep a directory of organisations that provide services.</p></div>
+  <details><summary>Text case: Diego and Maria — how a comfortable family ends up needing the safety net<span class="q-tag">Chapter 4 example</span></summary><div class="body">
+    <p>Diego and Maria are professionals with good incomes, married 20 years, three children. Their oldest, Tomas, develops serious behavioural difficulties. A chain of events follows: their health insurance does not cover the mental health provider they need; therapy and counselling are not covered (medication is); finding help consumes so much of Maria's time that she gives up her career; residential care is recommended, costing half of Diego's income and again not covered; they borrow, then run out of lenders; Maria's own health collapses. They are close to losing their home.</p>
+    <p>In some societies that is the end of the story. Where a social welfare safety net exists, benefits for income, food, clothing and Tomas's care become a bridge back to stability. The teaching point: <strong>if their financial advisor had known about the available programmes, she could have guided them much earlier.</strong> Knowing the welfare landscape is part of the job.</p>
+  </div></details>
+  <div class="box in"><p class="label"><span></span>India anchor</p><p>An Indian advisor's "directory" would include Ayushman Bharat PM-JAY (hospitalisation cover for eligible families), state health schemes, EPF/EPS benefits, Atal Pension Yojana, PM-KISAN for farming households, disability pensions, and the tax deduction for dependants with disability under Section 80DD. Most middle-class clients have never mapped these against their own contingencies.</p></div>
+
+  <h3>4.6 Taxation policy</h3>
+  <p>Tax rates change disposable income dramatically: on $100 earned, a 0% and a 50% rate leave very different amounts. That is why tax planning is a natural service, though in some territories advisors cannot legally give tax advice, so keep a referral relationship with a tax professional.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Concept</th><th>Explanation</th><th>Figure to remember</th></tr></thead>
+    <tbody>
+      <tr><td>Tax burden</td><td>OECD report: personal income tax is the biggest part, but social security contributions and other items add to it. Some territories cut taxes; many raised them</td><td>Average worker's tax burden in OECD territories: <strong>35.9%</strong></td></tr>
+      <tr><td>Tax wedge</td><td>Income tax plus social security contributions from employer and employee: the gap between take-home pay and what it costs to employ the worker. Formally, the ratio of taxes paid by an average single worker without children to the total labour cost for the employer. It measures how much income taxes <em>discourage employment</em></td><td>In several European territories, employment taxes exceed the take-home pay of the average single production worker (The Economist)</td></tr>
+      <tr><td>Second earners</td><td>Taxes on additional family income streams vary; higher second-income taxes can largely negate the benefit of a second earner</td><td></td></tr>
+      <tr><td>Foreign income</td><td>Out of scope, but usually taxed differently and often more heavily than domestic income</td><td></td></tr>
+      <tr><td>Consumption taxes</td><td>Most territories tax purchases as well as income. The textbook cites US states with no income tax but a state sales tax of 6% or more, which can hit income just as hard</td><td></td></tr>
+      <tr><td>Corporate tax</td><td>Exists everywhere; not covered in this course</td><td></td></tr>
+    </tbody>
+  </table></div>
+  <div class="box ex"><p class="label"><span></span>Worked example: tax wedge</p><p>An employer's total cost for a worker is ₹12,00,000 a year. The employer's PF/social contributions are ₹1,00,000, the employee's own contributions ₹1,00,000, and income tax ₹1,20,000. Total taxes and contributions = ₹3,20,000. Tax wedge = 3,20,000 / 12,00,000 = <strong>26.7%</strong>. The worker takes home ₹8,80,000 while the employer pays ₹12,00,000; the 26.7% gap is the wedge. The primary negative (review Q3): the higher the wedge, the fewer jobs employers create and the fewer people find it worthwhile to work.</p></div>
+
+  <h3>4.7 Retirement policy</h3>
+  <p>Retirement benefits are closely linked to tax policy. Territories range from no benefits to full pensions with health care; assume some benefits but not total coverage. Where coverage is total there is little to plan; but government policies can change.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:36%">OECD "Pensions at a Glance" findings (post-crisis)</th><th>Figure</th></tr></thead>
+    <tbody>
+      <tr><td>Pension systems remain strained; contributions low; pressure for reform</td><td>Trend</td></tr>
+      <tr><td>Normal retirement ages rising; some benefits decreasing; incentives to work longer</td><td>Average retirement age rose from <strong>64.0 to 65.5</strong> years</td></tr>
+      <tr><td>Net replacement rate from mandatory schemes for a full-career average-wage worker</td><td>Average <strong>63%</strong>, range about <strong>27% to 105%</strong></td></tr>
+      <tr><td>First-tier (safety-net) pensions exist in all OECD territories</td><td>Payments range from about <strong>6% to 40%</strong></td></tr>
+      <tr><td>Contribution years</td><td>Most pay at least a partial benefit after <strong>20 years</strong>; full minimum benefits after at least <strong>26 years</strong></td></tr>
+      <tr><td>Career interruptions (e.g., women raising children)</td><td>Not always penalised, but often lead to lower pensions</td></tr>
+    </tbody>
+  </table></div>
+  <p>What the advisor should know about their territory:</p>
+  <ul>
+    <li>Typical benefits and the age they start; whether this is changing.</li>
+    <li>Penalties for stepping out of the workforce.</li>
+    <li>Whether a standard private (contributory) plan exists and how contributions improve retirement income.</li>
+    <li>The <strong>gross replacement rate</strong>: the share of working income replaced in retirement. This is the baseline for understanding government sentiment and the foundation of a client's retirement income.</li>
+    <li>What increases or decreases payments: early retirement usually reduces benefits, delaying can increase them; whether rates differ by gender (and whether that reflects longevity or bias); whether low earners get a higher replacement percentage than high earners.</li>
+    <li>Whether private pensions are allowed or encouraged, and their benefits, restrictions and requirements.</li>
+    <li>That policies can change, especially in economic distress or austerity. Don't plan as if benefits will vanish, but build contingency plans.</li>
+  </ul>
+  <div class="box in"><p class="label"><span></span>India anchor</p><p>India's first tier is thin (EPS-95 pensions are small; Atal Pension Yojana caps at modest amounts), so the gross replacement rate from mandatory schemes for a salaried professional is low and most of the replacement must come from EPF, NPS and private savings. NPS is the "standard private contributory plan"; its rules on exit age and annuitisation are the "restrictions and requirements" the textbook wants you to know. This is exactly why retirement planning is the core of your practice's value proposition for tech workers.</p></div>
+
+  <div class="box hook"><p class="label"><span></span>Exam traps for Chapter 4</p>
+    <ul>
+      <li>The government's two tools are the <em>legislature</em> and the <em>central bank (and treasury)</em>, not "monetary and fiscal policy" (that is the Chapter 3 answer).</li>
+      <li>Tax wedge = income tax + social security contributions (employer and employee) as a ratio of total labour cost. Its negative: discourages employment.</li>
+      <li>Absolute advantage = cheaper/better outright. Comparative advantage = lower opportunity cost. Economies of scale = let the one who already invested make it.</li>
+      <li>OECD numbers: 35.9% burden; 64.0 → 65.5 retirement age; 63% net replacement (27–105%); 6–40% first tier; 20 / 26 years.</li>
+    </ul>
+  </div>
+
+  <h3>Chapter 4 review questions</h3>
+  <details><summary>1. What are the two primary tools a government has to impact its economy?<span class="q-tag">Review Q1</span></summary><div class="body"><p>The legislature and the central bank (and treasury). The legislature passes laws with direct effects (taxes, benefits, budgets) and indirect effects (safety, environmental rules); the central bank and treasury run monetary policy and fiscal execution.</p></div></details>
+  <details><summary>2. Social welfare programmes can be expensive. Does the value justify the expense?<span class="q-tag">Review Q2</span></summary><div class="body"><p>The textbook doesn't take a political side, but the answer it wants: the level of social welfare affects clients' financial well-being. People lose jobs through layoffs or illness; family caregivers cannot keep working; crime hurts individuals and businesses financially and physically. Where a safety net exists, people who need it can find help and hope (the Diego and Maria case). The cost is real and shows up as higher taxes; the value is that a family can be bridged back to stability rather than losing everything.</p></div></details>
+  <details><summary>3. What is the tax wedge and what is its primary potential negative?<span class="q-tag">Review Q3</span></summary><div class="body"><p>The tax wedge is income tax plus social security contributions from employers and employees: the difference between take-home pay and what it costs to employ the worker, expressed as a ratio to total labour cost. Its primary negative is that it discourages employment: a high wedge lowers the number of jobs and the number of people looking to fill them.</p></div></details>
+</section>
+
+<!-- ============================ CHAPTER 5 ============================ -->
+<section class="chapter" id="ch5">
+  <div class="chapter-head">
+    <div class="num">5</div>
+    <div><h2>Compliance and Implications</h2><p class="sub">What compliance is for, what must be disclosed, how to handle conflicts of interest, and why due diligence is your best defence</p></div>
+  </div>
+  <p class="one-line">Compliance feels like paperwork, but it is the mechanism by which the public's trust in financial services is rebuilt. Disclose fully, avoid conflicts where you can, document everything.</p>
+  <div class="lo">Learning objective 5-1: discuss the impact of legal, regulatory and ethical compliance issues on the practice of financial advice.</div>
+
+  <h3>5.1 What compliance is</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Compliance activities arise from regulators' mission to protect the public. They ensure policies, procedures and controls exist throughout the financial system to support its integrity. Advisors, as <strong>financial intermediaries</strong> (the "middlemen" between product manufacturers and purchasers), should treat compliance as a professional obligation and as part of restoring public trust, not as a distraction from advice.</p></div>
+  <p>The IOSCO paper on compliance for market intermediaries gives the standard vocabulary:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:30%">Question</th><th>IOSCO's answer</th></tr></thead>
+    <tbody>
+      <tr><td>Why is compliance intrinsic to intermediaries?</td><td>They must have systems and processes to comply with all applicable laws, codes of conduct and standards of good practice, to <strong>protect investors</strong> and to reduce their own risk of legal or regulatory sanction, financial loss or reputational damage</td></tr>
+      <tr><td>How should intermediaries conduct themselves?</td><td>Protect the interests of clients; help preserve the integrity of markets; comply with every regulatory framework they operate in</td></tr>
+      <tr><td>Is following the letter of the law enough?</td><td>No. Firms should build a business culture that values high ethical and investor-protection standards, not just legal compliance</td></tr>
+      <tr><td>What does the compliance function do?</td><td>On an ongoing basis: <strong>identify, assess, advise on, monitor and report on</strong> the firm's compliance with securities regulatory requirements and the appropriateness of its supervisory procedures. It should also identify and <em>prevent</em> violations, which is more proactive than reporting alone; accurate reporting remains standard</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box hook"><p class="label"><span></span>Memory hook</p><p>Two key concepts of Chapter 5, same as Chapter 1: <strong>protect clients' interests</strong> and <strong>preserve market integrity</strong>. Compliance function verbs: identify, assess, advise, monitor, report (plus prevent).</p></div>
+
+  <h3>5.2 Disclosure documents</h3>
+  <p>What must be disclosed depends on the territory, but the principle is universal: give the client the essential information needed to make an informed decision, in a form that is not misleading, deceptive or confusing. <strong>Clarify rather than obscure.</strong> Rules typically require disclosure before the relationship begins (or within a reasonable period after) and during it, especially when advice is given, so the client can decide whether to use the advisor and whether to accept the advice.</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:36%">What to disclose (textbook list)</th><th>Why the client needs it</th></tr></thead>
+    <tbody>
+      <tr><td>Name, organisation, address, contact details (and in some territories, who is responsible for the advisor's actions)</td><td>Who am I dealing with and who stands behind them</td></tr>
+      <tr><td>Services provided and by whom, with qualifications and credentials</td><td>What am I buying and is this person competent</td></tr>
+      <tr><td>Methods of analysis, investment strategies and risk of loss</td><td>How will decisions be made; can I lose money</td></tr>
+      <tr><td>Disciplinary actions and current licences</td><td>Track record and authorisation</td></tr>
+      <tr><td>Fees and other expenses</td><td>What will this cost me</td></tr>
+      <tr><td>Advisor compensation: the <em>source</em>, not the amount, plus third-party payments</td><td>Who pays you and could that bias you. The advisor's total personal income is private; the client's right is to know what the relationship will cost them and how payment is made, including product-provider fees</td></tr>
+      <tr><td>Agency relationships and affiliations, including required brokerage agreements</td><td>Whose products and platforms I will be steered to</td></tr>
+      <tr><td>Other relevant business arrangements</td><td>Anything else that could shape the advice</td></tr>
+      <tr><td>Code of ethics</td><td>What standards you hold yourself to</td></tr>
+      <tr><td>Supervision</td><td>Who checks your work</td></tr>
+      <tr><td>Conflicts of interest</td><td>Covered next</td></tr>
+      <tr><td>Additional relevant information</td><td>Catch-all</td></tr>
+    </tbody>
+  </table></div>
+  <p>Requirements vary by role: someone who only sells products has different disclosure duties from someone who gives advice. Most territories fine or penalise non-compliance; for anyone wanting to operate transparently and ethically there is no alternative to full and accurate disclosure.</p>
+  <div class="box in"><p class="label"><span></span>India anchor</p><p>SEBI's IA Regulations require most of this list in the client agreement and disclosures: registration details, fee structure and how fees are charged, conflicts, disciplinary history, and the risk profiling and suitability process. The "source, not amount" rule maps to disclosing fee mode (fixed vs percentage of assets under advice) rather than your total revenue.</p></div>
+
+  <h3>5.3 Potential conflicts of interest</h3>
+  <p>Self-dealing and conflicts of interest were a significant factor in the 2007–2008 collapse (Forbes, Siedle). The textbook builds its guidance from that article and an SEC speech:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:30%">Rule</th><th>Detail</th></tr></thead>
+    <tbody>
+      <tr><td>Conflicts are generally to be avoided</td><td>This is about <strong>loyalty</strong>; the concern is improper economic incentives with a real cost to the investor</td></tr>
+      <tr><td>Tolerate a conflict only if it is unavoidable or the reward outweighs the risk</td><td>Some conflicts are unavoidable: the advisor can change things, or the client can move to another advisor. Reward outweighing risk is possible "but not likely"</td></tr>
+      <tr><td>Main source: employment by a product provider</td><td>An employee obligated to recommend the firm's products must disclose that limitation; the client then accepts it or goes elsewhere. The firm's products might be the best available, or another firm's might be better for the client</td></tr>
+      <tr><td>Other sources</td><td>Relationships with other providers; conflicting business relationships; provider incentives that bias recommendations</td></tr>
+      <tr><td>Subtle sources (poor firm culture)</td><td>Misaligned financial incentives; herd behaviour ("everybody else is doing it"); personal weaknesses (vanity, self-delusion, poor judgment)</td></tr>
+      <tr><td>Anything that benefits the advisor more than the client</td><td>Is a potential conflict. Placing the client's interest first mitigates most of it; full and accurate disclosure helps</td></tr>
+      <tr><td>Disclosure alone is not enough</td><td>Especially when disclosures are presented so as to obscure their existence, relevance or importance. Avoid conflicts first; disclose the ones that remain so the client can make an educated decision</td></tr>
+    </tbody>
+  </table></div>
+  <figure>
+    <svg viewBox="0 0 860 150" role="img" aria-label="Three-step approach to conflicts: identify, avoid, disclose">
+      <g font-size="13">
+        <rect x="20" y="30" width="250" height="90" rx="6" class="svg-navy-s"/>
+        <text x="145" y="60" text-anchor="middle" font-weight="600" class="svg-navy" font-size="15">1. Identify</text>
+        <text x="145" y="84" text-anchor="middle" class="svg-ink">Even indirect, non-obvious</text>
+        <text x="145" y="102" text-anchor="middle" class="svg-ink">conflicts the client can't see</text>
+        <rect x="305" y="30" width="250" height="90" rx="6" class="svg-amber-s"/>
+        <text x="430" y="60" text-anchor="middle" font-weight="600" class="svg-amber" font-size="15">2. Avoid</text>
+        <text x="430" y="84" text-anchor="middle" class="svg-ink">Run the business so that</text>
+        <text x="430" y="102" text-anchor="middle" class="svg-ink">conflicts don't arise where possible</text>
+        <rect x="590" y="30" width="250" height="90" rx="6" class="svg-seal-s"/>
+        <text x="715" y="60" text-anchor="middle" font-weight="600" class="svg-seal" font-size="15">3. Disclose</text>
+        <text x="715" y="84" text-anchor="middle" class="svg-ink">Unavoidable ones, fully, in a</text>
+        <text x="715" y="102" text-anchor="middle" class="svg-ink">way the client understands</text>
+        <path d="M270 75 L305 75" class="svg-navy-l" stroke-width="2"/><path d="M555 75 L590 75" class="svg-navy-l" stroke-width="2"/>
+      </g>
+    </svg>
+    <figcaption>Figure 5.1 — The three basic approaches for advisors acting in the client's best interest.</figcaption>
+  </figure>
+  <div class="box ex"><p class="label"><span></span>Example</p><p>A bank relationship manager is required to meet targets on the bank's own ULIP. A client wants a long-term equity allocation. Step 1: identify the conflict (the target). Step 2: avoid if possible (in a bank-employee role this cannot be fully avoided). Step 3: disclose plainly: "I am employed by the bank and my recommendations are limited to its products; a lower-cost index fund elsewhere may serve your goal better." The client can then accept or walk away. Burying that sentence on page 14 of a brochure would be disclosure that obscures, which the textbook says is not enough.</p></div>
+
+  <h4>The ethical frame: FPSB Principles 2 and 4</h4>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Principle</th><th>Text</th><th>What it adds to compliance</th></tr></thead>
+    <tbody>
+      <tr><td>Principle 2 — Integrity</td><td>Provide professional services with integrity. Honesty and candour in all professional matters. Clients place trust in the professional, and the ultimate source of that trust is personal integrity. Legitimate differences of opinion are allowed; deceit or subordination of principles is not. Observe both the letter and the spirit of the Code</td><td>Compliance answers legal requirements; ethics is the framework for how you carry compliance out</td></tr>
+      <tr><td>Principle 4 — Fairness</td><td>Be fair and reasonable in all professional relationships; disclose and manage conflicts of interest. Give clients what they are due, owed or should expect; honesty and disclosure of material conflicts; manage one's own feelings, prejudices and desires; treat others as you would want to be treated</td><td>The conflict-of-interest rule stated as an ethical duty</td></tr>
+    </tbody>
+  </table></div>
+  <p>Consequences differ: breaching an ethical standard brings censure from the professional body; breaching a law or regulation can mean losing the right to practise, criminal prosecution or severe penalties. The advisor should aim above the legal minimum: practise at a level that benefits clients, other professionals, the profession and the public.</p>
+
+  <h3>5.4 Due diligence</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Due diligence is the "measure of prudence, responsibility and diligence expected from, and ordinarily exercised by, a reasonable and prudent person under the circumstances". For advisors it is the <strong>checking process</strong> after advice is given: systematically verify the accuracy of the client's information; ensure relevant legislation has been complied with; ensure full disclosure was made; and keep a full record of conversations and the justification for decisions in the client file.</p></div>
+  <p>Clients are becoming more litigious as they become better educated about finance and their rights. Two court cases in the text make the point:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:32%">Case</th><th>Lesson</th></tr></thead>
+    <tbody>
+      <tr><td>Swansson (plaintiff) v Harrison (advisor) and others</td><td>The losing advisor's own conclusion: keep meticulous notes; document all discussions with clients and prospects; get everything signed off; keep a paper trail for everything</td></tr>
+      <tr><td>Commonwealth Financial Planning Ltd v Couper (NSWCA 444, 2013)</td><td>The advisor's defence was severely compromised by poor record keeping and ignorance of his obligations under the territory's insurance law. The judge observed that many advisors haven't known their obligations, and cases like this are making them aware</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box in"><p class="label"><span></span>India anchor</p><p>SEBI IA Regulations require you to maintain records (KYC, risk profile, suitability assessment, rationale for each recommendation, client agreement, and physical or electronic records of client communications) for at least five years, and to have an annual compliance audit. That is due diligence made mandatory. For your own practice, a written rationale attached to every recommendation is the cheapest litigation insurance you can buy.</p></div>
+
+  <div class="box hook"><p class="label"><span></span>Exam traps for Chapter 5</p>
+    <ul>
+      <li>Compensation disclosure is about the <em>source</em> of pay, not the advisor's total income.</li>
+      <li>Conflicts: avoid first, disclose second. Disclosure that obscures is not compliance.</li>
+      <li>Principle 2 = Integrity; Principle 4 = Fairness (which contains "disclose and manage conflicts"). Principle 1 (client first) was Chapter 2.</li>
+      <li>Due diligence is a <em>post-advice</em> checking process in the textbook's framing, and its centrepiece is the client file.</li>
+    </ul>
+  </div>
+
+  <h3>Chapter 5 review questions</h3>
+  <details><summary>1. What is a financial intermediary and how does being one relate to compliance?<span class="q-tag">Review Q1</span></summary><div class="body"><p>An intermediary is a firm or individual serving as the liaison ("middleman") between financial product manufacturers and purchasers. Compliance is intrinsic to intermediaries because they must have systems and processes in place to comply with all applicable laws, codes of conduct and standards of good practice, in order to protect investors and to reduce their own risk of legal or regulatory sanction, financial loss or reputational damage.</p></div></details>
+  <details><summary>2. In general, what should the advisor disclose, and why?<span class="q-tag">Review Q2</span></summary><div class="body"><p>Name, organisation and contact details; services provided and by whom, with qualifications; methods of analysis, strategies and risk of loss; disciplinary actions and licences; fees and expenses; compensation (source, not amount) and third-party payments; agency relationships and affiliations including brokerage agreements; other business arrangements; code of ethics; supervision; conflicts of interest; anything else relevant. Why: the client needs essential information to make an informed decision; disclosures must not be misleading, deceptive or confusing; the principle is to clarify rather than obscure.</p></div></details>
+  <details><summary>3. How does the advisor's relationship with an employer potentially cause a conflict of interest?<span class="q-tag">Review Q3</span></summary><div class="body"><p>When the advisor is employed by a product provider, the employer requires the advisor to use its products; the advisor has limited or no discretion over the employer's policies. The employer's products may be the best available, but products from other firms may be better for the client. The advisor must disclose this limitation so the client can accept it or choose another advisor.</p></div></details>
+</section>
+
+<!-- ============================ CHAPTER 6 ============================ -->
+<section class="chapter" id="ch6">
+  <div class="chapter-head">
+    <div class="num">6</div>
+    <div><h2>Anti-Money Laundering</h2><p class="sub">What laundering is, the global rulebook (FATF, World Bank, Basel), how to detect it, and how an advisor complies through customer due diligence</p></div>
+  </div>
+  <p class="one-line">Money laundering is making dirty money look clean. Advisors are one of the doors it comes through, so the law makes you responsible for knowing who your client is, who really owns the money, and where it came from.</p>
+  <div class="lo">Learning objectives 6-1 to 6-6: understand money laundering, its purpose and practice; identify global AML laws; avoid laundering personally and by clients; comply with AML regulation; assess risks to the financial system; assess case histories.</div>
+
+  <h3>6.1 Glossary of key global organisations</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Body</th><th style="width:16%">Founded</th><th>Role in AML</th></tr></thead>
+    <tbody>
+      <tr><td>World Bank Group</td><td>189 member nations</td><td>Funding and knowledge for developing countries; publishes the AML/CFT Reference Guide and the eight legal-system requirements below</td></tr>
+      <tr><td>UNODC (UN Office on Drugs and Crime)</td><td>1997, from a merger of the UN International Drug Control Program and the Centre for International Crime Prevention</td><td>Global lead against illicit drugs, crime and terrorism; field offices worldwide; Millennium Declaration commitments against transnational crime and terrorism</td></tr>
+      <tr><td>Vienna Convention (1988 UN Convention Against Illicit Traffic in Narcotic Drugs and Psychotropic Substances)</td><td>1988</td><td>First international definition of money laundering, limited to <strong>drug trafficking</strong> as the predicate offence</td></tr>
+      <tr><td>Palermo Convention (UN Convention Against Transnational Organized Crime, UNTOC)</td><td>Adopted 15 November 2000</td><td>Requires parties to apply money laundering offences to the <strong>widest range of predicate offences</strong> (Article 2). Three Palermo Protocols: trafficking in persons (especially women and children); smuggling of migrants by land, sea and air; illicit manufacturing and trafficking of firearms</td></tr>
+      <tr><td>FATF (Financial Action Task Force)</td><td>1989, by ministers of member jurisdictions</td><td>The recognised international standard-setter for AML. A "policymaking body" generating political will for national reforms. Its <strong>40 Recommendations</strong> are the international standard against money laundering, terrorist financing and proliferation financing; it monitors members, studies laundering techniques and identifies national vulnerabilities</td></tr>
+      <tr><td>OAS (Organization of American States)</td><td>30 April 1948; 35 nations</td><td>Regional solidarity in the Americas</td></tr>
+      <tr><td>CICAD (Inter-American Drug Abuse Control Commission)</td><td>1986, within OAS</td><td>Multilateral cooperation against drug production, abuse and trafficking; published the Model Regulations that define the three "states of mind"</td></tr>
+      <tr><td>Basel Committee on Banking Supervision (BCBS)</td><td>1974, by G10 central bank governors</td><td>Forum for banking supervisors; capital adequacy standards, Core Principles for Effective Banking Supervision, Concordat on cross-border supervision; distilled CDD into <strong>Know Your Customer</strong></td></tr>
+    </tbody>
+  </table></div>
+  <div class="box flag"><p class="label">A flag on the textbook's glossary</p><p>The glossary entry labelled "Vienna Convention" describes the 1969 Vienna Convention on the Law of Treaties (in force 1980, 116 ratifications by January 2018). That is a different treaty. The Vienna Convention that matters for AML, and the one the AML sections and footnotes actually cite, is the <strong>1988</strong> UN drug convention. If asked "which convention limits money laundering's causal offences to drug trafficking", the answer is the Vienna Convention (1988); if asked which one broadened predicate offences, it is Palermo (2000).</p></div>
+
+  <h3>6.2 What money laundering is</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>Money laundering is the practice of making money gained through illegal activity appear legal. FATF's version: the processing of criminal proceeds to disguise their illegal origin and legitimise the ill-gotten gains of crime. Usable description for the exam: illegal activities produce income, which is disguised to conceal its origin; the laundered money is then used in the mainstream economy for all purposes, including funding terrorism. Criminals profit; society is harmed.</p></div>
+  <p>The UN conventions define the offence in three limbs; they are broad on purpose so that almost any handling of dirty money is caught:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:26%">Limb</th><th>Conduct</th><th>Everyday example</th></tr></thead>
+    <tbody>
+      <tr><td>1. Conversion or transfer</td><td>Moving or changing property known to be from an offence, to conceal its origin or help someone evade the consequences</td><td>Wiring drug cash to an overseas account</td></tr>
+      <tr><td>2. Concealment or disguise</td><td>Hiding the true nature, source, location, disposition, movement, rights over or ownership of such property</td><td>Holding assets in a shell company with a nominee director</td></tr>
+      <tr><td>3. Acquisition, possession or use</td><td>Receiving or using property, knowing at the time of receipt that it came from an offence</td><td>Accepting a "gift" of a flat bought with bribe money</td></tr>
+    </tbody>
+  </table></div>
+  <p><strong>Terrorism</strong> has no universally accepted definition (political and religious sensitivities), and most regulations don't define it either. The working consensus: acts intended to cause death or serious bodily injury to people not taking part in armed conflict, designed to intimidate a population or compel a government. Funds used for such purposes fall within money laundering's criteria. Scale: FATF estimates roughly <strong>2.7% of world GDP</strong> is laundered; the true figure is unknowable but "exceptionally large".</p>
+
+  <h3>6.3 The three stages of laundering</h3>
+  <figure>
+    <svg viewBox="0 0 860 300" role="img" aria-label="Three stages of money laundering: placement, layering, integration">
+      <g font-size="13">
+        <rect x="20" y="20" width="255" height="220" rx="6" class="svg-seal-s"/>
+        <text x="147" y="50" text-anchor="middle" font-weight="600" class="svg-seal" font-size="16">1. Placement</text>
+        <text x="147" y="74" text-anchor="middle" class="svg-ink2">Get cash into the system</text>
+        <text x="35" y="104" class="svg-ink">Break large cash into small</text><text x="35" y="122" class="svg-ink">deposits ("structuring")</text>
+        <text x="35" y="148" class="svg-ink">Buy cheques, money orders,</text><text x="35" y="166" class="svg-ink">then deposit them elsewhere</text>
+        <text x="35" y="196" class="svg-ink2">Where: near the crime, often</text><text x="35" y="214" class="svg-ink2">the territory of origin</text>
+        <rect x="302" y="20" width="255" height="220" rx="6" class="svg-amber-s"/>
+        <text x="429" y="50" text-anchor="middle" font-weight="600" class="svg-amber" font-size="16">2. Layering</text>
+        <text x="429" y="74" text-anchor="middle" class="svg-ink2">Distance the money from its source</text>
+        <text x="317" y="104" class="svg-ink">Buy and sell investments;</text><text x="317" y="122" class="svg-ink">wire through many banks and countries</text>
+        <text x="317" y="148" class="svg-ink">Disguise transfers as payments</text><text x="317" y="166" class="svg-ink">for goods or services</text>
+        <text x="317" y="196" class="svg-ink2">Where: offshore centres, big business</text><text x="317" y="214" class="svg-ink2">hubs, non-cooperating jurisdictions</text>
+        <rect x="584" y="20" width="255" height="220" rx="6" class="svg-leaf-s"/>
+        <text x="711" y="50" text-anchor="middle" font-weight="600" class="svg-leaf" font-size="16">3. Integration</text>
+        <text x="711" y="74" text-anchor="middle" class="svg-ink2">Re-enter the legitimate economy</text>
+        <text x="599" y="104" class="svg-ink">Buy real estate, luxury assets,</text><text x="599" y="122" class="svg-ink">business ventures</text>
+        <text x="599" y="148" class="svg-ink">Money now looks like ordinary</text><text x="599" y="166" class="svg-ink">investment income</text>
+        <text x="599" y="196" class="svg-ink2">Where: possibly yet another</text><text x="599" y="214" class="svg-ink2">location with good investments</text>
+        <path d="M275 130 L302 130" class="svg-navy-l" stroke-width="3"/><path d="M557 130 L584 130" class="svg-navy-l" stroke-width="3"/>
+        <text x="430" y="278" text-anchor="middle" class="svg-ink2">Launderers prefer stable financial systems with weak AML programmes, because the goal is to get the money back to whoever generated it</text>
+      </g>
+    </svg>
+    <figcaption>Figure 6.1 — Placement, layering, integration. Each stage tends to happen in a different place.</figcaption>
+  </figure>
+  <div class="box ex"><p class="label"><span></span>Worked example</p><p>A smuggler holds ₹3 crore in cash. <em>Placement</em>: over three months, associates deposit ₹9 lakh at a time across 35 accounts in different banks, each below the ₹10 lakh cash-transaction reporting threshold. <em>Layering</em>: the deposits buy units in liquid funds, which are redeemed and wired to a trading company in Dubai as "consultancy fees", then on to a Singapore account. <em>Integration</em>: the Singapore company "invests" in a Hyderabad real estate project, and the smuggler's family receives a legitimate-looking flat. Every stage used a financial intermediary; any one of them asking "where did this come from?" could have broken the chain.</p></div>
+  <p>Why it matters beyond the crime itself: financial services run on public trust and a perception of high legal, professional and ethical standards. A bank or advisor through whom money is laundered risks becoming part of the criminal enterprise, or being seen that way, which damages its reputation and can undermine a territory's whole economic environment.</p>
+
+  <h3>6.4 Global rules and regulations</h3>
+  <h4>The World Bank's eight legal-system requirements</h4>
+  <p>Each territory writes its own AML law, but to cooperate with the global community it incorporates these eight:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:8%">No.</th><th>Requirement</th><th>India anchor</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Criminalise money laundering in accordance with the Vienna and Palermo Conventions</td><td>Prevention of Money Laundering Act (PMLA), 2002</td></tr>
+      <tr><td>2</td><td>Criminalise terrorism and terrorist financing</td><td>Unlawful Activities (Prevention) Act, 1967</td></tr>
+      <tr><td>3</td><td>Laws for seizure, confiscation and forfeiture of illegal proceeds</td><td>PMLA attachment and confiscation provisions enforced by the Enforcement Directorate</td></tr>
+      <tr><td>4</td><td>Define the types of entities and persons covered by AML laws</td><td>"Reporting entities": banks, financial institutions, intermediaries (including SEBI-registered advisers and distributors)</td></tr>
+      <tr><td>5</td><td>Integrity standards for financial institutions</td><td>Fit-and-proper norms</td></tr>
+      <tr><td>6</td><td>Consistent laws implementing the FATF Recommendations</td><td>PMLA rules updated after FATF mutual evaluations</td></tr>
+      <tr><td>7</td><td>Cooperation among competent authorities</td><td>FIU-IND sharing with ED, SEBI, RBI, tax authorities</td></tr>
+      <tr><td>8</td><td>Investigations</td><td>ED investigations under PMLA</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>The predicate ("underlying") offence categories (FATF)</h4>
+  <p>For laundering to be a crime, the law must identify the underlying activities that generate the money. FATF's minimum list of categories (broad by design, to give governments wide powers):</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Group</th><th>Categories</th></tr></thead>
+    <tbody>
+      <tr><td>Organised crime and terror</td><td>Participation in an organised criminal group and racketeering; terrorism including terrorism financing</td></tr>
+      <tr><td>Trafficking</td><td>Human beings and migrant smuggling; sexual exploitation including of children; narcotic drugs and psychotropic substances; arms; stolen and other goods</td></tr>
+      <tr><td>Dishonesty offences</td><td>Corruption and bribery; fraud; counterfeiting currency; counterfeiting and piracy of products; forgery; insider trading and market manipulation</td></tr>
+      <tr><td>Violence and coercion</td><td>Murder, grievous bodily injury; kidnapping, illegal restraint and hostage taking; robbery or theft; extortion; piracy</td></tr>
+      <tr><td>Other</td><td>Environmental crime; smuggling</td></tr>
+    </tbody>
+  </table></div>
+  <p>Twenty-one categories in all. Note that <strong>insider trading and market manipulation</strong> are on the list: securities offences are predicate offences, which puts advisors directly in scope.</p>
+
+  <h4>State of mind: three levels of culpability</h4>
+  <p>AML law looks at intent. Actual knowledge of the illicit origin may or may not be required; some territories hold that the advisor <em>should have known or suspected</em>. The OAS/CICAD Model Regulations name three states of mind, and courts may infer them from objective facts because proving what someone thought is hard:</p>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:28%">State of mind</th><th>Meaning</th><th>Advisor example</th></tr></thead>
+    <tbody>
+      <tr><td>Had knowledge</td><td>Knew the property was proceeds of crime</td><td>Client says the cash is from unreported sales and you help invest it</td></tr>
+      <tr><td>Should have known</td><td>A reasonable person in your position would have realised</td><td>A teacher deposits $540,000 a week after opening a policy with a tiny premium (Case Study I)</td></tr>
+      <tr><td>Wilfully (intentionally) ignorant</td><td>Suspected, and chose not to look</td><td>Mr B in Case Study III had suspicions and decided not to investigate</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box hook"><p class="label"><span></span>Memory hook</p><p><strong>Knew, should have known, chose not to know.</strong> All three can be liable. "I didn't ask" is not a defence.</p></div>
+
+  <h3>6.5 Financial institutions and ML/FT risk</h3>
+  <p>FATF defines a financial institution by <em>activity</em>, not by licence: any person or entity that, as a business, does one or more of these for customers:</p>
+  <div class="tbl"><table>
+    <thead><tr><th>FATF activity</th><th>Who does this in India</th></tr></thead>
+    <tbody>
+      <tr><td>Accepting deposits and other repayable funds (including private banking)</td><td>Banks, NBFCs taking deposits</td></tr>
+      <tr><td>Lending (consumer and mortgage credit, factoring, finance of commercial transactions, forfaiting)</td><td>Banks, NBFCs, HFCs</td></tr>
+      <tr><td>Financial leasing (excluding consumer products)</td><td>Leasing companies</td></tr>
+      <tr><td>Transfer of money or value (formal and informal, e.g., alternative remittance)</td><td>Banks, payment system operators, hawala (informal, illegal)</td></tr>
+      <tr><td>Issuing and managing means of payment (cards, cheques, money orders, drafts, e-money)</td><td>Banks, PPI issuers</td></tr>
+      <tr><td>Financial guarantees and commitments</td><td>Banks</td></tr>
+      <tr><td>Trading in money-market instruments, foreign exchange, FX/interest-rate/index instruments, transferable securities, commodity futures</td><td>Brokers, dealers, authorised dealers</td></tr>
+      <tr><td>Participation in securities issues and related services</td><td>Merchant bankers</td></tr>
+      <tr><td>Individual and collective portfolio management</td><td>PMS providers, AMCs, <strong>investment advisers</strong></td></tr>
+      <tr><td>Safekeeping and administration of cash or liquid securities</td><td>Custodians, depositories</td></tr>
+      <tr><td>Otherwise investing, administering or managing funds on behalf of others</td><td>Advisers and distributors</td></tr>
+      <tr><td>Underwriting and placement of life insurance and other investment-related insurance (insurers, agents and brokers)</td><td>Insurers, agents, brokers</td></tr>
+      <tr><td>Money and currency changing</td><td>Authorised money changers</td></tr>
+    </tbody>
+  </table></div>
+  <p>Many advisors work in environments that fall within this list, which is why the chapter applies to you and not only to banks. The 40 Recommendations were written for banks but apply to insurance and securities too. IAIS has issued its own due diligence guidance (mirroring the 40 Recommendations, with extra life-insurance guidance); IOSCO has not specified due diligence requirements.</p>
+
+  <h3>6.6 Detecting money laundering</h3>
+  <p>Laundering cannot happen without financial institutions, certain businesses and certain persons, so the international community regulates entry into the industry:</p>
+  <ul>
+    <li>Licensing and authorisation to engage in business.</li>
+    <li>Fit-and-proper evaluation of directors and senior managers (integrity, expertise, experience).</li>
+    <li>Prohibition on directors and managers with criminal records or adverse regulatory findings.</li>
+    <li>Prohibition on ownership or control by those with criminal records.</li>
+  </ul>
+  <h4>FATF's four broad customer due diligence (CDD) measures</h4>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:8%">No.</th><th>Measure</th><th>In practice</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Identify the customer and verify identity using reliable, independent source documents, data or information</td><td>PAN, Aadhaar, passport; CKYC</td></tr>
+      <tr><td>2</td><td>Identify the beneficial owner and take reasonable measures to verify it; for legal persons and arrangements, understand the ownership and control structure</td><td>Who owns 10%+ of the company; who controls the trust</td></tr>
+      <tr><td>3</td><td>Obtain information on the purpose and intended nature of the business relationship</td><td>"Why do you want this account / product?"</td></tr>
+      <tr><td>4</td><td>Conduct ongoing due diligence: scrutinise transactions through the relationship so they are consistent with what you know of the customer, their business and risk profile, including source of funds where necessary</td><td>Transaction monitoring; periodic KYC refresh</td></tr>
+    </tbody>
+  </table></div>
+  <p>CDD must be performed when:</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Trigger</th><th>Note</th></tr></thead>
+    <tbody>
+      <tr><td>Establishing a business relationship</td><td>Onboarding</td></tr>
+      <tr><td>Carrying out occasional transactions above the designated threshold (e.g., <strong>$10,000</strong>) or wire transfers covered by FATF interpretive notes</td><td>India's cash reporting threshold to FIU-IND is ₹10 lakh (aggregated per month)</td></tr>
+      <tr><td>There is a suspicion of money laundering or terrorist financing</td><td>Regardless of amount</td></tr>
+      <tr><td>Doubts about the veracity or adequacy of previously obtained identification data</td><td>Re-KYC</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>Basel: Know Your Customer</h4>
+  <p>The Basel Committee (supervisors and central banks of Belgium, Canada, France, Germany, Italy, Japan, Luxembourg, Netherlands, Sweden, Switzerland, UK, US) distilled the CDD guidelines into a single rule: <strong>Know Your Customer</strong>. Supervisory principles that flow from its Core Principles:</p>
+  <ul>
+    <li>Supervisors can review and reject significant ownership changes and set minimum capital.</li>
+    <li>Inter-organisational lending and transactions must be at arm's length.</li>
+    <li>Banks must have a comprehensive risk management process.</li>
+    <li>Strict KYC rules that promote high ethical and professional standards.</li>
+    <li>Independent validation of supervisory information (on-site exams or external auditors).</li>
+    <li>Global consolidated supervision.</li>
+    <li>Local operations of foreign banks held to the same standards as domestic institutions.</li>
+  </ul>
+  <p>Supervision therefore extends to cross-border operations, and advisors must protect and oversee any cross-border relationships they have. Who counts as a customer (Basel, provision 66):</p>
+  <ol>
+    <li>A person or entity who maintains an account, or on whose behalf one is maintained (beneficial owners).</li>
+    <li>Beneficiaries of transactions conducted by professional intermediaries (agents, accountants, lawyers).</li>
+    <li>A person or entity connected with a financial transaction who can pose a significant risk to the bank.</li>
+  </ol>
+
+  <h3>6.7 Complying: standard and enhanced CDD</h3>
+  <div class="box idea"><p class="label"><span></span>Core idea</p><p>The crucial question is whether the customer is acting on their own behalf or whether there is a <strong>beneficial owner</strong> not visible in the documents. When in doubt, do due diligence. This is hardest with <strong>tiered ownership</strong> (one corporation owning or controlling others): keep asking "who is the real parent owner?"</p></div>
+  <p>Advisors need clear customer acceptance and identification procedures. Independent advisors must build these themselves; employed advisors must comply with the institution's. Not every client needs deep investigation, but firms should have specific guidance for high-risk profiles, using standard risk indicators: personal background, territory of origin, high-profile positions, linked accounts, nature of business activities.</p>
+  <figure>
+    <svg viewBox="0 0 860 300" role="img" aria-label="Customer due diligence workflow from onboarding through risk assessment to standard or enhanced procedures">
+      <g font-size="13">
+        <rect x="20" y="40" width="200" height="70" rx="6" class="svg-navy-s"/>
+        <text x="120" y="70" text-anchor="middle" font-weight="600" class="svg-navy">New client relationship</text>
+        <text x="120" y="92" text-anchor="middle" class="svg-ink2">or trigger event</text>
+        <path d="M220 75 L260 75" class="svg-navy-l" stroke-width="2"/>
+        <rect x="260" y="20" width="200" height="110" rx="6" class="svg-amber-s"/>
+        <text x="360" y="46" text-anchor="middle" font-weight="600" class="svg-amber">Assess ML/FT risk</text>
+        <text x="360" y="70" text-anchor="middle" class="svg-ink2" font-size="12">background, country of origin,</text>
+        <text x="360" y="88" text-anchor="middle" class="svg-ink2" font-size="12">high-profile position, linked</text>
+        <text x="360" y="106" text-anchor="middle" class="svg-ink2" font-size="12">accounts, nature of business</text>
+        <path d="M460 60 L520 60" class="svg-navy-l" stroke-width="2"/>
+        <rect x="520" y="10" width="320" height="130" rx="6" class="svg-leaf-s"/>
+        <text x="680" y="34" text-anchor="middle" font-weight="600" class="svg-leaf">Standard CDD (normal risk)</text>
+        <text x="535" y="56" class="svg-ink">Name and legal form; address; directors;</text>
+        <text x="535" y="74" class="svg-ink">principal owners or beneficiaries; who can bind</text>
+        <text x="535" y="92" class="svg-ink">the organisation; agents; account number</text>
+        <text x="535" y="112" class="svg-ink2" font-size="12">Insurance adds: financial assessment, need analysis,</text>
+        <text x="535" y="128" class="svg-ink2" font-size="12">payment, benefit, ID copies, post-sale and claims records</text>
+        <rect x="520" y="155" width="320" height="130" rx="6" class="svg-seal-s"/>
+        <text x="680" y="181" text-anchor="middle" font-weight="600" class="svg-seal">Enhanced CDD (higher risk)</text>
+        <text x="535" y="205" class="svg-ink">All of standard, plus investigate:</text>
+        <text x="535" y="223" class="svg-ink">personal background, country of origin,</text>
+        <text x="535" y="241" class="svg-ink">source of wealth, links to high-profile or</text>
+        <text x="535" y="259" class="svg-ink">government persons, linked accounts,</text>
+        <text x="535" y="277" class="svg-ink">purpose and nature of business</text>
+        <path d="M460 110 Q 490 170, 520 210" fill="none" class="svg-seal-l" stroke-width="2"/>
+        <rect x="20" y="155" width="440" height="130" rx="6" class="svg-navy-s"/>
+        <text x="240" y="181" text-anchor="middle" font-weight="600" class="svg-navy">When an agent represents a beneficiary (trusts, companies) — Rec. 5</text>
+        <text x="35" y="207" class="svg-ink">Verify the background individual or organisation: name and legal form,</text>
+        <text x="35" y="225" class="svg-ink">address, directors, principal owners or beneficiaries, provisions</text>
+        <text x="35" y="243" class="svg-ink">regulating the power to bind, agents acting for it, account number</text>
+        <text x="35" y="269" class="svg-ink2">Record all of it in the AML section of the client file</text>
+      </g>
+    </svg>
+    <figcaption>Figure 6.2 — The CDD workflow. Everything gathered goes into the AML notes of the client file, showing the advisor's reasonable steps to verify identity and the nature of transactions.</figcaption>
+  </figure>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:24%">Situation</th><th>Extra precautions</th></tr></thead>
+    <tbody>
+      <tr><td>Cross-border services</td><td>Learn the respondent bank's policies and procedures; have it accurately identify the customer</td></tr>
+      <tr><td>Non-face-to-face customers (internet, phone)</td><td>Especially hard to identify to a risk-mitigating degree; no simple solution; senior management should be involved in deciding whether to enter the arrangement</td></tr>
+      <tr><td>Independent advisor</td><td>Must determine and comply with the AML law of the home territory and every territory in which they do business</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box ex"><p class="label"><span></span>Text example 2: what basic information should an advisor get and keep from a client to support AML?</p><p>Reasonable verification of identity and of the nature of transactions, recorded in the AML portion of the client file. For an organisation: name and legal form, address, names of directors, principal owners or beneficiaries, provisions regulating the power to bind it, agents acting for it, account number. For insurance: financial assessment, need analysis, payment method, benefit description, copies of ID documents, post-sale records, claim settlements. For a higher-risk client, add the enhanced items: background, country of origin, source of wealth, links to high-profile persons, linked accounts, purpose of business.</p></div>
+
+  <h4>Caveats to the risk-based approach</h4>
+  <p>The purpose of AML rules is to mitigate the risk of laundering and terrorist financing; the purpose of CDD is to help you <em>judge</em> risk, not to add a layer of paperwork. Most clients are not launderers. Policies must not exclude the socially disadvantaged or restrict the public's access to financial services, and everyone must respect individual rights including privacy. Money laundering is a fact of life; every advisor has an individual responsibility to take all reasonable measures, and prudent procedures help even if the problem is never fully solved.</p>
+  <div class="box in"><p class="label"><span></span>India anchor: the whole chapter in Indian terms</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Textbook concept</th><th>Indian equivalent</th></tr></thead>
+      <tbody>
+        <tr><td>Criminalisation per Vienna/Palermo</td><td>PMLA 2002 (offence of money laundering in Section 3; scheduled predicate offences)</td></tr>
+        <tr><td>Financial intelligence and reporting</td><td>FIU-IND; Cash Transaction Reports (₹10 lakh+), Suspicious Transaction Reports (no threshold), Counterfeit Currency Reports</td></tr>
+        <tr><td>CDD / KYC</td><td>RBI KYC Master Direction; SEBI KYC and KRA framework; Central KYC Registry; officially valid documents</td></tr>
+        <tr><td>Beneficial ownership</td><td>PML Rules define beneficial owner by ownership/control thresholds for companies, partnerships and trusts</td></tr>
+        <tr><td>Enhanced CDD</td><td>Politically exposed persons, non-resident clients, high-risk jurisdictions per FATF lists</td></tr>
+        <tr><td>Ongoing due diligence</td><td>Periodic KYC updation by risk category; transaction monitoring; designated Principal Officer for reporting</td></tr>
+        <tr><td>Enforcement</td><td>Enforcement Directorate; attachment and confiscation; PMLA special courts</td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">As a SEBI-registered adviser you will be a "reporting entity" under PMLA with your own AML policy, Principal Officer designation and STR obligations. Thresholds and rules change; verify current PML Rules before relying on any figure above.</p>
+  </div>
+
+  <div class="box hook"><p class="label"><span></span>Exam traps for Chapter 6</p>
+    <ul>
+      <li>Stages: placement (in), layering (around), integration (out). Structuring cash deposits is <em>placement</em>, not layering.</li>
+      <li>Vienna (1988) = drugs only; Palermo (2000) = widest range of predicate offences. FATF = standard-setter, 40 Recommendations, founded 1989. Basel = KYC, founded 1974.</li>
+      <li>Four CDD measures: identify customer, identify beneficial owner, purpose of relationship, ongoing due diligence. Not "report to police".</li>
+      <li>Beneficial owner = the <em>natural person</em> who ultimately owns or controls, including through chains of ownership.</li>
+      <li>IAIS has due diligence guidance; IOSCO has not specified any.</li>
+      <li>2.7% of world GDP; $10,000 example threshold; 21 predicate categories; 8 World Bank requirements; 3 states of mind; 3 Palermo protocols.</li>
+    </ul>
+  </div>
+
+  <h3>Chapter 6 case studies</h3>
+  <details><summary>Case Study I — The life insurance purchase (Mrs T, Mr B, Company C)<span class="q-tag">Case</span></summary><div class="body">
+    <p><strong>Facts.</strong> Mrs T, a teacher, buys a life policy with a small initial premium through Mr B, an agent of Insurer C and her cousin. Two days later Company C pays an additional premium of over $540,000 on her behalf. A month later she cancels and the refund goes to three accounts: Mr MD (managing director of Company C) $240,000; Ms N (his niece) $150,000; Mr U $150,000. All three move the money onward to other banks.</p>
+    <p><strong>1. Concerns?</strong> Almost everything: a premium wildly out of line with a teacher's income and with the tiny initial premium; the premium paid by the insurer itself on her behalf; early cancellation (a classic use of insurance products as a laundering vehicle: pay in, cancel, receive a "clean" refund cheque); refund split to third parties unrelated to the policyholder, one of whom is the insurer's own managing director; immediate onward transfers (layering); a family relationship between agent and client that weakens independence.</p>
+    <p><strong>2. What the agent should have done.</strong> Standard CDD at inception: verify identity, financial assessment and need analysis (why does a teacher need cover funded by $540,000?), source of funds, purpose of the policy. The mismatch alone should have triggered an internal escalation or suspicious-transaction report, and a refusal to process the additional premium without explanation.</p>
+    <p><strong>3. Customer identification needed.</strong> Identity documents; financial assessment; need analysis; payment method details; benefit description; source of funds for the large premium; identity and relationship of any third party paying or receiving money; post-sale records including the cancellation and refund instructions.</p>
+    <p><strong>4. Liability?</strong> Yes, potentially. On the "should have known" standard a reasonable agent would have recognised the red flags; on the "wilfully ignorant" standard a cousin who asked no questions is exposed. Afterwards: the money was linked to fuel smuggling; accounts were blocked and the case sent for prosecution.</p>
+  </div></details>
+  <details><summary>Case Study II — The intermediary broker ($250,000 in three cash instalments)<span class="q-tag">Case</span></summary><div class="body">
+    <p><strong>Facts.</strong> A person invests $250,000 by handing a broker three cash instalments. The broker does not report the cash, deposits it into his own bank account (the bank is not suspicious because the broker is known to be connected to a local financial firm), then pays the investment company with three cheques from his own account, so the company sees nothing unusual.</p>
+    <p><strong>1. Red flags.</strong> Large cash; split into three instalments (structuring, i.e. placement); use of the broker's personal account as a pass-through to break the audit trail (layering); no reporting; the investment company receives cheques from the broker, not the investor, so it cannot do CDD on the real customer.</p>
+    <p><strong>2. Should the bank have acted differently?</strong> Yes. Three sizeable cash deposits into a broker's personal account warranted CDD: purpose of the deposits, source of funds, whether the broker was acting for a third party (beneficial owner). Familiarity with the depositor is not a substitute for scrutiny; the textbook's point is that ongoing due diligence means checking transactions against what you know of the customer's business.</p>
+    <p><strong>3. Is the broker culpable?</strong> Yes. He accepted unexplained cash, failed to report it, and deliberately disguised its source by routing it through his own account: conversion/transfer and concealment, the first two limbs of the definition, with at least "should have known" intent.</p>
+    <p><strong>4. Bank or firm liable?</strong> The bank is exposed for failing CDD and reporting duties on the cash deposits; the investment firm less so, since it was deceived, but it should still have asked who the beneficial owner was when a broker paid on someone else's behalf. Afterwards: the depositor was arrested for drug trafficking.</p>
+  </div></details>
+  <details><summary>Case Study III — The offshore investment scheme (Mr A, Mr B, Mr C; $140 million)<span class="q-tag">Case</span></summary><div class="body">
+    <p><strong>Facts.</strong> Mr A runs, through an offshore company, a scheme promising high returns from government-backed securities and raises about $140 million, mostly from small investors. Some funds are paid out through accounts of another offshore company headed by Mr B and Mr C. Mr B helps Mr C reallocate investor funds inappropriately. Mr B has suspicions about the funds' origin but decides not to investigate. The scheme closes; investors recover nothing.</p>
+    <p><strong>1. Illegal activities?</strong> Fraud (the scheme itself, a predicate offence on the FATF list), misappropriation of investor funds, and money laundering through the second offshore company's accounts (conversion/transfer and concealment).</p>
+    <p><strong>2. Who is guilty?</strong> Mr A (operated the fraud) and Mr C (misappropriated funds) were convicted of fraud and imprisoned. Mr B was found civilly liable: the court held he should have known, as a reasonable person, that funds were being misappropriated and should have alerted the authorities; he was ordered to repay investors.</p>
+    <p><strong>3. Should Mr B have acted differently? Why?</strong> Yes. Having suspicions and choosing not to investigate is the "wilfully ignorant" state of mind. The correct actions: conduct enhanced due diligence on the source of funds and the purpose of the transfers, refuse to process the reallocations, and report the suspicion to the relevant authority. Suspicion creates a duty to act; deliberate blindness is treated as culpability.</p>
+  </div></details>
+
+  <h3>Chapter 6 review questions</h3>
+  <details><summary>1. What is a usable description of money laundering?<span class="q-tag">Review Q1</span></summary><div class="body"><p>Illegal activities produce income, which is then disguised to conceal its origins. Once laundered, the money can be used in the mainstream economy for any purpose, including funding terrorism. Criminals profit and society is harmed. FATF's shorter form: the processing of criminal proceeds to disguise their illegal origin.</p></div></details>
+  <details><summary>2. What are the activity categories that comprise money laundering?<span class="q-tag">Review Q2</span></summary><div class="body"><p>The FATF predicate categories: organised crime and racketeering; terrorism and its financing; trafficking in human beings and migrant smuggling; sexual exploitation including of children; illicit trafficking in narcotics; illicit arms trafficking; trafficking in stolen goods; corruption and bribery; fraud; counterfeiting currency; counterfeiting and piracy of products; environmental crime; murder and grievous bodily injury; kidnapping, illegal restraint and hostage taking; robbery or theft; smuggling; extortion; forgery; piracy; insider trading and market manipulation. These are minimum categories; territories may add more.</p></div></details>
+  <details><summary>3. According to FATF, what are the four broad measures that come under areas for supervision?<span class="q-tag">Review Q3</span></summary><div class="body"><p>(1) Identify the customer and verify identity using reliable, independent sources. (2) Identify the beneficial owner and take reasonable measures to verify identity, including understanding the ownership and control structure of legal persons and arrangements. (3) Obtain information on the purpose and intended nature of the business relationship. (4) Conduct ongoing due diligence on the relationship, scrutinising transactions for consistency with the customer's known business and risk profile, including source of funds where necessary.</p></div></details>
+  <details><summary>4. How can an advisor clearly identify beneficial owners when working with an agent for those customers?<span class="q-tag">Review Q4</span></summary><div class="body"><p>Where beneficial ownership is in question, carry out appropriate due diligence on the background individual or organisation (FATF Recommendation 5): obtain the name and legal form of the customer's organisation, its address, names of directors, principal owners or beneficiaries, the provisions regulating the power to bind the organisation, the agents acting on its behalf, and the account number if applicable. For tiered ownership keep asking who the real parent owner is, and record all of it in the client file.</p></div></details>
+</section>
+
+<!-- ============================ CHEAT SHEET ============================ -->
+<section class="chapter" id="cheat">
+  <div class="chapter-head">
+    <div class="num">✓</div>
+    <div><h2>Cheat sheet</h2><p class="sub">Trigger phrases, numbers and pairings to scan the night before</p></div>
+  </div>
+
+  <h3>Trigger phrase → answer</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:40%">If the question says...</th><th>The answer is...</th><th style="width:10%">Ch</th></tr></thead>
+    <tbody>
+      <tr><td>"three-way classification" / IMF / White 1999</td><td>Economic, Safety, Information</td><td>1</td></tr>
+      <tr><td>"if it isn't broken, don't fix it"</td><td>Economic regulation's starting point</td><td>1</td></tr>
+      <tr><td>Prudential regulation</td><td>Safety regulation: control risk, hold adequate capital</td><td>1</td></tr>
+      <tr><td>"lubricant" of securities markets</td><td>Timely periodic disclosure (information regulation)</td><td>1</td></tr>
+      <tr><td>Global securities standard setter / 1983 / 95% / 115 jurisdictions</td><td>IOSCO</td><td>1</td></tr>
+      <tr><td>Global insurance standard setter / seven goals / ICPs / G-SIIs</td><td>IAIS</td><td>1</td></tr>
+      <tr><td>EU insurance and occupational pensions</td><td>EIOPA</td><td>1</td></tr>
+      <tr><td>Detailed rules under MiFID II; knowledge and competence guidelines</td><td>ESMA</td><td>1</td></tr>
+      <tr><td>Independent advice: diverse range, no retained third-party payments</td><td>MiFID II Article 24</td><td>1</td></tr>
+      <tr><td>Staff giving information vs staff giving advice</td><td>ESMA V.II vs V.III; advice adds suitability and portfolio fundamentals</td><td>1</td></tr>
+      <tr><td>Maximum period under supervision</td><td>Four years (or less if the Competent Authority says)</td><td>1</td></tr>
+      <tr><td>Undivided loyalty; trust, loyalty, disclosure</td><td>Fiduciary standard</td><td>2</td></tr>
+      <tr><td>Fair, transparent, efficient, integrated</td><td>MiFID's description of investment advice</td><td>2</td></tr>
+      <tr><td>Two suitable options, one pays more; must pick lower cost</td><td>Fiduciary (not suitability)</td><td>2</td></tr>
+      <tr><td>Rules-based vs principles-based</td><td>Suitability vs client-first</td><td>2</td></tr>
+      <tr><td>Primum non nocere</td><td>"First, do no harm": foundation of client-first behaviour</td><td>2</td></tr>
+      <tr><td>US retirement advice fiduciary law</td><td>ERISA</td><td>2</td></tr>
+      <tr><td>Central bank vs government budget</td><td>Monetary vs fiscal policy</td><td>3</td></tr>
+      <tr><td>Buy government bonds</td><td>Increase money supply (ease)</td><td>3</td></tr>
+      <tr><td>Fiscal drag / fiscal boost</td><td>Automatic stabilisation (progressive tax / lower tax)</td><td>3</td></tr>
+      <tr><td>One-off policy change</td><td>Discretionary fiscal policy</td><td>3</td></tr>
+      <tr><td>Scarce resources with alternative uses</td><td>Robbins' definition of economics</td><td>3</td></tr>
+      <tr><td>Two consecutive quarters of GDP decline</td><td>Recession</td><td>3</td></tr>
+      <tr><td>10% contraction or three years</td><td>Depression (Ip)</td><td>3</td></tr>
+      <tr><td>Actual output above potential; unemployment below natural rate</td><td>Boom</td><td>3</td></tr>
+      <tr><td>Tulips, Admiral Liefken, 4,400 florins</td><td>Bubble</td><td>3</td></tr>
+      <tr><td>Yield curve spread, building permits, new orders, stock prices</td><td>Leading indicators</td><td>3</td></tr>
+      <tr><td>Duration of unemployment, prime rate, inventory/sales ratio</td><td>Lagging indicators</td><td>3</td></tr>
+      <tr><td>Invisible hand; Wealth of Nations 1776</td><td>Adam Smith, classical</td><td>3</td></tr>
+      <tr><td>Supply creates its own demand</td><td>Say's Law (disproved)</td><td>3</td></tr>
+      <tr><td>Population outgrows means of support</td><td>Malthus</td><td>3</td></tr>
+      <tr><td>Aggregate demand; government should invest; sticky wages</td><td>Keynes / New Keynesian</td><td>3</td></tr>
+      <tr><td>Inflation–unemployment trade-off</td><td>Phillips Curve</td><td>3</td></tr>
+      <tr><td>Lower taxes and deregulation</td><td>Supply-side</td><td>3</td></tr>
+      <tr><td>Control the growth rate of money supply</td><td>Monetarism (Friedman)</td><td>3</td></tr>
+      <tr><td>Supply shocks cause recessions</td><td>New classical</td><td>3</td></tr>
+      <tr><td>Government's two primary tools</td><td>Legislature and central bank (and treasury)</td><td>4</td></tr>
+      <tr><td>Opportunity cost; specialise where you are most better</td><td>Comparative advantage</td><td>4</td></tr>
+      <tr><td>Brazil and Arabica coffee</td><td>Absolute advantage</td><td>4</td></tr>
+      <tr><td>Buy cars from those who already invested</td><td>Economies of scale</td><td>4</td></tr>
+      <tr><td>Pegged to another currency or basket</td><td>Fixed exchange rate</td><td>4</td></tr>
+      <tr><td>Buy in one market, sell in another</td><td>Arbitrage</td><td>4</td></tr>
+      <tr><td>Income tax + social security as share of labour cost</td><td>Tax wedge; discourages employment</td><td>4</td></tr>
+      <tr><td>35.9%</td><td>OECD average worker tax burden</td><td>4</td></tr>
+      <tr><td>64.0 → 65.5; 63% (27–105%); 6–40%; 20 / 26 years</td><td>OECD Pensions at a Glance figures</td><td>4</td></tr>
+      <tr><td>Share of working income replaced in retirement</td><td>Gross replacement rate</td><td>4</td></tr>
+      <tr><td>"Middleman" between manufacturers and purchasers</td><td>Financial intermediary</td><td>5</td></tr>
+      <tr><td>Identify, assess, advise, monitor, report</td><td>Compliance function (IOSCO)</td><td>5</td></tr>
+      <tr><td>Source, not amount</td><td>Compensation disclosure</td><td>5</td></tr>
+      <tr><td>Identify, avoid, disclose</td><td>Three approaches to conflicts of interest</td><td>5</td></tr>
+      <tr><td>Principle 2 / Principle 4</td><td>Integrity / Fairness</td><td>5</td></tr>
+      <tr><td>Reasonable and prudent person; checking process; client file</td><td>Due diligence</td><td>5</td></tr>
+      <tr><td>Placement, layering, integration</td><td>Three stages of laundering</td><td>6</td></tr>
+      <tr><td>Drug trafficking only</td><td>Vienna Convention (1988)</td><td>6</td></tr>
+      <tr><td>Widest range of predicate offences; three protocols</td><td>Palermo Convention (2000)</td><td>6</td></tr>
+      <tr><td>40 Recommendations; 1989; standard setter</td><td>FATF</td><td>6</td></tr>
+      <tr><td>Know Your Customer; 1974; G10</td><td>Basel Committee</td><td>6</td></tr>
+      <tr><td>Knew / should have known / wilfully ignorant</td><td>Three states of mind (OAS/CICAD)</td><td>6</td></tr>
+      <tr><td>Natural person who ultimately owns or controls</td><td>Beneficial owner</td><td>6</td></tr>
+      <tr><td>2.7% of world GDP</td><td>Amount laundered (FATF estimate)</td><td>6</td></tr>
+      <tr><td>$10,000 occasional transaction</td><td>Example CDD threshold</td><td>6</td></tr>
+      <tr><td>Has specified due diligence for its sector</td><td>IAIS (IOSCO has not)</td><td>6</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Pairs people confuse</h3>
+  <div class="tbl"><table>
+    <thead><tr><th style="width:30%">Pair</th><th>How to tell them apart</th></tr></thead>
+    <tbody>
+      <tr><td>IOSCO vs IAIS</td><td>S-ecurities vs I-nsurance. Both global; both non-binding standard setters</td></tr>
+      <tr><td>ESMA vs EIOPA</td><td>Both EU. ESMA = securities and markets (writes MiFID II rules). EIOPA = insurance and occupational pensions</td></tr>
+      <tr><td>MiFID vs MiFID II</td><td>2004/39/EC in force 2008 vs 2014/65/EU in force January 2018</td></tr>
+      <tr><td>Fiduciary vs suitability</td><td>Fiduciary = best option, lower cost when equal, principles-based, greater. Suitability = fits the need, either option allowed, rules-based, lesser</td></tr>
+      <tr><td>Loyalty vs disclosure</td><td>Loyalty chooses the product; disclosure explains the payment when the better product also pays you</td></tr>
+      <tr><td>Monetary vs fiscal</td><td>Central bank vs government budget. Chapter 4's "two tools of government" (legislature, central bank) is a different question</td></tr>
+      <tr><td>Discretionary vs automatic stabiliser</td><td>One-off decision vs built into the tax system</td></tr>
+      <tr><td>Recession vs depression</td><td>Two quarters of decline vs 10% / three years; depression has no explicit definition</td></tr>
+      <tr><td>Leading vs lagging</td><td>Predicts vs confirms. Decisions about the future vs consequences that arrive late</td></tr>
+      <tr><td>Absolute vs comparative advantage</td><td>Cheaper/better outright vs lower opportunity cost</td></tr>
+      <tr><td>Floating vs fixed exchange rate</td><td>Market-set vs government-pegged</td></tr>
+      <tr><td>Placement vs layering</td><td>Getting cash in (structuring deposits) vs moving it around to break the trail</td></tr>
+      <tr><td>Vienna vs Palermo</td><td>1988 drugs-only vs 2000 widest range of offences</td></tr>
+      <tr><td>Standard vs enhanced CDD</td><td>Identity, ownership, purpose vs add source of wealth, PEP links, country, linked accounts</td></tr>
+      <tr><td>Customer vs beneficial owner</td><td>Who holds the account vs the natural person who ultimately controls it</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Pre-exam checklist</h3>
+  <ul>
+    <li>Can I name the three purposes of regulation (Brunnermeier) and the three IMF classes (White) without mixing them?</li>
+    <li>Can I list five of the nine prudential components and say what prompt corrective action means?</li>
+    <li>Can I say what makes ESMA V.III different from V.II (suitability, recognising unsuitability, portfolio fundamentals)?</li>
+    <li>Can I explain the fiduciary scenario (two suitable products, one pays) in both directions: loyalty and disclosure?</li>
+    <li>Can I state the direction of each monetary tool for easing and tightening?</li>
+    <li>Can I walk the business cycle: expansion → boom/bubble → contraction mechanics → recession/depression → recovery?</li>
+    <li>Can I sort ten indicators into leading and lagging?</li>
+    <li>Can I match each school to its founder and claim, and reproduce the six-step Phillips sequence?</li>
+    <li>Can I compute a tax wedge and state its negative?</li>
+    <li>Can I recite the disclosure list and the three conflict approaches?</li>
+    <li>Can I define laundering in three limbs, three stages, and name the four CDD measures?</li>
+    <li>Can I analyse each AML case study using: red flags, what should have been done, whose state of mind was which?</li>
+  </ul>
+</section>
+
+<!-- ============================ SELF-TEST ============================ -->
+<section class="chapter" id="test">
+  <div class="chapter-head">
+    <div class="num">?</div>
+    <div><h2>Self-test</h2><p class="sub">Fifteen exam-style questions. Each answer explains why the wrong options are wrong.</p></div>
+  </div>
+
+  <details class="mcq"><summary>1. Which of the following is <em>not</em> one of the IMF's three-way classification of financial regulation?<span class="q-tag">Ch 1</span></summary><div class="body">
+    <p class="opt">A. Economic</p><p class="opt">B. Safety</p><p class="opt">C. Conduct</p><p class="opt">D. Information</p>
+    <p class="ok">Answer: C</p>
+    <p class="why">The IMF (White, 1999) framework is Economic, Safety and Information. "Conduct" is a real regulatory theme (MiFID II is largely conduct-of-business regulation) but it is not one of the three classes; in this framework, conduct rules sit within Safety (corporate governance and securities regulation, including fiduciary duties on intermediaries) and Information.</p>
+  </div></details>
+
+  <details class="mcq"><summary>2. Under prudential regulation, when a financial institution's capital falls below the regulatory minimum, the appropriate response is:<span class="q-tag">Ch 1</span></summary><div class="body">
+    <p class="opt">A. Reduce reserve requirements so it can lend more</p><p class="opt">B. Increase scrutiny and tighten restrictions; if insolvent, dispose of it promptly</p><p class="opt">C. Wait for the next annual audit</p><p class="opt">D. Guarantee all its liabilities</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">This is prompt corrective action. A confuses a monetary policy tool with prudential regulation (and would make a weak bank riskier). C is the opposite of "prompt". D describes an improvised bailout, which the textbook argues against in favour of explicit, risk-priced deposit insurance and removal of owners and managers.</p>
+  </div></details>
+
+  <details class="mcq"><summary>3. IOSCO's Objectives and Principles of Securities Regulation have been endorsed by:<span class="q-tag">Ch 1</span></summary><div class="body">
+    <p class="opt">A. The IAIS and EIOPA</p><p class="opt">B. The G20 and the Financial Stability Board</p><p class="opt">C. The IMF and the World Bank</p><p class="opt">D. The United Nations</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">Endorsement comes from the G20 and the FSB. C is a near-miss: the IMF and World Bank <em>use</em> the principles as the basis for FSAP assessments, which is not the same as endorsing them. A lists other standard setters; D is not mentioned in the text.</p>
+  </div></details>
+
+  <details class="mcq"><summary>4. Under the ESMA Guidelines, a staff member who lacks the appropriate qualification or experience:<span class="q-tag">Ch 1</span></summary><div class="body">
+    <p class="opt">A. May not interact with clients at all</p><p class="opt">B. May provide services under supervision for up to four years, with the supervisor responsible and signing off suitability reports</p><p class="opt">C. May provide information but not advice indefinitely</p><p class="opt">D. Must pass the CFP examination within one year</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">V.IV allows supervised provision of services for a period not exceeding four years (or shorter if the Competent Authority requires). A is too strict: supervised client contact is permitted. C misreads the V.II/V.III distinction; information staff also need qualification and experience. D invents a requirement; ESMA speaks of "an appropriate qualification", not any specific credential.</p>
+  </div></details>
+
+  <details class="mcq"><summary>5. Two investments are equally suitable for a client and deliver the same benefits; one carries a lower cost. Under which standard <em>must</em> the advisor recommend the lower-cost option?<span class="q-tag">Ch 2</span></summary><div class="body">
+    <p class="opt">A. Suitability standard only</p><p class="opt">B. Fiduciary standard only</p><p class="opt">C. Both standards</p><p class="opt">D. Neither; cost is irrelevant to standards of care</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">The textbook is explicit: suitability does not require choosing the lower-cost option; a fiduciary, all else being equal, must. C over-reads suitability; A reverses the standards; D is contradicted by the ERISA attorney's list, which includes whether fees are reasonable.</p>
+  </div></details>
+
+  <details class="mcq"><summary>6. The three basic requirements of being a fiduciary are:<span class="q-tag">Ch 2</span></summary><div class="body">
+    <p class="opt">A. Fair, transparent, efficient</p><p class="opt">B. Trust, loyalty, disclosure</p><p class="opt">C. Integrity, fairness, competence</p><p class="opt">D. Identify, avoid, disclose</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">A is (three of) MiFID's four descriptors of advice (fair, transparent, efficient, integrated). C mixes FPSB Code principles. D is the three-step approach to conflicts of interest from Chapter 5. Only B is the fiduciary triad.</p>
+  </div></details>
+
+  <details class="mcq"><summary>7. A central bank wants to reduce inflation. Which combination is consistent?<span class="q-tag">Ch 3</span></summary><div class="body">
+    <p class="opt">A. Buy government bonds, cut the discount rate, lower reserve requirements</p><p class="opt">B. Sell government bonds, raise the discount rate, raise reserve requirements</p><p class="opt">C. Sell government bonds, cut the discount rate, lower reserve requirements</p><p class="opt">D. Buy government bonds, raise the discount rate, raise reserve requirements</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">Reducing inflation means tightening: drain money (sell bonds), make borrowing dearer (raise the rate), make banks hold more back (raise reserves). A is the full easing set. C and D mix directions, which a central bank would not do deliberately.</p>
+  </div></details>
+
+  <details class="mcq"><summary>8. Fiscal drag is best described as:<span class="q-tag">Ch 3</span></summary><div class="body">
+    <p class="opt">A. A one-off cut in government spending</p><p class="opt">B. A progressive tax system automatically taking a larger share as incomes rise</p><p class="opt">C. The central bank raising reserve requirements</p><p class="opt">D. Lowering tax rates to increase disposable income</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">Fiscal drag is one of the two automatic stabilisers. A is discretionary fiscal policy. C is monetary policy. D is the other stabiliser, fiscal boost.</p>
+  </div></details>
+
+  <details class="mcq"><summary>9. Which of the following is a <em>lagging</em> economic indicator?<span class="q-tag">Ch 3</span></summary><div class="body">
+    <p class="opt">A. Building permits for new private homes</p><p class="opt">B. Interest rate spread between 10-year bonds and the central bank rate</p><p class="opt">C. Average duration of unemployment</p><p class="opt">D. Manufacturers' new orders for consumer goods</p>
+    <p class="ok">Answer: C</p>
+    <p class="why">Duration of unemployment lengthens only after a downturn is well established, so it confirms rather than predicts. A, B and D are all leading indicators: permits predict building, the yield spread predicts growth or contraction, new orders predict production.</p>
+  </div></details>
+
+  <details class="mcq"><summary>10. Which economist argued that central banks should focus on controlling the rate of growth of the money supply?<span class="q-tag">Ch 3</span></summary><div class="body">
+    <p class="opt">A. John Maynard Keynes</p><p class="opt">B. Adam Smith</p><p class="opt">C. Milton Friedman</p><p class="opt">D. A. W. Phillips</p>
+    <p class="ok">Answer: C</p>
+    <p class="why">This is monetarism, Friedman's contribution, standing apart from both classical and Keynesian camps. Keynes favoured government investment to lift aggregate demand; Smith favoured leaving markets alone (invisible hand); Phillips mapped the inflation–unemployment trade-off.</p>
+  </div></details>
+
+  <details class="mcq"><summary>11. Territory X produces both phones and computers more efficiently than Territory Y, yet imports computers from Y. The economic reason is:<span class="q-tag">Ch 4</span></summary><div class="body">
+    <p class="opt">A. Absolute advantage</p><p class="opt">B. Comparative advantage (opportunity cost)</p><p class="opt">C. Economies of scale</p><p class="opt">D. A trade deficit</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">X is better at both, so absolute advantage (A) cannot explain importing. The explanation is opportunity cost: making computers would divert resources from phones, where X's edge is largest. C would apply if Y had already made the large fixed investment and X had not. D is a result of trade, not a reason for it.</p>
+  </div></details>
+
+  <details class="mcq"><summary>12. The tax wedge's primary potential negative is that it:<span class="q-tag">Ch 4</span></summary><div class="body">
+    <p class="opt">A. Increases inflation</p><p class="opt">B. Discourages employment by widening the gap between labour cost and take-home pay</p><p class="opt">C. Reduces the government's tax revenue</p><p class="opt">D. Lowers the gross replacement rate in retirement</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">The wedge measures how much income taxes and social contributions discourage employment; the textbook's answer is fewer jobs and fewer people seeking them. A is not the mechanism. C is backwards (the wedge <em>is</em> revenue). D is a retirement-policy concept unrelated to the wedge definition.</p>
+  </div></details>
+
+  <details class="mcq"><summary>13. Regarding advisor compensation, disclosure rules typically require the advisor to disclose:<span class="q-tag">Ch 5</span></summary><div class="body">
+    <p class="opt">A. Total personal income</p><p class="opt">B. The source of compensation and what the relationship will cost the client</p><p class="opt">C. Only fees charged directly by the advisor, not product-provider fees</p><p class="opt">D. Nothing, if the advisor is fee-only</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">The client has a right to know how the advisor is paid and what the relationship will cost, including product-provider fees; the advisor keeps a right to privacy over total income. A goes too far; C omits provider fees, which must be disclosed; D ignores that fee-only advisors still disclose fees and their basis.</p>
+  </div></details>
+
+  <details class="mcq"><summary>14. A launderer deposits drug cash in amounts just under the reporting threshold across many bank accounts. This is which stage?<span class="q-tag">Ch 6</span></summary><div class="body">
+    <p class="opt">A. Placement</p><p class="opt">B. Layering</p><p class="opt">C. Integration</p><p class="opt">D. Structuring is not part of the three-stage model</p>
+    <p class="ok">Answer: A</p>
+    <p class="why">Breaking large cash into inconspicuous deposits is the textbook's own example of placement. Layering (B) is the subsequent movement through accounts and instruments to distance funds from their source. Integration (C) is the re-entry into the legitimate economy via real estate or businesses. D is wrong: structuring is the classic placement technique.</p>
+  </div></details>
+
+  <details class="mcq"><summary>15. Which body has specified due diligence requirements for its sector that mirror the FATF 40 Recommendations, with extra life-insurance guidance?<span class="q-tag">Ch 6</span></summary><div class="body">
+    <p class="opt">A. IOSCO</p><p class="opt">B. IAIS</p><p class="opt">C. ESMA</p><p class="opt">D. The World Bank</p>
+    <p class="ok">Answer: B</p>
+    <p class="why">The textbook states that IOSCO has <em>not</em> specified due diligence requirements, while the IAIS has, and its recommendations mirror the 40 Recommendations with additional life-insurance guidance. ESMA's guidelines concern knowledge and competence, not AML due diligence. The World Bank publishes the eight legal-system requirements and the AML reference guide, not sector due diligence.</p>
+  </div></details>
+
+  <h3 style="margin-top:44px">Wrap-up</h3>
+  <p>The course moves from the outside in: what regulation is for and who writes it (Chapter 1); the standard of care it expects, ideally fiduciary whether or not the law says so (Chapter 2); the economic weather every plan lives in (Chapter 3); the social and political climate that changes benefits, taxes and pensions (Chapter 4); the compliance mechanics of disclosure, conflicts and due diligence (Chapter 5); and the one area where an advisor can become a criminal by not asking questions (Chapter 6). If you remember one thing per chapter: E-S-I; T-L-D; buy bonds = ease; legislature + central bank; identify-avoid-disclose; placement-layering-integration.</p>
+  <p class="small">Source: FPSB Investment Planning Specialist module, "Regulatory Environment, Law and Compliance" (2018–2020 edition). India anchors are this guide's own additions for intuition; verify current Indian rules before relying on them in practice.</p>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('toggleAll');
+  var open=false;
+  function setAll(state){
+    document.querySelectorAll('details').forEach(function(d){d.open=state;});
+    open=state; btn.textContent=state?'Collapse all':'Expand all';
+  }
+  btn.addEventListener('click',function(){setAll(!open);});
+  window.addEventListener('beforeprint',function(){
+    document.querySelectorAll('details').forEach(function(d){d.setAttribute('data-was',d.open?'1':'0');d.open=true;});
+  });
+  window.addEventListener('afterprint',function(){
+    document.querySelectorAll('details').forEach(function(d){d.open=d.getAttribute('data-was')==='1';});
+  });
+})();
+</script>
+</body>
+</html>

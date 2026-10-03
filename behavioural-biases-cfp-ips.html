@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Behavioural Biases — Investment Planning &amp; Strategy (CFP / FPSB)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E9EDE6;
+  --panel:#F7F9F5;
+  --ink:#16241D;
+  --muted:#56675E;
+  --rule:rgba(22,36,29,.15);
+  --f1:#1F5C8B;  --t1:#E3ECF3;
+  --f2:#A25516;  --t2:#F4E9DF;
+  --f3:#8B2C55;  --t3:#F3E3EA;
+  --fam:var(--f1); --tint:var(--t1);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;font-size:18px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3,h4,.ui{font-family:"Bricolage Grotesque","Segoe UI",Helvetica,sans-serif;font-weight:700;line-height:1.14;letter-spacing:-.012em;margin:0}
+p{margin:0 0 14px}
+a{color:var(--f1)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:30;background:rgba(233,237,230,.94);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.topbar .wrap{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 22px;padding-top:11px;padding-bottom:11px}
+.topbar .mark{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:15px;letter-spacing:-.01em}
+.topbar nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-left:auto}
+.topbar nav a{font-family:"Bricolage Grotesque",sans-serif;font-size:14px;color:var(--muted);text-decoration:none;
+  border-bottom:2px solid transparent;padding-bottom:2px}
+.topbar nav a:hover{color:var(--ink);border-bottom-color:var(--fam)}
+.topbar nav a.a1:hover{border-bottom-color:var(--f1);color:var(--f1)}
+.topbar nav a.a2:hover{border-bottom-color:var(--f2);color:var(--f2)}
+.topbar nav a.a3:hover{border-bottom-color:var(--f3);color:var(--f3)}
+a:focus-visible,summary:focus-visible,.tile:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+
+/* ---------- hero ---------- */
+.hero{padding:70px 0 26px}
+.hero h1{font-size:clamp(36px,5.6vw,68px);max-width:19ch;margin-bottom:22px}
+.hero .lede{font-size:clamp(19px,2vw,22px);max-width:64ch;color:#33443B}
+.hero .meta{font-family:"Bricolage Grotesque",sans-serif;font-size:14px;color:var(--muted);margin-bottom:26px}
+
+/* ---------- rule / band ---------- */
+.band{background:var(--panel);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:38px 0}
+.band h2{font-size:clamp(24px,3vw,34px);margin-bottom:14px;max-width:24ch}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+
+/* ---------- tile index ---------- */
+.index{padding:34px 0 54px}
+.idxgroup{margin-bottom:26px}
+.idxgroup h3{font-size:17px;color:var(--fam);margin-bottom:4px}
+.idxgroup .sub{font-size:15px;color:var(--muted);margin-bottom:12px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(196px,1fr));gap:8px}
+.tile{display:block;text-decoration:none;color:inherit;background:var(--panel);
+  border:1px solid var(--rule);border-left:4px solid var(--fam);border-radius:2px;
+  padding:9px 12px;font-family:"Bricolage Grotesque",sans-serif;font-size:15px;line-height:1.25}
+.tile span{display:block;font-family:"Newsreader",serif;font-size:13.5px;color:var(--muted);margin-top:3px}
+.tile:hover{background:#fff}
+
+/* ---------- family sections ---------- */
+.family{padding:60px 0 10px}
+.family[data-f="1"]{--fam:var(--f1);--tint:var(--t1)}
+.family[data-f="2"]{--fam:var(--f2);--tint:var(--t2)}
+.family[data-f="3"]{--fam:var(--f3);--tint:var(--t3)}
+.idxgroup[data-f="1"]{--fam:var(--f1)} .idxgroup[data-f="2"]{--fam:var(--f2)} .idxgroup[data-f="3"]{--fam:var(--f3)}
+.famhead{border-top:5px solid var(--fam);padding-top:16px;margin-bottom:26px}
+.famhead h2{font-size:clamp(28px,4vw,44px);color:var(--fam);max-width:20ch}
+.famhead .kicker{font-family:"Bricolage Grotesque",sans-serif;font-size:14px;color:var(--muted);margin-bottom:6px}
+.famhead p{max-width:68ch;margin-top:12px}
+
+/* ---------- bias entry ---------- */
+.bias{display:grid;grid-template-columns:4px minmax(0,1fr);column-gap:26px;
+  padding:38px 0;border-top:1px solid var(--rule)}
+.spine{background:var(--fam);border-radius:2px}
+.bias h3{font-size:clamp(24px,3vw,31px);margin-bottom:7px}
+.oneline{font-size:20px;line-height:1.45;max-width:58ch;margin-bottom:12px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;list-style:none;padding:0;margin:0 0 20px;
+  font-family:"Bricolage Grotesque",sans-serif;font-size:12.5px}
+.tags li{border:1px solid var(--rule);background:var(--panel);color:var(--muted);padding:3px 9px;border-radius:2px}
+.tags li.on{border-color:var(--fam);color:var(--fam);background:var(--tint)}
+.cols{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,1fr);gap:34px;align-items:start}
+h4.blk{font-family:"Bricolage Grotesque",sans-serif;font-size:13.5px;font-weight:600;
+  color:var(--fam);margin:20px 0 5px;letter-spacing:.01em}
+h4.blk:first-child{margin-top:0}
+.eg{border-left:3px solid var(--fam);background:var(--tint);padding:12px 16px;margin:6px 0 4px}
+.eg p:last-child{margin-bottom:0}
+.eg .who{font-family:"Bricolage Grotesque",sans-serif;font-size:13px;color:var(--fam);margin-bottom:5px}
+.fig{margin:0}
+.fig svg{width:100%;height:auto;display:block;background:var(--panel);border:1px solid var(--rule);border-radius:2px}
+figcaption{font-size:15px;line-height:1.45;color:var(--muted);margin-top:9px}
+svg text{font-family:"Newsreader",Georgia,serif;fill:var(--muted);font-size:11.5px}
+svg .lbl{font-family:"Bricolage Grotesque",sans-serif;font-size:11px;font-weight:600}
+ul.pts{margin:6px 0 4px;padding-left:20px}
+ul.pts li{margin-bottom:5px}
+.confuse{font-size:16.5px;color:var(--muted);border-top:1px dotted var(--rule);padding-top:10px;margin-top:18px}
+.confuse b{color:var(--ink);font-weight:600}
+@media(max-width:880px){
+  .cols{grid-template-columns:1fr;gap:24px}
+  .bias{grid-template-columns:1fr}
+  .spine{height:5px;width:60px;margin-bottom:16px}
+}
+
+/* ---------- tables ---------- */
+.tblwrap{overflow-x:auto;border:1px solid var(--rule);border-radius:2px;background:#FBFCFA;margin:18px 0 8px}
+table{width:100%;border-collapse:collapse;font-size:16px;min-width:640px}
+th,td{text-align:left;padding:10px 13px;border-bottom:1px solid var(--rule);vertical-align:top;line-height:1.45}
+thead th{font-family:"Bricolage Grotesque",sans-serif;font-size:13.5px;background:var(--panel);position:sticky;top:0}
+tbody tr:last-child td{border-bottom:0}
+td.c1{color:var(--f1);font-weight:600} td.c2{color:var(--f2);font-weight:600} td.c3{color:var(--f3);font-weight:600}
+.nm{font-family:"Bricolage Grotesque",sans-serif;font-size:15px;font-weight:600}
+
+/* ---------- drills ---------- */
+.drill{border:1px solid var(--rule);background:var(--panel);border-radius:2px;margin:9px 0}
+.drill summary{cursor:pointer;padding:13px 16px;font-size:17.5px;list-style:none;display:flex;gap:11px;align-items:flex-start}
+.drill summary::-webkit-details-marker{display:none}
+.drill summary::before{content:"+";font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--muted);line-height:1.4}
+.drill[open] summary::before{content:"\2013"}
+.drill[open] summary{padding-bottom:4px}
+.ans{padding:0 16px 15px 40px;font-size:17px}
+.ans .verdict{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:16px}
+.v1{color:var(--f1)} .v2{color:var(--f2)} .v3{color:var(--f3)}
+
+section{scroll-margin-top:70px}
+.bias{scroll-margin-top:66px}
+footer{border-top:1px solid var(--rule);margin-top:60px;padding:30px 0 70px;color:var(--muted);font-size:16px}
+
+@media print{
+  .topbar{display:none}
+  body{background:#fff;font-size:11.5pt}
+  .bias{break-inside:avoid;page-break-inside:avoid}
+  .band,.tile,.fig svg,.drill{background:#fff}
+  .drill .ans{display:block}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="mark">Behavioural biases · IPS</div>
+    <nav>
+      <a href="#map">The map</a>
+      <a class="a1" href="#belief">Belief perseverance</a>
+      <a class="a2" href="#processing">Information processing</a>
+      <a class="a3" href="#emotional">Emotional</a>
+      <a href="#confusions">Easily confused</a>
+      <a href="#sheet">Cheat sheet</a>
+      <a href="#drills">Self-test</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="meta">Investment Planning &amp; Strategy · FPSB India curriculum · 21 biases</p>
+    <h1>Twenty-one predictable ways a rational investor stops being one</h1>
+    <p class="lede">Your syllabus splits behavioural finance into three families. This document covers every bias on the list: what it feels like from the inside, a diagram of the mechanism, an Indian example you will actually recognise, the damage it does to a portfolio, and what the exam expects an adviser to do about it.</p>
+  </div>
+</header>
+
+<section class="band" id="map">
+  <div class="wrap">
+    <h2>One rule governs the whole topic</h2>
+    <div class="two">
+      <div>
+        <p>All 21 biases fall into two buckets, and the bucket decides the treatment. This single distinction is worth more marks than the definitions themselves.</p>
+        <p><b>Cognitive errors</b> are faults in reasoning — bad statistics, bad memory, bad information handling. The client is trying to think correctly and failing. Give them data, a written process and a checklist, and the behaviour improves. You <b>moderate</b> (correct) a cognitive bias.</p>
+        <p><b>Emotional biases</b> come from feeling and impulse, not from faulty logic. Explaining the maths to a loss-averse client does not stop the fear. You largely <b>adapt</b> (accommodate) — you build the plan so the bias cannot do much damage.</p>
+        <p>Both of your first two families — behavioural (belief perseverance) and information processing — are cognitive errors. Only the third family is emotional.</p>
+      </div>
+      <figure class="fig">
+        <svg viewBox="0 0 420 250" role="img" aria-label="Diagram: cognitive errors are moderated, emotional biases are adapted to">
+          <rect x="8" y="12" width="196" height="94" rx="3" fill="#E3ECF3" stroke="#1F5C8B"/>
+          <text class="lbl" x="20" y="34" fill="#1F5C8B">Cognitive errors</text>
+          <text x="20" y="53">Faulty reasoning, statistics,</text>
+          <text x="20" y="69">memory and information use</text>
+          <text x="20" y="90" font-style="italic">14 of the 21 biases</text>
+
+          <rect x="216" y="12" width="196" height="94" rx="3" fill="#F3E3EA" stroke="#8B2C55"/>
+          <text class="lbl" x="228" y="34" fill="#8B2C55">Emotional biases</text>
+          <text x="228" y="53">Feeling, impulse and</text>
+          <text x="228" y="69">self-protection</text>
+          <text x="228" y="90" font-style="italic">7 of the 21 biases</text>
+
+          <path d="M106 106 L106 142" stroke="#1F5C8B" stroke-width="1.6" marker-end="url(#ar1)"/>
+          <path d="M314 106 L314 142" stroke="#8B2C55" stroke-width="1.6" marker-end="url(#ar3)"/>
+          <defs>
+            <marker id="ar1" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#1F5C8B"/></marker>
+            <marker id="ar3" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#8B2C55"/></marker>
+          </defs>
+
+          <rect x="8" y="144" width="196" height="94" rx="3" fill="#fff" stroke="#1F5C8B" stroke-dasharray="4 3"/>
+          <text class="lbl" x="20" y="166" fill="#1F5C8B">Moderate them</text>
+          <text x="20" y="185">Education, data, written</text>
+          <text x="20" y="201">rules, checklists, a second</text>
+          <text x="20" y="217">opinion. The bias can be</text>
+          <text x="20" y="233">largely corrected.</text>
+
+          <rect x="216" y="144" width="196" height="94" rx="3" fill="#fff" stroke="#8B2C55" stroke-dasharray="4 3"/>
+          <text class="lbl" x="228" y="166" fill="#8B2C55">Adapt to them</text>
+          <text x="228" y="185">Design around the feeling:</text>
+          <text x="228" y="201">automation, staging, limits,</text>
+          <text x="228" y="217">a slightly less optimal but</text>
+          <text x="228" y="233">liveable portfolio.</text>
+        </svg>
+        <figcaption>Identify the family first, then the treatment. An answer that names the bias but prescribes the wrong treatment loses most of the marks.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="index">
+  <div class="wrap">
+    <p style="max-width:60ch;color:var(--muted)">Jump to any bias. Each entry follows the same shape: the idea in one sentence, the mechanism, an Indian example, the portfolio damage, and the fix.</p>
+
+    <div class="idxgroup" data-f="1">
+      <h3>Behavioural biases — belief perseverance</h3>
+      <p class="sub">Cognitive. You already hold a belief and defend it.</p>
+      <div class="tiles">
+        <a class="tile" href="#dissonance">Cognitive dissonance<span>Rejecting the fact, not the belief</span></a>
+        <a class="tile" href="#conservatism">Conservatism<span>Updating far too slowly</span></a>
+        <a class="tile" href="#confirmation">Confirmation<span>Hunting for agreement</span></a>
+        <a class="tile" href="#representativeness">Representativeness<span>"This looks like that"</span></a>
+        <a class="tile" href="#control">Illusion of control<span>Mistaking activity for influence</span></a>
+        <a class="tile" href="#hindsight">Hindsight<span>"I knew it all along"</span></a>
+      </div>
+    </div>
+
+    <div class="idxgroup" data-f="2">
+      <h3>Information processing biases</h3>
+      <p class="sub">Cognitive. The belief may be fine; the data handling is not.</p>
+      <div class="tiles">
+        <a class="tile" href="#anchoring">Anchoring and adjustment<span>Stuck on the first number</span></a>
+        <a class="tile" href="#mental">Mental accounting<span>Money in separate buckets</span></a>
+        <a class="tile" href="#framing">Framing<span>The wording changes the answer</span></a>
+        <a class="tile" href="#availability">Availability<span>Vivid equals likely</span></a>
+        <a class="tile" href="#ambiguity">Ambiguity aversion<span>Known risk beats unknown risk</span></a>
+        <a class="tile" href="#attribution">Self-attribution<span>Wins are skill, losses are luck</span></a>
+        <a class="tile" href="#outcome">Outcome<span>Judging the decision by the result</span></a>
+        <a class="tile" href="#recency">Recency<span>The last three years, forever</span></a>
+      </div>
+    </div>
+
+    <div class="idxgroup" data-f="3">
+      <h3>Emotional biases</h3>
+      <p class="sub">Feeling-driven. Adapt more than you correct.</p>
+      <div class="tiles">
+        <a class="tile" href="#loss">Loss aversion<span>Losses hurt about twice as much</span></a>
+        <a class="tile" href="#overconfidence">Overconfidence<span>Overrating your own skill</span></a>
+        <a class="tile" href="#optimism">Optimism<span>Bad things happen to other people</span></a>
+        <a class="tile" href="#selfcontrol">Self-control<span>Today wins over 2050</span></a>
+        <a class="tile" href="#statusquo">Status quo<span>Doing nothing is a decision</span></a>
+        <a class="tile" href="#endowment">Endowment<span>Mine is worth more</span></a>
+        <a class="tile" href="#regret">Regret aversion<span>Fear of the wrong choice</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAMILY 1 ============ -->
+<section class="family" data-f="1" id="belief">
+  <div class="wrap">
+    <div class="famhead">
+      <p class="kicker">Family one · six biases · cognitive errors</p>
+      <h2>Behavioural biases: belief perseverance</h2>
+      <p>These six share a single engine. Once a belief is formed, the mind works to keep it alive — by ignoring contrary evidence, updating too slowly, searching only for agreement, or rewriting memory after the fact. The belief is protected; reality is edited. Because the failure is one of reasoning, all six can be moderated with process and evidence.</p>
+    </div>
+
+    <!-- 1. Cognitive dissonance -->
+    <article class="bias" id="dissonance">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Cognitive dissonance</h3>
+        <p class="oneline">Holding a belief and a contradicting fact at the same time is uncomfortable — so the mind quietly discards the fact instead of the belief.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Belief perseverance</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Once you have committed — money, reputation, an opinion said out loud — new information that says you were wrong creates mental discomfort. There are two cheap ways out and one expensive one. The expensive one is changing your mind. The cheap ones show up as two classic sub-behaviours:</p>
+            <ul class="pts">
+              <li><b>Selective perception</b> — you register the supporting news and genuinely fail to notice the contradicting news.</li>
+              <li><b>Selective decision-making</b> — you take a further action that justifies the first one, most often by adding more money to a failing position.</li>
+            </ul>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The bank that was going to be the next HDFC</p>
+              <p>An investor buys Yes Bank at around ₹350 on the thesis that it is a high-growth private bank. Then the RBI's asset-quality divergence reports appear, the auditor resigns, and the promoter's pledged shareholding is reported. Rather than revisit the thesis, he decides the auditors are being unreasonably conservative and the promoter will surely raise capital. He stops reading the negative coverage. At ₹120 he buys more, "to average down" — which is only sensible if the original thesis still holds, and its truth is exactly what is in question.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Losers are held long past the point where the story broke, and fresh capital is poured into the weakest holding rather than the best available opportunity. The portfolio slowly becomes a museum of past decisions the owner is defending.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Write the thesis down before you buy, in one page, and include the falsifier: "I am wrong if gross NPAs cross 5% or the promoter pledges more than 30%."</li>
+              <li>Review holdings against that written falsifier, not against the price.</li>
+              <li>Treat averaging down as a fresh purchase requiring a fresh thesis, not a continuation of the old one.</li>
+            </ul>
+            <p class="confuse"><b>Do not confuse with confirmation bias.</b> Dissonance is about the discomfort of contradiction and how you dispose of it. Confirmation is about where you go looking for information in the first place. They usually travel together.</p>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 220" role="img" aria-label="A belief and a contradicting fact collide; the fact is rejected and the belief is reinforced">
+              <rect x="14" y="20" width="120" height="56" rx="3" fill="#E3ECF3" stroke="#1F5C8B"/>
+              <text class="lbl" x="26" y="41" fill="#1F5C8B">My belief</text>
+              <text x="26" y="59">"It's a great bank"</text>
+              <rect x="206" y="20" width="120" height="56" rx="3" fill="#fff" stroke="#56675E" stroke-dasharray="4 3"/>
+              <text class="lbl" x="218" y="41">New fact</text>
+              <text x="218" y="59">"NPAs are rising"</text>
+              <path d="M138 48 L166 48" stroke="#1F5C8B" stroke-width="1.6"/>
+              <path d="M202 48 L174 48" stroke="#56675E" stroke-width="1.6"/>
+              <path d="M170 34 l6 12 l-6 12 l6 -12 z" fill="#8B2C55"/>
+              <text x="150" y="94" fill="#8B2C55" font-style="italic">discomfort</text>
+              <path d="M266 80 L266 118" stroke="#56675E" stroke-width="1.4" stroke-dasharray="4 3"/>
+              <text x="196" y="136" fill="#56675E">Fact discarded or explained away</text>
+              <line x1="252" y1="126" x2="284" y2="112" stroke="#8B2C55" stroke-width="2"/>
+              <line x1="252" y1="112" x2="284" y2="126" stroke="#8B2C55" stroke-width="2"/>
+              <path d="M74 80 C74 130 74 150 74 168" stroke="#1F5C8B" stroke-width="1.8" marker-end="url(#d1)"/>
+              <defs><marker id="d1" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#1F5C8B"/></marker></defs>
+              <rect x="14" y="172" width="150" height="34" rx="3" fill="#E3ECF3" stroke="#1F5C8B"/>
+              <text class="lbl" x="26" y="193" fill="#1F5C8B">Belief survives — buy more</text>
+            </svg>
+            <figcaption>The mind takes the cheaper route: the inconvenient fact is dropped and the original belief is reinforced with a further commitment.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. Conservatism -->
+    <article class="bias" id="conservatism">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Conservatism</h3>
+        <p class="oneline">New information arrives, and the view moves — but far too little. The prior forecast keeps most of its weight when it deserves very little.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Belief perseverance</li><li>Under-reaction</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Statistically, this is imperfect Bayesian updating. A good forecaster combines the prior view and the new evidence in proportion to how informative each is. A conservative forecaster keeps the prior nearly intact and treats strong new evidence as a minor adjustment. Two things drive it: the effort of processing complex new data, and the reluctance to admit the earlier view was wrong.</p>
+            <p>The market-level consequence is under-reaction to news, which is one of the standard explanations for post-earnings-announcement drift — prices continue moving in the direction of the surprise for weeks afterwards because everyone updated too slowly on day one.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The target price that will not move</p>
+              <p>An analyst has a ₹1,200 target on an FMCG company built on 12% volume growth. The quarter arrives: rural volumes fall, palm oil costs spike, and gross margin drops 400 basis points. The structural story has changed. The revised target comes out at ₹1,150 — a token 4% cut, because a 25% cut would be an admission that the original model was wrong. Six months later the stock is at ₹820 and the target has been "revised" four more times in small steps.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Deteriorating positions are sold late and in slices. Asset allocation stays anchored to a view formed years ago — an investor who decided in 2015 that "IT is a steady 15% grower" carries that assumption through an entirely different demand environment.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Ask the blank-slate question: "If I held no position and saw only today's facts, what would I forecast?" Then use that number.</li>
+              <li>Force yourself to state, before the event, how much your view should change under each outcome.</li>
+              <li>When information is genuinely hard to interpret, get it interpreted rather than defaulting to the old view.</li>
+            </ul>
+            <p class="confuse"><b>Do not confuse with anchoring.</b> Anchoring fixes on an arbitrary <i>number</i> (the purchase price, the 52-week high). Conservatism clings to a previously formed <i>view or forecast</i>. Both produce under-adjustment; the thing being clung to differs.</p>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 210" role="img" aria-label="A dial that should move a long way but moves only slightly when new evidence arrives">
+              <text class="lbl" x="16" y="24" fill="#1F5C8B">Earnings estimate after bad news</text>
+              <line x1="20" y1="120" x2="320" y2="120" stroke="#56675E" stroke-width="1.2"/>
+              <g stroke="#56675E" stroke-width="1">
+                <line x1="20" y1="120" x2="20" y2="128"/><line x1="95" y1="120" x2="95" y2="128"/>
+                <line x1="170" y1="120" x2="170" y2="128"/><line x1="245" y1="120" x2="245" y2="128"/>
+                <line x1="320" y1="120" x2="320" y2="128"/>
+              </g>
+              <text x="10" y="144">₹60</text><text x="160" y="144">₹80</text><text x="300" y="144">₹100</text>
+              <circle cx="290" cy="120" r="6" fill="#1F5C8B"/>
+              <text x="238" y="106" fill="#1F5C8B" class="lbl">old estimate</text>
+              <circle cx="272" cy="120" r="6" fill="#1F5C8B" opacity=".45"/>
+              <path d="M288 92 L276 92" stroke="#1F5C8B" stroke-width="1.6" marker-end="url(#c1)"/>
+              <text x="180" y="88" fill="#1F5C8B">actual revision</text>
+              <circle cx="110" cy="120" r="6" fill="none" stroke="#8B2C55" stroke-width="2" stroke-dasharray="3 2"/>
+              <text x="62" y="170" fill="#8B2C55" class="lbl">where the evidence points</text>
+              <path d="M288 178 L118 178" stroke="#8B2C55" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#c2)"/>
+              <text x="176" y="198" fill="#56675E" font-style="italic">the move that should have happened</text>
+              <defs>
+                <marker id="c1" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#1F5C8B"/></marker>
+                <marker id="c2" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#8B2C55"/></marker>
+              </defs>
+            </svg>
+            <figcaption>Strong evidence should have moved the estimate a long way. Conservatism produces a token adjustment in the right direction.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. Confirmation -->
+    <article class="bias" id="confirmation">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Confirmation</h3>
+        <p class="oneline">You look for evidence that you are right, notice it when it appears, and quietly filter out the rest.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Belief perseverance</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>This is a bias of <i>search</i> and <i>weighting</i>. Supporting evidence is sought out, found easily, and accepted at face value. Contrary evidence is either not looked for, or subjected to a much harder test before it is believed. Social media makes it almost frictionless: the follows, the groups and the recommendation algorithm all converge on your existing position within a week.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">Two ways it shows up</p>
+              <p><b>The tip stock.</b> An investor buys a smallcap on a Telegram call. He joins three more groups on the same stock, reads only the bull thread on X, and treats every 5% up-day as proof of the thesis. The two research notes questioning receivables never get opened.</p>
+              <p><b>The employer's stock.</b> An Infosys or TCS employee holds a large ESOP position plus fresh purchases. Every internal announcement, client win and appraisal confirms that this is a great company. What he cannot see from inside is the sector-level risk, and that his salary, bonus and portfolio all depend on the same employer.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Concentration. Confirmation bias is the main psychological route to a portfolio with 60% in one company or one sector, held with total conviction. It also keeps investors in bad positions long after an honest search would have exited.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Write the bear case yourself, in the strongest form you can manage, before you buy.</li>
+              <li>Deliberately read the best-argued opposing view — and give it the same benefit of the doubt you give the bull case.</li>
+              <li>For advisers: appoint a designated dissenter in the review meeting, whose job is to argue against the recommendation.</li>
+              <li>Check exposure at the household level, including salary and employer stock.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 220" role="img" aria-label="A filter that admits agreeing evidence and deflects disagreeing evidence">
+              <text class="lbl" x="16" y="22" fill="#1F5C8B">Everything published about the stock</text>
+              <g>
+                <circle cx="40" cy="52" r="13" fill="#E3ECF3" stroke="#1F5C8B"/><path d="M34 52 l4 5 l8 -10" stroke="#1F5C8B" stroke-width="2" fill="none"/>
+                <circle cx="94" cy="52" r="13" fill="#fff" stroke="#8B2C55"/><path d="M89 47 l10 10 M99 47 l-10 10" stroke="#8B2C55" stroke-width="2"/>
+                <circle cx="148" cy="52" r="13" fill="#E3ECF3" stroke="#1F5C8B"/><path d="M142 52 l4 5 l8 -10" stroke="#1F5C8B" stroke-width="2" fill="none"/>
+                <circle cx="202" cy="52" r="13" fill="#fff" stroke="#8B2C55"/><path d="M197 47 l10 10 M207 47 l-10 10" stroke="#8B2C55" stroke-width="2"/>
+                <circle cx="256" cy="52" r="13" fill="#E3ECF3" stroke="#1F5C8B"/><path d="M250 52 l4 5 l8 -10" stroke="#1F5C8B" stroke-width="2" fill="none"/>
+                <circle cx="310" cy="52" r="13" fill="#fff" stroke="#8B2C55"/><path d="M305 47 l10 10 M315 47 l-10 10" stroke="#8B2C55" stroke-width="2"/>
+              </g>
+              <path d="M20 92 L320 92 L212 140 L128 140 Z" fill="#E3ECF3" stroke="#1F5C8B"/>
+              <text class="lbl" x="118" y="118" fill="#1F5C8B">my attention</text>
+              <path d="M94 76 C70 84 62 92 44 100" stroke="#8B2C55" stroke-width="1.4" stroke-dasharray="4 3"/>
+              <path d="M202 76 C240 84 268 92 300 104" stroke="#8B2C55" stroke-width="1.4" stroke-dasharray="4 3"/>
+              <text x="16" y="118" fill="#8B2C55">deflected</text>
+              <text x="266" y="122" fill="#8B2C55">deflected</text>
+              <path d="M170 140 L170 168" stroke="#1F5C8B" stroke-width="1.6" marker-end="url(#f1)"/>
+              <defs><marker id="f1" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#1F5C8B"/></marker></defs>
+              <rect x="70" y="172" width="200" height="34" rx="3" fill="#E3ECF3" stroke="#1F5C8B"/>
+              <text class="lbl" x="82" y="193" fill="#1F5C8B">"Everything I read agrees with me"</text>
+            </svg>
+            <figcaption>The evidence base is balanced. What reaches attention is not. Conviction rises while the actual information does not.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. Representativeness -->
+    <article class="bias" id="representativeness">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Representativeness</h3>
+        <p class="oneline">Classifying something new by how much it resembles a familiar pattern, instead of by the actual odds.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Belief perseverance</li><li>Two sub-forms</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>The mind classifies fast by resemblance. That is efficient in daily life and disastrous with probabilities, because resemblance ignores how common each category is. Two named sub-forms appear in the syllabus:</p>
+            <ul class="pts">
+              <li><b>Base-rate neglect</b> — judging by the stereotype while ignoring how rare the category is. "This company is like a young Titan" ignores that a tiny fraction of consumer companies ever compound like Titan.</li>
+              <li><b>Sample-size neglect</b> — treating a small sample as if it revealed the underlying quality. Three good quarters is noise; it gets read as skill. The technical name for the error is the law of small numbers.</li>
+            </ul>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">Base rate</p>
+              <p>A new EV two-wheeler company lists. The pitch: "This is India's Tesla." The resemblance is real — same sector, same founder energy, same growth language. The base rate is not mentioned: of the several hundred auto and auto-component companies listed in India over three decades, a handful produced Tesla-like returns and many did not survive a demand cycle.</p>
+              <p class="who" style="margin-top:10px">Sample size</p>
+              <p>A smallcap fund tops the one-year chart. Money floods in on the strength of four quarters of data, and the manager is called a star. This is exactly why SEBI insists every advertisement carries the reminder that past performance may not be sustained — the regulator is legislating against sample-size neglect.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Chasing last year's winning fund, paying growth-stock multiples for companies that merely look like growth stocks, and rotating into whichever theme currently resembles the last big winner.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Look up the base rate before the story. How many companies in this category actually delivered what is being promised?</li>
+              <li>Insist on a sample long enough to matter — for a fund, a full market cycle and ideally 7 to 10 years with the same manager.</li>
+              <li>Ask what is different about this case, not what is similar.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 220" role="img" aria-label="A new item sorted into a familiar bucket on surface resemblance, ignoring the base rate">
+              <path d="M28 22 l16 16 l-16 16 l-16 -16 z" fill="#E3ECF3" stroke="#1F5C8B"/>
+              <text x="52" y="44" fill="#1F5C8B">New company: fast growth, big story</text>
+              <path d="M28 60 L28 92" stroke="#1F5C8B" stroke-width="1.6" marker-end="url(#r1)"/>
+              <defs><marker id="r1" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#1F5C8B"/></marker></defs>
+              <path d="M12 96 L124 96 L112 156 L24 156 Z" fill="#E3ECF3" stroke="#1F5C8B"/>
+              <text class="lbl" x="30" y="122" fill="#1F5C8B">"The next</text>
+              <text class="lbl" x="30" y="138" fill="#1F5C8B">multibagger"</text>
+              <text x="150" y="106" class="lbl">What the bucket actually holds</text>
+              <g>
+                <rect x="150" y="118" width="176" height="16" fill="#fff" stroke="#56675E"/>
+                <rect x="150" y="118" width="9" height="16" fill="#1F5C8B"/>
+                <text x="150" y="150">3 in 100 compound for a decade</text>
+                <rect x="150" y="160" width="176" height="16" fill="#fff" stroke="#56675E"/>
+                <rect x="150" y="160" width="167" height="16" fill="#56675E" opacity=".35"/>
+                <text x="150" y="192">97 in 100 do not</text>
+              </g>
+              <text x="12" y="186" fill="#8B2C55" font-style="italic">resemblance</text>
+              <text x="12" y="202" fill="#8B2C55" font-style="italic">is not odds</text>
+            </svg>
+            <figcaption>The new company genuinely resembles the winners. The question that decides the investment is how many things that resembled the winners actually became one.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. Illusion of control -->
+    <article class="bias" id="control">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Illusion of control</h3>
+        <p class="oneline">Believing you can influence an outcome that is, in fact, out of your hands — usually because you are busy doing something.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Belief perseverance</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Effort, choice, familiarity and involvement all raise the felt sense of control even when they change nothing about the odds. People throw dice harder for a high number and gently for a low one. Investors do the same thing with screens, indicators and trades: the activity is real, the influence is not.</p>
+            <p>It compounds because outcomes in markets are noisy. When a controlled-feeling action is followed by a good outcome — which happens roughly half the time — the sense of control is reinforced.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The screen-watcher</p>
+              <p>A trader with a ₹10 lakh account watches the NSE screen from 9:15 to 3:30, places 20 to 30 intraday trades a day, and has six indicators on the chart. He genuinely believes the constant monitoring is what keeps him safe. What the monitoring actually produces is brokerage, STT, exchange charges, GST and short-term capital gains tax at 20%, all of which are certain, against a return that is not. The same illusion appears in gentler form in the long-term investor who rearranges his portfolio every month "to stay on top of it."</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Over-trading and its full cost stack; under-diversification, because concentrated positions feel more controllable than a diversified one; and comfort with illiquid or unlisted holdings on the grounds that the investor "knows the promoter."</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Split every decision into what you control (savings rate, costs, asset allocation, tax, time horizon) and what you do not (next quarter's price). Manage only the first list.</li>
+              <li>Keep a trade log with entry reason and outcome. The record usually dissolves the illusion faster than any argument.</li>
+              <li>Compare the portfolio's return net of all costs and taxes against a plain index fund over the same period.</li>
+            </ul>
+            <p class="confuse"><b>Do not confuse with overconfidence.</b> Overconfidence is "I predict better than others." Illusion of control is "my actions affect the outcome." A person can be humble about forecasting and still believe that watching the screen protects him.</p>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 210" role="img" aria-label="A control lever that is not connected to the market outcome">
+              <rect x="18" y="60" width="104" height="86" rx="3" fill="#E3ECF3" stroke="#1F5C8B"/>
+              <text class="lbl" x="32" y="82" fill="#1F5C8B">My actions</text>
+              <text x="32" y="100">20 trades a day</text>
+              <text x="32" y="116">6 indicators</text>
+              <text x="32" y="132">constant watching</text>
+              <path d="M126 103 C160 103 178 103 212 103" stroke="#8B2C55" stroke-width="1.6" stroke-dasharray="5 4"/>
+              <line x1="158" y1="92" x2="180" y2="114" stroke="#8B2C55" stroke-width="2.2"/>
+              <line x1="158" y1="114" x2="180" y2="92" stroke="#8B2C55" stroke-width="2.2"/>
+              <text x="132" y="82" fill="#8B2C55">no real link</text>
+              <rect x="214" y="60" width="108" height="86" rx="3" fill="#fff" stroke="#56675E"/>
+              <text class="lbl" x="228" y="82">Tomorrow's price</text>
+              <polyline points="228,132 244,116 258,126 272,102 286,120 306,96" fill="none" stroke="#56675E" stroke-width="1.6"/>
+              <text x="228" y="30" class="lbl" fill="#1F5C8B">The felt link</text>
+              <path d="M70 54 C130 26 210 26 262 54" stroke="#1F5C8B" stroke-width="1.6" marker-end="url(#i1)"/>
+              <defs><marker id="i1" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#1F5C8B"/></marker></defs>
+              <text x="52" y="176" fill="#56675E">Costs are certain: brokerage, STT, GST, STCG.</text>
+              <text x="52" y="194" fill="#56675E">The influence being paid for is not.</text>
+            </svg>
+            <figcaption>Activity feels like control. The costs of the activity are guaranteed; the influence it buys is imaginary.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6. Hindsight -->
+    <article class="bias" id="hindsight">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Hindsight</h3>
+        <p class="oneline">After the outcome is known, the past looks far more predictable than it was — and you remember having predicted it.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Belief perseverance</li><li>Memory bias</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Memory is reconstructive. Once you know how the story ended, the mind rebuilds the earlier state of knowledge in a way that fits the ending. The genuine uncertainty you felt at the time is edited out, and the signals that turned out to matter become "obvious" while the equally loud signals that pointed elsewhere are forgotten. Hindsight is dangerous mainly because it manufactures overconfidence: if the past was easy to call, the future must be too.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">March 2020, remembered from 2021</p>
+              <p>The Nifty falls from about 12,400 in January 2020 to roughly 7,600 in March. At the time, investors were pulling money out, nobody knew the length of the lockdown, and the recovery path was unknowable. By mid-2021 the same investors describe it as "an obvious once-in-a-decade buying opportunity — everyone knew the market would bounce." Their SIPs, several of which were paused in April 2020, say otherwise. The same rewrite happened after the Adani–Hindenburg episode: the leverage was "always visible", though the stocks had risen for two years while it was visible.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Inflated belief in one's own forecasting, leading to bigger and more concentrated bets. It also corrupts evaluation: fund managers and advisers are judged on whether the outcome was foreseeable in retrospect rather than on whether their process was sound at the time.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Keep a dated decision journal. Write the forecast, the confidence level and the reasoning at the moment of deciding. Memory cannot then rewrite it.</li>
+              <li>When reviewing any past event, force yourself to list the two or three ways it could plausibly have gone otherwise.</li>
+              <li>Evaluate advisers and managers against what was knowable then, not against what happened.</li>
+            </ul>
+            <p class="confuse"><b>Do not confuse with outcome bias.</b> Hindsight is about memory — "I predicted this." Outcome bias is about judgement — "it worked out, so it was a good decision." One rewrites the past; the other misgrades it.</p>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 210" role="img" aria-label="A jagged uncertain path through the past redrawn afterwards as a straight obvious line">
+              <text class="lbl" x="16" y="24" fill="#56675E">What it felt like at the time</text>
+              <polyline points="20,84 48,58 68,96 96,54 118,102 148,62 176,104 206,58 238,98 268,52 306,74"
+                fill="none" stroke="#56675E" stroke-width="1.6"/>
+              <g fill="#56675E" opacity=".8">
+                <circle cx="68" cy="96" r="2.6"/><circle cx="148" cy="62" r="2.6"/><circle cx="238" cy="98" r="2.6"/>
+              </g>
+              <text x="20" y="122" font-style="italic">many live possibilities, no clear signal</text>
+              <line x1="16" y1="136" x2="324" y2="136" stroke="#56675E" stroke-width=".8" stroke-dasharray="3 3"/>
+              <text class="lbl" x="16" y="160" fill="#1F5C8B">What it looks like afterwards</text>
+              <path d="M22 190 L300 170" stroke="#1F5C8B" stroke-width="2.4" marker-end="url(#h1)"/>
+              <defs><marker id="h1" markerWidth="10" markerHeight="10" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#1F5C8B"/></marker></defs>
+              <text x="120" y="205" fill="#1F5C8B" font-style="italic">"obviously it would recover"</text>
+            </svg>
+            <figcaption>The same period, remembered twice. The uncertainty is not recalled as smaller — it is not recalled at all.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ FAMILY 2 ============ -->
+<section class="family" data-f="2" id="processing">
+  <div class="wrap">
+    <div class="famhead">
+      <p class="kicker">Family two · eight biases · cognitive errors</p>
+      <h2>Information processing biases</h2>
+      <p>Here the belief is not the problem — the handling of the data is. Numbers are given the wrong weight, money is sorted into buckets that do not exist, the same fact produces different decisions depending on how it is worded, and the most vivid or most recent evidence crowds out the most relevant. These are still cognitive errors, so they too respond to education, data and written process.</p>
+    </div>
+
+    <!-- 1. Anchoring -->
+    <article class="bias" id="anchoring">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Anchoring and adjustment</h3>
+        <p class="oneline">An initial number sticks in the mind and every later estimate is pulled towards it, even when the number was arbitrary or is now irrelevant.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Information processing</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Faced with an uncertain quantity, the mind grabs a starting value and adjusts from it. The adjustment is almost always too small, and the starting value need not be meaningful — in the classic experiment, a spun roulette wheel changed people's estimate of an unrelated statistic. In markets, the ready-made anchors are the purchase price, the 52-week high, a round number, and the last analyst target you read.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">"I will sell when it comes back to my cost"</p>
+              <p>An investor buys a telecom stock at ₹500. Competitive intensity destroys the business economics and fair value now looks like ₹230. He refuses to sell below ₹500, because that is his number. But ₹500 exists nowhere except in his own transaction history — the company does not know it, the market does not know it, and it carries no information about future value. He holds for six years for a price that only he considers meaningful.</p>
+              <p>The same anchor works upward: after an IPO lists at ₹1,000 and falls to ₹600, buyers arrive because it is "40% off", anchoring on an issue price that was itself set by a merchant banker.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Losers held indefinitely, winners sold at arbitrary round numbers, and valuation work that quietly reverse-engineers itself to land near the current market price.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Value the asset before you look at the price, and write the value down.</li>
+              <li>Ask the replacement question: "At today's price, would I buy this today?" If not, the position is a fresh purchase you would not make.</li>
+              <li>Treat the purchase price as what it is — a sunk fact about the past with no bearing on future returns.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 220" role="img" aria-label="A purchase price acting as an anchor that holds the sell decision away from fair value">
+              <line x1="70" y1="24" x2="70" y2="196" stroke="#56675E" stroke-width="1.2"/>
+              <text class="lbl" x="16" y="20">Price</text>
+              <circle cx="70" cy="52" r="6" fill="#A25516"/>
+              <text class="lbl" x="86" y="50" fill="#A25516">₹500 — what I paid</text>
+              <text x="86" y="68">the anchor</text>
+              <circle cx="70" cy="150" r="6" fill="none" stroke="#56675E" stroke-width="2"/>
+              <text class="lbl" x="86" y="148">₹230 — what it is worth</text>
+              <text x="86" y="166">based on today's business</text>
+              <path d="M70 58 C36 84 36 120 66 144" stroke="#A25516" stroke-width="2" stroke-dasharray="4 3"/>
+              <path d="M46 176 l24 -18 l24 18 z" fill="#A25516" opacity=".9"/>
+              <path d="M70 176 L70 196 M52 196 q18 14 36 0" fill="none" stroke="#A25516" stroke-width="2.4"/>
+              <text x="120" y="200" fill="#56675E" font-style="italic">The decision stays tied to a number</text>
+              <text x="120" y="214" fill="#56675E" font-style="italic">that exists only in my own history.</text>
+            </svg>
+            <figcaption>The purchase price is a fact about your past, not about the asset. Anchoring turns it into the sell trigger.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. Mental accounting -->
+    <article class="bias" id="mental">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Mental accounting</h3>
+        <p class="oneline">Money is sorted into separate mental pots by where it came from or what it is for, and treated differently in each pot — although rupees are identical.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Information processing</li><li>Fungibility ignored</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Money is fungible: a rupee of salary, a rupee of bonus and a rupee of lottery winnings buy exactly the same things. Mental accounting breaks that. Each pot gets its own risk appetite and its own rules, and the pots are never netted against each other. Shefrin and Statman built Behavioural Portfolio Theory on this observation: real investors hold a layered pyramid — a safety layer, an income layer, an aspiration layer — rather than one integrated portfolio.</p>
+            <p>The critical technical consequence is that correlations between layers are never considered. The investor optimises each pot in isolation and ends up with a whole that is inefficient, however sensible each part looks.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">Three pots, one household</p>
+              <p><b>Source-based.</b> The ₹1 lakh Diwali bonus goes into weekly options on the Nifty, because it is "found money". The salary goes into a fixed deposit, because it is "hard-earned". The same person is simultaneously extremely risk-seeking and extremely risk-averse.</p>
+              <p><b>Purpose-based.</b> ₹6 lakh sits in a savings account at around 3% labelled "for the child's education in 2031", while a personal loan at 14% runs in parallel. Netting the two would earn a guaranteed 11%, but the education money is emotionally untouchable.</p>
+              <p><b>Income versus capital.</b> A retiree will spend the dividend but never sell a share, so she loads the portfolio with high-dividend PSU stocks and ignores total return — even though a systematic withdrawal from a balanced fund would be better diversified and more tax-efficient.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Overall allocation drifts far from what any single risk profile would justify, cash sits idle beside expensive debt, and portfolios tilt to dividend-paying stocks for reasons unrelated to their merit.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Draw one household balance sheet. Goals may stay separate on paper; the asset allocation is decided once, at the top.</li>
+              <li>Net idle cash against expensive borrowing before adding any new investment.</li>
+              <li>Teach total return: a rupee of dividend and a rupee of capital gain spend identically, and in India the dividend is taxed at slab rate while long-term capital gains are not.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 220" role="img" aria-label="Money in separate jars with different rules, and the cash-versus-loan mismatch">
+              <g stroke="#A25516" fill="#F4E9DF">
+                <rect x="16" y="34" width="68" height="76" rx="4"/>
+                <rect x="98" y="34" width="68" height="76" rx="4"/>
+                <rect x="180" y="34" width="68" height="76" rx="4"/>
+                <rect x="262" y="34" width="62" height="76" rx="4"/>
+              </g>
+              <text class="lbl" x="22" y="26" fill="#A25516">Salary</text>
+              <text class="lbl" x="104" y="26" fill="#A25516">Bonus</text>
+              <text class="lbl" x="186" y="26" fill="#A25516">Child</text>
+              <text class="lbl" x="268" y="26" fill="#A25516">Loan</text>
+              <rect x="16" y="76" width="68" height="34" fill="#A25516" opacity=".35"/>
+              <rect x="98" y="86" width="68" height="24" fill="#A25516" opacity=".35"/>
+              <rect x="180" y="58" width="68" height="52" fill="#A25516" opacity=".35"/>
+              <rect x="262" y="50" width="62" height="60" fill="#8B2C55" opacity=".35"/>
+              <text x="22" y="128">FD, 7%</text>
+              <text x="104" y="128">F&amp;O, all in</text>
+              <text x="186" y="128">savings, 3%</text>
+              <text x="268" y="128">costs 14%</text>
+              <path d="M214 146 C240 162 250 150 292 146" stroke="#8B2C55" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#m1)"/>
+              <defs><marker id="m1" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#8B2C55"/></marker></defs>
+              <text x="18" y="176" fill="#8B2C55">Netting the two pots earns a guaranteed 11%.</text>
+              <text x="18" y="196" fill="#56675E" font-style="italic">The pots exist only in the mind — but the</text>
+              <text x="18" y="212" fill="#56675E" font-style="italic">interest cost is entirely real.</text>
+            </svg>
+            <figcaption>Every jar has its own risk appetite. Because they are never netted, the household holds low-yield cash and high-cost debt at the same time.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. Framing -->
+    <article class="bias" id="framing">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Framing</h3>
+        <p class="oneline">The same information, worded two ways, produces two different decisions.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Information processing</li><li>Mis-selling risk</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Choices are evaluated against a reference point supplied by the wording. Present an outcome as a gain and people turn risk-averse; present the identical outcome as a loss and the same people turn risk-seeking. Nothing about the underlying numbers changes. Narrow framing is the related error of judging one investment in isolation instead of by what it does to the whole portfolio.</p>
+            <p>For your exam, note the professional implication: a risk-tolerance questionnaire is itself a frame. Ask "how much of your ₹50 lakh would you accept losing in a bad year?" and you get one answer; ask "what portfolio value would you be uncomfortable falling below?" and the same client gives a different, often inconsistent one.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">Two honest sentences, two decisions</p>
+              <p>"This fund has beaten a fixed deposit in 8 of the last 10 rolling five-year periods." Sounds compelling.<br>
+              "This fund has failed to beat a fixed deposit in 2 of the last 10 rolling five-year periods." Sounds risky. Identical fact.</p>
+              <p>Insurance runs on the same mechanism: an insurer advertises a 98% claim settlement ratio, never "2 in 100 claims are rejected." And traditional endowment or ULIP plans are framed as "you get your money back plus a bonus", a frame under which nobody computes the roughly 4 to 6% internal rate of return that would be obvious if it were quoted as a CAGR.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Mis-stated risk tolerance, purchases of poor products that were framed attractively, and rejection of good products described in loss terms.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Restate every proposition in both directions before deciding. If your answer flips, the frame was doing the work.</li>
+              <li>Convert everything to a common neutral unit: rupees and CAGR, net of costs and tax.</li>
+              <li>Judge each investment by its effect on the total portfolio, not on its own.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 210" role="img" aria-label="The same statistic presented in a gain frame and a loss frame">
+              <rect x="14" y="26" width="146" height="120" rx="3" fill="#F4E9DF" stroke="#A25516"/>
+              <text class="lbl" x="26" y="48" fill="#A25516">Gain frame</text>
+              <text x="26" y="70">"Beats an FD in 8 of</text>
+              <text x="26" y="86">10 five-year periods"</text>
+              <g><rect x="26" y="98" width="120" height="14" fill="#fff" stroke="#56675E"/><rect x="26" y="98" width="96" height="14" fill="#A25516" opacity=".55"/></g>
+              <text x="26" y="132" font-style="italic">feels safe — invest</text>
+              <rect x="180" y="26" width="146" height="120" rx="3" fill="#fff" stroke="#56675E"/>
+              <text class="lbl" x="192" y="48">Loss frame</text>
+              <text x="192" y="70">"Fails to beat an FD in</text>
+              <text x="192" y="86">2 of 10 five-year periods"</text>
+              <g><rect x="192" y="98" width="120" height="14" fill="#fff" stroke="#56675E"/><rect x="288" y="98" width="24" height="14" fill="#8B2C55" opacity=".6"/></g>
+              <text x="192" y="132" font-style="italic">feels risky — avoid</text>
+              <path d="M170 152 L170 172" stroke="#56675E" stroke-width="1.2"/>
+              <text x="60" y="192" class="lbl" fill="#A25516">Identical fund. Identical data. Opposite decision.</text>
+            </svg>
+            <figcaption>Both statements are true and describe the same track record. Only the reference point moved.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. Availability -->
+    <article class="bias" id="availability">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Availability</h3>
+        <p class="oneline">Estimating how likely something is by how easily an example comes to mind — so vivid, recent and heavily advertised events feel far more probable than they are.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Information processing</li><li>Four sub-forms</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Ease of recall is used as a proxy for frequency. Four sources of distorted recall are named in the literature:</p>
+            <ul class="pts">
+              <li><b>Retrievability</b> — what is easiest to remember, usually because it was dramatic or heavily repeated.</li>
+              <li><b>Categorisation</b> — you can only search the categories you have. Ask for "good investments" and most Indian investors search a list containing property, gold, FDs and a few stocks; REITs, InvITs and global equity are not in the search space at all.</li>
+              <li><b>Narrow range of experience</b> — a software engineer overestimates the prospects of IT; a Surat diamond trader overestimates his own trade.</li>
+              <li><b>Resonance</b> — you overweight what matches your own preferences and identity.</li>
+            </ul>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">Two directions, same bias</p>
+              <p><b>Too optimistic.</b> During a hot IPO stretch, every listing gain is on television and in the family group. Retail investors conclude that IPOs are near-free money. The listing losses of the same period are not memorable and are not recalled.</p>
+              <p><b>Too pessimistic.</b> An investor who watched the 2008 crash — or whose father lost money in the Harshad Mehta era — keeps 100% of his savings in FDs and gold for thirty years. A single vivid memory outweighs a century of long-horizon equity data, and inflation quietly does the damage the crash never got to do.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Fund and stock selection driven by advertising and news rather than data; whole asset classes excluded because they are not in the recall set; and permanent over- or under-weighting to equity depending on which memory happens to be dominant.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Use base rates and long data series rather than recalled instances. Rolling returns over 15 years, not the last headline.</li>
+              <li>Work from a written selection checklist so the universe considered is the real universe, not the memorable one.</li>
+              <li>Deliberately look for the un-newsworthy cases: the IPOs that listed flat, the funds that quietly closed.</li>
+            </ul>
+            <p class="confuse"><b>Do not confuse with recency.</b> Availability is about ease of recall from any point in time — a 1992 memory can dominate. Recency is specifically about the latest data getting the most weight.</p>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 210" role="img" aria-label="Memories near the front are grabbed while equally relevant distant ones fade">
+              <text class="lbl" x="16" y="22" fill="#A25516">What the mind reaches for</text>
+              <g>
+                <rect x="16" y="34" width="86" height="58" rx="3" fill="#F4E9DF" stroke="#A25516"/>
+                <text class="lbl" x="26" y="56" fill="#A25516">IPO on TV</text>
+                <text x="26" y="74">"+60% listing"</text>
+                <rect x="116" y="42" width="80" height="50" rx="3" fill="#fff" stroke="#56675E" opacity=".75"/>
+                <text x="126" y="64" opacity=".8">2008 crash</text>
+                <rect x="210" y="50" width="72" height="42" rx="3" fill="#fff" stroke="#56675E" opacity=".45"/>
+                <text x="218" y="72" opacity=".55">FD returns</text>
+                <rect x="292" y="56" width="34" height="36" rx="3" fill="#fff" stroke="#56675E" opacity=".25"/>
+              </g>
+              <path d="M60 104 L60 132" stroke="#A25516" stroke-width="1.8" marker-end="url(#a1)"/>
+              <defs><marker id="a1" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#A25516"/></marker></defs>
+              <text x="80" y="126" fill="#A25516">easiest to recall becomes "most likely"</text>
+              <line x1="16" y1="150" x2="324" y2="150" stroke="#56675E" stroke-width=".8" stroke-dasharray="3 3"/>
+              <text class="lbl" x="16" y="172">The actual record</text>
+              <rect x="16" y="180" width="300" height="16" fill="#fff" stroke="#56675E"/>
+              <rect x="16" y="180" width="84" height="16" fill="#A25516" opacity=".45"/>
+              <text x="106" y="192">most outcomes are unmemorable, and unrecalled</text>
+            </svg>
+            <figcaption>Probability is estimated by ease of recall. Broadcast events dominate the estimate; ordinary outcomes never enter it.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. Ambiguity aversion -->
+    <article class="bias" id="ambiguity">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Ambiguity aversion</h3>
+        <p class="oneline">Preferring a known risk to an unknown one — choosing the bet whose odds you can see, even when the unseen bet is objectively at least as good.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Information processing</li><li>Ellsberg paradox</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>There is a difference between risk (outcomes unknown, probabilities known) and ambiguity (probabilities themselves unknown). People pay a real premium to avoid the second. In Ellsberg's experiment, subjects prefer drawing from an urn with a visible 50–50 mix over an urn with an unknown mix, and — revealingly — they prefer it whichever colour they are betting on, which is logically impossible if their beliefs are consistent.</p>
+            <p>Note that some texts, including the CFA classification, place ambiguity aversion among emotional biases because the discomfort of the unknown is felt rather than reasoned. Your FPSB list puts it under information processing. Follow the FPSB grouping in the paper, and be aware the treatment sits somewhere in between: education genuinely reduces ambiguity, which is why it behaves like a cognitive error in practice.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">Home bias, and the assets that never get bought</p>
+              <p>An investor holds 100% of his equity in Indian stocks. Indian equity is not less risky than global equity — it is simply less ambiguous to him. He reads the Indian news, knows the companies, understands the tax. Adding a global fund would reduce portfolio volatility through lower correlation, but the unfamiliarity feels like danger rather than diversification.</p>
+              <p>The same investor avoids REITs and InvITs entirely — not after analysing them, but because the structure is unfamiliar — and keeps the money in FDs and gold, where the outcome distribution feels legible.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Severe home bias, entire asset classes left out, over-allocation to the familiar few, and a portfolio that is less diversified than its owner believes.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Education is the direct antidote: ambiguity is, by definition, missing information.</li>
+              <li>Start with a small allocation. Familiarity grows with exposure, and the position size limits the cost of the learning.</li>
+              <li>Show the correlation and volatility numbers for the whole portfolio with and without the unfamiliar asset, so the diversification benefit is visible.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 200" role="img" aria-label="A transparent urn with known odds preferred over an opaque urn with unknown odds">
+              <path d="M40 60 q-14 0 -14 20 v40 q0 24 24 24 h36 q24 0 24 -24 v-40 q0 -20 -14 -20 z" fill="#fff" stroke="#A25516"/>
+              <g><circle cx="52" cy="98" r="7" fill="#A25516"/><circle cx="74" cy="106" r="7" fill="#56675E"/><circle cx="96" cy="96" r="7" fill="#A25516"/><circle cx="62" cy="118" r="7" fill="#56675E"/><circle cx="86" cy="120" r="7" fill="#A25516"/></g>
+              <text class="lbl" x="30" y="46" fill="#A25516">Known odds</text>
+              <text x="34" y="162">"I can see the mix"</text>
+              <path d="M212 60 q-14 0 -14 20 v40 q0 24 24 24 h36 q24 0 24 -24 v-40 q0 -20 -14 -20 z" fill="#56675E" opacity=".22" stroke="#56675E"/>
+              <text x="234" y="112" font-size="30" fill="#56675E">?</text>
+              <text class="lbl" x="200" y="46">Unknown odds</text>
+              <text x="196" y="162">"Could be anything"</text>
+              <path d="M170 96 L134 96" stroke="#A25516" stroke-width="2" marker-end="url(#am1)"/>
+              <defs><marker id="am1" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#A25516"/></marker></defs>
+              <text x="128" y="184" class="lbl" fill="#A25516">Chosen — even when the odds are no better</text>
+            </svg>
+            <figcaption>The preference is for legibility, not for better odds. In a portfolio it shows up as home bias and as asset classes never considered.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6. Self-attribution -->
+    <article class="bias" id="attribution">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Self-attribution</h3>
+        <p class="oneline">Successes are credited to your own skill; failures are blamed on bad luck, bad markets or bad advice.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Information processing</li><li>Feeds overconfidence</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Two protective habits run together: <b>self-enhancing</b>, taking undue credit for good outcomes, and <b>self-protecting</b>, refusing responsibility for bad ones. The result is an accounting system in which the ledger can only show skill. Because losses never get attributed to the decision-maker, no learning takes place, and confidence rises with experience regardless of results.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The 2021 portfolio, reviewed in 2022</p>
+              <p>In FY 2021, an investor's smallcap portfolio is up 90%. He concludes he has a talent for picking stocks — never mind that the Smallcap 250 index rose about the same amount, so his selection added nothing. In 2022 the portfolio falls 30% and the explanation changes: the US Fed, the Russia–Ukraine war, FII selling. Both years were driven mostly by the market. Only one was attributed to it.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>A steady build-up of overconfidence, which then produces bigger position sizes, more trading and less diversification. It also blocks the feedback loop that would otherwise correct every other bias on this list.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Do proper attribution: separate the market return (beta), the sector effect and your actual selection. Ask whether the portfolio beat the Nifty 500 or merely rode it.</li>
+              <li>For every winning position, write down honestly how much was the thesis and how much was the market.</li>
+              <li>For every losing position, write down the part that was your decision before naming anything external.</li>
+            </ul>
+            <p class="confuse"><b>Note the classification.</b> Your FPSB list places self-attribution under information processing. The CFA framework treats it as a belief-perseverance bias. Either way it is a cognitive error, and the treatment is the same.</p>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 200" role="img" aria-label="Gains attributed to self and losses attributed to external forces">
+              <path d="M60 42 L60 88" stroke="#A25516" stroke-width="2.6" marker-start="url(#up)"/>
+              <defs>
+                <marker id="up" markerWidth="12" markerHeight="12" refX="6" refY="8" orient="auto"><path d="M6 0 L12 10 L0 10 z" fill="#A25516"/></marker>
+                <marker id="dn" markerWidth="12" markerHeight="12" refX="6" refY="4" orient="auto"><path d="M6 12 L0 2 L12 2 z" fill="#56675E"/></marker>
+              </defs>
+              <text class="lbl" x="82" y="60" fill="#A25516">Portfolio up 90%</text>
+              <text x="82" y="78">→ "my stock picking"</text>
+              <path d="M60 116 L60 162" stroke="#56675E" stroke-width="2.6" marker-end="url(#dn)"/>
+              <text class="lbl" x="82" y="134">Portfolio down 30%</text>
+              <text x="82" y="152">→ "the Fed, FIIs, the war"</text>
+              <line x1="16" y1="102" x2="324" y2="102" stroke="#56675E" stroke-width=".8" stroke-dasharray="3 3"/>
+              <text x="16" y="186" fill="#8B2C55" font-style="italic">The Smallcap index rose about 90% too. Selection added nothing.</text>
+            </svg>
+            <figcaption>The same market drove both years. Only the losing year is allowed to have a cause outside the investor.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7. Outcome -->
+    <article class="bias" id="outcome">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Outcome</h3>
+        <p class="oneline">Judging the quality of a decision by how it turned out, rather than by how sound it was when it was made.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Information processing</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>In any activity with a large luck component, good decisions sometimes lose and bad decisions sometimes win. Outcome bias collapses that distinction. It matters more than it sounds, because it determines what people copy: reckless strategies that happened to pay off get imitated, and sound processes that had a bad run get abandoned at exactly the wrong moment.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The friend who tripled his emergency fund</p>
+              <p>In March 2020 a colleague puts his entire ₹8 lakh emergency fund into one smallcap. By 2021 it is worth ₹25 lakh, and the office decides he is brilliant. He was not. He took an undiversified, unhedged, liquidity-destroying bet with money reserved for a job loss, during a pandemic, and the dice came up right. Had he needed the money in May 2020, the same decision would have been catastrophic. Good outcome, bad decision.</p>
+              <p>The mirror image: a well-diversified investor with 60% equity and 40% debt underperforms in 2021 and is told he is too cautious. Sound decision, unremarkable outcome.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Risky behaviour is rewarded and imitated. Fund managers are fired after one weak year and hired after one strong one — which is, mechanically, selling low and buying high.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Grade the process separately from the result. Was the information available, the position sized sensibly, the risk understood?</li>
+              <li>Evaluate over full market cycles and on risk-adjusted measures, not on one year of absolute return.</li>
+              <li>Ask what would have happened in the other plausible states of the world, not just the one that occurred.</li>
+            </ul>
+            <p class="confuse"><b>Distinguish the trio.</b> <b>Hindsight:</b> "I knew this would happen." <b>Outcome:</b> "It happened, so the decision was good." <b>Self-attribution:</b> "It happened because of me." Examiners like to test these three together.</p>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 210" role="img" aria-label="A two-by-two grid separating decision quality from outcome">
+              <text class="lbl" x="96" y="20">Outcome</text>
+              <text x="118" y="38">good</text><text x="238" y="38">bad</text>
+              <text class="lbl" x="8" y="80" transform="rotate(-90 20 96)">Decision</text>
+              <text x="34" y="80">good</text><text x="34" y="152">bad</text>
+              <rect x="96" y="46" width="112" height="60" fill="#F4E9DF" stroke="#A25516"/>
+              <text x="108" y="72" fill="#A25516">Skill</text>
+              <text x="108" y="90">deserved</text>
+              <rect x="212" y="46" width="112" height="60" fill="#fff" stroke="#56675E"/>
+              <text x="224" y="72">Bad break</text>
+              <text x="224" y="90">keep doing it</text>
+              <rect x="96" y="110" width="112" height="60" fill="#F3E3EA" stroke="#8B2C55" stroke-width="2"/>
+              <text x="108" y="136" fill="#8B2C55">Luck</text>
+              <text x="108" y="154" fill="#8B2C55">and it gets copied</text>
+              <rect x="212" y="110" width="112" height="60" fill="#fff" stroke="#56675E"/>
+              <text x="224" y="136">Deserved loss</text>
+              <text x="224" y="154">stop doing it</text>
+              <text x="96" y="196" font-style="italic">Outcome bias treats the whole left column as skill.</text>
+            </svg>
+            <figcaption>The bottom-left box is where the damage lives: reckless decisions that paid off, and then get imitated.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 8. Recency -->
+    <article class="bias" id="recency">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Recency</h3>
+        <p class="oneline">The most recent stretch of data gets almost all the weight, and is then projected forward as if it were the norm.</p>
+        <ul class="tags"><li class="on">Cognitive error</li><li class="on">Moderate it</li><li>Information processing</li><li>Extrapolation</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Recall favours the end of a sequence, so the last two or three years become the mental model of "normal". This is the engine of every performance-chasing cycle: recent returns attract flows, flows push prices higher, higher prices make the recent returns look even more convincing, until the cycle breaks. It also quietly corrupts financial plans, because the return assumption used for a thirty-year projection gets set by the last three years.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The smallcap cycle of 2023–24</p>
+              <p>The smallcap index delivers an extraordinary run through FY 2024. Inflows into smallcap funds surge to record levels — precisely at the point of highest valuation. The regulator becomes concerned enough that AMCs are required to run and publish liquidity stress tests, and several funds voluntarily restrict lump-sum inflows. Investors arriving at that moment had a three-year mental model of smallcaps and no memory of 2018, when the same category fell more than 25% while the Nifty was up.</p>
+              <p>The planning version is quieter and more damaging: a client insists on 18% for his retirement projection because that is what the last five years delivered. The plan then requires 18% to work.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Buying high and selling low with great conviction, allocation drifting towards whatever just performed, and financial plans built on assumptions that cannot be sustained.</p>
+
+            <h4 class="blk">How to moderate it</h4>
+            <ul class="pts">
+              <li>Use 10 and 15-year rolling returns rather than trailing one and three-year numbers.</li>
+              <li>Rebalance on a written rule — annually, or on a band such as 5% drift — so the decision does not depend on how the recent past feels.</li>
+              <li>Use deliberately conservative return assumptions in projections. A plan that works at 10% and delights at 13% is safer than one that needs 15%.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 200" role="img" aria-label="A recent steep rise extrapolated forward while earlier history is faded out">
+              <line x1="26" y1="160" x2="326" y2="160" stroke="#56675E" stroke-width="1.2"/>
+              <line x1="26" y1="20" x2="26" y2="160" stroke="#56675E" stroke-width="1.2"/>
+              <polyline points="26,120 54,128 82,108 110,142 138,118 166,132 194,110" fill="none" stroke="#56675E" stroke-width="1.6" opacity=".35"/>
+              <text x="46" y="150" opacity=".55">forgotten years</text>
+              <polyline points="194,110 222,86 250,58 278,40" fill="none" stroke="#A25516" stroke-width="2.6"/>
+              <text class="lbl" x="196" y="128" fill="#A25516">the last 3 years</text>
+              <path d="M278 40 L322 22" stroke="#A25516" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#rc)"/>
+              <defs><marker id="rc" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#A25516"/></marker></defs>
+              <text x="230" y="16" fill="#A25516" font-style="italic">"and it continues"</text>
+              <text x="26" y="182" fill="#8B2C55">Money arrives here — at the highest price and the</text>
+              <text x="26" y="196" fill="#8B2C55">lowest expected return.</text>
+            </svg>
+            <figcaption>The final segment becomes the whole model. The flows arrive exactly where the extrapolation is least likely to hold.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ FAMILY 3 ============ -->
+<section class="family" data-f="3" id="emotional">
+  <div class="wrap">
+    <div class="famhead">
+      <p class="kicker">Family three · seven biases · emotional</p>
+      <h2>Emotional biases</h2>
+      <p>These arise from feeling and impulse rather than faulty reasoning, which is why explaining the mathematics rarely fixes them. A client who understands loss aversion perfectly still panics in a 30% drawdown. The professional response shifts from correcting to accommodating: build the plan, the products and the review process so that the bias has little room to cause harm — and moderate only where the bias genuinely threatens the client's ability to meet essential goals.</p>
+    </div>
+
+    <!-- 1. Loss aversion -->
+    <article class="bias" id="loss">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Loss aversion</h3>
+        <p class="oneline">A loss hurts roughly twice as much as an equivalent gain feels good — so decisions are organised around avoiding the realisation of losses.</p>
+        <ul class="tags"><li class="on">Emotional bias</li><li class="on">Adapt to it</li><li>Prospect theory</li><li>Disposition effect</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Kahneman and Tversky's value function is defined over gains and losses from a reference point, not over final wealth, and it is markedly steeper on the loss side. Three consequences follow, and all three are examinable:</p>
+            <ul class="pts">
+              <li><b>The disposition effect</b> — selling winners too early to lock in the pleasure of a gain, and holding losers too long to avoid realising the pain of a loss. Precisely backwards, both for returns and for tax.</li>
+              <li><b>Risk-seeking in the loss domain</b> — once underwater, people take bigger risks to get back to even than they would ever take from a standing start.</li>
+              <li><b>Myopic loss aversion</b> — the more often you check the portfolio, the more losing days you see, and the less equity you can tolerate holding.</li>
+            </ul>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The two positions in the same demat account</p>
+              <p>An investor holds Bajaj Finance, up 22%, and a small NBFC bought at ₹80, now ₹19. He sells the winner — "book profits, it has run up" — and holds the loser, waiting to "get back to ₹80". Two years later the compounder has doubled again and the loser is at ₹11. He has also paid 20% short-term capital gains tax on the one position he chose to close.</p>
+              <p>The myopic version: an investor checking his app four times a day sees a red screen on roughly 45% of days. He concludes he cannot handle equity and moves to 30% equity at age 34 — a decision driven entirely by his checking frequency, not by his time horizon.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>The disposition effect drags returns and raises the tax bill. The equity allocation ends up far below what the time horizon justifies. Losing positions accumulate and never leave.</p>
+
+            <h4 class="blk">How to adapt to it</h4>
+            <ul class="pts">
+              <li>Reduce the checking frequency. Quarterly reviews rather than a daily app habit — this single change does more than any explanation.</li>
+              <li>Report at the portfolio level rather than position by position, so individual red numbers do not drive decisions.</li>
+              <li>Pre-commit in writing to the exit rule at the time of purchase, when no loss is being felt.</li>
+              <li>Use tax-loss harvesting to reframe selling a loser as a deliberate, beneficial action rather than an admission of failure.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 220" role="img" aria-label="The prospect theory value function, steeper for losses than for gains">
+              <line x1="30" y1="110" x2="320" y2="110" stroke="#56675E" stroke-width="1.2"/>
+              <line x1="175" y1="16" x2="175" y2="204" stroke="#56675E" stroke-width="1.2"/>
+              <text x="286" y="126">gains</text><text x="40" y="126">losses</text>
+              <text class="lbl" x="182" y="26" fill="#8B2C55">felt value</text>
+              <path d="M175 110 C215 74 260 62 316 54" fill="none" stroke="#8B2C55" stroke-width="2.4"/>
+              <path d="M175 110 C150 152 120 176 36 196" fill="none" stroke="#8B2C55" stroke-width="2.4"/>
+              <line x1="255" y1="110" x2="255" y2="68" stroke="#56675E" stroke-width="1" stroke-dasharray="3 3"/>
+              <line x1="175" y1="68" x2="255" y2="68" stroke="#56675E" stroke-width="1" stroke-dasharray="3 3"/>
+              <text x="258" y="100">+₹1 lakh</text>
+              <line x1="95" y1="110" x2="95" y2="182" stroke="#56675E" stroke-width="1" stroke-dasharray="3 3"/>
+              <line x1="175" y1="182" x2="95" y2="182" stroke="#56675E" stroke-width="1" stroke-dasharray="3 3"/>
+              <text x="52" y="102">−₹1 lakh</text>
+              <path d="M186 68 L186 110" stroke="#8B2C55" stroke-width="5" opacity=".45"/>
+              <path d="M164 110 L164 182" stroke="#8B2C55" stroke-width="5" opacity=".9"/>
+              <text x="196" y="216" fill="#8B2C55" font-style="italic">Same rupees. The pain bar is about twice the pleasure bar.</text>
+            </svg>
+            <figcaption>The curve is steeper below the reference point and flattens above it — which is why gains get booked early and losses get carried.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. Overconfidence -->
+    <article class="bias" id="overconfidence">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Overconfidence</h3>
+        <p class="oneline">Rating your own knowledge, judgement and forecasting ability higher than the evidence supports.</p>
+        <ul class="tags"><li class="on">Emotional bias</li><li class="on">Adapt to it</li><li>Two forms</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Two distinct forms are named in the syllabus:</p>
+            <ul class="pts">
+              <li><b>Prediction overconfidence</b> — the confidence interval is far too narrow. Asked for a 90% confident range, most people give a range that contains the true answer about half the time. In portfolio terms, downside risk is systematically understated.</li>
+              <li><b>Certainty overconfidence</b> — probabilities are set too high. What is called "an 80% chance" turns out right closer to 60% of the time.</li>
+            </ul>
+            <p>Add the better-than-average effect — most drivers, and most investors, rate themselves above the median — and self-attribution bias, which ensures that experience only ever confirms the self-assessment. Overconfidence is classified as emotional because it is fundamentally about protecting self-esteem, not about arithmetic.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The F&amp;O statistic everyone has read and nobody applies</p>
+              <p>SEBI's studies of individual traders in the equity derivatives segment have repeatedly found that the large majority — roughly nine in ten — lose money, with sizeable average losses. The number is widely reported and widely known. Every new entrant has seen it, and concludes that it describes the other nine. That is overconfidence in its purest measurable form.</p>
+              <p>The quieter version: a senior professional with 55% of his net worth in his employer's stock plus his salary from the same company, confident he understands the business better than the market does.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Excessive trading and its costs, position sizes that ignore the chance of being wrong, under-diversification, and a persistent underestimate of how bad a bad year can be.</p>
+
+            <h4 class="blk">How to adapt to it</h4>
+            <ul class="pts">
+              <li>Impose hard position limits in writing — no single stock above a set percentage — so the bias cannot express itself in size.</li>
+              <li>Keep a trade log and review realised performance against a benchmark. Confronting the record works better than confronting the belief.</li>
+              <li>Ask for forecasts as ranges with an explicit confidence level, then check how often the outcome falls inside them.</li>
+              <li>Where conviction is high, allow it — but in a small, ring-fenced satellite portfolio rather than in the core.</li>
+            </ul>
+            <p class="confuse"><b>Distinguish from optimism.</b> Overconfidence is about my ability: "I can pick the winner." Optimism is about my fortune: "things will work out for me." One is a claim of skill, the other a claim on luck.</p>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 200" role="img" aria-label="A narrow forecast range compared with the much wider distribution of actual outcomes">
+              <text class="lbl" x="18" y="24" fill="#8B2C55">"I'm 90% sure it lands here"</text>
+              <rect x="140" y="34" width="58" height="26" fill="#F3E3EA" stroke="#8B2C55"/>
+              <line x1="140" y1="30" x2="140" y2="64" stroke="#8B2C55" stroke-width="2"/>
+              <line x1="198" y1="30" x2="198" y2="64" stroke="#8B2C55" stroke-width="2"/>
+              <text x="140" y="80" fill="#8B2C55">my range</text>
+              <text class="lbl" x="18" y="112">What actually happens</text>
+              <path d="M26 168 C80 168 90 124 170 124 C250 124 260 168 314 168" fill="#56675E" opacity=".16"/>
+              <path d="M26 168 C80 168 90 124 170 124 C250 124 260 168 314 168" fill="none" stroke="#56675E" stroke-width="1.4"/>
+              <line x1="140" y1="118" x2="140" y2="172" stroke="#8B2C55" stroke-width="1.4" stroke-dasharray="3 3"/>
+              <line x1="198" y1="118" x2="198" y2="172" stroke="#8B2C55" stroke-width="1.4" stroke-dasharray="3 3"/>
+              <circle cx="72" cy="160" r="4.5" fill="#8B2C55"/>
+              <circle cx="286" cy="162" r="4.5" fill="#8B2C55"/>
+              <circle cx="252" cy="140" r="4.5" fill="#8B2C55"/>
+              <text x="26" y="192" font-style="italic">Roughly half of all outcomes fall outside the "90%" range.</text>
+            </svg>
+            <figcaption>The bias is not usually about direction. It is about width: the range of outcomes the investor believes is possible is far too narrow.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. Optimism -->
+    <article class="bias" id="optimism">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Optimism</h3>
+        <p class="oneline">Believing that good things are more likely to happen to you, and bad things more likely to happen to other people.</p>
+        <ul class="tags"><li class="on">Emotional bias</li><li class="on">Adapt to it</li><li>Under-insurance</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>People consistently rate their own chance of illness, job loss, accident or business failure below the population average, and their own chance of above-average returns above it. This is not a statistical error the person would correct if shown the data — it is a self-protective stance that makes the future bearable. That is why it sits in the emotional family.</p>
+            <p>In financial planning, optimism does its damage in the assumptions rather than in the portfolio. The asset allocation may be perfectly sensible while the plan around it quietly assumes nothing goes wrong.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The plan that assumes a smooth life</p>
+              <p>A 38-year-old software professional in Hyderabad has a ₹5 lakh employer health cover and no personal policy, because he is fit and has never been hospitalised. He has no separate term cover beyond the employer's, one month of expenses in the bank, and a retirement plan built on 15% returns, no career break, and expenses growing at 5% while healthcare in India has been inflating considerably faster. Every one of those assumptions is defensible on its own. Together they describe a life in which nothing goes wrong.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Chronic under-insurance, an inadequate emergency fund, a savings rate set too low because future income is assumed to rise, and projections that only work in the good case.</p>
+
+            <h4 class="blk">How to adapt to it</h4>
+            <ul class="pts">
+              <li>Stress-test the plan in front of the client: run job loss, a five-year period of poor returns, a serious medical event, and living to 95.</li>
+              <li>Use deliberately conservative assumptions — lower returns, higher inflation, longer life. If the plan survives those, optimism costs nothing.</li>
+              <li>Present insurance and the emergency fund as the price of being allowed to take equity risk elsewhere, not as pessimism.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 190" role="img" aria-label="Perceived personal probability of bad events far below the population rate">
+              <text class="lbl" x="18" y="24" fill="#8B2C55">Chance of a major medical event before 60</text>
+              <text x="18" y="58">Population</text>
+              <rect x="118" y="44" width="200" height="20" fill="#fff" stroke="#56675E"/>
+              <rect x="118" y="44" width="120" height="20" fill="#56675E" opacity=".45"/>
+              <text x="244" y="59">about 1 in 3</text>
+              <text x="18" y="102">"Me"</text>
+              <rect x="118" y="88" width="200" height="20" fill="#fff" stroke="#8B2C55"/>
+              <rect x="118" y="88" width="34" height="20" fill="#8B2C55" opacity=".6"/>
+              <text x="158" y="103" fill="#8B2C55">"not likely, I'm fit"</text>
+              <path d="M238 70 L152 84" stroke="#8B2C55" stroke-width="1.4" stroke-dasharray="4 3"/>
+              <text x="18" y="142" fill="#56675E" font-style="italic">The gap is where the missing health cover, the thin</text>
+              <text x="18" y="160" fill="#56675E" font-style="italic">emergency fund and the 15% return assumption live.</text>
+            </svg>
+            <figcaption>Optimism rarely changes the portfolio. It changes the assumptions the portfolio is asked to satisfy.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. Self-control -->
+    <article class="bias" id="selfcontrol">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Self-control</h3>
+        <p class="oneline">Knowing what the long term requires and consuming today anyway, because present satisfaction outranks a distant goal.</p>
+        <ul class="tags"><li class="on">Emotional bias</li><li class="on">Adapt to it</li><li>Hyperbolic discounting</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>People discount the future steeply and inconsistently. A rupee today is valued far more than a rupee next year, and — the crucial part — the discount rate itself falls with distance, so preferences reverse. Every January, saving from March feels easy; every March, it does not. The failure is not one of knowledge. The client can recite the compounding argument perfectly while not acting on it.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The SIP that starts next year, every year</p>
+              <p>A 30-year-old earning ₹18 lakh knows he should invest ₹25,000 a month for retirement. He starts "after the wedding", then "after the car loan", then "after the house". Meanwhile a ₹9 lakh car has been financed on EMI and the annual bonus has funded a holiday three years running.</p>
+              <p>The arithmetic he already understands: ₹25,000 a month from age 30 to 60 at 11% builds roughly ₹7 crore. Starting the same SIP at 40 builds roughly ₹2.2 crore. Ten years of delay costs about two-thirds of the corpus — and the ten years cost him a car and three holidays.</p>
+              <p>The second-order damage: realising the shortfall at 48, he moves aggressively into concentrated equity to catch up, taking exactly the wrong risk at the wrong time.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>A savings rate below what the goals require, retirement funded last, and excessive risk taken late in an attempt to make up lost ground.</p>
+
+            <h4 class="blk">How to adapt to it</h4>
+            <ul class="pts">
+              <li>Automate and remove the monthly decision: SIP dated within a day or two of salary credit, before the money is available to spend.</li>
+              <li>Use commitment devices — EPF, NPS and PPF work partly because the money is genuinely hard to withdraw.</li>
+              <li>Step-up the SIP automatically with the annual increment, so a rise in income does not become a rise in consumption by default.</li>
+              <li>Give the discretionary impulse a legitimate home: a fixed, capped "spend it" allocation reduces the pressure on the disciplined part.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 200" role="img" aria-label="The steep discounting of a future benefit compared with the immediate one">
+              <line x1="30" y1="150" x2="322" y2="150" stroke="#56675E" stroke-width="1.2"/>
+              <text x="26" y="170">now</text><text x="266" y="170">in 30 years</text>
+              <path d="M34 34 C90 118 150 142 316 148" fill="none" stroke="#8B2C55" stroke-width="2.4"/>
+              <text class="lbl" x="46" y="30" fill="#8B2C55">how much it feels worth today</text>
+              <rect x="34" y="118" width="34" height="32" fill="#8B2C55" opacity=".55"/>
+              <text x="34" y="192">₹9L car</text>
+              <rect x="278" y="140" width="34" height="10" fill="#8B2C55" opacity=".55"/>
+              <rect x="278" y="60" width="34" height="80" fill="none" stroke="#56675E" stroke-dasharray="4 3"/>
+              <text x="238" y="52">₹7 crore corpus —</text>
+              <text x="238" y="192">felt as this small</text>
+              <line x1="278" y1="140" x2="278" y2="60" stroke="#56675E" stroke-width="1" stroke-dasharray="3 3"/>
+            </svg>
+            <figcaption>The future benefit is enormous and the present one is modest. Steep discounting reverses the ranking anyway.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. Status quo -->
+    <article class="bias" id="statusquo">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Status quo</h3>
+        <p class="oneline">Leaving things as they are, because doing nothing requires no decision and carries no felt responsibility.</p>
+        <ul class="tags"><li class="on">Emotional bias</li><li class="on">Adapt to it</li><li>Default effect</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>Change requires effort, a decision, and the acceptance that the outcome is now your doing. Inaction requires none of these. So whatever is currently in place wins by default, and the strength of the default is enormous — it is the single most reliable finding in behavioural policy, and it is why automatic enrolment transforms pension participation.</p>
+            <p>The important point for an adviser is that status quo bias is invisible. Nothing happens, nobody complains, and a portfolio quietly becomes unsuitable over a decade.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The portfolio that was set once</p>
+              <p>A client's holdings: two endowment policies bought in 2011 by a relative in the insurance business, a dividend-paying fund chosen from a 2013 magazine list, and the NPS Tier-I allocation left on whichever option was selected on the enrolment form. Nothing here was ever re-chosen. The endowment plans yield around 5%, the fund has drifted from its mandate, and the NPS equity share has never been revisited across two salary doublings and one child. Ask why, and the honest answer is that no moment ever arrived that demanded a decision.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Allocation drifts far from target because rebalancing never happens; legacy products stay long past their usefulness; and the risk profile silently diverges from the client's actual circumstances.</p>
+
+            <h4 class="blk">How to adapt to it</h4>
+            <ul class="pts">
+              <li>Make the desirable action the default: auto-rebalance, auto step-up, automatic annual review with a scheduled date.</li>
+              <li>Create the decision moment deliberately — a calendar review turns "no decision" into an explicit choice.</li>
+              <li>Change in small, staged steps rather than one large restructuring, which is easier to postpone.</li>
+            </ul>
+            <p class="confuse"><b>Distinguish the inaction trio.</b> <b>Status quo:</b> "I never got around to it." <b>Endowment:</b> "I don't want to give it up — it's mine." <b>Regret aversion:</b> "What if I sell and it goes up?" All three produce identical behaviour and need different conversations.</p>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 190" role="img" aria-label="A form where the pre-selected default option is kept and the alternatives are never chosen">
+              <rect x="18" y="20" width="304" height="120" rx="3" fill="#fff" stroke="#56675E"/>
+              <text class="lbl" x="32" y="42">Choose an allocation</text>
+              <circle cx="42" cy="66" r="7" fill="#8B2C55"/><circle cx="42" cy="66" r="3" fill="#fff"/>
+              <text x="60" y="70" fill="#8B2C55">Option A — pre-selected on the form in 2013</text>
+              <circle cx="42" cy="94" r="7" fill="none" stroke="#56675E"/>
+              <text x="60" y="98" opacity=".7">Option B — better suited to today</text>
+              <circle cx="42" cy="120" r="7" fill="none" stroke="#56675E"/>
+              <text x="60" y="124" opacity=".7">Option C</text>
+              <path d="M170 146 L170 172" stroke="#8B2C55" stroke-width="3" marker-end="url(#sq)"/>
+              <defs><marker id="sq" markerWidth="10" markerHeight="10" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#8B2C55"/></marker></defs>
+              <text class="lbl" x="184" y="170" fill="#8B2C55">Still Option A, eleven years later</text>
+            </svg>
+            <figcaption>No decision was ever taken to keep Option A. That is exactly the point — the default wins by not being contested.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6. Endowment -->
+    <article class="bias" id="endowment">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Endowment</h3>
+        <p class="oneline">Something becomes more valuable to you simply because you own it.</p>
+        <ul class="tags"><li class="on">Emotional bias</li><li class="on">Adapt to it</li><li>Ownership premium</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>In the classic experiment, people given a mug demand roughly twice what people without one are willing to pay for it. Ownership itself shifts the valuation. Two forces drive it: loss aversion, since giving up what you hold is coded as a loss, and the emotional history attached to the object — who gave it to you, what it represents, what selling it would say about you.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The shares that came from grandfather</p>
+              <p>A client inherits a large holding in an old public-sector company that his grandfather bought in 1978. It is now 45% of his portfolio, has underperformed the Nifty for fifteen years, and pays a dividend taxed at his slab rate. He will not sell — not because he has valued the business and disagrees with the market, but because they are "grandfather's shares". The same reasoning protects ancestral land that yields nothing, family gold that is never used, and ESOPs held years after vesting because they represent the work.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Dangerous concentration in inherited or granted assets, a large illiquid share of net worth, and rebalancing that can never be completed because one large holding is off-limits.</p>
+
+            <h4 class="blk">How to adapt to it</h4>
+            <ul class="pts">
+              <li>Ask the swap question: "If this arrived today as ₹40 lakh in cash, would you buy this holding with it?" A no makes the position a fresh, unjustified purchase.</li>
+              <li>Sell in stages over several years rather than all at once — this respects the attachment while reducing the risk, and manages capital gains.</li>
+              <li>Separate the memory from the asset. Retain a token holding, or redirect the proceeds to something that honours the source explicitly.</li>
+              <li>Where the emotional cost of selling is genuinely high and the client's essential goals are safe without it, accommodating the holding is a legitimate professional choice.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 190" role="img" aria-label="An owner's asking price far above the price a buyer would pay for the same asset">
+              <rect x="34" y="40" width="96" height="72" rx="4" fill="#F3E3EA" stroke="#8B2C55"/>
+              <text class="lbl" x="46" y="66" fill="#8B2C55">The same</text>
+              <text class="lbl" x="46" y="84" fill="#8B2C55">shareholding</text>
+              <rect x="210" y="40" width="96" height="72" rx="4" fill="#F3E3EA" stroke="#8B2C55"/>
+              <text class="lbl" x="222" y="66" fill="#8B2C55">The same</text>
+              <text class="lbl" x="222" y="84" fill="#8B2C55">shareholding</text>
+              <text x="34" y="30">As the owner</text>
+              <text x="210" y="30">As a buyer</text>
+              <text class="lbl" x="34" y="136" fill="#8B2C55">"Not for sale"</text>
+              <text class="lbl" x="210" y="136">"Worth ₹22 lakh"</text>
+              <path d="M140 76 L200 76" stroke="#56675E" stroke-width="1.4" stroke-dasharray="4 3"/>
+              <text x="34" y="166" fill="#56675E" font-style="italic">The asset did not change. The relationship to it did.</text>
+            </svg>
+            <figcaption>Endowment shows up as a valuation gap that no analysis produced — the price to hold is above the price to buy.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7. Regret aversion -->
+    <article class="bias" id="regret">
+      <div class="spine" aria-hidden="true"></div>
+      <div>
+        <h3>Regret aversion</h3>
+        <p class="oneline">Avoiding a decision because of how bad it would feel if it turned out wrong — which usually means avoiding action altogether.</p>
+        <ul class="tags"><li class="on">Emotional bias</li><li class="on">Adapt to it</li><li>Drives herding</li></ul>
+        <div class="cols">
+          <div>
+            <h4 class="blk">How it works</h4>
+            <p>The anticipated pain of a bad outcome is not symmetric between acting and not acting. Errors of <b>commission</b> — something you did that went wrong — hurt considerably more than errors of <b>omission</b> — something you failed to do. Since inaction feels cheaper, the default becomes paralysis.</p>
+            <p>It is also the main psychological driver of herding. Being wrong alongside everyone else produces far less regret than being wrong alone, so following the crowd is emotionally cheap even when it is financially expensive.</p>
+
+            <h4 class="blk">Indian example</h4>
+            <div class="eg">
+              <p class="who">The lump sum that never gets deployed</p>
+              <p>A client sells a property and holds ₹60 lakh in his savings account. The Nifty is near an all-time high. He will not invest, because if the market falls 15% next month he will have to live with having done that. He also will not commit to staying out, because a rally would be its own regret. Two years pass. The money earns 3% while inflation runs at 5%, and the guaranteed real loss produces no regret at all, because nobody ever decided on it.</p>
+              <p>The herding version: applying to an IPO because the whole office is applying. If it lists down, the loss is shared, and shared losses barely register as mistakes.</p>
+            </div>
+
+            <h4 class="blk">What it does to a portfolio</h4>
+            <p>Large cash drag and delayed deployment; losers retained because selling would confirm the error; herding into whatever is currently crowded; and an allocation more conservative than the goals can afford.</p>
+
+            <h4 class="blk">How to adapt to it</h4>
+            <ul class="pts">
+              <li>Remove the single big decision. A systematic transfer plan over 6 to 12 months means no one date can be the wrong date — this is the standard, and highly effective, accommodation.</li>
+              <li>Write an investment policy statement in advance, so later actions are the execution of an earlier decision rather than fresh choices to be regretted.</li>
+              <li>Name the cost of inaction explicitly, in rupees, so the omission becomes as visible as the commission would be.</li>
+            </ul>
+          </div>
+          <figure class="fig">
+            <svg viewBox="0 0 340 200" role="img" aria-label="Both branches of a decision carry anticipated regret, so the investor stays at the fork">
+              <circle cx="60" cy="100" r="9" fill="#8B2C55"/>
+              <text class="lbl" x="24" y="132" fill="#8B2C55">₹60 lakh, undeployed</text>
+              <path d="M72 92 C130 56 170 48 220 46" fill="none" stroke="#56675E" stroke-width="1.8"/>
+              <path d="M72 108 C130 144 170 152 220 154" fill="none" stroke="#56675E" stroke-width="1.8"/>
+              <text x="120" y="52">invest now</text>
+              <text x="120" y="176">wait</text>
+              <ellipse cx="272" cy="46" rx="52" ry="24" fill="#F3E3EA" stroke="#8B2C55"/>
+              <text x="238" y="43" fill="#8B2C55">"what if it</text>
+              <text x="238" y="58" fill="#8B2C55">crashes"</text>
+              <ellipse cx="272" cy="154" rx="52" ry="24" fill="#F3E3EA" stroke="#8B2C55"/>
+              <text x="238" y="151" fill="#8B2C55">"what if it</text>
+              <text x="238" y="166" fill="#8B2C55">runs away"</text>
+              <text x="24" y="196" fill="#56675E" font-style="italic">Staying still feels free. It costs 3% against 5% inflation.</text>
+            </svg>
+            <figcaption>Both actions carry anticipated regret; inaction appears to carry none. That asymmetry, not the market view, is what keeps the money in the savings account.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ CONFUSIONS ============ -->
+<section class="band" id="confusions">
+  <div class="wrap">
+    <h2>The pairs that cost marks</h2>
+    <p style="max-width:66ch">Most exam errors are not failures of recall — they are collisions between biases that produce identical behaviour. Learn the distinguishing question for each cluster.</p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th style="width:24%">Cluster</th><th style="width:38%">What separates them</th><th>The question that decides it</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="nm">Cognitive dissonance / Confirmation / Conservatism</td>
+            <td>Dissonance disposes of a contradicting fact. Confirmation controls where you look. Conservatism keeps an old forecast almost unchanged when new facts arrive.</td>
+            <td>Is the client rejecting a fact, avoiding it, or acknowledging it and barely moving?</td>
+          </tr>
+          <tr>
+            <td class="nm">Hindsight / Outcome / Self-attribution</td>
+            <td>Hindsight rewrites what you believed. Outcome misgrades the decision using the result. Self-attribution assigns the cause to yourself when it suits.</td>
+            <td>Is the claim "I knew it", "it worked so it was smart", or "it worked because of me"?</td>
+          </tr>
+          <tr>
+            <td class="nm">Anchoring / Conservatism</td>
+            <td>Anchoring clings to a specific number, often arbitrary. Conservatism clings to a previously formed view.</td>
+            <td>Is there a number being defended, or a conclusion?</td>
+          </tr>
+          <tr>
+            <td class="nm">Availability / Recency / Representativeness</td>
+            <td>Availability uses ease of recall. Recency specifically overweights the latest data. Representativeness uses resemblance to a category.</td>
+            <td>Is the driver vividness, timing, or similarity?</td>
+          </tr>
+          <tr>
+            <td class="nm">Overconfidence / Optimism / Illusion of control</td>
+            <td>Overconfidence overrates ability. Optimism overrates fortune. Illusion of control overrates influence.</td>
+            <td>Is the claim about my skill, my luck, or my effect on the outcome?</td>
+          </tr>
+          <tr>
+            <td class="nm">Status quo / Endowment / Regret aversion</td>
+            <td>All three produce inaction. Status quo is inertia, endowment is attachment to ownership, regret aversion is fear of the consequence of acting.</td>
+            <td>"I never got round to it", "it's mine", or "what if I'm wrong"?</td>
+          </tr>
+          <tr>
+            <td class="nm">Loss aversion / Risk aversion</td>
+            <td>Risk aversion is a stable preference for certainty. Loss aversion is asymmetry around a reference point — and it makes people risk-<i>seeking</i> once they are underwater.</td>
+            <td>Is the client avoiding uncertainty, or avoiding the realisation of a loss?</td>
+          </tr>
+          <tr>
+            <td class="nm">Mental accounting / Framing</td>
+            <td>Mental accounting sorts money into pots. Framing changes the decision through wording. Related, but one is about the money's label and the other about the question's wording.</td>
+            <td>Is the money being segregated, or the question being worded?</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODERATE VS ADAPT ============ -->
+<section class="family" data-f="1" id="treat">
+  <div class="wrap">
+    <div class="famhead">
+      <p class="kicker">The adviser's decision</p>
+      <h2>When to moderate and when to adapt</h2>
+      <p>Naming the bias is half the answer. The other half is what you do about it, and the profession's guideline turns on two variables: whether the bias is cognitive or emotional, and how much room the client's wealth gives for error. The formal version of the second variable is standard-of-living risk — the chance that the client fails to meet essential lifestyle needs.</p>
+    </div>
+    <div class="two" style="padding-bottom:20px">
+      <figure class="fig">
+        <svg viewBox="0 0 420 300" role="img" aria-label="A matrix of bias type against standard of living risk showing when to moderate and when to adapt">
+          <text class="lbl" x="150" y="18">Type of bias</text>
+          <text x="140" y="40">Cognitive</text><text x="290" y="40">Emotional</text>
+          <text class="lbl" x="6" y="150" transform="rotate(-90 16 160)">Standard-of-living risk</text>
+          <text x="42" y="88">High</text><text x="34" y="106">(less wealth,</text><text x="34" y="122">little margin)</text>
+          <text x="42" y="206">Low</text><text x="34" y="224">(ample wealth,</text><text x="34" y="240">goals safe)</text>
+
+          <rect x="118" y="52" width="146" height="112" fill="#E3ECF3" stroke="#1F5C8B" stroke-width="2"/>
+          <text class="lbl" x="132" y="80" fill="#1F5C8B">Moderate firmly</text>
+          <text x="132" y="102">The client cannot afford</text>
+          <text x="132" y="118">the error. Educate, impose</text>
+          <text x="132" y="134">written rules, insist on</text>
+          <text x="132" y="150">the suitable portfolio.</text>
+
+          <rect x="266" y="52" width="146" height="112" fill="#F7F9F5" stroke="#56675E"/>
+          <text class="lbl" x="280" y="80">Mostly moderate</text>
+          <text x="280" y="102">Emotional, but the</text>
+          <text x="280" y="118">stakes are too high to</text>
+          <text x="280" y="134">indulge. Accommodate</text>
+          <text x="280" y="150">only at the margins.</text>
+
+          <rect x="118" y="168" width="146" height="112" fill="#F7F9F5" stroke="#56675E"/>
+          <text class="lbl" x="132" y="196">Mostly moderate</text>
+          <text x="132" y="218">Cognitive errors respond</text>
+          <text x="132" y="234">to evidence. Correct them</text>
+          <text x="132" y="250">even when the client</text>
+          <text x="132" y="266">could afford not to.</text>
+
+          <rect x="266" y="168" width="146" height="112" fill="#F3E3EA" stroke="#8B2C55" stroke-width="2"/>
+          <text class="lbl" x="280" y="196" fill="#8B2C55">Adapt</text>
+          <text x="280" y="218">Wealth gives room and</text>
+          <text x="280" y="234">the bias is emotional.</text>
+          <text x="280" y="250">Build a portfolio the</text>
+          <text x="280" y="266">client will actually keep.</text>
+        </svg>
+        <figcaption>The guideline in one line: moderate cognitive biases and moderate any bias in a client with high standard-of-living risk; adapt to emotional biases when wealth provides the margin.</figcaption>
+      </figure>
+      <div>
+        <h4 class="blk" style="color:var(--f1)">Why adapting is not surrender</h4>
+        <p>A theoretically optimal portfolio the client abandons in the first drawdown returns less than a slightly conservative one he holds for twenty years. Accommodation buys adherence, and adherence is worth more than the last few basis points of efficiency.</p>
+        <h4 class="blk" style="color:var(--f1)">The limit of adapting</h4>
+        <p>Accommodation stops where essential goals are threatened. If a 45-year-old with an under-funded retirement wants 80% in fixed deposits because equity frightens him, adapting fully means agreeing to a plan that fails. Here you moderate — with staged entry, education and stress-tested projections — even though the bias is emotional.</p>
+        <h4 class="blk" style="color:var(--f1)">Practical sequence in a client meeting</h4>
+        <ul class="pts">
+          <li>Identify the behaviour, not the label. Clients do not describe themselves as loss-averse.</li>
+          <li>Classify: cognitive or emotional.</li>
+          <li>Assess standard-of-living risk against the client's goals.</li>
+          <li>Choose moderate or adapt, and write the chosen response into the investment policy statement so it survives the next market shock.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BIT ============ -->
+<section class="band" id="bit">
+  <div class="wrap">
+    <h2>Where these biases cluster: behavioural investor types</h2>
+    <p style="max-width:66ch">Biases rarely arrive alone. Pompian's four investor types are a useful shorthand for which cluster you are likely to meet, and they appear in the same part of the syllabus.</p>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th style="width:20%">Type</th><th style="width:16%">Risk tolerance</th><th style="width:32%">Typical biases</th><th>How to work with them</th></tr></thead>
+        <tbody>
+          <tr><td class="nm">Passive preserver</td><td>Low</td><td>Loss aversion, status quo, endowment, regret aversion — mostly emotional</td><td>Adapt. Lead with security and goals rather than returns; move in small stages.</td></tr>
+          <tr><td class="nm">Friendly follower</td><td>Low to medium</td><td>Recency, availability, regret aversion, framing — herding-prone</td><td>Adapt somewhat, but supply data before decisions; they will otherwise follow the latest tip.</td></tr>
+          <tr><td class="nm">Independent individualist</td><td>Medium to high</td><td>Confirmation, self-attribution, conservatism, availability — mostly cognitive</td><td>Moderate. They engage with evidence, so structured data and a written process work well.</td></tr>
+          <tr><td class="nm">Active accumulator</td><td>High</td><td>Overconfidence, illusion of control, self-control, self-attribution</td><td>Moderate where possible; expect to negotiate. Hard limits and a satellite portfolio work better than argument.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHEAT SHEET ============ -->
+<section class="family" data-f="2" id="sheet">
+  <div class="wrap">
+    <div class="famhead">
+      <p class="kicker">Revision</p>
+      <h2>All twenty-one, on one page</h2>
+      <p>The trigger phrase is what the client actually says. In a case-study question, that sentence is usually the whole clue.</p>
+    </div>
+    <div class="tblwrap">
+      <table>
+        <thead><tr><th style="width:17%">Bias</th><th style="width:13%">Family</th><th style="width:26%">What the client says</th><th style="width:24%">Portfolio symptom</th><th>Response</th></tr></thead>
+        <tbody>
+          <tr><td class="nm">Cognitive dissonance</td><td class="c1">Belief</td><td>"That report is too pessimistic — I'll buy more."</td><td>Averaging down into a broken thesis</td><td>Moderate</td></tr>
+          <tr><td class="nm">Conservatism</td><td class="c1">Belief</td><td>"Let's not overreact to one quarter."</td><td>Stale forecasts, late exits</td><td>Moderate</td></tr>
+          <tr><td class="nm">Confirmation</td><td class="c1">Belief</td><td>"Everyone I follow agrees with me."</td><td>Concentration, employer stock</td><td>Moderate</td></tr>
+          <tr><td class="nm">Representativeness</td><td class="c1">Belief</td><td>"This is the next HDFC Bank."</td><td>Chasing themes and hot funds</td><td>Moderate</td></tr>
+          <tr><td class="nm">Illusion of control</td><td class="c1">Belief</td><td>"I watch it every day, so I'm safe."</td><td>Over-trading, high costs and tax</td><td>Moderate</td></tr>
+          <tr><td class="nm">Hindsight</td><td class="c1">Belief</td><td>"March 2020 was an obvious buy."</td><td>Oversized bets on false skill</td><td>Moderate</td></tr>
+          <tr><td class="nm">Anchoring</td><td class="c2">Processing</td><td>"I'll sell when it's back to ₹500."</td><td>Losers held for a private number</td><td>Moderate</td></tr>
+          <tr><td class="nm">Mental accounting</td><td class="c2">Processing</td><td>"That's the child's money, don't touch it."</td><td>Idle cash beside costly debt</td><td>Moderate</td></tr>
+          <tr><td class="nm">Framing</td><td class="c2">Processing</td><td>"98% of claims are settled."</td><td>Mis-stated risk tolerance, mis-buys</td><td>Moderate</td></tr>
+          <tr><td class="nm">Availability</td><td class="c2">Processing</td><td>"Everyone made money in that IPO."</td><td>Selection driven by news and ads</td><td>Moderate</td></tr>
+          <tr><td class="nm">Ambiguity aversion</td><td class="c2">Processing</td><td>"I don't understand US markets."</td><td>Home bias, missing asset classes</td><td>Moderate</td></tr>
+          <tr><td class="nm">Self-attribution</td><td class="c2">Processing</td><td>"I picked well; the Fed ruined it."</td><td>Rising overconfidence, no learning</td><td>Moderate</td></tr>
+          <tr><td class="nm">Outcome</td><td class="c2">Processing</td><td>"He tripled his money, so he's smart."</td><td>Copying luck; firing good managers</td><td>Moderate</td></tr>
+          <tr><td class="nm">Recency</td><td class="c2">Processing</td><td>"Smallcaps have given 40% for 3 years."</td><td>Buying high, unrealistic assumptions</td><td>Moderate</td></tr>
+          <tr><td class="nm">Loss aversion</td><td class="c3">Emotional</td><td>"I'll sell once it gets back to cost."</td><td>Disposition effect, too little equity</td><td>Adapt</td></tr>
+          <tr><td class="nm">Overconfidence</td><td class="c3">Emotional</td><td>"Most F&amp;O traders lose — not me."</td><td>Over-trading, under-diversification</td><td>Adapt</td></tr>
+          <tr><td class="nm">Optimism</td><td class="c3">Emotional</td><td>"I'm healthy, I don't need cover."</td><td>Under-insurance, thin emergency fund</td><td>Adapt</td></tr>
+          <tr><td class="nm">Self-control</td><td class="c3">Emotional</td><td>"I'll start the SIP next year."</td><td>Low savings rate, late catch-up risk</td><td>Adapt</td></tr>
+          <tr><td class="nm">Status quo</td><td class="c3">Emotional</td><td>"It's been like that for years."</td><td>No rebalancing, legacy products</td><td>Adapt</td></tr>
+          <tr><td class="nm">Endowment</td><td class="c3">Emotional</td><td>"Those are grandfather's shares."</td><td>Concentration in inherited assets</td><td>Adapt</td></tr>
+          <tr><td class="nm">Regret aversion</td><td class="c3">Emotional</td><td>"What if I invest and it falls?"</td><td>Cash drag, herding, over-conservatism</td><td>Adapt</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:15.5px;color:var(--muted);margin-top:12px;max-width:74ch">The response column gives the default. It is overridden when standard-of-living risk is high: an emotional bias that puts essential goals at risk must still be moderated.</p>
+  </div>
+</section>
+
+<!-- ============ DRILLS ============ -->
+<section class="family" data-f="3" id="drills">
+  <div class="wrap">
+    <div class="famhead">
+      <p class="kicker">Self-test · fourteen cases</p>
+      <h2>Name the bias</h2>
+      <p>Read the case, decide before you open it. The answer gives the bias, the family, and the reason the nearest alternative is wrong — which is where the marks actually sit.</p>
+    </div>
+
+    <details class="drill"><summary>Ravi bought a pharma stock at ₹640. It is now ₹310 and the company has lost its largest US approval. He says he will exit "the day it touches ₹640 again".</summary>
+      <div class="ans"><p><span class="verdict v2">Anchoring and adjustment</span> — information processing, cognitive, moderate it.</p>
+      <p>The sell decision is tied to his own purchase price, a number with no bearing on the company's value. Not loss aversion alone: the giveaway is the specific number being defended rather than the general reluctance to book a loss. In practice both are usually present, and a strong answer says so.</p></div></details>
+
+    <details class="drill"><summary>Priya keeps ₹8 lakh in a savings account earning 3% for her daughter's college fund in 2032, while paying 13% on a car loan. She says the education money cannot be touched.</summary>
+      <div class="ans"><p><span class="verdict v2">Mental accounting</span> — information processing, cognitive, moderate it.</p>
+      <p>Money is fungible; the pots are mental, the 10% spread is real. Netting the two would earn a guaranteed 10% with no risk. Not status quo — she is actively defending the segregation, not merely failing to act.</p></div></details>
+
+    <details class="drill"><summary>An investor's smallcap portfolio rose 85% in the year the smallcap index rose 80%. He credits his research. The next year he is down 28% and blames FII outflows.</summary>
+      <div class="ans"><p><span class="verdict v2">Self-attribution</span> — information processing in the FPSB list, cognitive, moderate it.</p>
+      <p>Self-enhancing on the way up, self-protecting on the way down. Not overconfidence itself — overconfidence is the <i>result</i>; self-attribution is the accounting method that produces it. Attribution analysis against the benchmark is the practical fix.</p></div></details>
+
+    <details class="drill"><summary>A client has held ₹60 lakh from a property sale in his savings account for two years. He will not invest at an all-time high and will not commit to staying out either.</summary>
+      <div class="ans"><p><span class="verdict v3">Regret aversion</span> — emotional, adapt to it.</p>
+      <p>Both branches carry anticipated regret, so he stays at the fork. The standard accommodation is an STP over 6 to 12 months, which removes the single decision that could be wrong. Not status quo: he is not failing to notice, he is actively unable to choose.</p></div></details>
+
+    <details class="drill"><summary>After watching three friends make listing gains, an investor applies to every IPO, convinced this is the easiest money in the market.</summary>
+      <div class="ans"><p><span class="verdict v2">Availability</span> — information processing, cognitive, moderate it.</p>
+      <p>Probability is being estimated from the vivid, easily recalled cases. The flat and negative listings are not remembered because they were never discussed. Recency is a defensible second answer if the emphasis is on the last few months specifically; availability is better here because the driver is memorability, not timing.</p></div></details>
+
+    <details class="drill"><summary>A 41-year-old with two children has no term insurance and one month of expenses saved. He is fit, has never been ill, and expects his income to keep rising.</summary>
+      <div class="ans"><p><span class="verdict v3">Optimism</span> — emotional, adapt to it.</p>
+      <p>Bad outcomes are things that happen to other people. Not overconfidence — nothing here is a claim about his skill or judgement, only about his fortune. The response is to stress-test the plan against job loss and a medical event rather than to argue about probabilities.</p></div></details>
+
+    <details class="drill"><summary>An analyst's ₹1,400 target survives a quarter in which margins collapse and guidance is withdrawn. The revised target is ₹1,340.</summary>
+      <div class="ans"><p><span class="verdict v1">Conservatism</span> — belief perseverance, cognitive, moderate it.</p>
+      <p>Strong new evidence produces a token adjustment. Not anchoring: what is being defended is a forecast built from a model, not an arbitrary number. The blank-slate test — "what would I forecast with no prior position?" — is the correcting question.</p></div></details>
+
+    <details class="drill"><summary>A client will not sell a PSU holding that is 40% of his portfolio and has lagged the index for a decade, because his grandfather bought it in 1978.</summary>
+      <div class="ans"><p><span class="verdict v3">Endowment</span> — emotional, adapt to it.</p>
+      <p>Value is attached to ownership and its history rather than to the business. Not status quo, which is inertia without attachment. Use the swap test — "would you buy this with the cash today?" — and sell in stages over several years.</p></div></details>
+
+    <details class="drill"><summary>A colleague put his entire emergency fund into one smallcap in March 2020 and tripled it. The office now treats him as an expert and copies his trades.</summary>
+      <div class="ans"><p><span class="verdict v2">Outcome bias</span> — information processing, cognitive, moderate it.</p>
+      <p>The decision is being graded by its result. It was undiversified, unhedged and used money reserved against job loss during a pandemic — a poor decision with a good outcome. Not hindsight, which would be the colleague claiming he had predicted the recovery.</p></div></details>
+
+    <details class="drill"><summary>An investor sold Bajaj Finance after a 20% gain but has held a stock down 78% for four years. He describes himself as patient.</summary>
+      <div class="ans"><p><span class="verdict v3">Loss aversion</span>, specifically the disposition effect — emotional, adapt to it.</p>
+      <p>Gains are realised early to lock in pleasure; losses are carried to avoid pain. It also costs him tax, since the realised gain was short-term. Adapt by reviewing at portfolio level, reducing checking frequency, and pre-committing to exit rules at purchase.</p></div></details>
+
+    <details class="drill"><summary>A client rejects a global equity fund. He has not analysed it; he says he does not understand foreign markets and prefers to stay with what he knows.</summary>
+      <div class="ans"><p><span class="verdict v2">Ambiguity aversion</span> — information processing in the FPSB list, cognitive, moderate it.</p>
+      <p>The unfamiliar is being treated as riskier rather than as merely unknown, producing home bias. Education is the direct antidote because ambiguity is missing information. Note that the CFA framework classifies this as emotional; the FPSB grouping is what your paper follows.</p></div></details>
+
+    <details class="drill"><summary>A client's NPS allocation, chosen on the enrolment form in 2012, has never been changed across two promotions, a marriage and a child.</summary>
+      <div class="ans"><p><span class="verdict v3">Status quo</span> — emotional, adapt to it.</p>
+      <p>No decision was ever taken to keep it; the default simply won. Not endowment, since there is no attachment to the specific allocation. The fix is structural: make the good option the default and schedule a review date that forces an explicit choice.</p></div></details>
+
+    <details class="drill"><summary>An investor moves ₹12 lakh into smallcap funds in early 2024 after three exceptional years, expecting the run to continue.</summary>
+      <div class="ans"><p><span class="verdict v2">Recency</span> — information processing, cognitive, moderate it.</p>
+      <p>The most recent stretch has become the model of normal and is being extrapolated. Note the mechanism: the money arrives at the highest valuation and therefore the lowest expected return. Use 10 and 15-year rolling returns and a written rebalancing rule.</p></div></details>
+
+    <details class="drill"><summary>A trader watches the screen from open to close, runs six indicators, and places 25 trades a day. He says the constant monitoring is what protects his capital.</summary>
+      <div class="ans"><p><span class="verdict v1">Illusion of control</span> — belief perseverance, cognitive, moderate it.</p>
+      <p>Effort and involvement are being mistaken for influence over the outcome. Overconfidence is a reasonable partial answer, but the specific claim here is about control through activity, not superior forecasting. Split the decision into what he controls — costs, sizing, allocation — and what he does not.</p></div></details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p style="max-width:70ch">Built for the Investment Planning &amp; Strategy module of the FPSB India / CFP curriculum. Classifications follow the three-family grouping in your course material; where the CFA Institute framework classifies a bias differently — self-attribution and ambiguity aversion in particular — the difference is noted in the entry. Company and market references are illustrative examples of investor behaviour, not investment recommendations.</p>
+    <p style="margin-top:14px"><a href="#map">Back to the top</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
