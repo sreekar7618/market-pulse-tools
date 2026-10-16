@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NISM XV — Final Revision Ledger | Market Pulse</title>
+<style>
+:root{
+  --ink:#152238; --ink2:#3A4A63; --mut:#6B7A90;
+  --paper:#EEF1F5; --card:#FFFFFF; --rule:#D6DCE6; --rule2:#E8ECF2;
+  --m1:#9A6A1F; --m2:#4A6E8A; --m3:#0B6B62; --m4:#6B4B8A; --m5:#2F5D8C; --m6:#7A2E5E; --m7:#8A3B2E;
+  --trap:#9E1B45; --fx:#0B6B62; --hook:#3F3A8C; --eg:#1F6F4A; --upd:#B0621B;
+  --font-display:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --font-body:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font-mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,"Courier New",monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth; scroll-padding-top:120px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);
+  font-size:15px;line-height:1.6;-webkit-text-size-adjust:100%}
+[hidden]{display:none!important}
+
+/* ---------- masthead ---------- */
+.mast{background:var(--ink);color:#fff;padding:22px 20px 0}
+.mast-in{max-width:1120px;margin:0 auto}
+.eyebrow{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#8FA3BE;margin:0 0 6px}
+.mast h1{font-family:var(--font-display);font-weight:600;font-size:clamp(26px,4.4vw,40px);line-height:1.1;margin:0 0 4px;letter-spacing:-.01em}
+.mast h1 em{font-style:italic;color:#D9B36C}
+.mast .sub{color:#A9BBD2;font-size:13.5px;margin:0 0 16px;max-width:64ch}
+.facts{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid #2B3A55;border-bottom:1px solid #2B3A55;margin-bottom:18px}
+.fact{padding:9px 18px 9px 0;margin-right:18px;border-right:1px solid #2B3A55;font-size:12.5px;color:#A9BBD2}
+.fact:last-child{border-right:0}
+.fact b{display:block;font-family:var(--font-mono);font-size:15px;color:#fff;letter-spacing:-.01em}
+
+/* ---------- mark ledger ---------- */
+.ledger-lab{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#8FA3BE;margin-bottom:6px}
+.ledger{display:flex;height:46px;border-radius:3px;overflow:hidden}
+.seg{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;text-decoration:none;color:#fff;transition:filter .15s;border-right:1px solid rgba(255,255,255,.28);padding:2px;min-width:0;background:var(--c)}
+.seg:last-child{border-right:0}
+.seg:hover,.seg:focus-visible{filter:brightness(1.25);outline:none}
+.seg .sm{font-family:var(--font-mono);font-size:14px;font-weight:700;line-height:1}
+.seg .sl{font-size:9px;letter-spacing:.06em;text-transform:uppercase;opacity:.85;line-height:1;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.seg.done::after{content:"✓";position:absolute;top:2px;right:3px;font-size:9px;opacity:.95}
+.groups{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 0;font-size:11px;color:#A9BBD2}
+.groups span{display:inline-flex;align-items:center;gap:6px}
+.groups i{display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--c)}
+.ledger-foot{font-size:11.5px;color:#8FA3BE;padding:8px 0 16px;font-style:italic}
+.ledger-foot b{color:#D8E2EE}
+
+/* ---------- sticky toolbar ---------- */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(238,241,245,.96);backdrop-filter:saturate(1.4) blur(8px);-webkit-backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--rule);padding:9px 20px}
+.bar-in{max-width:1120px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 240px;min-width:0;padding:8px 12px;border:1px solid var(--rule);border-radius:3px;background:#fff;font-family:var(--font-body);font-size:14px;color:var(--ink)}
+#q:focus{outline:2px solid var(--m5);outline-offset:-1px}
+.btn{padding:8px 12px;border:1px solid var(--rule);background:#fff;border-radius:3px;cursor:pointer;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.btn:hover,.btn:focus-visible{background:var(--ink);color:#fff;border-color:var(--ink);outline:none}
+.count{font-family:var(--font-mono);font-size:11px;color:var(--mut);white-space:nowrap;display:flex;align-items:center;gap:8px}
+.count b{color:var(--ink)}
+.prog{display:inline-block;width:70px;height:5px;background:var(--rule);border-radius:3px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--m3);transition:width .3s}
+
+/* ---------- layout ---------- */
+main{max-width:1120px;margin:0 auto;padding:26px 20px 80px}
+.module{margin:0 0 30px}
+.mod-head{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:12px 0 10px;border-bottom:3px solid var(--c);position:relative}
+.mod-head::-webkit-details-marker{display:none}
+.mod-head::after{content:"▾";margin-left:auto;font-size:14px;color:var(--mut);transition:transform .2s}
+details[open] > .mod-head::after{transform:rotate(180deg)}
+.mod-head:focus-visible{outline:2px solid var(--m5);outline-offset:2px}
+.mod-n{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:3px 8px;border-radius:2px;color:#fff;background:var(--c)}
+.mod-t{font-family:var(--font-display);font-size:clamp(19px,3vw,25px);font-weight:600;letter-spacing:-.01em}
+.mod-w{font-family:var(--font-mono);font-size:12px;color:var(--mut)}
+.mod-w b{color:var(--ink);font-size:14px}
+.mod-done{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--m3);font-weight:700}
+.mod-body{padding-top:18px}
+
+.topic{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--c);border-radius:3px;padding:15px 17px 12px;margin-bottom:13px}
+.topic > *{transition:opacity .2s}
+.topic h3{font-family:var(--font-display);font-size:17.5px;font-weight:600;margin:0 0 3px;letter-spacing:-.005em}
+.topic .ch{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin:0 0 10px}
+.topic p{margin:0 0 9px}
+.topic ul,.topic ol{margin:0 0 9px;padding-left:19px}
+.topic li{margin-bottom:4px}
+.k{font-weight:600}
+.tag{display:inline-block;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border-radius:2px;vertical-align:2px;margin-left:7px;background:#EAEEF4;color:var(--ink2);border:1px solid var(--rule)}
+.tag.hot{background:#FCEDE2;color:var(--upd);border-color:#F0D6BF}
+.tag.case{background:#E6F2F0;color:var(--fx);border-color:#CFE2DF}
+
+/* content devices */
+.fx{font-family:var(--font-mono);font-size:13px;background:#F2F7F6;border:1px solid #CFE2DF;border-left:3px solid var(--fx);border-radius:2px;padding:9px 12px;margin:0 0 9px;overflow-x:auto;white-space:pre-wrap;color:#0A3F3A;line-height:1.55}
+.fx b{color:var(--fx)}
+.trap{background:#FCF2F5;border:1px solid #EFD3DD;border-left:3px solid var(--trap);border-radius:2px;padding:9px 12px;margin:0 0 9px;font-size:14px}
+.trap::before{content:"Exam trap";display:block;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--trap);margin-bottom:3px;font-weight:700}
+.hook{background:#F4F2FB;border:1px solid #DCD5F0;border-left:3px solid var(--hook);border-radius:2px;padding:9px 12px;margin:0 0 9px;font-size:14px}
+.hook::before{content:"Memory hook";display:block;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--hook);margin-bottom:3px;font-weight:700}
+.eg{background:#F1F8F3;border:1px solid #CFE5D8;border-left:3px solid var(--eg);border-radius:2px;padding:9px 12px;margin:0 0 9px;font-size:14px}
+.eg::before{content:"Worked example";display:block;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--eg);margin-bottom:3px;font-weight:700}
+.eg .led{font-family:var(--font-mono);font-size:12.5px;white-space:pre-wrap;overflow-x:auto;display:block;margin:6px 0 0;color:#124A31;line-height:1.5}
+.upd{background:#FDF6EF;border:1px solid #F0DCC4;border-left:3px solid var(--upd);border-radius:2px;padding:9px 12px;margin:0 0 9px;font-size:14px}
+.upd::before{content:"Workbook vs current law";display:block;font-family:var(--font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--upd);margin-bottom:3px;font-weight:700}
+.wrap{overflow-x:auto;margin:0 0 10px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:400px}
+th,td{border:1px solid var(--rule2);padding:6px 9px;text-align:left;vertical-align:top}
+th{background:#F0F3F7;font-weight:600;font-size:12px;letter-spacing:.02em}
+tbody tr:nth-child(even){background:#FAFBFC}
+.num{font-family:var(--font-mono);font-size:13px;white-space:nowrap}
+
+/* revised checkbox, at the foot of each topic */
+.rev{display:flex;justify-content:flex-end;align-items:center;gap:6px;margin:10px 0 0;padding-top:8px;border-top:1px dashed var(--rule2);font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);cursor:pointer;user-select:none}
+.rev input{-webkit-appearance:none;appearance:none;flex:0 0 auto;width:18px;height:18px;margin:0;cursor:pointer;
+  border:2px solid var(--c,var(--m3));border-radius:3px;background:#fff;display:inline-grid;place-content:center;transition:background .15s,border-color .15s}
+.rev input::before{content:"";width:9px;height:5px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0;transition:opacity .15s}
+.rev input:checked{background:var(--c,var(--m3));border-color:var(--c,var(--m3))}
+.rev input:checked::before{opacity:1}
+.rev:hover input{box-shadow:0 0 0 3px rgba(11,107,98,.12)}
+.rev input:focus-visible{outline:2px solid var(--m5);outline-offset:2px}
+.topic.done > *:not(.rev){opacity:.5}
+.topic.done{background:#FBFCFD}
+.topic.done h3{text-decoration:line-through;text-decoration-thickness:1px}
+.topic.done .rev{color:var(--c,var(--m3));font-weight:700;opacity:1}
+
+/* closing panels */
+.panel{background:var(--ink);color:#E4EBF4;border-radius:4px;padding:22px 22px 18px;margin:34px 0 0}
+.panel h2{font-family:var(--font-display);font-size:23px;margin:0 0 4px;color:#fff;font-weight:600}
+.panel .lead{color:#A9BBD2;font-size:13px;margin:0 0 16px}
+.panel h4{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#D9B36C;margin:16px 0 7px;padding-bottom:4px;border-bottom:1px solid #2B3A55}
+.panel ul{padding-left:18px;margin:0}
+.panel li{margin-bottom:5px;font-size:13.5px}
+.panel code{font-family:var(--font-mono);background:#22314B;padding:1px 5px;border-radius:2px;color:#F0D9A8;font-size:12.5px}
+.panel b{color:#fff}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.grid2 > *{min-width:0}
+.foot{text-align:center;color:var(--mut);font-size:12px;padding:26px 0 0;line-height:1.7}
+.foot b{color:var(--ink)}
+.foot button{margin-top:8px}
+.nores{display:none;text-align:center;padding:40px;color:var(--mut);font-style:italic}
+
+/* congratulations popup */
+.modal{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:rgba(10,18,32,.62);padding:20px}
+.mcard{position:relative;width:100%;max-width:470px;background:var(--card);border-radius:4px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.35);animation:pop .45s cubic-bezier(.2,1.4,.4,1)}
+.mtop{background:var(--ink);color:#fff;padding:22px 24px 18px;text-align:center}
+.mtop .eyebrow{margin-bottom:8px}
+.mtop h2{font-family:var(--font-display);font-size:30px;font-weight:600;margin:0;line-height:1.15}
+.mtop h2 em{font-style:italic;color:#D9B36C}
+.mledger{display:flex;height:10px;margin:14px 0 0;border-radius:2px;overflow:hidden}
+.mledger span{background:var(--c)}
+.mbody{padding:18px 24px 22px;text-align:center}
+.mbody p{margin:0 0 10px;color:var(--ink2);font-size:14px}
+.mwish{font-family:var(--font-display);font-size:19px!important;font-weight:600;color:var(--ink)!important;margin:4px 0 6px!important}
+.mwish span{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);font-weight:400;margin-top:2px}
+.mnote{background:#FDF6EF;border:1px solid #F0DCC4;border-left:3px solid var(--upd);border-radius:2px;padding:8px 10px;font-size:13.5px!important;color:var(--ink)!important;text-align:left}
+.mstats{display:flex;justify-content:center;border-top:1px solid var(--rule2);border-bottom:1px solid var(--rule2);margin:6px 0 14px}
+.mstats div{flex:1;padding:9px 6px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);font-family:var(--font-mono);border-right:1px solid var(--rule2)}
+.mstats div:last-child{border-right:0}
+.mstats b{display:block;font-size:20px;color:var(--ink);letter-spacing:0}
+.mact{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.btn.solid{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.solid:hover,.btn.solid:focus-visible{background:var(--m3);border-color:var(--m3)}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:201}
+@keyframes pop{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
+
+@media (max-width:820px){ .grid2{grid-template-columns:1fr} }
+@media (max-width:640px){
+  body{font-size:14.5px}
+  .seg .sl{display:none}
+  .ledger{height:38px}
+  .seg .sm{font-size:12px}
+  .fact{padding-right:12px;margin-right:12px}
+  main{padding:20px 14px 60px}
+  .topic{padding:13px 13px 11px}
+  .mast{padding:18px 14px 0}
+  .bar{padding:8px 14px}
+  .mtop h2{font-size:25px}
+}
+@media (max-width:400px){ table{font-size:12.5px} th,td{padding:5px 6px} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important;scroll-behavior:auto!important;animation:none!important} }
+</style>
+</head>
+<body>
+
+
+<header class="mast">
+  <div class="mast-in">
+    <p class="eyebrow">Market Pulse &nbsp;·&nbsp; Learn Like Day One</p>
+    <h1>NISM Series XV — the <em>final</em> ledger</h1>
+    <p class="sub">Research Analyst, workbook version November 2025. Fifteen chapters, but four of them carry half the paper: Technical Analysis alone is worth more than the first five chapters combined. This sheet follows the published weightage, keeps the workbook's own examples and numbers, and flags the few places where the workbook and current law part ways.</p>
+
+    <div class="facts">
+      <div class="fact">Total<b>100 marks</b></div>
+      <div class="fact">Questions<b>80 MCQ + 5 cases</b></div>
+      <div class="fact">Cases<b>4 sub-Qs × 1 mark</b></div>
+      <div class="fact">Time<b>120 min</b></div>
+      <div class="fact">Pass<b>60 / 100 &nbsp;(60%)</b></div>
+      <div class="fact">Wrong answer<b>−25% of that mark</b></div>
+    </div>
+
+    <div class="ledger-lab"><span>Mark ledger — NISM published chapter weightage</span><span>tap to jump</span></div>
+    <div class="ledger" id="ledger"></div>
+    <div class="groups" id="groups"></div>
+    <p class="ledger-foot">Where the marks actually are: <b>Ch 15 (15) + Ch 8 (12) + Ch 10 (12) + Ch 14 (10) = 49</b>. Add Industry (8) and Risk &amp; Return (7) and you are at <b>64</b>, already past the pass line. The five cases lean on the calculation chapters (8, 10, 12, 15), so those pay twice: direct MCQs plus case sub-questions. Chapters 1–3 are only 5 marks together, but they are the cheapest marks on the paper.</p>
+  </div>
+</header>
+
+<div class="bar">
+  <div class="bar-in">
+    <input id="q" type="search" placeholder="Filter topics — try &quot;NYMEX&quot;, &quot;RSI&quot;, &quot;DuPont&quot;, &quot;Reg 18&quot;, &quot;GSM&quot;  (press /)" autocomplete="off" aria-label="Filter topics">
+    <button class="btn" id="openAll" type="button">Expand all</button>
+    <button class="btn" id="closeAll" type="button">Collapse</button>
+    <span class="count"><span class="prog" aria-hidden="true"><i id="pg"></i></span><b id="c1">0</b>/<span id="c2">0</span> revised</span>
+  </div>
+</div>
+
+<main>
+<p class="nores" id="nores">Nothing matches that. Clear the filter and try a shorter word.</p>
+
+<!-- ================= CHAPTER 1 ================= -->
+<details class="module" id="ch1" open style="--c:var(--m2)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 1</span>
+    <span class="mod-t">Introduction to Research Analyst Profession</span>
+    <span class="mod-w"><b>1</b> mark · pp 15–21</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>What an RA is, and the three kinds of analyst</h3>
+    <p class="ch">Chapter 1.1</p>
+    <p><span class="k">Research</span> = collecting information from reliable sources. <span class="k">Analysis</span> = processing it into a buy / hold / sell decision. The workbook calls the RA a <span class="k">selector</span>. Legally, an RA is a person who, <span class="k">for consideration</span>, provides research services, including part-time RAs.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Type</th><th>Works for</th><th>Who sees the report</th></tr></thead>
+      <tbody>
+        <tr><td><b>Sell-side</b></td><td>Brokers, investment banks, advisory firms</td><td>Public domain, with rating and <b>price target</b></td></tr>
+        <tr><td><b>Buy-side</b></td><td>MFs, hedge funds, pension funds, AIFs, FPIs, PMS</td><td><b>Internal only</b>, for the firm's fund managers</td></tr>
+        <tr><td><b>Independent</b></td><td>Boutique research houses</td><td>Sold on <b>subscription</b>; also custom reports (competition, M&amp;A)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg">The workbook's phone analogy: shortlist brands in your budget, compare battery and camera specs, decide. That is research + analysis. And its cricket analogy: Dravid and Sehwag were both great but different; two companies in one industry differ just as much, and "who will do better" is answered only with probability.</div>
+    <div class="trap">Sample question "What is the role of an RA?" — the answer is <b>helping clients take informed decisions</b>, not "only collecting data" or "financial planning".</div>
+    <div class="hook"><b>Sell-side</b> sells the idea to the public · <b>Buy-side</b> buys for its own fund (report stays inside) · <b>Independent</b> sells the report itself on subscription. Conflict of interest is highest on the <b>sell side</b>, because the same firm also does broking and investment banking.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Responsibilities, interaction rules and qualities</h3>
+    <p class="ch">Chapter 1.2–1.4</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Level</th><th>What the RA tracks</th></tr></thead>
+      <tbody>
+        <tr><td>Economy</td><td>National income, inflation, rates, unemployment, fiscal and monetary policy, FDI/FPI flows, savings, trade (Keynes: tax and spending change performance)</td></tr>
+        <tr><td>Industry</td><td>Regulation, business models, competition, price sensitivity, consumer behaviour</td></tr>
+        <tr><td>Company</td><td><b>Qualitative</b> (management, brand, model) + <b>quantitative</b> (financials, capacity use, market share)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="wrap"><table>
+      <thead><tr><th>Meeting management</th><th>Talking to clients</th></tr></thead>
+      <tbody>
+        <tr><td>Pre-meeting research (products, peers, old annual reports)</td><td>Realistic, fact-based, no bias</td></tr>
+        <tr><td>Independence; ask them not to share non-public info</td><td>Simple, clear, concise reports</td></tr>
+        <tr><td>Network: suppliers, dealers, competitors; best contact may not be top management</td><td>Disclose conflicts upfront (e.g. RA holds the stock)</td></tr>
+        <tr><td>Clear questions, carry a questionnaire</td><td>State assumptions; explain jargon; record only with consent</td></tr>
+      </tbody>
+    </table></div>
+    <p>Management may "paint rosy pictures" to get positive coverage, so <span class="k">cross-verify</span> before recommending. Qualities: good with numbers, Excel, clear financial concepts, reads financial statements, asks pertinent questions, attention to detail, communication.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 2 ================= -->
+<details class="module" id="ch2" open style="--c:var(--m2)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 2</span>
+    <span class="mod-t">Introduction to Securities Market</span>
+    <span class="mod-w"><b>2</b> marks · pp 22–54</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>What the law calls "securities"</h3>
+    <p class="ch">Chapter 2.1 · SCRA 1956, Sec 2(h)</p>
+    <p>Shares, scrips, stocks, bonds, debentures; <b>derivatives</b>; units of collective investment schemes and <b>mutual funds</b>; security receipts (SARFAESI); units of pooled investment vehicles; securitised debt instruments; <b>government securities</b>; rights or interest in securities.</p>
+    <p><span class="k">Electronic Gold Receipts</span> declared securities on <span class="num">24 Dec 2021</span>. <span class="k">Excluded:</span> ULIPs (insurer's combined life-cover-plus-investment products).</p>
+    <p>A long-term security effectively becomes short-term for the investor because the <b>secondary market</b> lets them exit.</p>
+    <div class="trap">"SCRA securities include government securities, derivatives and shares" → <b>All of the above</b>. ULIPs are the classic odd one out.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Product map: debt, hybrids and pooled vehicles</h3>
+    <p class="ch">Chapter 2.2</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Product</th><th>The line to remember</th></tr></thead>
+      <tbody>
+        <tr><td>FCD / PCD / NCD / OCD</td><td>Fully / partly / non / <b>optionally</b> (holder's choice) convertible debentures</td></tr>
+        <tr><td>Foreign bond</td><td>Abroad, in <b>that</b> country's currency (Indian firm's USD bond in US — DIAL, Feb 2020). Currency risk on issuer</td></tr>
+        <tr><td>Euro bond</td><td>Abroad, in a currency <b>not</b> local there (USD bond in Kuwait; Yen bond in Germany = Euro Yen)</td></tr>
+        <tr><td>Masala bond</td><td>INR bond outside India. First: <b>IFC, Nov 2014, London SE</b>. Currency risk on <b>investor</b></td></tr>
+        <tr><td>Warrants</td><td>Right, not obligation, to buy shares later at a set price</td></tr>
+        <tr><td>Preference shares</td><td>Priority on dividend and capital, no voting; cumulative vs non-cumulative</td></tr>
+        <tr><td>ADR / GDR / IDR</td><td>Sponsored (company-led, can list) vs unsponsored (investor-led, OTC only). IDR: Standard Chartered; 1-yr lock-in on conversion; resident Indians only. DRs: dividends yes, votes no</td></tr>
+        <tr><td>FCCB</td><td>Foreign-currency convertible; RBI under FEMA</td></tr>
+        <tr><td>ELD / CLD</td><td>Bond + options; capital protection is <b>not</b> credit protection</td></tr>
+        <tr><td>MBS / ABS</td><td>Backed by home loans / auto, card, rent receivables</td></tr>
+        <tr><td>REIT / InvIT</td><td>REIT ≥ <span class="num">80%</span> real estate; InvIT ≥ <span class="num">90%</span> revenue infra; both distribute ≥ <span class="num">90%</span></td></tr>
+        <tr><td>ETF</td><td>Index-tracking, listed, created through Authorised Participants; lower expense ratio</td></tr>
+        <tr><td>Indices</td><td>Sensex 30, Nifty 50, MSEI SX40 — market-cap weighted</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">Foreign vs Euro bond: ask one question — <b>is the bond's currency the local currency of the place it's issued?</b> Yes → foreign bond. No → Euro bond. INR outside India → Masala.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Primary market routes</h3>
+    <p class="ch">Chapter 2.3.1</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Route</th><th>Remember</th></tr></thead>
+      <tbody>
+        <tr><td>IPO</td><td>Retail ≥ <span class="num">35%</span> (bids ≤ ₹2 lakh); QIB ≤ <span class="num">50%</span></td></tr>
+        <tr><td>Anchor investor</td><td>QIB bidding ≥ <span class="num">₹10 cr</span>; up to <span class="num">60%</span> of QIB portion; bids one day before opening (since 2009)</td></tr>
+        <tr><td>FPO</td><td>Listed company's fresh issue or offer for sale</td></tr>
+        <tr><td>Private placement</td><td>Workbook: ≤ 50 investors; QIP (to QIBs) or preferential issue</td></tr>
+        <tr><td>Rights</td><td>Existing holders pay; choices: <b>exercise, renounce, lapse</b></td></tr>
+        <tr><td>Bonus</td><td>Free, from retained earnings into share capital</td></tr>
+        <tr><td>OFS</td><td>Existing holders sell; <b>no new capital</b> to company (PSU disinvestment)</td></tr>
+        <tr><td>Sweat equity</td><td>Sec 54, Companies Act 2013; reward for contribution; cuts agency risk</td></tr>
+        <tr><td>ESOP</td><td>Option after vesting (usually &gt; 1 year)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="upd">Workbook says private placement is limited to <b>50</b> investors. Current Companies Act rules allow up to <b>200</b> persons per financial year (excluding QIBs and ESOP employees). Answer <b>50</b> in the exam.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Secondary market, intermediaries and investor classes</h3>
+    <p class="ch">Chapter 2.3.2–2.4</p>
+    <p><span class="k">OTC</span>: bilateral, own credit risk. <span class="k">Exchange</span>: clearing corporation gives <b>novation</b> (buyer to every seller, seller to every buyer), backed by initial margin (VaR), peak margin and MTM.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Participant</th><th>Remember</th></tr></thead>
+      <tbody>
+        <tr><td>Depositories</td><td>NSDL, CDSL; DP is their agent</td></tr>
+        <tr><td>Authorised Person</td><td>Sub-brokers abolished from <span class="num">1 Apr 2019</span> (decided 21 Jun 2018)</td></tr>
+        <tr><td>Underwriters</td><td>Hard = commitment upfront; soft = after pricing, with exit clauses</td></tr>
+        <tr><td>AIF Cat I / II / III</td><td>I: VC, angel, SME, social, infra · II: PE, real estate, distressed, no leverage · III: hedge, PIPE, leverage and derivatives</td></tr>
+        <tr><td>P-Notes</td><td>Issued by FPIs to overseas investors who don't register</td></tr>
+        <tr><td>EPF</td><td>12% of basic each by employer and employee; EPFO manages</td></tr>
+        <tr><td>Proxy advisors</td><td>Tell institutions how to vote</td></tr>
+        <tr><td>WSPs, assayers, FPOs</td><td>WDRA-registered warehouses and assayers; NWRs used as collateral; farmer producer organisations pool bargaining power</td></tr>
+      </tbody>
+    </table></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Kinds of transactions, demat and remat</h3>
+    <p class="ch">Chapter 2.5–2.6</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Trade</th><th>Settlement / nature</th></tr></thead>
+      <tbody>
+        <tr><td>Cash · Tom · Spot</td><td><span class="num">T+0 · T+1 · T+2</span></td></tr>
+        <tr><td>Forward</td><td>Customised, OTC, counterparty risk (farmer–miller wheat deal)</td></tr>
+        <tr><td>Futures</td><td>Standardised, exchange-traded, margined (MCX wheat: 10 MT unit)</td></tr>
+        <tr><td>Options</td><td>Buyer pays premium for a right; writer carries obligation</td></tr>
+        <tr><td>Swap</td><td>Exchange cash flows — floating loan turned fixed</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg">Arvind buys a Nifty call from Salim, strike 11,000, premium ₹100.
+      <span class="led">Expiry 11,200 → Arvind: (11,200 − 11,000) − 100 = +₹100 net
+                Salim : 100 − 200          = −₹100
+Expiry 10,800 → out of the money; Arvind loses ₹100, Salim keeps ₹100</span></div>
+    <div class="hook">"<b>Right / entitled / option to</b>" → a <b>buyer</b>. "<b>Obligated / must / bound to</b>" → a <b>writer</b>. Then pick call (buy) or put (sell). Call buyer: right to buy · Put buyer: right to sell · Call writer: must sell · Put writer: must buy.</div>
+    <p><span class="k">Hedging</span> aims at no gain no loss · <span class="k">arbitrage</span> = buy cheap, sell dear simultaneously · <span class="k">pledge</span>: pledgor borrows, pledgee lends; shares stay in pledgor's demat but blocked · <span class="k">demat</span> removes distinctive numbers; <span class="k">remat</span> restores certificates.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 3 ================= -->
+<details class="module" id="ch3" open style="--c:var(--m2)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 3</span>
+    <span class="mod-t">Terminology in Equity and Debt Markets</span>
+    <span class="mod-w"><b>2</b> marks · pp 55–77</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>Equity values and per-share terms</h3>
+    <p class="ch">Chapter 3.1.1–3.1.6, 3.1.8–3.1.10</p>
+    <p>Borrow at 12%, earn 14%: the lender gets 12%, the extra 2% belongs to equity — and so does the pain when returns fall below 12%.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Term</th><th>Meaning</th><th>Workbook number</th></tr></thead>
+      <tbody>
+        <tr><td>Face value</td><td>Nominal price; dividend % is on FV</td><td>30% on FV ₹10 = ₹3; on FV ₹2 = ₹0.60. Split 1→5: FV ₹10 → ₹2</td></tr>
+        <tr><td>Book value / share</td><td>Net worth ÷ shares</td><td>(₹10 L + ₹50 L) ÷ 6 L = ₹10</td></tr>
+        <tr><td>Replacement value</td><td>Cost to build the same assets today</td><td>—</td></tr>
+        <tr><td>Intrinsic value</td><td>PV of future free cash flows (Buffett)</td><td>IV &gt; price → undervalued</td></tr>
+        <tr><td>Market cap</td><td>Price × outstanding shares</td><td>1 L × ₹20 = ₹20 L</td></tr>
+        <tr><td>EPS</td><td>Net profit ÷ weighted shares</td><td>₹10 L ÷ 2 L = ₹5</td></tr>
+        <tr><td>DPS · payout</td><td>DPS ÷ EPS = payout ratio</td><td>40% on FV ₹10 = DPS ₹4</td></tr>
+        <tr><td>Earnings</td><td>Historical · trailing (TTM, rolling) · forward (projected)</td><td>—</td></tr>
+      </tbody>
+    </table></div>
+    <p>Market-cap buckets have no fixed cut-off: typically top 50–100 = large cap, next 200–500 = mid cap, rest small cap.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Enterprise value and the price multiples</h3>
+    <p class="ch">Chapter 3.1.7, 3.1.11–3.1.14 · sample question</p>
+    <div class="fx"><b>EV</b> = Market cap + preference + debt (+ minority, consolidated) − cash − non-operating investments</div>
+    <div class="eg">10 lakh shares at ₹340; preferred ₹8.5 cr, debt ₹6.4 cr (book value as proxy), cash ₹2.5 cr, investments ₹1.4 cr.
+      <span class="led">Mcap = 340 × 10,00,000          = ₹34.0 cr
+EV   = 34.0 + 8.5 + 6.4 − 2.5 − 1.4 = ₹45.0 cr
+Sample Q: Mcap 10 L, debt 3 L, cash 4 L → EV = 9 L</span></div>
+    <div class="hook">EV is the price of buying the <b>whole business</b>: pay the shareholders, take over the debt, keep the spare cash. So <b>subtract anything that doesn't run the business</b> — cash, FDs, liquid funds, surplus investments. Receivables and inventory stay in (they're operating assets).</div>
+    <div class="wrap"><table>
+      <thead><tr><th>Multiple</th><th>Formula</th><th>Workbook example</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr><td>P/E</td><td>Price ÷ EPS</td><td>20× current, 15× forward → EPS growing</td><td>Profitable firms</td></tr>
+        <tr><td>P/S</td><td>Price ÷ sales per share</td><td>Sales ₹1 cr ÷ 10 L = ₹10; ₹40 ÷ 10 = <b>4×</b></td><td>Loss-makers</td></tr>
+        <tr><td>P/BV</td><td>Price ÷ book value</td><td>₹20 ÷ ₹10 = <b>2×</b></td><td>Banks, financials (not services)</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">DVR</span>: fewer votes per share, trades at a discount. Issuer must have paid ≥ <span class="num">10%</span> dividend over preceding 3 years; DVRs ≤ <span class="num">25%</span> of post-issue paid-up capital (Tata Motors, Pantaloons).</p>
+    <div class="trap">P/BV below 1 is not automatically cheap. The workbook's question: <b>why</b> is the market pricing it below book? Past bad investments needing write-downs are a common reason.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Bond vocabulary and the three yields</h3>
+    <p class="ch">Chapter 3.2 · calculation</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Term</th><th>Remember</th></tr></thead>
+      <tbody>
+        <tr><td>Coupon</td><td>% of FV. 8.24GS2018, FV ₹1,000 → ₹82.40 a year, ₹41.20 half-yearly (G-Secs pay semi-annually)</td></tr>
+        <tr><td>Maturity</td><td>Biggest driver of price risk; T-Bills 91 / 182 / 364 days</td></tr>
+        <tr><td>Price vs rates</td><td><b>Inverse</b></td></tr>
+        <tr><td>Current yield</td><td>Coupon ÷ price; ignores future cash flows</td></tr>
+        <tr><td>YTM</td><td>IRR of the bond; assumes hold to maturity + reinvest at YTM (flat, static curve)</td></tr>
+        <tr><td>Realised yield</td><td>Annualised return when sold early, with actual reinvestment rate</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg"><span class="led">HPR  = [8 + (8 × 7%) + (110 − 104)] ÷ 104 = 14.56 ÷ 104 = 14.00%
+Current yield = 8.24 ÷ 104                  = 7.92%
+Realised: buy 1,000, 12% coupon reinvested at 14%, sell 1,050 after 5 yrs
+  = [(120 × (1.14⁵ − 1) ÷ 0.14 + 1,050) ÷ 1,000]^(1/5) − 1 ≈ 13.0%</span></div>
+    <div class="hook">Realised yield &lt; YTM when coupons get reinvested <b>below</b> the YTM; above it when reinvested higher. That gap is <b>reinvestment risk</b>. YTM only holds if you keep the bond to maturity and reinvest at YTM.</div>
+    <div class="trap">HPR has no compounding — never compare it with an annualised return. Coupon rate is not "interest rate"; interest rate is the market rate the central bank anchors.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Duration</h3>
+    <p class="ch">Chapter 3.2.11</p>
+    <div class="fx"><b>Macaulay</b> = Σ[t × CFt ÷ (1+y)^t] ÷ price      (PV-weighted average time)
+<b>Modified</b> = Macaulay ÷ (1 + y)                (price sensitivity to rates)</div>
+    <div class="hook">Duration rises with <b>longer maturity, lower coupon, lower yield</b> — "long, low, low". A zero-coupon bond's duration equals its maturity. Duration shrinks as the bond nears maturity.</div>
+    <div class="trap">Rates rose after issue → a 10% bond quotes <b>below face value</b> (sample question).</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Types of bonds</h3>
+    <p class="ch">Chapter 3.3</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Bond</th><th>Remember</th></tr></thead>
+      <tbody>
+        <tr><td>Zero coupon</td><td>Discount → par; highest duration for its maturity. T-Bills, CPs, CDs; deep discount (IDBI, KVP). ETHL (Essar) Oct 2009: ₹85.80 (9.15%) and ₹82.55 (9.25%)</td></tr>
+        <tr><td>Floating</td><td>Coupon resets to benchmark; low price risk; cap and floor; inverse floater moves opposite</td></tr>
+        <tr><td>Convertible</td><td>Lower coupon than plain debt; conversion dilutes EPS</td></tr>
+        <tr><td>PPN</td><td>Debt + derivatives; principal safe only if held to maturity; credit risk stays</td></tr>
+        <tr><td>Inflation-indexed</td><td>RBI IIB: principal and coupon indexed via <b>WPI</b>. IINSS-C 2013: 1.5% fixed + <b>CPI</b>, cumulative, 10 yrs</td></tr>
+        <tr><td>Foreign currency / Masala</td><td>Currency risk with issuer / with investor</td></tr>
+        <tr><td>Perpetual (AT1)</td><td>No maturity; subordinate to all; coupon only from distributable profits; non-cumulative; converts to equity on trigger</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">IIB uses <b>WPI</b>; the retail IINSS-C uses <b>CPI</b>. Swapping them is a ready-made wrong option.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Commodity market terms</h3>
+    <p class="ch">Chapter 3.4</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Term</th><th>Definition</th></tr></thead>
+      <tbody>
+        <tr><td>Spot price / FSP</td><td>Price for immediate delivery; exchanges use polled spot for final settlement price</td></tr>
+        <tr><td>Basis</td><td><b>Spot − Futures</b></td></tr>
+        <tr><td>Contango</td><td>Futures &gt; spot</td></tr>
+        <tr><td>Backwardation</td><td>Futures &lt; spot</td></tr>
+        <tr><td>Cost of carry</td><td>Storage + insurance + transport + financing</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg">10 g gold spot ₹1,02,000, carry 8% p.a., 3-month future:
+      <span class="led">F = 1,02,000 + (1,02,000 × 8% × 3/12) = 1,02,000 + 2,040 = ₹1,04,040</span></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 4 ================= -->
+<details class="module" id="ch4" open style="--c:var(--m3)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 4</span>
+    <span class="mod-t">Fundamentals of Research</span>
+    <span class="mod-w"><b>5</b> marks · pp 78–89</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>Investing vs trading, and the four approaches</h3>
+    <p class="ch">Chapter 4.1–4.6</p>
+    <p><span class="k">Investor</span>: bets on value rising over time. <span class="k">Trader</span>: bets on price patterns repeating (chartist; day trader if the cycle is one day). <span class="k">Speculator</span>: short-term leveraged directional call. <span class="k">Active</span> tries to beat the asset class; <span class="k">passive</span> buys the index.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Approach</th><th>Core belief</th><th>Horizon</th><th>Weakness</th></tr></thead>
+      <tbody>
+        <tr><td>Technical</td><td>Price discounts everything; study price, volume, time</td><td>Short</td><td>Unreliable long-term as fundamentals change</td></tr>
+        <tr><td>Fundamental</td><td>Value from profits and cash flows; buy below intrinsic value</td><td>Long</td><td>Contradicts EMH; judgement-heavy</td></tr>
+        <tr><td>Quantitative</td><td>Statistics, regression, econometrics</td><td>Any</td><td>Changing accounting standards and business models break comparability</td></tr>
+        <tr><td>Behavioural</td><td>Fear and greed push prices off fair value</td><td>Any</td><td>Hard to time</td></tr>
+      </tbody>
+    </table></div>
+    <p>Fundamental analysis answers its questions in three baskets — <span class="k">Economy → Industry → Company</span> (top-down). Technical analysis smooths daily noise with <span class="k">moving averages</span>.</p>
+    <div class="trap">Speculation is a <b>short-term</b> leveraged call; investment is a <b>long-term</b> disciplined activity (sample Q). Quant's limitation: <b>changes in accounting standards, business structures and regulations</b>.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Insider information vs mosaic analysis</h3>
+    <p class="ch">Chapter 4.2.1</p>
+    <div class="wrap"><table>
+      <thead><tr><th></th><th>Insider information</th><th>Mosaic analysis</th></tr></thead>
+      <tbody>
+        <tr><td>What</td><td>Material, non-public, price-sensitive</td><td>Many small pieces, each insignificant, combined with public data</td></tr>
+        <tr><td>Example</td><td>CEO mentions an unannounced acquisition</td><td>Employee says purchase department workload is up</td></tr>
+        <tr><td>Allowed?</td><td><b>No</b></td><td><b>Yes</b></td></tr>
+      </tbody>
+    </table></div>
+    <p>Whether something is insider information depends on its <span class="k">source</span> (reliability), <span class="k">impact</span> and <span class="k">certainty</span>.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Commodity fundamentals: gold and crude case studies</h3>
+    <p class="ch">Chapter 4.7–4.8</p>
+    <p><span class="k">Supply</span>: production, weather, policy, geopolitics, input costs. <span class="k">Demand</span>: GDP, population and urbanisation, substitution, seasonality, preferences. <span class="k">Macro</span>: commodities hedge inflation; <b>higher rates → stronger USD → lower commodity prices</b>; PMI drives metals and energy.</p>
+    <div class="grid2" style="gap:0 14px">
+      <div class="wrap"><table style="min-width:0">
+        <thead><tr><th>Gold demand</th><th>%</th></tr></thead>
+        <tbody><tr><td>Jewellery</td><td class="num">47</td></tr><tr><td>Investment</td><td class="num">24</td></tr><tr><td>Central banks</td><td class="num">23</td></tr><tr><td>Technology</td><td class="num">6</td></tr></tbody>
+      </table></div>
+      <div class="wrap"><table style="min-width:0">
+        <thead><tr><th></th><th>WTI</th><th>Brent</th></tr></thead>
+        <tbody><tr><td>Origin</td><td>USA</td><td>North Sea</td></tr><tr><td>API</td><td>39°</td><td>38°</td></tr><tr><td>Sulphur</td><td>0.24%</td><td>0.4%</td></tr><tr><td>Traded</td><td>NYMEX</td><td>ICE</td></tr></tbody>
+      </table></div>
+    </div>
+    <div class="wrap"><table>
+      <thead><tr><th>Gold rises with…</th><th>Crude rises with…</th></tr></thead>
+      <tbody>
+        <tr><td>Rate cuts, weaker dollar</td><td>OPEC+ output cuts</td></tr>
+        <tr><td>Weak economic data, higher inflation</td><td>Falling US production, rig count, inventory</td></tr>
+        <tr><td>ETF and central-bank buying</td><td>Weaker dollar; economic expansion</td></tr>
+        <tr><td>Instability, bear equity market, lower bond yields</td><td>Middle East tension; Gulf hurricanes; bullish equities</td></tr>
+      </tbody>
+    </table></div>
+    <p>OPEC+ = 13 OPEC members + Russia. Middle East holds <span class="num">48%</span> of known reserves; OPEC owns ~<span class="num">40%</span> of world crude, <span class="num">75%</span> of proven reserves, exports <span class="num">55%</span>. China is the top gold producer <b>and</b> consumer.</p>
+    <div class="hook">Gold is the "fear" asset — it rises when everything else looks bad (bear equities, low yields, instability). Crude is the "growth" asset — it rises with expansion and bullish equities.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Historical events and commodity → equity links</h3>
+    <p class="ch">Chapter 4.9–4.10</p>
+    <div class="eg"><b>20 April 2020</b>: WTI May contract went <b>negative</b> a day before expiry — 90% of the world in lockdown, no storage, buyers unable to take delivery at Cushing, Oklahoma. <b>1973</b>: OPEC quadrupled prices to ~$12/bbl and embargoed the US, Japan and Western Europe.</div>
+    <div class="wrap"><table>
+      <thead><tr><th>Move</th><th>Winners</th><th>Losers</th></tr></thead>
+      <tbody>
+        <tr><td>Crude up</td><td>Oil producers</td><td>Airlines, logistics</td></tr>
+        <tr><td>Copper down</td><td>—</td><td>Metal and infra stocks (signals weak industrial demand)</td></tr>
+      </tbody>
+    </table></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 5 ================= -->
+<details class="module" id="ch5" open style="--c:var(--m3)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 5</span>
+    <span class="mod-t">Economic Analysis</span>
+    <span class="mod-w"><b>5</b> marks · pp 90–104</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>Micro vs macro, and national income</h3>
+    <p class="ch">Chapter 5.1–5.3.1</p>
+    <p><span class="k">Microeconomics</span>: individuals and firms; prices driven by consumer demand; also called the <b>theory of the firm</b>. <span class="k">Macroeconomics</span>: GDP, inflation, unemployment, savings, BoP — Keynes, <i>General Theory of Employment, Interest and Money</i>.</p>
+    <div class="fx"><b>GDP</b> = output inside the borders, whoever owns it
+<b>GNP</b> = output by residents, wherever they are
+<b>GNP = GDP + NFIA</b>   (net factor income from abroad)</div>
+    <div class="wrap"><table>
+      <thead><tr><th>Method</th><th>Adds up</th><th>Tells you</th></tr></thead>
+      <tbody>
+        <tr><td>Product</td><td>Final goods and services by sector</td><td>Which sector drives GDP (services ≈ 60%)</td></tr>
+        <tr><td>Income</td><td>Wages, fees, profits, rent and returns (Kiyosaki's four groups)</td><td>How income is distributed</td></tr>
+        <tr><td>Expenditure</td><td><b>C + I + G + (X − M)</b></td><td>Aggregate demand</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">Expenditure method = "<b>C-I-G-NX</b>": Consumers, Investors, Government, Net eXports. And strictly, the expenditure method gives <b>GDP</b>; GNP needs NFIA added.</div>
+    <div class="eg">National income up 5%, population up 7% → per capita income falls. Standard of living dropped even though "the economy grew". <b>Per capita income</b>, not national income, measures welfare.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Savings, inflation, unemployment, foreign flows</h3>
+    <p class="ch">Chapter 5.3.2–5.3.5</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Variable</th><th>Remember</th></tr></thead>
+      <tbody>
+        <tr><td>Savings</td><td>Personal + corporate (undistributed profit) + public = national savings; must be channelled into investment</td></tr>
+        <tr><td>Inflation</td><td><b>Demand-pull</b> (demand &gt; supply) vs <b>cost-push</b> (input costs). WPI = wholesale; CPI = retail</td></tr>
+        <tr><td>Rates and inflation</td><td>High rates hit real estate and autos hardest (loan-funded buying)</td></tr>
+        <tr><td>Unemployment</td><td>Rises in slowdown, falls in expansion</td></tr>
+        <tr><td>FDI vs FPI</td><td>FDI: management say, long term, jobs and technology. FPI: portfolio only, <b>hot money</b>; FPI holding limits apply</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg">RBI raised rates through 2011–13 to fight inflation, but it stayed high because <b>food prices</b> did not respond — one variable, many causes.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Fiscal and monetary policy</h3>
+    <p class="ch">Chapter 5.3.6–5.3.7</p>
+    <div class="wrap"><table>
+      <thead><tr><th></th><th>Expansionary</th><th>Contractionary</th></tr></thead>
+      <tbody>
+        <tr><td>Fiscal (government)</td><td>Spend more, tax less → deficit; for recessions</td><td>Spend less, tax more → surplus; for overheating</td></tr>
+        <tr><td>Monetary (RBI)</td><td>More money supply, lower rates</td><td>Less money supply, higher rates</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Fiscal deficit</span> = expenditure − revenue (% of GDP), bridged by market borrowing; large deficits push up rates and crowd out companies.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>RBI tool</th><th>What it is</th></tr></thead>
+      <tbody>
+        <tr><td>Repo</td><td>RBI <b>lends</b> to banks against securities</td></tr>
+        <tr><td>Reverse repo</td><td>RBI <b>borrows</b> from banks against securities</td></tr>
+        <tr><td>Bank rate</td><td>RBI lends without collateral, longer term / emergency</td></tr>
+        <tr><td>CRR</td><td>% of deposits kept as <b>cash</b> with RBI</td></tr>
+        <tr><td>SLR</td><td>% of deposits in cash equivalents, gold, G-Secs</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">Fiscal deficit = total expenditure − (revenue receipts + non-debt capital receipts). It falls when spending falls <b>or</b> non-borrowed money comes in — taxes, disinvestment proceeds. <b>Anything except borrowing reduces it.</b></div>
+    <div class="hook"><b>Repo</b>: RBI lends to banks. <b>Reverse repo</b>: the reverse — banks park money with RBI. <b>CRR</b> = <b>C</b>ash only, kept with RBI; <b>SLR</b> = <b>S</b>ecurities, gold and cash held by the bank itself.</div>
+    <div class="trap">The two main policy influencers are the <b>Government and the Central Bank</b> — not stock exchanges, not SBI (sample Q). "Fiscal deficit is bridged by market borrowing" → <b>True</b>.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Balance of payments and globalisation</h3>
+    <p class="ch">Chapter 5.3.8–5.3.9</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Old structure</th><th>IMF BPM6 (current)</th></tr></thead>
+      <tbody>
+        <tr><td>Current: goods, services, income, transfers</td><td>Current: same</td></tr>
+        <tr><td>Capital: FDI, FPI, loans, grants</td><td>Capital: non-produced, non-financial assets (patents, land), capital transfers</td></tr>
+        <tr><td>—</td><td>Financial: FDI, FPI, derivatives, debt, reserve assets</td></tr>
+      </tbody>
+    </table></div>
+    <div class="fx">Current + Capital + Financial + Errors &amp; omissions = <b>change in reserves</b></div>
+    <p>Persistent <span class="k">CAD</span> weakens the currency unless funded by capital inflows; a weaker currency makes imports dearer, exports cheaper. Surpluses build confidence; deficits lose it only when they aren't funded.</p>
+    <div class="hook">"<b>Deficit needs a donor</b>": a CAD must be funded by inflows (donors) or by reserves (savings), and neither lasts forever. Confidence is lost when the <b>gap can't be filled</b>, not when there is a surplus. A deficit funded by FDI holds; one funded by hot FPI money is fragile.</div>
+    <p><span class="k">Globalisation +</span> best resource allocation, technology access, consumer gains, choice. <span class="k">−</span> survival of the fittest, contagion (2008 US credit crisis), early advantage to developed nations, cultural erosion.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Secular, cyclical and seasonal trends</h3>
+    <p class="ch">Chapter 5.4–5.6</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Trend</th><th>Length</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Secular</td><td>Once in <span class="num">7–10</span> yrs; permanent shift</td><td>Office digitalisation cuts paper and ink</td></tr>
+        <tr><td>Cyclical</td><td><span class="num">2–6</span> yrs; reverses</td><td>Economic, commodity, inventory cycles</td></tr>
+        <tr><td>Seasonal</td><td>Annual; predictable</td><td>Agri income at harvest → compare YoY</td></tr>
+      </tbody>
+    </table></div>
+    <div class="wrap"><table>
+      <thead><tr><th>Phase</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td>Expansion</td><td>Demand, borrowing, rates, inflation rise; capacity expansion</td></tr>
+        <tr><td>Slowdown</td><td>High prices and rates bite; growth rate falls; utilisation drops</td></tr>
+        <tr><td>Recession</td><td>Layoffs; income and spending fall; rates and inflation fall</td></tr>
+        <tr><td>Recovery</td><td>Low inflation lets RBI ease; spending picks up</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg">Inventory cycle: April 2020 crude glut at Oklahoma sent futures to ~$20 (briefly negative); by June 2020 back near $40.</div>
+    <p>Sources: government websites, RBI, SEBI, Ministry of Finance, published research, <b>Economic Survey</b>.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 6 ================= -->
+<details class="module" id="ch6" open style="--c:var(--m3)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 6</span>
+    <span class="mod-t">Industry Analysis</span>
+    <span class="mod-w"><b>8</b> marks · pp 105–129 · fifth-largest</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>Defining the industry</h3>
+    <p class="ch">Chapter 6.1–6.2</p>
+    <p><span class="k">Industry</span> = firms serving the same need (auto, steel). <span class="k">Business sector</span> = related industries (financial services). <span class="k">Economic sector</span> = agriculture, manufacturing, utilities, services.</p>
+    <p>Codes (NIC in India, GICS, NAICS) can miss the substance: NIC lumps entry cars with luxury cars. <b>PVR</b> competes with OTT, satellite TV, theatre and sport; <b>cameras</b> now compete with phones. Classify by common demand drivers.</p>
+    <div class="fx"><b>GICS</b>: 11 sectors · 25 industry groups · 74 industries · 163 sub-industries</div>
+    <div class="hook">Narrowest to widest: <b>Industry → Business sector → Economic sector</b>. Getting the industry wrong is costly: wrong group → wrong peers → wrong valuation.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Cyclicality, market sizing, life cycle</h3>
+    <p class="ch">Chapter 6.3–6.5</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Type</th><th>Behaviour</th><th>Examples</th></tr></thead>
+      <tbody>
+        <tr><td>Defensive</td><td>Low income elasticity; only secular trends matter</td><td>Food, agri inputs, healthcare</td></tr>
+        <tr><td>Semi-cyclical</td><td>Up in boom, down in recession, with base demand</td><td>Consumer durables</td></tr>
+        <tr><td>Deep cyclical</td><td>Extreme swings; first to rebound on pent-up orders</td><td>Capital goods, steel</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg">Sizing a therapy market. <b>Top-down</b>: patients treated × average spend per patient. <b>Bottom-up</b>: add each hospital's revenue from that therapy.</div>
+    <div class="hook"><b>Defensive</b> barely moves with the economy · <b>Semi-cyclical</b> moves with it but has a floor of demand · <b>Deep cyclical</b> swings most — down hard in recession, up hard in recovery.</div>
+    <p>Life cycle: <span class="k">Pioneering</span> (concept being proven) → <span class="k">Growth</span> (steep adoption) → <span class="k">Mature</span> (few new customers) → <span class="k">Decline</span> (replaced).</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Secular trends and value migration</h3>
+    <p class="ch">Chapter 6.5.1</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Driver</th><th>Workbook example</th></tr></thead>
+      <tbody>
+        <tr><td>Technology</td><td>Horizontal drilling → shale gas; digital killed film; batteries → EVs</td></tr>
+        <tr><td>Income</td><td>Shift to premium products</td></tr>
+        <tr><td>Demographics</td><td>Ageing Japan drinks less beer per capita</td></tr>
+        <tr><td>Culture</td><td>Western clothing demand in Asia</td></tr>
+        <tr><td>Regulation</td><td>GST made logistics efficient → fewer new commercial vehicles needed</td></tr>
+      </tbody>
+    </table></div>
+    <div class="wrap"><table>
+      <thead><tr><th>Value migration</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Across geographies</td><td>Shale → US producers; globalisation → China</td></tr>
+        <tr><td>Across industries</td><td>Digital cameras vs film (Kodak)</td></tr>
+        <tr><td>Across the value chain</td><td>Cheap telecom data hurt telcos, helped content providers</td></tr>
+        <tr><td>Across companies</td><td>Blackberry → Apple and other smartphone makers</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">A new secular trend causes <b>value migration</b> and often an <b>inflection point</b> in the industry's life cycle. Spot it early to get in ahead of time — and out of the businesses that are losing.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Porter's Five Forces</h3>
+    <p class="ch">Chapter 6.6.1 · near-certain MCQ</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Horizontal (3)</th><th>Vertical (2)</th></tr></thead>
+      <tbody>
+        <tr><td>Threat of substitutes · Threat of new entrants · Rivalry among existing firms</td><td>Bargaining power of suppliers · Bargaining power of buyers</td></tr>
+      </tbody>
+    </table></div>
+    <p>Rivalry is high with many firms, little differentiation, price-only strategies and low switching costs. <span class="k">Unattractive</span>: aviation, telecom, retail, textile, sugar, power. <span class="k">Attractive</span>: education, FMCG, healthcare, IT.</p>
+    <div class="eg">Education is the workbook's attractive industry: rising demand, weak student bargaining power, high entry barriers (permissions), few quality rivals, salaries set by management (weak suppliers), few trusted substitutes.</div>
+    <div class="hook">Buffett: when brilliant management meets a business with bad economics, it's the business's reputation that stays intact. Munger: if price is the only basis of competition, it's a self-defeating business.</div>
+    <div class="hook">Buffett looks for "<b>economic castles</b>" protected by unbreachable "<b>moats</b>" — high entry barriers that give pricing power, so the business can charge a premium without losing customers.</div>
+    <div class="trap">Suppliers and buyers are the <b>vertical</b> forces. Porter published the model in <b>1979</b>.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>PESTLE, BCG and SCP</h3>
+    <p class="ch">Chapter 6.6.2–6.6.4</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Framework</th><th>What it does</th></tr></thead>
+      <tbody>
+        <tr><td>PESTLE</td><td>Political, Economic, Socio-cultural, Technological, Legal, Environmental — <b>external</b> environment, mainly to compare countries for an offshore unit. Extended: <b>STEEPLED</b> (+ Ethics, Demographics)</td></tr>
+        <tr><td>BCG</td><td>Growth × market share grid (below)</td></tr>
+        <tr><td>SCP</td><td>Structure (players, concentration) → Conduct (pricing, innovation) → Performance (RoE, RoIC, WACC). Extends Porter with the financial dimension</td></tr>
+      </tbody>
+    </table></div>
+    <div class="wrap"><table>
+      <thead><tr><th></th><th>High market share</th><th>Low market share</th></tr></thead>
+      <tbody>
+        <tr><td><b>High growth</b></td><td><b>Star</b></td><td><b>Question mark</b> — Tata Nano (failed), Bajaj Pulsar (succeeded)</td></tr>
+        <tr><td><b>Low growth</b></td><td><b>Cash cow</b> — Navneet, Colgate</td><td><b>Dog</b></td></tr>
+      </tbody>
+    </table></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Industry KPIs, regulation, taxation, sources</h3>
+    <p class="ch">Chapter 6.7–6.10</p>
+    <p>Pick KPIs from the <span class="k">unit of pricing</span> (Starbucks prices per patron, not per cup) and the <span class="k">key constraint</span>: demand-side → penetration rate; supply-side → capacity utilisation; regulatory → the regulator's metrics.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Industry</th><th>KPIs</th></tr></thead>
+      <tbody>
+        <tr><td>Airlines, logistics</td><td>Passenger/cargo km, price per km, capacity and occupancy</td></tr>
+        <tr><td>Autos, capital goods</td><td>Volume and growth, average realisation, capacity utilisation</td></tr>
+        <tr><td>Banks, NBFCs</td><td>NIM, capital adequacy, NPA ratio, deposit and loan growth, CRR/SLR, CASA</td></tr>
+        <tr><td>Consumer goods</td><td>Volume growth, average price growth (durables: capacity too)</td></tr>
+        <tr><td>IT services</td><td>FTE-per-month pricing, headcount, currency, client concentration</td></tr>
+      </tbody>
+    </table></div>
+    <p>Regulation and taxation (GST, duties, licensing) can be headwinds or tailwinds. Sources: industry associations, government and regulator data, market research, annual reports and management discussion.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 7 ================= -->
+<details class="module" id="ch7" open style="--c:var(--m1)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 7</span>
+    <span class="mod-t">Company Analysis — Business and Governance</span>
+    <span class="mod-w"><b>6</b> marks · pp 130–144</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>Business model, pricing power, moats, SWOT</h3>
+    <p class="ch">Chapter 7.1–7.5</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Area</th><th>Ask</th></tr></thead>
+      <tbody>
+        <tr><td>Business model</td><td>How does it make money? Revenue streams, cost structure, customers</td></tr>
+        <tr><td>Pricing power</td><td>Can it pass on cost increases without losing volume — and for how long? (Reliance example)</td></tr>
+        <tr><td>Competitive advantage</td><td>Brand, cost, network, switching costs, patents, distribution</td></tr>
+        <tr><td>SWOT</td><td><b>S, W internal</b>; <b>O, T external</b></td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook"><b>S and W live inside</b> the company; <b>O and T come from outside</b>. External analysts start with O and T, then check S and W — it follows the E-I-C order. Pricing power comes from industry factors (competition, elasticity, commoditisation) and company factors (leadership, brand, low cost).</div>
+    <div class="trap">A new competitor entering is a <b>Threat</b> (external), not a Weakness. <b>High customer concentration</b> is a risk, but it's internal, so it's a <b>Weakness</b>, not a Threat.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Management quality and the governance checklist</h3>
+    <p class="ch">Chapter 7.6 · numbers-heavy</p>
+    <p>Management: track record, capital allocation, integrity, communication, succession plan. Governance standards (Clause 49 in the workbook) are the <b>minimum</b>.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Item</th><th>Rule</th></tr></thead>
+      <tbody>
+        <tr><td>Independent directors</td><td>≥ <span class="num">50%</span> if chairman is executive; otherwise ≥ <span class="num">1/3</span></td></tr>
+        <tr><td>Chairman vs MD/CEO</td><td>Separate for <b>top 1,000</b> listed companies; CEO not from promoter group</td></tr>
+        <tr><td>Auditor independence</td><td>Group fees &lt; <span class="num">10%</span> of auditor's income</td></tr>
+        <tr><td>Auditor rotation</td><td>Once in <span class="num">5</span> years</td></tr>
+        <tr><td>Audit committee</td><td>≥ <span class="num">2/3</span> independent</td></tr>
+        <tr><td>Related party transactions</td><td>All placed before audit committee; justify if not arm's length</td></tr>
+        <tr><td>Remuneration committee</td><td>All non-executive; chairman independent</td></tr>
+        <tr><td>Nomination committee</td><td>Ideally only independent directors</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">"<b>Half, third, two-thirds, ten, five</b>": half IDs with an executive chair, a third otherwise, two-thirds of the audit committee, auditor fees under 10%, rotation every 5 years.</div>
+    <div class="upd">Workbook cites <b>Clause 49</b> of the listing agreement. Governance norms now sit in <b>SEBI LODR Regulations, 2015</b>. Answer as the workbook frames it.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Risks, credit rating, ESG, sources</h3>
+    <p class="ch">Chapter 7.7–7.10</p>
+    <p>Risks: business, financial, key-man, concentration, regulatory, technology. <span class="k">Credit rating</span> = external view of debt-servicing ability; a downgrade raises funding cost. <span class="k">ESG</span> = environmental, social and governance factors as long-term risk and opportunity.</p>
+    <div class="eg">Promoter holds 60% and has pledged half. A sharp price fall lets lenders sell the pledged shares, which drives the price lower and can trigger more selling. Heavy pledging is both a governance and a price-risk flag.</div>
+    <div class="hook"><b>High pledge + falling price = forced selling.</b> Pledging alone is routine fund-raising; it's the high percentage that hurts. <b>ESG is a filter, not a buy signal</b> — BRSR disclosures are mandatory for the top 1,000 listed companies from FY2023. Promoters who say "nothing can go wrong" don't know what they don't know — avoid them.</div>
+    <p>Sources: annual reports, quarterly results, exchange filings, management meetings, plant visits, experts, suppliers, customers.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 8 ================= -->
+<details class="module" id="ch8" open style="--c:var(--m1)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 8</span>
+    <span class="mod-t">Company Analysis — Financial Analysis</span>
+    <span class="mod-w"><b>12</b> marks · pp 145–186 · joint second-largest</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>The statements, and what each tells you</h3>
+    <p class="ch">Chapter 8.1–8.7</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Statement</th><th>Remember</th></tr></thead>
+      <tbody>
+        <tr><td>Standalone vs consolidated</td><td>Consolidated includes subsidiaries; minority (non-controlling) interest shown separately</td></tr>
+        <tr><td>Balance sheet</td><td>Snapshot on a date; reserves sit with shareholders' funds on the liabilities side</td></tr>
+        <tr><td>P&amp;L</td><td>For a period: revenue → EBITDA → EBIT → PBT → PAT</td></tr>
+        <tr><td>Changes in equity</td><td>Movement in capital and reserves</td></tr>
+        <tr><td>Cash flow</td><td><b>Operating</b> (core) · <b>Investing</b> (buy asset = outflow) · <b>Financing</b> (borrow/issue = inflow; repay = outflow)</td></tr>
+        <tr><td>Notes</td><td>Policies, contingent liabilities, related parties</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg">Kingfisher Airlines: negative operating cash flow every year FY09–FY13 (−₹1,391 cr in FY13). It borrowed to pay interest until lenders stopped. Read each cash flow stream separately — net cash flow can deceive.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Reading the audit report</h3>
+    <p class="ch">Chapter 8.8–8.9</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Report</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Clean</td><td>No issues; standard wording</td></tr>
+        <tr><td>Qualified</td><td>All or part does not show a true and fair view (policy disagreement, discrepancies)</td></tr>
+        <tr><td>Disclaimer</td><td>Auditor couldn't verify for lack of information</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">Two questions decide the opinion: <b>what</b> is wrong, and <b>how widespread</b> is it?
+      <span class="led" style="display:block;font-family:var(--font-mono);font-size:12.5px;white-space:pre-wrap;margin-top:6px">"All good"          → Clean (unqualified)
+"Except for X"      → Qualified      (material but limited)
+"Wrong everywhere"  → Adverse        (material and pervasive)
+"Can't say"         → Disclaimer     (couldn't get the evidence)</span>
+    The workbook lists clean, qualified and disclaimer; <b>adverse</b> comes from auditing standards. Disclaimer = couldn't verify; qualified = verified and disagree.</div>
+    <p>Auditors test control systems, not every transaction. Best signal for investors: consistent growth in sales, profit and net worth, falling debt, rising margins and RoNW.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>The ratio toolkit</h3>
+    <p class="ch">Chapter 8.10–8.11 · case-study material</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Group</th><th>Ratio</th><th>Formula</th><th>Better</th></tr></thead>
+      <tbody>
+        <tr><td>Profitability</td><td>EBITDA margin · PAT margin</td><td>EBITDA ÷ sales · PAT ÷ sales</td><td>Higher</td></tr>
+        <tr><td>Return</td><td>ROE (RoNW)</td><td>PAT ÷ <b>average</b> net worth</td><td>Higher</td></tr>
+        <tr><td></td><td>ROCE</td><td>EBIT ÷ (debt + net worth)</td><td>Higher</td></tr>
+        <tr><td>Leverage</td><td>Debt/Equity · Interest cover</td><td>Debt ÷ NW · EBIT ÷ interest</td><td>Lower · Higher</td></tr>
+        <tr><td>Liquidity</td><td>Current · Quick</td><td>CA ÷ CL · (CA − inventory) ÷ CL</td><td>Adequate</td></tr>
+        <tr><td>Efficiency</td><td>Asset turnover</td><td>Net sales ÷ total assets</td><td>Higher</td></tr>
+        <tr><td></td><td>Inventory turnover</td><td>Sales ÷ inventory (high FMCG, low capital goods)</td><td>Higher</td></tr>
+        <tr><td></td><td>Receivable days · Payable days</td><td>× 365 ÷ sales / purchases</td><td>Lower · Balanced</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg">Bharti Airtel FY19: EBITDA margin = 2,61,101 ÷ 8,10,714 = <b>32.2%</b>, ~440 bps below FY18's 36.6%. PAT margin 16,875 ÷ 8,10,714 = 2.1%.
+      <span class="led">Drill — Sales 500, EBIT 80, interest 20, tax 25%, debt 200, equity 300
+PAT   = (80 − 20) × 0.75 = 45      ROE  = 45 ÷ 300       = 15.0%
+ROCE  = 80 ÷ 500         = 16.0%   D/E  = 200 ÷ 300      = 0.67×
+Int. cover = 80 ÷ 20     = 4.0×</span></div>
+    <div class="hook"><b>Golden rule on averages</b>: P&amp;L figures cover a <b>period</b>, balance sheet figures sit at a <b>date</b>. When a ratio mixes the two (ROE, ROCE, turnover), use the <b>average</b> balance sheet figure. D/E mixes two balance sheet items, so no averaging — use closing figures.</div>
+    <div class="hook">D/E of <b>1 or less</b> is the conservative benchmark. A current ratio <b>below 1 isn't automatically bad</b> — collecting from customers fast and paying suppliers on credit means customers fund the business (Airtel's 0.35). 1 basis point = 0.01%.</div>
+    <div class="trap">ROCE uses <b>EBIT</b> over debt + equity; ROE uses <b>PAT</b> over equity. Sales rising with receivable days rising = loose credit to push sales.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>DuPont analysis</h3>
+    <p class="ch">Chapter 8.12 · high-yield</p>
+    <div class="fx"><b>ROE</b> = (Net profit ÷ Sales) × (Sales ÷ Assets) × (Assets ÷ Equity)
+    = Net margin × Asset turnover × Equity multiplier</div>
+    <div class="wrap"><table>
+      <thead><tr><th></th><th>HighLevCo</th><th>LowLevCo</th></tr></thead>
+      <tbody>
+        <tr><td>Revenue · Net profit</td><td class="num">12,000 · 2,400</td><td class="num">11,800 · 2,620</td></tr>
+        <tr><td>Assets · Equity</td><td class="num">5,200 · 2,600</td><td class="num">5,000 · 5,000</td></tr>
+        <tr><td>Net margin</td><td class="num">20%</td><td class="num">22%</td></tr>
+        <tr><td>Asset turnover</td><td class="num">2.3×</td><td class="num">2.4×</td></tr>
+        <tr><td>Equity multiplier</td><td class="num">2.0×</td><td class="num">1.0×</td></tr>
+        <tr><td><b>ROE</b></td><td class="num"><b>92.3%</b></td><td class="num"><b>52.4%</b></td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">LowLevCo is the better operator — better margin and turnover. HighLevCo's ROE comes only from <b>leverage</b>, which also brings risk. ROE up on margins = cheer; ROE up on debt = caution.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Forecasting and peer comparison</h3>
+    <p class="ch">Chapter 8.13–8.15</p>
+    <p>Forecasts assume the past represents the future — adjust with judgement. <b>Suzlon</b> was the only wind-turbine maker with pricing power until competition arrived in the mid-2000s; extrapolating its history would have been a blunder. Buffett: projections create an illusion of precision.</p>
+    <p>Peer comparison works only on the same accounting basis and similar business mix.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 9 ================= -->
+<details class="module" id="ch9" open style="--c:var(--m4)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 9</span>
+    <span class="mod-t">Corporate Actions</span>
+    <span class="mod-w"><b>5</b> marks · pp 187–197</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>Dividend, rights, bonus, split, consolidation</h3>
+    <p class="ch">Chapter 9.1–9.6</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Action</th><th>Cash moves?</th><th>Shares</th><th>Remember</th></tr></thead>
+      <tbody>
+        <tr><td>Dividend</td><td>Out</td><td>Same</td><td>% of face value; record date decides eligibility</td></tr>
+        <tr><td>Rights</td><td>In</td><td>Up</td><td>Open min <span class="num">15</span>, max <span class="num">30</span> days; abridged letter of offer ≥ <span class="num">3</span> days before; full take-up keeps your %</td></tr>
+        <tr><td>Bonus</td><td>No</td><td>Up</td><td>Capitalises free reserves from genuine profits; <b>not revaluation reserves</b>; not allowed if in default on debt/FD</td></tr>
+        <tr><td>Split</td><td>No</td><td>Up</td><td>FV falls (₹10 → ₹2 = 1:5)</td></tr>
+        <tr><td>Consolidation</td><td>No</td><td>Down</td><td>FV rises (reverse split)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg"><span class="led">Bonus 1:1 at ₹1,000      → ex-bonus fair price ₹500; holding value unchanged
+Bonus 1:3                → 1 new share per 3 held
+Rights 1:4 at ₹80, CMP ₹100 → TERP = (4 × 100 + 80) ÷ 5 = ₹96</span></div>
+    <div class="hook">Bonus and split change only the <b>count</b> (and per-share numbers), never the value. Rights and buyback move <b>cash</b>.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>M&amp;A, demerger, scheme of arrangement, restructuring</h3>
+    <p class="ch">Chapter 9.7–9.10</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Action</th><th>Remember</th></tr></thead>
+      <tbody>
+        <tr><td>Merger / acquisition</td><td>Synergies vs integration risk; paid in cash or shares</td></tr>
+        <tr><td>Demerger / spin-off</td><td>Separate business into a new company; holders get its shares; unlocks value</td></tr>
+        <tr><td>Scheme of arrangement</td><td>Sec 230, Companies Act; via <b>NCLT</b>, which orders creditor/member meetings</td></tr>
+        <tr><td>Loan restructuring</td><td>Change amount, rate, tenure or mode (incl. equity) so repayment fits capacity; avoids default for borrower, write-off for lender</td></tr>
+      </tbody>
+    </table></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Buyback, delisting, share swap</h3>
+    <p class="ch">Chapter 9.11–9.13</p>
+    <p><span class="k">Buyback</span>: only from reserves and surplus; company must not be in default; special resolution with timeframe and maximum price; via <b>tender</b> (proportionate), <b>open market</b> (book building or stock exchange) or <b>odd-lot</b> holders. Bought-back shares are extinguished.</p>
+    <p>Motives: stock undervalued, excess cash, confidence signal, takeover defence, raise leverage, offset ESOP dilution.</p>
+    <div class="eg"><span class="led">PAT ₹100 cr, shares 10 cr → buy back 2 cr shares
+EPS: ₹10.00 → 100 ÷ 8 = ₹12.50</span></div>
+    <p><span class="k">Delisting</span>: compulsory (non-compliance) or voluntary; promoter must give an exit via <b>reverse book building</b> with a floor price. <span class="k">Share swap</span>: acquirer pays in its own shares at a swap ratio.</p>
+    <div class="trap">Delisting uses <b>reverse</b> book building. Rights lapsing dilutes you; bonus never does.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 10 ================= -->
+<details class="module" id="ch10" open style="--c:var(--m4)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 10</span>
+    <span class="mod-t">Valuation Principles</span>
+    <span class="mod-w"><b>12</b> marks · pp 198–217 · joint second-largest</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>Price vs value, and the approaches</h3>
+    <p class="ch">Chapter 10.1–10.4</p>
+    <p>Price is what you pay; value is what you get. Value comes from <span class="k">earnings</span> (cash flows) or <span class="k">assets</span>.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Approach</th><th>Methods</th></tr></thead>
+      <tbody>
+        <tr><td>Absolute (cash flow)</td><td>DDM, FCFE, FCFF</td></tr>
+        <tr><td>Relative</td><td>P/E, PEG, EV/EBITDA, EV/EBIT, EV/Sales, P/B; trading vs transaction multiples</td></tr>
+        <tr><td>Asset based</td><td>Book value, replacement cost, liquidation value</td></tr>
+        <tr><td>SOTP</td><td>Value each segment, add up (conglomerates)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook"><b>Where does the risk sit?</b> Risk-neutral valuation puts risk in the <b>cash flows</b> (numerator) and discounts at the <b>risk-free rate</b> — used for <b>insurance companies</b>. Real-world valuation puts risk in the <b>discount rate</b> (denominator) — used for most businesses.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>DCF: DDM, FCFE, FCFF</h3>
+    <p class="ch">Chapter 10.5 · case-study material</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Model</th><th>Cash flow</th><th>Discount at</th><th>Gives</th></tr></thead>
+      <tbody>
+        <tr><td>DDM (Gordon)</td><td>D1 growing at g forever</td><td><b>Ke</b></td><td>Equity value per share</td></tr>
+        <tr><td>FCFE</td><td>CFO − capex − interest ± net borrowing</td><td><b>Ke</b></td><td>Equity value</td></tr>
+        <tr><td>FCFF</td><td>EBIT(1 − t) + D&amp;A − ΔWC − capex</td><td><b>WACC</b></td><td>Firm value → less debt, pref, minority = equity</td></tr>
+      </tbody>
+    </table></div>
+    <div class="fx"><b>Gordon</b>   P0 = D1 ÷ (Ke − g)           (needs g &lt; Ke)
+<b>CAPM</b>     Ke = Rf + β × (Rm − Rf)
+<b>WACC</b>     = We × Ke + Wd × Kd × (1 − t)
+<b>Terminal</b> = FCF(n+1) ÷ (r − g), then discount back to today</div>
+    <div class="eg"><span class="led">Rf 7%, β 1.2, Rm 12%   → Ke = 7 + 1.2 × 5 = 13%
+D0 ₹10, g 5%           → D1 = ₹10.50
+P0 = 10.50 ÷ (0.13 − 0.05) = ₹131.25</span></div>
+    <p>High-growth firms: PV of explicit period + PV of terminal value. Cap perpetual growth at long-term <b>nominal GDP growth</b>; or use an exit EV/EBITDA multiple. FCFE needs an objective debt policy, so FCFF is often preferred. DDM fails for non-payers (Alphabet has never paid a dividend).</p>
+    <div class="hook">Match the pair: <b>FCFF ↔ WACC ↔ firm</b>; <b>FCFE ↔ Ke ↔ equity</b>; <b>Dividends ↔ Ke</b>. Crossing them is the classic wrong option.</div>
+    <div class="hook">Which model when: <b>DDM</b> → mature, defensive dividend payers · <b>FCFE</b> → non-payers and high-growth firms · <b>FCFF</b> → when the debt policy is unclear.</div>
+    <div class="trap">Gordon uses <b>D1</b> (next year's dividend), not D0. If the question gives D0, grow it once: D1 = D0 × (1 + g).</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Earnings multiples: P/E, PEG, EV/EBITDA, EV/Sales</h3>
+    <p class="ch">Chapter 10.6–10.7 · case-study material</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Multiple</th><th>Use for</th><th>Watch out</th></tr></thead>
+      <tbody>
+        <tr><td>P/E</td><td>Profitable, stable firms</td><td>Affected by capital structure</td></tr>
+        <tr><td>PEG</td><td>Firms with different growth</td><td>Growth is an estimate</td></tr>
+        <tr><td>EV/EBITDA</td><td>Acquirer view; <b>capital-intensive</b> industries (neutral to depreciation)</td><td>Ignores capex</td></tr>
+        <tr><td>EV/EBIT</td><td>Other industries</td><td>—</td></tr>
+        <tr><td>EV/Sales</td><td>Loss-making / just broke even, turnaround likely</td><td>No turnaround → liquidation value</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg"><span class="led">A: P/E 12×, growth 10% → PEG 1.20
+B: P/E 14×, growth 15% → PEG 0.93   → B cheaper once growth counts
+Peer P/E 16×, 20% premium for B      → fair P/E 19.2× forward EPS
+Earnings yield (sample Q) = EPS ÷ Price = 13 ÷ 195 = 6.67%</span></div>
+    <div class="hook"><b>PEG</b> was coined by <b>Peter Lynch</b>; PEG below 1 suggests undervalued. <b>EV/EBITDA</b> for capital-intensive firms, <b>EV/EBIT</b> for the rest — both ignore capital structure, which is why <b>acquirers</b> prefer them.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Asset multiples, transaction multiples, SOTP, objectivity</h3>
+    <p class="ch">Chapter 10.8–10.13</p>
+    <div class="fx"><b>ROE</b>  = Net profit ÷ Net worth
+<b>ROCE</b> = EBIT ÷ (Debt + Net worth)
+<b>P/B</b>  = Market cap ÷ book equity  (= Price ÷ BVPS)</div>
+    <p><span class="k">P/B</span> suits banks and financials (monetary assets near fair value); poor for capital-intensive firms (historical cost) and services/tech (human capital and IP off balance sheet). <span class="k">Trading multiples</span> come from listed peers; <span class="k">transaction multiples</span> from M&amp;A deals and include a control premium. <span class="k">New-age</span> firms: users, GMV, ARPU, CAC. Valuation rests on assumptions — test sensitivity.</p>
+    <div class="trap">Lower multiple = cheaper, <b>all else equal</b>; higher growth or lower risk justifies a premium. Gordon breaks if g ≥ Ke.</div>
+    <div class="wrap"><table>
+      <thead><tr><th>Business</th><th>Multiple that fits</th></tr></thead>
+      <tbody>
+        <tr><td>Banks, financials</td><td>P/B</td></tr>
+        <tr><td>Life insurers</td><td>P/EV (embedded value)</td></tr>
+        <tr><td>NBFCs</td><td>P/ABV (adjusted book value)</td></tr>
+        <tr><td>Real estate, shipping, aviation</td><td>NAV</td></tr>
+        <tr><td>Start-ups, idle plants</td><td>EV/Capacity</td></tr>
+        <tr><td>Conglomerates (ITC, L&amp;T)</td><td>SOTP</td></tr>
+        <tr><td>Capital-intensive · loss-makers likely to turn</td><td>EV/EBITDA · EV/Sales</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg">SOTP with a head-office cost (mock-test question): divisions valued at ₹1,500 + 2,800 + 2,200 cr; corporate cost ₹300 cr a year; group multiple 6× EV/EBIT.
+      <span class="led">Divisions            = 6,500   (already values → add as they are)
+Corporate cost value = 300 × 6 = 1,800   (a yearly cost → apply the multiple)
+Group value          = 6,500 − 1,800 = ₹4,700 cr</span></div>
+    <div class="hook">In SOTP, apply the multiple only to items given as <b>earnings or costs</b>; items given as <b>values</b> are added as they are. Subtracting a plain 300 (→ 6,200) is the trap.</div>
+    <div class="hook">The nine considerations in one breath: <b>value the whole business</b> · <b>EV, not market cap</b> · <b>consolidated, not standalone</b> · <b>ROE, not EPS</b> · leverage flatters P/E and ROE · <b>ROCE</b> shows the true return · ROE and ROCE should move together — a wide gap means investigate · weak earnings make book value matter more. <b>Transaction multiples</b> are more authentic than trading multiples.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 11 ================= -->
+<details class="module" id="ch11" open style="--c:var(--m5)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 11</span>
+    <span class="mod-t">Fundamental Analysis of Commodities</span>
+    <span class="mod-w"><b>5</b> marks · pp 218–227</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>What moves commodity prices</h3>
+    <p class="ch">Chapter 11.1–11.8</p>
+    <p>Equity analysis reads financial statements; commodity analysis reads <span class="k">supply and demand</span>.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Driver</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>Supply</td><td>Production, weather and disasters, geopolitics and OPEC, technology, policy (subsidies, export bans), cost of production</td></tr>
+        <tr><td>Demand</td><td>GDP, population, substitution, seasonality, preferences</td></tr>
+        <tr><td>US dollar / Dollar Index</td><td>Priced in USD: <b>stronger dollar → lower prices</b></td></tr>
+        <tr><td>Domestic currency</td><td><b>Weakening rupee</b> → imports dearer when global prices rise</td></tr>
+        <tr><td>Global vs domestic</td><td>MCX tracks COMEX, LME, NYMEX, adjusted for currency and duties</td></tr>
+        <tr><td>Crop and weather reports</td><td>Monsoon, sowing and yield estimates</td></tr>
+        <tr><td>Inventory, production, consumption</td><td>Rising stocks bearish; falling stocks bullish</td></tr>
+        <tr><td>Macro, policy, geopolitics</td><td>Inflation, rates, PMI; duties, MSP, sanctions, wars</td></tr>
+      </tbody>
+    </table></div>
+    <div class="trap">Sample Qs: commodity analysis depends on supply–demand → <b>Fundamental Analysis</b>. Global disruptions come from <b>currency fluctuations and trade policies</b>. A <b>weakening</b> domestic currency makes imports more expensive.</div>
+    <div class="hook"><b>Strong dollar, weak commodities.</b> Commodities are priced in USD, so when the dollar strengthens they cost more in other currencies, demand dips and prices fall. India is a major <b>consumer</b> of gold and crude, not a top producer; China is both the top producer <b>and</b> consumer of gold.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic" data-added="2">
+    <h3>Global benchmark exchanges and why Indian prices follow them</h3>
+    <p class="ch">Chapter 11.4 · commodity tracker</p>
+    <p>Organised commodity exchanges began in the <b>mid-19th century</b> and became global benchmark setters. Indian exchange derivatives are <b>replicas</b> of global contracts and strongly correlated with them.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Global benchmark exchange</th><th>Commodity segment</th></tr></thead>
+      <tbody>
+        <tr><td><b>CBOT</b> — Chicago Board of Trade</td><td>Agricultural commodities</td></tr>
+        <tr><td><b>COMEX</b></td><td>Bullion (gold, silver)</td></tr>
+        <tr><td><b>NYMEX</b> — New York Mercantile Exchange</td><td>Energy (crude) — drives fuel prices and inflation in importers like India</td></tr>
+        <tr><td><b>LME</b> — London Metal Exchange</td><td>Base metals — Indian base metal prices follow LME</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">"<b>C</b>hicago <b>C</b>rops, <b>CO</b>MEX <b>CO</b>ins (bullion), NYMEX for e<b>N</b>ergy, <b>L</b>ME for <b>L</b>ead / base metals."</div>
+    <div class="wrap"><table>
+      <thead><tr><th>Why domestic prices can drift from global</th></tr></thead>
+      <tbody>
+        <tr><td>Currency moves — a weak INR amplifies a global price rise</td></tr>
+        <tr><td>Trade policy, import–export dynamics, duties</td></tr>
+        <tr><td>Strong local demand, government intervention, seasonal supply</td></tr>
+      </tbody>
+    </table></div>
+    <div class="wrap"><table>
+      <thead><tr><th>Commodity</th><th>Top producers</th><th>Top consumers</th></tr></thead>
+      <tbody>
+        <tr><td>Gold</td><td>China, Australia, Russia, USA, Canada</td><td>China, India, USA, Germany, Saudi Arabia</td></tr>
+        <tr><td>Crude oil</td><td>USA, Russia, Saudi Arabia, Canada, China</td><td>USA, China, India, Germany, Japan</td></tr>
+      </tbody>
+    </table></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Hedging and the hedge ratio</h3>
+    <p class="ch">Chapter 11.9</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Short hedge (seller)</th><th>Long hedge (buyer)</th></tr></thead>
+      <tbody>
+        <tr><td>Wheat farmer <b>sells futures</b> before harvest; price fall in cash market offset by futures gain</td><td>Airline <b>buys crude futures</b>; fuel price rise offset by futures gain</td></tr>
+      </tbody>
+    </table></div>
+    <div class="fx"><b>Hedge ratio</b> = ρ(spot, futures) × (σ of Δspot ÷ σ of Δfutures)</div>
+    <div class="fx">Quantity to hedge = Hedge ratio × Exposure
+No. of contracts  = Quantity to hedge ÷ Contract size   (round up)</div>
+    <div class="eg">Workbook: ABC Company, copper wire maker. SD of Δspot 9.02, SD of Δfutures 9.71, correlation 0.9853; MCX copper lot 2.5 MT.
+      <span class="led">Hedge ratio = 0.9853 × 9.02 ÷ 9.71 = 0.915
+Per 100 MT  → 91.5 MT ÷ 2.5 = 36.6 → 37 contracts
+For 500 MT  → 457.6 MT ÷ 2.5 = 183.1 → 184 contracts (round up)</span></div>
+    <div class="trap">The workbook states a 500 MT monthly need but works the numbers for 100 MT. Learn the method; the exam can use either figure. Use the ratio of <b>standard deviations</b>, not variances, with spot on top.</div>
+    <div class="wrap"><table>
+      <thead><tr><th>Advantages</th><th>Disadvantages</th></tr></thead>
+      <tbody>
+        <tr><td>Stable cash flows and margins; planning; credit access</td><td>Cost (margins, premiums); caps upside; wrong ratio adds risk; needs expertise</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">Hedging aims for <b>stability, not profit</b>. <b>Hedge the side you'll lose on</b>: the one who sells the physical goods (farmer) sells futures; the one who buys the physical goods (airline) buys futures.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 12 ================= -->
+<details class="module" id="ch12" open style="--c:var(--m5)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 12</span>
+    <span class="mod-t">Fundamentals of Risk and Return</span>
+    <span class="mod-w"><b>7</b> marks · pp 228–246</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>Return measures</h3>
+    <p class="ch">Chapter 12.1–12.2 · calculation</p>
+    <p>Return <b>of</b> investment (capital back) matters as much as return <b>on</b> investment.</p>
+    <div class="fx"><b>ROI / HPR</b>        = (End − Start + Income) ÷ Start
+<b>Simple annualised</b> = HPR × 365 ÷ days
+<b>CAGR</b>             = (End ÷ Start)^(1/n) − 1
+<b>XIRR</b>             = IRR for irregular cash flows (Excel)</div>
+    <div class="eg"><span class="led">₹1,00,000 → ₹2,00,000 in 5 yrs: CAGR = 2^(1/5) − 1 = 14.87%
+Simple annualised = 100% ÷ 5 = 20%   (overstates; no compounding)
+₹100 → ₹106 in 146 days: HPR 6%, annualised = 6% × 365/146 = 15%</span></div>
+    <div class="hook"><b>HPR</b> ignores time · <b>simple annualised</b> ignores compounding · <b>CAGR</b> is the standard for periods over 1 year · <b>XIRR</b> handles many cash flows on different dates (SIPs, dividends).</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Risks and how they're measured</h3>
+    <p class="ch">Chapter 12.3–12.7</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Systematic (can't diversify)</th><th>Unsystematic (diversifiable)</th></tr></thead>
+      <tbody>
+        <tr><td>Market, interest rate, inflation, political, country, currency, reinvestment</td><td>Business, financial (leverage), credit/default, security-specific liquidity, management</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Interest rate risk</span>: rates up → bond prices down. <span class="k">Reinvestment risk</span>: rates down → coupons reinvested lower. <span class="k">Call risk</span>: issuer redeems early. Measures: <b>SD</b> (total risk), <b>VaR</b> (max loss at a confidence level), <b>beta</b> (market risk; β &gt; 1 more volatile). <span class="k">Sensitivity analysis</span> flexes one assumption; <span class="k">margin of safety</span> = gap between intrinsic value and price.</p>
+    <div class="upd">The workbook's printed standard deviation formula (p 238) omits the square root, which gives <b>variance</b>. Sample SD = √[Σ(x − mean)² ÷ (n − 1)]. Use the correct form when calculating.</div>
+    <div class="hook"><b>Rates fall</b> → bond prices ↑, call risk ↑, reinvestment risk ↑. <b>Rates rise</b> → bond prices ↓, reinvestment risk ↓. <b>Diversify</b> → unsystematic risk ↓, systematic risk unchanged. A bank FD has <b>no market risk</b> (it isn't traded) but does carry inflation risk.</div>
+    <div class="hook"><b>VaR(1%) = 12%</b> reads as: 99% confident the loss won't exceed 12%. Confidence = 1 − significance. <b>Risk</b> is known uncertainty you can measure; <b>uncertainty</b> is when you don't yet know the cause.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Risk-adjusted returns: Sharpe, Treynor, Jensen</h3>
+    <p class="ch">Chapter 12.8–12.9 · case-study material</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Ratio</th><th>Formula</th><th>Risk used</th><th>Suits</th></tr></thead>
+      <tbody>
+        <tr><td>Sharpe</td><td>(Rp − Rf) ÷ σp</td><td>Total (SD)</td><td>Investor <b>not</b> diversified</td></tr>
+        <tr><td>Treynor</td><td>(Rp − Rf) ÷ βp</td><td>Systematic</td><td>Well-diversified investor</td></tr>
+        <tr><td>Jensen's α</td><td>Rp − [Rf + β(Rm − Rf)]</td><td>Systematic (CAPM)</td><td>Excess over CAPM return</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg"><span class="led">Rp 15%, Rf 7%, σ 20%, β 1.2, Rm 13%
+Sharpe  = (15 − 7) ÷ 20      = 0.40
+Treynor = (15 − 7) ÷ 1.2     = 6.67
+Jensen  = 15 − [7 + 1.2 × 6] = +0.8%</span></div>
+    <p>Buffett: compare the return on stocks with bonds before deploying capital; in distress, rates fall and equities get cheap even on dividend yield.</p>
+    <div class="trap">"Factors systematic risk using equity beta" — the workbook's sample answer is <b>Jensen's Alpha</b> (Treynor also uses beta; read the option set).</div>
+    <div class="hook">Keyword to ratio: "per unit of <b>standard deviation</b>" → <b>Sharpe</b> · "per unit of <b>beta</b>" → <b>Treynor</b> · "excess over <b>CAPM</b>" → <b>Jensen</b>. Sharpe suits a <b>S</b>ingle concentrated holding; Treynor suits a diversified portfolio. For all three, higher is better.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Behavioural biases, gurus and liquidity</h3>
+    <p class="ch">Chapter 12.10–12.12</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Bias</th><th>Symptom</th></tr></thead>
+      <tbody>
+        <tr><td>Loss aversion</td><td>Pain of loss ≈ <b>2×</b> joy of equal gain → inaction, holding losers</td></tr>
+        <tr><td>Confirmation (my-side)</td><td>Seeking only information that supports your view</td></tr>
+        <tr><td>Ownership (endowment)</td><td>Valuing what you own more than others would</td></tr>
+        <tr><td>Gambler's fallacy</td><td>"Fell 5 days in a row, so it must rise tomorrow"</td></tr>
+        <tr><td>Winner's curse</td><td>Winning an auction by overpaying</td></tr>
+        <tr><td>Herd mentality</td><td>Following the crowd → bubbles and crashes</td></tr>
+        <tr><td>Anchoring</td><td>Stuck on a reference price — <b>stops investors benefiting from market corrections</b> (sample Q)</td></tr>
+        <tr><td>Projection</td><td>Extending the recent past far into the future</td></tr>
+      </tbody>
+    </table></div>
+    <p>Graham: markets are more psychological than logical. Liquidity of a share: <b>stock turnover</b> = shares traded ÷ free-float shares; <b>traded value turnover</b> = traded value ÷ market cap. Higher means more liquid.</p>
+    <div class="hook"><b>Mr. Market</b> (Graham) quotes you a price every day, often emotionally — exploit his moods, don't share them. <b>Templeton</b>: invest at the point of maximum pessimism. <b>Buffett</b>: Rule 1, never lose money; Rule 2, never forget Rule 1. Short run the market is a voting machine, long run a weighing machine.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 13 ================= -->
+<details class="module" id="ch13" open style="--c:var(--m6)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 13</span>
+    <span class="mod-t">Qualities of a Good Research Report</span>
+    <span class="mod-w"><b>5</b> marks · pp 247–254</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>What makes a report stand out</h3>
+    <p class="ch">Chapter 13.1</p>
+    <p>Everyone reads the same annual reports. The difference is in how the view is presented — communication is as important as analysis.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Ground rules</th><th>Process and sections</th></tr></thead>
+      <tbody>
+        <tr><td>Clarity of idea · Simplicity of delivery · Argument presented clearly · Narrative structure · Customised to reader type</td><td><b>Planning → Drafting → Editing</b>. Sections: company business, peer group, shareholding pattern, key strengths, key concerns, industry overview, fundamentals, key financial indicators, financials</td></tr>
+      </tbody>
+    </table></div>
+    <div class="wrap"><table>
+      <thead><tr><th>Rating</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Buy / Hold / Sell</td><td>Absolute view against a price target</td></tr>
+        <tr><td>Overweight · Equal weight · Underweight</td><td>Expected to beat · match · lag the market or sector</td></tr>
+      </tbody>
+    </table></div>
+    <div class="wrap"><table>
+      <thead><tr><th>Fact-based sections</th><th>View-based sections</th></tr></thead>
+      <tbody><tr><td>Peer group analysis · shareholding pattern · company fundamentals · key financial indicators · financials</td><td>Company business · key strengths · key concerns · industry overview</td></tr></tbody>
+    </table></div>
+    <div class="hook">If you can <b>calculate or copy it from a filing</b>, it's fact-based. If it needs an <b>opinion</b> (strengths, concerns, how the business works, industry outlook), it's view-based.</div>
+    <div class="trap">"Equal weight" means in line with the market — not "hold until target". Overweight / underweight are <b>relative</b> to the market; buy / sell are <b>absolute</b>.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>The checklist approach</h3>
+    <p class="ch">Chapter 13.2–13.3</p>
+    <p>Checklists avoid lazy mistakes and shortcuts, keep the analyst disciplined, support fact-based decisions, and leave a trail that can be corrected. Pilots have used them for decades.</p>
+    <div class="hook"><b>Atul Gawande, <i>The Checklist Manifesto</i></b>: errors of <b>ignorance</b> (didn't know) vs errors of <b>ineptitude</b> (knew but misapplied). Checklists fix <b>in</b>eptitude — the knowledge was <b>in</b> you, you just misused it. They can't fix ignorance; that knowledge was never there.</div>
+    <div class="wrap"><table>
+      <thead><tr><th>Qualitative checks</th><th>Quantitative checks</th></tr></thead>
+      <tbody>
+        <tr><td>Do I understand the business? Revenue model and segment mix</td><td>Sales and profit growth trend</td></tr>
+        <tr><td>Necessity or choice? Substitutes?</td><td>Margins, ROE, ROCE vs peers</td></tr>
+        <tr><td>Technology collaboration, competitive position</td><td>Debt/equity, interest cover, cash flow</td></tr>
+        <tr><td>Management integrity, related parties</td><td>Working capital days, valuation multiples</td></tr>
+      </tbody>
+    </table></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 14 ================= -->
+<details class="module" id="ch14" open style="--c:var(--m6)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 14</span>
+    <span class="mod-t">Legal and Regulatory Environment</span>
+    <span class="mod-w"><b>10</b> marks · pp 255–294 · fourth-largest</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>The legal framework</h3>
+    <p class="ch">Chapter 14.1–14.2</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Law / regulation</th><th>Remember</th></tr></thead>
+      <tbody>
+        <tr><td>SCRA 1956</td><td>Defines securities; recognition of exchanges</td></tr>
+        <tr><td>SEBI Act 1992</td><td>SEBI's powers: regulate intermediaries, prohibit fraud and insider trading, regulate takeovers, inspect, penalise</td></tr>
+        <tr><td>Depositories Act 1996 · Companies Act 2013</td><td>Demat holdings · company law (MCA, NCLT)</td></tr>
+        <tr><td>PFUTP Regulations 2003</td><td>Fraud = any act, omission or concealment to induce dealing; gain or loss irrelevant</td></tr>
+        <tr><td>RA Regulations 2014</td><td>Registration, qualification, conduct, disclosures</td></tr>
+      </tbody>
+    </table></div>
+    <p>Appeals against SEBI orders lie with the <b>Securities Appellate Tribunal (SAT)</b>.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Ministry of Finance department</th><th>Handles</th><th>Hook</th></tr></thead>
+      <tbody>
+        <tr><td>Economic Affairs (DEA)</td><td>Macro policy, capital markets incl. exchanges, external resources, currency printing; <b>prepares the Union Budget</b></td><td>"The Budget and capital markets department"</td></tr>
+        <tr><td>Expenditure</td><td>Government spending, financial rules, central staff service conditions, help to states</td><td>"How govt spends"</td></tr>
+        <tr><td>Revenue</td><td>Direct and indirect taxes via CBDT and CBEC</td><td>"How govt earns"</td></tr>
+        <tr><td>Financial Services</td><td>Banks, insurance, pension reforms, industrial finance, MSMEs</td><td>"Banks + insurance + pensions"</td></tr>
+        <tr><td>Disinvestment</td><td>Selling PSU stakes and using the proceeds</td><td>"Selling govt stakes"</td></tr>
+      </tbody>
+    </table></div>
+    <div class="wrap"><table>
+      <thead><tr><th>PFUTP deemed manipulative practices, grouped</th><th>Includes</th></tr></thead>
+      <tbody>
+        <tr><td>Fake trading</td><td>False appearance of trading; deals not meant to transfer ownership; circular transactions</td></tr>
+        <tr><td>Price manipulation</td><td>Paying people to inflate, depress or hold a price; rigging a benchmark price; faking minimum subscription</td></tr>
+        <tr><td>False information</td><td>Publishing untrue results or approvals; misleading advice in any media; planting false news</td></tr>
+        <tr><td>Intermediary misconduct</td><td>Trading without client knowledge; misusing client funds; churning for brokerage; falsifying contract notes; <b>mis-selling</b></td></tr>
+        <tr><td>Front-running type</td><td>Ordering while holding non-public info on a substantial impending transaction</td></tr>
+        <tr><td>Others</td><td>Stolen or counterfeit securities; illegal fund mobilisation through a collective investment scheme</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">Six PFUTP families: <b>Fake trades, Fixed prices, False news, Faithless intermediaries, Front-running, and the rest</b>. Mis-selling = knowingly misleading, hiding facts or risk, or not checking <b>suitability</b>.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Insider trading (PIT Regulations, 2015)</h3>
+    <p class="ch">Chapter 14.2.3</p>
+    <ul>
+      <li>Made under Sec 30 of the SEBI Act. <span class="k">Insider</span> = connected person, or anyone with UPSI.</li>
+      <li><span class="k">Connected person</span>: associated with the company in any capacity within <span class="num">6 months</span> before the act.</li>
+      <li>No trading while holding UPSI; trades are <b>presumed</b> motivated by it unless the insider proves otherwise.</li>
+      <li>Initial disclosure by KMP, directors, promoters within <span class="num">7 days</span> of appointment.</li>
+      <li>Designated persons (incl. <b>analysts</b>, auditors, law firms) can't trade while expected to hold UPSI; pre-clearance above board limits.</li>
+      <li><span class="k">Chinese wall</span> separates insider areas from public areas; crossing only on need-to-know, reported to the compliance officer.</li>
+      <li>Analysts preparing a report on a listed company: no trading in it for <span class="num">30 days from preparation</span>.</li>
+    </ul>
+    <div class="hook"><b>PIT Reg 3 = don't share</b> UPSI · <b>Reg 4 = don't trade</b> on UPSI. Every connected person is an insider, but an insider can also be <b>anyone who merely holds UPSI</b>.</div>
+    <div class="trap">Two different 30-day rules: PIT code → <b>30 days from preparation</b> of the report. RA Reg 16 → <b>30 days before and 5 days after publication</b>.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Registration, qualification, fees</h3>
+    <p class="ch">Chapter 14.2 · RA Regs 3, 7, 8, 15A</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Rule</th><th>Requirement</th></tr></thead>
+      <tbody>
+        <tr><td>Reg 3</td><td>No one acts as an RA without SEBI registration. Exempt (if complying with Chapter III): IAs, credit rating agencies, AMCs, fund managers; and principal officers / partners of a registered RA (subject to Reg 7)</td></tr>
+        <tr><td>Reg 7 qualification</td><td>Graduate (or CFA charter) + relevant NISM certification, <b>or</b> NISM PG Program in Securities Market (Research Analysis)</td></tr>
+        <tr><td>Reg 7 renewal</td><td>Fresh NISM certification before expiry, or within 3 years of registration</td></tr>
+        <tr><td>Reg 8</td><td>Maintain the deposit SEBI specifies</td></tr>
+        <tr><td>Reg 15 / 15A</td><td>Written internal policies on trading and independence · may charge fees (incl. accredited investors) as SEBI specifies</td></tr>
+      </tbody>
+    </table></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Trading limits and compensation walls</h3>
+    <p class="ch">Chapter 14.4 · Regs 16–17</p>
+    <ul>
+      <li>No dealing in securities you recommend or follow <b>30 days before and 5 days after</b> publishing a report.</li>
+      <li>Never trade <b>contrary</b> to your own recommendation.</li>
+      <li>No pre-IPO shares of an issuer in the same business you cover.</li>
+      <li>Exception: significant news or personal financial circumstances, with prior written approval.</li>
+      <li>Compensation must not be tied to any IB, merchant banking or brokerage deal; reviewed yearly by a board committee with no IB representation; RA not supervised by IB staff.</li>
+    </ul>
+    <div class="eg">You publish a Buy on stock X on <b>20 June</b>.
+      <span class="led">No trades in X: 21 May → 25 June (30 before, 5 after)
+And never sell X while your published view is Buy.</span></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Quiet periods around offerings (Reg 18)</h3>
+    <p class="ch">Chapter 14.4 · Reg 18 · confusion-prone</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Role</th><th>Offering</th><th>No report / public appearance for</th><th>Counted from</th></tr></thead>
+      <tbody>
+        <tr><td>Manager / co-manager</td><td>IPO</td><td class="num">40 days</td><td>Pricing date</td></tr>
+        <tr><td>Manager / co-manager</td><td>FPO</td><td class="num">10 days</td><td>Pricing date</td></tr>
+        <tr><td>Underwriter</td><td>IPO</td><td class="num">25 days</td><td>Offer date (first day offered)</td></tr>
+        <tr><td>Manager / co-manager</td><td>Lock-up</td><td class="num">15 + 15 days</td><td>Before and after expiry / waiver / termination</td></tr>
+      </tbody>
+    </table></div>
+    <p>Compliance can give written approval for exceptions to the 40/10 and 15-day periods. RAs can't join sales pitches or roadshows, can't talk to clients with IB staff present, and IB staff can't direct RAs (investor education is allowed).</p>
+    <div class="hook"><b>40 for IPO, 10 for FPO</b> — the new issue gets four times the silence. Underwriters sit in between at <b>25</b>, and they count from the <b>offer</b> date, not the pricing date.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Disclosures, report contents, public media</h3>
+    <p class="ch">Chapter 14.4 · Regs 19–21</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Disclose</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>Financial interest</td><td>Of RA, associates or relatives in the subject company</td></tr>
+        <tr><td>Ownership</td><td>≥ <span class="num">1%</span> at end of the <b>month preceding</b> the report or appearance</td></tr>
+        <tr><td>Compensation</td><td>From subject company in <span class="num">past 12 months</span>; managed its public offer in past 12 months; IB / non-IB services; any benefit linked to the report</td></tr>
+        <tr><td>Roles</td><td>Served as officer, director or employee; market-making</td></tr>
+        <tr><td>AI</td><td>Extent of AI tool use in research services</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Reg 19A</span>: functional website. <span class="k">Reg 20</span>: define rating terms, horizon, benchmark; if rated/targeted ≥ 1 year, show the daily closing price chart for the rated period or <b>3 years, whichever is shorter</b>. <span class="k">Reg 21</span>: disclose registration status and financial interest in public appearances.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Grievances, segregation, code of conduct</h3>
+    <p class="ch">Chapter 14.3–14.4 · Regs 26B, 26C</p>
+    <ul>
+      <li><span class="k">Reg 26B</span>: resolve grievances within <span class="num">21 calendar days</span>.</li>
+      <li><span class="k">Reg 26C</span>: an individual RA can't provide distribution services; family can't distribute to the RA's research clients; non-individual RAs segregate at group level with an arm's-length division.</li>
+      <li><span class="k">Code of conduct</span>: honesty and good faith · diligence · conflict of interest · no insider trading or front-running (incl. of own report) · confidentiality until public · professional standards · compliance · senior management responsibility.</li>
+    </ul>
+    <div class="hook">Code of conduct = "<b>HD-CIC-PCS</b>": <b>H</b>onesty, <b>D</b>iligence — <b>C</b>onflict, <b>I</b>nsider / front-running, <b>C</b>onfidentiality — <b>P</b>rofessional standard, <b>C</b>ompliance, <b>S</b>enior management.</div>
+    <div class="trap">RA <b>registration</b> is permanent unless suspended or cancelled; the <b>NISM certificate</b> must be renewed (Reg 7(2)).</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Exchange surveillance: GSM and ASM</h3>
+    <p class="ch">Chapter 14.5</p>
+    <div class="wrap"><table>
+      <thead><tr><th></th><th>GSM (Graded)</th><th>ASM (Additional)</th></tr></thead>
+      <tbody>
+        <tr><td>Looks at</td><td><b>Valuation</b> not backed by fundamentals in small companies</td><td><b>Price and volume</b> variation; client concentration (top 25 clients)</td></tr>
+        <tr><td>Criteria</td><td>NW ≤ ₹10 cr and net fixed assets ≤ ₹25 cr with negative P/E or ≥ 2× benchmark P/E; or Mcap &lt; ₹25 cr with P/E &gt; 2× (or negative) and P/B negative or 2× benchmark</td><td>High–low over 3 months; close-to-close over 1 month, 60 days, 365 days; volume swings</td></tr>
+        <tr><td>Measures</td><td>Trade-for-trade, surveillance deposit, narrower band, higher margin, upside price freeze</td><td>Margin <b>80%</b>, then <b>100%</b>; narrower bands</td></tr>
+        <tr><td>Exempt</td><td>PSUs, index stocks, F&amp;O stocks, 3-yr dividend payers, IPOs within 1 year, schemes under way</td><td>Stocks in GSM or trade-for-trade, F&amp;O stocks, PSUs</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook"><b>G</b>SM = <b>G</b>ap between valuation and fundamentals. <b>A</b>SM = <b>A</b>bnormal price and volume.</div>
+    <div class="eg">GSM check order (mock-test question): market cap ₹22 cr, index P/E 20, index P/B 3.
+      <span class="led">Mcap &lt; ₹25 cr ✓ → P/E trigger = 2 × 20 = 40×, P/B trigger = 2 × 3 = 6×
+P/E 45×, P/B 2.5×          → 45 &gt; 40 → GSM ✓
+P/E negative, P/B 3×       → 3 &lt; 6  → not GSM
+P/E 25×, P/B 6×            → P/E below 40; P/B not even checked → not GSM</span></div>
+    <div class="hook"><b>Check P/E first.</b> Look at P/B <b>only when P/E is negative</b>. A high P/B alone never triggers GSM.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Advertisement code, branding, investor charter, CSCRF</h3>
+    <p class="ch">Chapter 14.5–14.7</p>
+    <ul>
+      <li>Advertisement = any communication that may influence investment decisions.</li>
+      <li>Show registered name, logo, registration number, address and phone on website, boards, ads, KYC and agreements; in client correspondence also compliance and grievance officer contacts.</li>
+      <li>Mandatory disclaimer: SEBI registration, BASL membership (IAs) and NISM certification don't guarantee performance or returns.</li>
+      <li><b>SEBI's logo must not be used.</b></li>
+      <li>Investor Charter (Annexure 1), complaints data disclosure (Annexure 2). Certified past performance only via <b>PaRRVA</b> once operational.</li>
+      <li>CSCRF applies to regulated entities; RA compliance reporting moved to <b>BSE Ltd</b>.</li>
+    </ul>
+    <div class="wrap"><table>
+      <thead><tr><th>CSCRF goal</th><th>Meaning</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>1 Anticipate</td><td>Prepare to forestall attacks</td><td>Patch systems, phishing training</td></tr>
+        <tr><td>2 Withstand</td><td>Keep essential functions running during an attack</td><td>Backup keeps the client portal up</td></tr>
+        <tr><td>3 Contain</td><td>Localise the crisis; isolate trusted from untrusted systems</td><td>Disconnect the infected laptop</td></tr>
+        <tr><td>4 Recover</td><td>Restore functions after the attack</td><td>Restore from backup</td></tr>
+        <tr><td>5 Evolve</td><td>Change to reduce future impact</td><td>Add MFA after the incident</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">The order follows the life of an attack: <b>before</b> (Anticipate) → <b>during</b> (Withstand, Contain) → <b>after</b> (Recover, Evolve). "<b>A W</b>ise <b>C</b>at <b>R</b>arely <b>E</b>rrs."</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CHAPTER 15 ================= -->
+<details class="module" id="ch15" open style="--c:var(--m7)">
+  <summary class="mod-head">
+    <span class="mod-n">Chapter 15</span>
+    <span class="mod-t">Technical Analysis</span>
+    <span class="mod-w"><b>15</b> marks · pp 295–336 · largest block</span>
+  </summary>
+  <div class="mod-body">
+
+  <section class="topic">
+    <h3>Assumptions and chart types</h3>
+    <p class="ch">Chapter 15.1–15.2</p>
+    <p>Price discounts everything; prices move in trends; history repeats.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Chart</th><th>Key feature</th></tr></thead>
+      <tbody>
+        <tr><td>Line</td><td>Closing prices only; clean trend view</td></tr>
+        <tr><td>Bar (OHLC)</td><td>Price range and directional bias; volatility</td></tr>
+        <tr><td>Candlestick</td><td>OHLC with coloured bodies; Doji, Hammer, Engulfing</td></tr>
+        <tr><td>Point &amp; Figure</td><td><b>Ignores time and volume</b>; breakouts, S/R; long term</td></tr>
+        <tr><td>Renko</td><td>Fixed price "bricks", not time; trailing stops</td></tr>
+        <tr><td>Heikin-Ashi</td><td>Averaged candles; filters whipsaws; keeps you in trends</td></tr>
+      </tbody>
+    </table></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Dow Theory and the three trends</h3>
+    <p class="ch">Chapter 15.3–15.4 · near-certain MCQ</p>
+    <div class="wrap"><table>
+      <thead><tr><th>#</th><th>Tenet</th><th>Detail</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Market discounts everything</td><td>Aligns with EMH</td></tr>
+        <tr><td>2</td><td>Three trends</td><td>Primary (≥ 1 yr) · secondary (weeks–months, corrections) · tertiary (days–weeks, usually &lt; 3 weeks)</td></tr>
+        <tr><td>3</td><td>Primary trend has 3 phases</td><td>Accumulation (smart money) → public participation → distribution</td></tr>
+        <tr><td>4</td><td>Indices must confirm</td><td>Workbook: <b>Nifty and Sensex</b> move together</td></tr>
+        <tr><td>5</td><td>Volume confirms trend</td><td>Volume rises in the primary trend's direction</td></tr>
+        <tr><td>6</td><td>Trend persists until clear reversal</td><td>Basis of trend following, trailing stops</td></tr>
+      </tbody>
+    </table></div>
+    <p>Charles Dow's editorials 1900–1902; formalised by William Hamilton and Robert Rhea. Primary trends: bull (confidence), bear (fear), sideways (indecision).</p>
+    <div class="trap">Tenet 4 in this workbook is <b>Nifty and Sensex</b>, not the US Industrial and Transport averages. The <b>secondary</b> trend moves <b>against</b> the primary (it's the correction), not with it.</div>
+    <div class="hook">Primary trend phases follow the money: <b>smart money accumulates</b> quietly → <b>the public piles in</b> → <b>smart money distributes</b> to late buyers.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Reversal candlesticks</h3>
+    <p class="ch">Chapter 15.5</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Pattern</th><th>Appears after</th><th>Shape → signal</th></tr></thead>
+      <tbody>
+        <tr><td>Hammer</td><td>Decline</td><td>Small body, lower shadow ≥ 2× body → bullish; needs confirmation candle</td></tr>
+        <tr><td>Hanging man</td><td>Rise</td><td>Same shape → bearish warning; next candle must close lower</td></tr>
+        <tr><td>Bullish engulfing</td><td>Decline (best after 4+ red)</td><td>Big green body engulfs small red body</td></tr>
+        <tr><td>Bearish engulfing</td><td>Rise</td><td>Big red body engulfs small green body</td></tr>
+        <tr><td>Doji</td><td>Anywhere</td><td>Open ≈ close → indecision</td></tr>
+        <tr><td>Shooting star</td><td>Rise</td><td>Small body, long upper shadow → bearish</td></tr>
+        <tr><td>Morning star</td><td>Decline</td><td>Tall red · small indecision · tall green → bullish</td></tr>
+        <tr><td>Evening star</td><td>Rise</td><td>Large green · small body · large red closing into first body → bearish</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook">Hammer and hanging man are the <b>same candle</b>; the <b>location</b> decides. A man is <b>hanged at the top</b> — bad news, bearish. A hammer <b>hits the bottom</b> to build a base — bullish. Both need the next candle to confirm.</div>
+    <div class="hook">A reversal is named after where the price is <b>going</b>, not where it came from: at a top it's bearish, at a bottom it's bullish. The shape gives the family, the prior trend gives the name — long lower shadow: <b>hammer ↔ hanging man</b>; long upper shadow: <b>inverted hammer ↔ shooting star</b>.</div>
+    <div class="trap">Engulfing patterns compare <b>real bodies only</b>, not wicks. A piercing pattern is <b>two</b> candles at the <b>bottom</b>, not three at the top.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Consolidation (continuation) patterns</h3>
+    <p class="ch">Chapter 15.6</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Pattern</th><th>Shape</th><th>Bias</th></tr></thead>
+      <tbody>
+        <tr><td>Symmetrical triangle</td><td>Converging highs and lows (also called wedge)</td><td>Breakout direction decides</td></tr>
+        <tr><td>Ascending triangle</td><td>Higher lows, flat resistance</td><td>Bullish continuation</td></tr>
+        <tr><td>Descending triangle</td><td>Lower highs, flat support</td><td>Bearish continuation</td></tr>
+        <tr><td>Flag / pennant</td><td>Sharp move (flagpole), then rectangle (flag) or small triangle (pennant)</td><td>Continues in flagpole direction</td></tr>
+      </tbody>
+    </table></div>
+    <div class="eg">Ascending triangle: resistance ₹500; thickest part ₹440 → ₹500 (height ₹60).
+      <span class="led">Breakout above 500 → target = 500 + 60 = ₹560
+Trendlines need ≥ 2 swing highs and ≥ 2 swing lows</span></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Support, resistance, trendlines and channels</h3>
+    <p class="ch">Chapter 15.7–15.8</p>
+    <p><span class="k">Support</span> = floor (demand clusters). <span class="k">Resistance</span> = ceiling (supply clusters). Broken with volume, the roles reverse.</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Type</th><th>Example</th></tr></thead>
+      <tbody>
+        <tr><td>Horizontal</td><td>Stock repeatedly stalls near ₹1,950</td></tr>
+        <tr><td>Trendline</td><td>Rising line joining higher lows</td></tr>
+        <tr><td>Moving average</td><td>Price bounces off 50 DMA</td></tr>
+        <tr><td>Fibonacci</td><td><span class="num">23.6% · 38.2% · 61.8%</span> retracements</td></tr>
+        <tr><td>Pivot points</td><td>From prior high, low, close; intraday</td></tr>
+        <tr><td>Psychological</td><td>Round numbers — Nifty 25,000</td></tr>
+      </tbody>
+    </table></div>
+    <p><span class="k">Channel</span> = trendline + parallel line through opposite swings; buy near the lower line of an up-channel, watch for breaks.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Moving averages and MACD</h3>
+    <p class="ch">Chapter 15.9.1–15.9.2</p>
+    <p>Moving averages (simple or exponential) smooth noise and lag price; price above a rising MA = uptrend.</p>
+    <div class="fx"><b>Fast MACD</b> = difference of the 12- and 26-period EMAs
+<b>Slow MACD</b> = 9-period EMA of the fast line   (not bounded 0–100)</div>
+    <ul>
+      <li>With both lines rising, <b>buy when fast crosses above slow</b> (reverse for sell).</li>
+      <li>A zero-line crossover should <b>not</b> be used for trading.</li>
+      <li>Steep = powerful move; lines holding a steady gap = trend in place; a bulge = buying climax.</li>
+      <li>MACD double top/bottom → reversal likely. Avoid stocks with weekly or monthly MACD trending down.</li>
+      <li>Shows momentum, not price — use with other indicators.</li>
+    </ul>
+    <div class="upd">The workbook words the fast line as "26 EMA − 12 EMA". The standard construction is <b>12 EMA − 26 EMA</b>; the signal line (9 EMA) is the same either way. If a question tests the order, go with the workbook's wording.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>RSI and divergence</h3>
+    <p class="ch">Chapter 15.9.3 · case-study favourite</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Reading</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Scale</td><td><span class="num">0–100</span> — can never exceed 100</td></tr>
+        <tr><td>&gt; 70 / &lt; 30</td><td>Overbought / oversold</td></tr>
+        <tr><td>Bull market</td><td>Rarely falls below <span class="num">44–45</span></td></tr>
+        <tr><td>Bear market</td><td>Rarely rises above <span class="num">50–55</span></td></tr>
+        <tr><td>Strong trend</td><td>Can stay overbought/oversold for long; RSI works best in ranges; can lead</td></tr>
+      </tbody>
+    </table></div>
+    <div class="hook"><b>Bullish divergence</b>: price makes a new low, RSI doesn't → early buy. <b>Bearish divergence</b>: price makes a new high, RSI doesn't → early sell. Workbook case: Nifty peaked around Sep 2024 while RSI and MACD failed to make new highs.</div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>ADX, RSC and OBV</h3>
+    <p class="ch">Chapter 15.9.4–15.9.6</p>
+    <div class="wrap"><table>
+      <thead><tr><th>Indicator</th><th>Build</th><th>Signals</th></tr></thead>
+      <tbody>
+        <tr><td>ADX</td><td>0–100, default 14 bars, with +DMI / −DMI</td><td>Measures <b>strength, not direction</b>. &lt; 25 weak / no trend; rising above 25 strong. Buy: +DMI crosses above −DMI with ADX rising. Ignore crossovers when ADX is weak</td></tr>
+        <tr><td>RSC</td><td>Ratio vs benchmark, normalised to 100; 5–6-yr window</td><td>&gt; 100 outperforming Nifty, &lt; 100 underperforming. Buy when long below 100 then crosses up</td></tr>
+        <tr><td>OBV</td><td>Cumulative volume (add on up days, subtract on down days)</td><td>Rising OBV confirms uptrend; divergence warns</td></tr>
+      </tbody>
+    </table></div>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  <section class="topic">
+    <h3>Case-study traps and the annexures</h3>
+    <p class="ch">Chapter 15 sample case · Annexures 1–3</p>
+    <div class="trap">
+      <ul style="margin:0;padding-left:18px">
+        <li>"RSI can take a value above 100 in a strong bull market" — <b>false</b>.</li>
+        <li>"RSI is a very good indicator in a strongly trending market" — <b>false</b>; it works best in ranges.</li>
+        <li>"RSI can fall below 40 in a strong bull market" — <b>not likely</b> (rarely below 44–45).</li>
+        <li>"Go long when MACD moves over the zero line" — <b>not</b> a valid signal.</li>
+        <li>"MACD trades between 0 and 100" — <b>false</b>.</li>
+        <li>ADX rising = stronger trend, up <b>or</b> down. Point &amp; Figure ignores time <b>and</b> volume.</li>
+        <li>"RSC below 100 = outperforming" — <b>false</b>; it's underperforming.</li>
+        <li>"Moving averages are leading indicators" — <b>false</b>; they lag.</li>
+        <li>"Ascending triangle is bearish" — <b>false</b>; bullish continuation.</li>
+      </ul>
+    </div>
+    <div class="hook"><b>Barings</b> (Nick Leeson): "not a derivatives failure, it was <b>management's failure</b>" — poor operational controls. <b>2008</b>: banks diluted lending standards, securitised and "passed the pillow", AAA ratings were trusted blindly — do your own due diligence and keep asking "what could go wrong?". Buffett: people with <b>pens</b> commit bigger thefts than people with guns.</div>
+    <p><span class="k">Annexure 1</span>: Investor Charter for RAs (vision: invest with knowledge and safety; services, rights, do's and don'ts, grievance timelines). <span class="k">Annexure 2</span>: complaints data disclosure format. <span class="k">Annexure 3</span>: historical cases incl. Barings Bank (Nick Leeson) and the 2008 credit crisis.</p>
+    <label class="rev"><input type="checkbox">revised</label>
+  </section>
+
+  </div>
+</details>
+
+<!-- ================= CLOSING PANELS ================= -->
+<div class="panel">
+  <h2>Where the workbook and current practice part ways</h2>
+  <p class="lead">NISM marks against the November 2025 workbook. Answer the workbook version in the hall; keep the right column for client work.</p>
+  <div class="grid2">
+    <div>
+      <h4>Answer the workbook version in the exam</h4>
+      <ul>
+        <li><b>Private placement</b> — workbook: <code>≤ 50</code> investors. Companies Act rules today: up to <code>200</code> per financial year (excluding QIBs and ESOP employees).</li>
+        <li><b>Governance code</b> — workbook cites <code>Clause 49</code> of the listing agreement. It now lives in <b>SEBI LODR Regulations, 2015</b>.</li>
+        <li><b>IBC threshold</b> — workbook figure <code>₹1,00,000</code>. Raised to <code>₹1 crore</code> in 2020.</li>
+        <li><b>Standard deviation</b> — printed formula (p 238) has no square root, so it gives variance. Calculate SD correctly.</li>
+        <li><b>MACD</b> — workbook: "26 EMA − 12 EMA". Standard: <code>12 EMA − 26 EMA</code>, signal = <code>9 EMA</code>.</li>
+        <li><b>Audit opinions</b> — workbook lists clean, qualified, disclaimer. Auditing standards also have an <b>adverse</b> opinion.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Exam-hall playbook</h4>
+      <ul>
+        <li><b>Circle NOT / UNLIKELY / EXCEPT</b> before you read the options — half the case-study traps hinge on it.</li>
+        <li><b>Guessing pays</b> with −25%: a blind guess is worth <code>+0.06</code>; remove two options and it's <code>+0.375</code>. Skip only when you can't remove even one.</li>
+        <li><b>Time</b>: about <code>65 min</code> for 80 MCQs, <code>45 min</code> for the 5 cases, <code>10 min</code> to review flags.</li>
+        <li><b>Cases</b> pull from Ch 8, 10, 12, 15 — DuPont, EV, PEG, CAGR, Sharpe/Treynor/Jensen, RSI/MACD reading. Never abandon a case after one hard sub-question.</li>
+        <li><b>Terminal tools</b>: Excel or OpenOffice Calc. Practise <code>XIRR</code>, <code>RATE</code>, <code>NPV</code>, <code>^</code> for CAGR.</li>
+        <li><b>Regulatory days</b> are the cheapest marks in Ch 14 if memorised cold: 30/5, 40/10, 25, 15+15, 1%, 12 months, 21 days.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Last-hour sheet</h2>
+  <p class="lead">Numbers and formulas only. Read once before you walk in.</p>
+  <div class="grid2">
+    <div>
+      <h4>Numbers</h4>
+      <ul>
+        <li>IPO retail <code>≥35%</code> · QIB <code>≤50%</code> · anchor <code>≥₹10 cr</code>, up to <code>60%</code> of QIB</li>
+        <li>REIT <code>80%</code> · InvIT <code>90%</code> · distribute <code>90%</code></li>
+        <li>DVR: <code>10%</code> dividend record · cap <code>25%</code> of capital</li>
+        <li>Rights open <code>15–30 days</code>; letter of offer <code>3 days</code> before</li>
+        <li>IDs <code>50%</code> (exec chair) / <code>⅓</code> · audit committee <code>⅔</code> · auditor fees <code>&lt;10%</code> · rotation <code>5 yrs</code></li>
+        <li>RA trading <code>30 before / 5 after</code> · IPO <code>40</code> · FPO <code>10</code> · underwriter <code>25</code> · lock-up <code>15+15</code></li>
+        <li>Holding disclosure <code>1%</code> · look-back <code>12 months</code> · price chart <code>3 yrs</code> · grievance <code>21 days</code></li>
+        <li>PIT: connected person <code>6 months</code> · initial disclosure <code>7 days</code></li>
+        <li>GSM: NW <code>₹10 cr</code>, NFA <code>₹25 cr</code>, P/E <code>2×</code> · ASM margin <code>80% → 100%</code></li>
+        <li>RSI <code>70/30</code>, bull floor <code>44–45</code>, bear cap <code>50–55</code> · ADX <code>25</code> · RSC <code>100</code></li>
+        <li>Secular <code>7–10 yrs</code> · cyclical <code>2–6 yrs</code> · GICS <code>11/25/74/163</code></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Formulas</h4>
+      <ul>
+        <li>EV = <code>Mcap + pref + debt − cash − non-op inv</code></li>
+        <li>Current yield = <code>coupon ÷ price</code> · Mod. duration = <code>Mac ÷ (1+y)</code></li>
+        <li>Basis = <code>spot − futures</code> · Futures = <code>S + S×r×t</code></li>
+        <li>GNP = <code>GDP + NFIA</code> · GDP = <code>C + I + G + (X−M)</code></li>
+        <li>ROE = <code>margin × turnover × A/E</code> · ROCE = <code>EBIT ÷ (D + E)</code></li>
+        <li>Gordon = <code>D1 ÷ (Ke − g)</code> · CAPM = <code>Rf + β(Rm − Rf)</code></li>
+        <li>WACC = <code>We·Ke + Wd·Kd(1−t)</code> · PEG = <code>P/E ÷ g</code></li>
+        <li>CAGR = <code>(End ÷ Start)^(1/n) − 1</code></li>
+        <li>Sharpe = <code>(Rp−Rf) ÷ σ</code> · Treynor = <code>÷ β</code> · Jensen = <code>Rp − [Rf + β(Rm−Rf)]</code></li>
+        <li>Hedge ratio = <code>ρ × σs ÷ σf</code> · TERP = <code>(n×CMP + rights price) ÷ (n+1)</code></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="hooks-all">
+  <h2>Every memory hook, one page</h2>
+  <p class="lead">All the hooks from your chapter notes and our Q&amp;A chats, in chapter order. Read this the night before.</p>
+  <div class="grid2">
+    <div>
+      <h4>Ch 1–6</h4>
+      <ul>
+        <li><b>Ch 1</b> Sell-side sells the idea · Buy-side buys for itself · Independent sells the report. Conflict highest on sell side.</li>
+        <li><b>Ch 2</b> Right / entitled → <b>buyer</b>; obligated / must → <b>writer</b>.</li>
+        <li><b>Ch 2</b> Bond currency local to where it's issued? Yes → foreign bond; no → Euro bond; INR abroad → Masala.</li>
+        <li><b>Ch 3</b> Duration rises with "<b>long, low, low</b>" — longer maturity, lower coupon, lower yield.</li>
+        <li><b>Ch 3</b> EV = buy the whole business: subtract anything that doesn't run it.</li>
+        <li><b>Ch 3</b> IIB uses <b>WPI</b>; IINSS-C uses <b>CPI</b>.</li>
+        <li><b>Ch 4</b> Gold is the <b>fear</b> asset; crude is the <b>growth</b> asset.</li>
+        <li><b>Ch 5</b> "<b>C-I-G-NX</b>" · per capita, not national income, measures welfare.</li>
+        <li><b>Ch 5</b> Fiscal deficit: anything except borrowing reduces it.</li>
+        <li><b>Ch 5</b> "<b>Deficit needs a donor</b>" — confidence is lost when the gap can't be filled.</li>
+        <li><b>Ch 6</b> Industry → business sector → economic sector (narrow to wide).</li>
+        <li><b>Ch 6</b> Porter: suppliers and buyers are the <b>vertical</b> two. Buffett's "<b>castles and moats</b>".</li>
+        <li><b>Ch 6</b> BCG cash cow = low growth, high share; question mark = high growth, low share.</li>
+      </ul>
+      <h4>Ch 7–10</h4>
+      <ul>
+        <li><b>Ch 7</b> S and W inside; O and T outside. Customer concentration = weakness, not threat.</li>
+        <li><b>Ch 7</b> "<b>Half, third, two-thirds, ten, five</b>" — IDs, IDs, audit committee, auditor fee %, rotation years.</li>
+        <li><b>Ch 7</b> High pledge + falling price = forced selling. ESG is a filter, not a buy.</li>
+        <li><b>Ch 8</b> Period ÷ date → use averages. ROE on leverage = caution, not cheer.</li>
+        <li><b>Ch 8</b> Audit: "except for" qualified · "wrong everywhere" adverse · "can't say" disclaimer.</li>
+        <li><b>Ch 9</b> Bonus and split change the <b>count</b>; rights and buyback move <b>cash</b>.</li>
+        <li><b>Ch 10</b> FCFF ↔ WACC ↔ firm · FCFE ↔ Ke ↔ equity · Gordon uses <b>D1</b>.</li>
+        <li><b>Ch 10</b> Risk-neutral → risk in the cash flows (insurers); real-world → risk in the discount rate.</li>
+        <li><b>Ch 10</b> SOTP: multiply earnings and costs; add values as they are.</li>
+        <li><b>Ch 10</b> P/B banks · P/EV life insurers · P/ABV NBFCs · NAV real estate · SOTP conglomerates.</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Ch 11–13</h4>
+      <ul>
+        <li><b>Ch 11</b> "<b>C</b>hicago <b>C</b>rops, <b>CO</b>MEX <b>CO</b>ins, NYMEX e<b>N</b>ergy, <b>L</b>ME <b>L</b>ead / base metals."</li>
+        <li><b>Ch 11</b> Strong dollar, weak commodities. Weak rupee amplifies a global price rise.</li>
+        <li><b>Ch 11</b> Hedge the side you'll lose on: farmer sells futures, airline buys futures.</li>
+        <li><b>Ch 12</b> SD → Sharpe · beta → Treynor · over CAPM → Jensen. Higher is better for all three.</li>
+        <li><b>Ch 12</b> Rates fall → prices, call risk and reinvestment risk all rise.</li>
+        <li><b>Ch 12</b> <b>Anchoring</b> stops you benefiting from corrections. Loss hurts ≈ 2× a gain.</li>
+        <li><b>Ch 13</b> Copy it from a filing → fact-based; needs an opinion → view-based.</li>
+        <li><b>Ch 13</b> Checklists fix <b>in</b>eptitude, not ignorance.</li>
+      </ul>
+      <h4>Ch 14–15</h4>
+      <ul>
+        <li><b>Ch 14</b> "<b>HD-CIC-PCS</b>" — the code of conduct.</li>
+        <li><b>Ch 14</b> IPO is 4× FPO: <b>40 vs 10</b> from pricing · underwriter <b>25</b> from offer date · lock-up <b>15 + 15</b>.</li>
+        <li><b>Ch 14</b> PIT <b>Reg 3 don't share, Reg 4 don't trade</b>. PIT 30 from preparation; Reg 16 30 + 5 around publication.</li>
+        <li><b>Ch 14</b> <b>G</b>SM = <b>G</b>ap (valuation) · <b>A</b>SM = <b>A</b>bnormal price and volume. Check P/E first.</li>
+        <li><b>Ch 14</b> CSCRF: "<b>A W</b>ise <b>C</b>at <b>R</b>arely <b>E</b>rrs" — before, during, after an attack.</li>
+        <li><b>Ch 14</b> MoF: DEA = Budget · Expenditure = spends · Revenue = earns · DFS = banks · Disinvestment = sells stakes.</li>
+        <li><b>Ch 15</b> Hanged at the top → bearish; hammer hits the bottom → bullish.</li>
+        <li><b>Ch 15</b> RSI 0–100 · 70/30 · bull floor 44–45 · bear cap 50–55. ADX = strength, not direction.</li>
+        <li><b>Ch 15</b> MACD: buy on fast crossing slow with both rising; never trade the zero line.</li>
+        <li><b>Ch 15</b> Point &amp; Figure ignores time <b>and</b> volume. Barings = management's failure.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  <b>Market Pulse</b> · NISM Series XV Research Analyst · built from the workbook version November 2025 (valid for exams on or after 20 January 2026).<br>
+  Where a worked example uses my own numbers, it says so. Ticks are saved in this browser only.<br>
+  <button class="btn" type="button" id="resetBtn">Clear all ticks</button> <span id="resetMsg"></span>
+</div>
+</main>
+
+<div class="modal" id="modal" hidden role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="mcard">
+    <div class="mtop">
+      <p class="eyebrow">Market Pulse &nbsp;·&nbsp; NISM Series XV</p>
+      <h2 id="mTitle"><em>Congratulations!</em><br>You completed your revision.</h2>
+      <div class="mledger" id="mledger"></div>
+    </div>
+    <div class="mbody">
+      <p>Every topic across all 15 chapters is ticked revised.</p>
+      <div class="mstats">
+        <div><b id="mTopics">0</b>topics</div>
+        <div><b>15</b>chapters</div>
+        <div><b>100</b>marks</div>
+      </div>
+      <p class="mwish">All the best for your exam! <span>— Sreekar</span></p>
+      <p class="mnote">Don't forget to revise the <b>last-hour sheet</b> before you walk in.</p>
+      <div class="mact">
+        <button class="btn solid" type="button" id="mClose">Back to the ledger</button>
+        <button class="btn" type="button" id="mSheet">Open last-hour sheet</button>
+      </div>
+    </div>
+  </div>
+</div>
+<canvas id="confetti" hidden></canvas>
+
+<script>
+(function(){
+  var CH = [
+    {n:1,t:"RA role",m:1,g:0},{n:2,t:"Markets",m:2,g:0},{n:3,t:"Terms",m:2,g:0},
+    {n:4,t:"Research",m:5,g:1},{n:5,t:"Economy",m:5,g:1},{n:6,t:"Industry",m:8,g:1},
+    {n:7,t:"Business",m:6,g:2},{n:8,t:"Financials",m:12,g:2},
+    {n:9,t:"Corp actions",m:5,g:3},{n:10,t:"Valuation",m:12,g:3},
+    {n:11,t:"Commodities",m:5,g:4},{n:12,t:"Risk",m:7,g:4},
+    {n:13,t:"Report",m:5,g:5},{n:14,t:"Regulation",m:10,g:5},
+    {n:15,t:"Technicals",m:15,g:6}
+  ];
+  var G = [
+    {t:"Foundations · Ch 1–3",c:"--m2"},{t:"Research lenses · Ch 4–6",c:"--m3"},{t:"Company · Ch 7–8",c:"--m1"},
+    {t:"Corporate actions & value · Ch 9–10",c:"--m4"},{t:"Commodities & risk · Ch 11–12",c:"--m5"},
+    {t:"Report & law · Ch 13–14",c:"--m6"},{t:"Technicals · Ch 15",c:"--m7"}
+  ];
+
+  // ledger, groups, modal ledger
+  var ledger = document.getElementById('ledger'), groups = document.getElementById('groups'), mled = document.getElementById('mledger');
+  CH.forEach(function(c){
+    var a = document.createElement('a');
+    a.className = 'seg'; a.href = '#ch' + c.n; a.id = 'seg' + c.n;
+    a.style.flex = c.m; a.style.setProperty('--c', 'var(' + G[c.g].c + ')');
+    a.title = 'Chapter ' + c.n + ' — ' + c.t + ', ' + c.m + (c.m === 1 ? ' mark' : ' marks');
+    a.innerHTML = '<span class="sm">' + c.m + '</span><span class="sl">' + c.n + ' ' + c.t + '</span>';
+    ledger.appendChild(a);
+    var s = document.createElement('span'); s.style.flex = c.m; s.style.setProperty('--c', 'var(' + G[c.g].c + ')'); mled.appendChild(s);
+  });
+  G.forEach(function(g){
+    var s = document.createElement('span'); s.style.setProperty('--c', 'var(' + g.c + ')');
+    s.innerHTML = '<i></i>' + g.t; groups.appendChild(s);
+  });
+
+  var q = document.getElementById('q'),
+      topics = Array.prototype.slice.call(document.querySelectorAll('.topic')),
+      modules = Array.prototype.slice.call(document.querySelectorAll('.module')),
+      nores = document.getElementById('nores'),
+      c1 = document.getElementById('c1'), c2 = document.getElementById('c2'), pg = document.getElementById('pg'),
+      modal = document.getElementById('modal');
+
+  // stable key per topic (chapter + heading) so adding topics never shifts saved ticks
+  var oldIdx = 0;
+  topics.forEach(function(t, i){
+    t._txt = t.textContent.toLowerCase();
+    t.dataset.i = i;
+    var m = t.closest('.module'), h = t.querySelector('h3');
+    t.dataset.k = (m ? m.id : 'x') + '|' + (h ? h.textContent.trim() : i);
+    if (!t.hasAttribute('data-added')) t.dataset.old = oldIdx++;
+  });
+  c2.textContent = topics.length;
+  document.getElementById('mTopics').textContent = topics.length;
+
+  // saved ticks (this browser only)
+  var KEY = 'mp-nism-xv-ledger-v2', OLD = 'mp-nism-xv-ledger-v1', saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e){ saved = null; }
+  if (!saved){
+    saved = {};
+    try {
+      var v1 = JSON.parse(localStorage.getItem(OLD) || '{}') || {};
+      topics.forEach(function(t){ if (t.dataset.old !== undefined && v1[t.dataset.old]) saved[t.dataset.k] = 1; });
+    } catch(e){}
+  }
+  function persist(){ try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e){} }
+  persist();
+
+  function filter(){
+    var v = q.value.trim().toLowerCase(), hits = 0;
+    modules.forEach(function(m){
+      var mine = Array.prototype.slice.call(m.querySelectorAll('.topic')), any = 0;
+      mine.forEach(function(t){
+        var show = !v || t._txt.indexOf(v) > -1;
+        t.hidden = !show;
+        if (show){ any++; hits++; }
+      });
+      m.hidden = !!(v && !any);
+      if (v && any) m.open = true;
+    });
+    nores.style.display = hits ? 'none' : 'block';
+  }
+  q.addEventListener('input', filter);
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== q && modal.hidden){ e.preventDefault(); q.focus(); }
+    if (e.key === 'Escape'){
+      if (!modal.hidden){ closeModal(); return; }
+      if (document.activeElement === q){ q.value = ''; filter(); q.blur(); }
+    }
+  });
+  document.getElementById('openAll').addEventListener('click', function(){ modules.forEach(function(m){ m.open = true; }); });
+  document.getElementById('closeAll').addEventListener('click', function(){ modules.forEach(function(m){ m.open = false; }); });
+
+  function tally(){
+    var done = document.querySelectorAll('.topic.done').length;
+    c1.textContent = done;
+    pg.style.width = (done / topics.length * 100) + '%';
+    modules.forEach(function(m){
+      var all = m.querySelectorAll('.topic').length, d = m.querySelectorAll('.topic.done').length;
+      var n = m.id.replace('ch',''), seg = document.getElementById('seg' + n), head = m.querySelector('.mod-head');
+      var badge = head.querySelector('.mod-done');
+      if (all && d === all){
+        if (seg) seg.classList.add('done');
+        if (!badge){ badge = document.createElement('span'); badge.className = 'mod-done'; badge.textContent = '✓ revised'; head.insertBefore(badge, head.querySelector('.mod-w').nextSibling); }
+      } else {
+        if (seg) seg.classList.remove('done');
+        if (badge) badge.remove();
+      }
+    });
+    return done;
+  }
+
+  topics.forEach(function(t){
+    var box = t.querySelector('.rev input');
+    if (!box) return;
+    box.id = 'rev-' + t.dataset.i;
+    if (saved[t.dataset.k]){ box.checked = true; t.classList.add('done'); }
+    box.addEventListener('change', function(){
+      var before = document.querySelectorAll('.topic.done').length;
+      t.classList.toggle('done', box.checked);
+      if (box.checked) saved[t.dataset.k] = 1; else delete saved[t.dataset.k];
+      persist();
+      var after = tally();
+      if (after === topics.length && before < topics.length) celebrate();
+    });
+  });
+
+  function celebrate(){
+    modal.hidden = false;
+    document.getElementById('mClose').focus();
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce) confetti();
+  }
+  function closeModal(){ modal.hidden = true; }
+  document.getElementById('mClose').addEventListener('click', closeModal);
+  document.getElementById('mSheet').addEventListener('click', function(){
+    closeModal();
+    var p = document.querySelectorAll('.panel'); if (p.length) p[p.length - 1].scrollIntoView({behavior:'smooth', block:'start'});
+  });
+  modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+
+  // two-tap clear, confirmed in the page
+  var rb = document.getElementById('resetBtn'), rm = document.getElementById('resetMsg'), armed = false, tm;
+  rb.addEventListener('click', function(){
+    if (!armed){ armed = true; rb.textContent = 'Tap again to clear all'; rm.textContent = '';
+      clearTimeout(tm); tm = setTimeout(function(){ armed = false; rb.textContent = 'Clear all ticks'; }, 4000); return; }
+    armed = false; clearTimeout(tm); saved = {}; persist();
+    topics.forEach(function(t){ t.classList.remove('done'); var b = t.querySelector('.rev input'); if (b) b.checked = false; });
+    tally(); rb.textContent = 'Clear all ticks'; rm.textContent = 'All ticks cleared.';
+  });
+
+  function confetti(){
+    var cv = document.getElementById('confetti'), ctx = cv.getContext('2d');
+    cv.hidden = false;
+    var W = cv.width = innerWidth, H = cv.height = innerHeight;
+    var cs = getComputedStyle(document.documentElement);
+    var cols = ['--m1','--m2','--m3','--m4','--m5','--m6','--m7'].map(function(v){ return cs.getPropertyValue(v).trim(); }).concat(['#D9B36C','#D9B36C']);
+    var P = [];
+    for (var i = 0; i < 170; i++) P.push({x:Math.random()*W, y:-20 - Math.random()*H*0.6, vx:(Math.random()-.5)*3, vy:2 + Math.random()*3,
+      r:Math.random()*Math.PI, vr:(Math.random()-.5)*.25, w:6 + Math.random()*6, h:3 + Math.random()*4, c:cols[i % cols.length]});
+    var start = performance.now();
+    (function frame(now){
+      ctx.clearRect(0,0,W,H);
+      P.forEach(function(p){ p.x += p.vx; p.y += p.vy; p.vy += 0.03; p.r += p.vr;
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r); ctx.fillStyle = p.c; ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); ctx.restore(); });
+      if (now - start < 3800) requestAnimationFrame(frame); else { ctx.clearRect(0,0,W,H); cv.hidden = true; }
+    })(start);
+  }
+
+  tally();
+})();
+</script>
+
+</body>
+</html>
